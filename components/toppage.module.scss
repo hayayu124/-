@@ -1,0 +1,654 @@
+.foncol {
+  color: white;
+}
+
+.backColor1 {
+  background-color: #832a3f;
+}
+
+.backColor2 {
+  background-color: #8e1b1b;
+}
+
+.kv {
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+  background-repeat: no-repeat;
+  background-image: url("/img/fv.png");
+  background-size: cover;
+  @media screen and (max-width: 767px) {
+    padding-top: 141.8%;
+    background-image: url("/img/fv_sp.png");
+  }
+}
+
+// コピー
+.copyPattern {
+  width: 100vw;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.copyPatternSP {
+  width: 100vw;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.copy {
+  margin: auto;
+  margin-top: 2em;
+}
+
+.copyText {
+  position: relative;
+  @media screen and (max-width: 767px) {
+    position: static;
+    text-align: center;
+  }
+}
+
+.copySubTittle {
+  width: 24%;
+  margin-left: 0;
+  @media screen and (max-width: 767px) {
+    width: 64%;
+  }
+}
+
+.copyBorder {
+  width: 64%;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0.5em auto;
+  }
+}
+
+.copyImage {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(90%, -20%);
+  width: 50%;
+  @media screen and (max-width: 767px) {
+    position: static;
+    transform: translate(0%, 0%);
+    width: 100%;
+  }
+}
+
+.team {
+  margin-top: 30em;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    margin: 5em auto 0 auto;
+  }
+}
+
+.teamDecoration {
+  position: absolute;
+  width: 50%;
+  top: 0%;
+  left: 0%;
+  transform: translateY(-100%);
+  @media screen and (max-width: 767px) {
+    position: static;
+    width: 72%;
+    transform: translateY(0%);
+  }
+}
+
+.teamDecorationCircle {
+  position: absolute;
+  width: 16%;
+  top: 0%;
+  left: 0%;
+  transform: translate(400%, -64%);
+  @media screen and (max-width: 767px) {
+    width: 20%;
+    left: 70%;
+    transform: translateY(-15%);
+  }
+}
+
+.teamTittle {
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    width: 77%;
+    margin: auto;
+  }
+}
+
+.teamDecorationBorder {
+  position: absolute;
+  width: 64%;
+  top: 0%;
+  right: 7%;
+  transform: translateY(-10%);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    transform: translateY(150%);
+    right: 0%;
+  }
+}
+
+.teamDetail {
+  margin-top: 10em;
+  @media screen and (max-width: 767px) {
+    margin-top: 5em;
+  }
+}
+
+.teamAOverview {
+  margin: auto;
+  text-align: center;
+  h3 {
+    margin-top: 0.8em;
+  }
+  @media screen and (max-width: 767px) {
+    width: 85%;
+  }
+}
+
+.teamMember {
+  margin: 2em auto 0em auto;
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
+}
+
+/*メンバー詳細情報*/
+
+.team .teamMemberDetail:nth-child(n + 2):nth-child(-n + 4) {
+  @media screen and (min-width: 768px) {
+    margin-left: 1.5em;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 1.5em;
+  }
+}
+
+.teamMemberDetail {
+  width: calc(24% - 1em);
+  position: relative;
+  border: 4px solid #6b5c54;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+
+  &:before {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(0.1em, 0.1em);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    content: "";
+    z-index: -1;
+  }
+  /*メンバー1*/
+  &.roseRed {
+    &:before {
+      background-color: #ce3e60;
+    }
+    .teamMemberguildInfo {
+      background-color: #832a3f;
+    }
+    .buttonContets {
+      background-color: #832a3f;
+      &:before {
+        background-color: #f06788;
+      }
+    }
+  }
+  /*メンバー2*/
+  &.red {
+    &:before {
+      background-color: #e22b2b;
+    }
+    .teamMemberguildInfo {
+      background-color: #8e1b1b;
+    }
+    .buttonContets {
+      background-color: #8e1b1b;
+      &:before {
+        background-color: #f58a8a;
+      }
+    }
+  }
+
+  /*メンバー3*/
+  &.orange {
+    &:before {
+      background-color: #e96123;
+    }
+    .teamMemberguildInfo {
+      background-color: #9a4119;
+    }
+    .buttonContets {
+      background-color: #9a4119;
+      &:before {
+        background-color: #f79c74;
+      }
+    }
+  }
+
+  /*メンバー4*/
+  &.turquoise {
+    &:before {
+      background-color: #5eaeb5;
+    }
+    .teamMemberguildInfo {
+      background-color: #3e7074;
+    }
+    .buttonContets {
+      background-color: #3e7074;
+      &:before {
+        background-color: #2b4f52;
+      }
+    }
+  }
+
+  /*メンバー5*/
+  &.green {
+    &:before {
+      background-color: #2da168;
+    }
+    .teamMemberguildInfo {
+      background-color: #24583f;
+    }
+    .buttonContets {
+      background-color: #24583f;
+      &:before {
+        background-color: #42de91;
+      }
+    }
+  }
+
+  /*メンバー6*/
+  &.blue {
+    &:before {
+      background-color: #075da5;
+    }
+    .teamMemberguildInfo {
+      background-color: #144064;
+    }
+    .buttonContets {
+      background-color: #144064;
+      &:before {
+        background-color: #5675f5;
+      }
+    }
+  }
+
+  /*メンバー7*/
+  &.yellow {
+    &:before {
+      background-color: #f2ce16;
+    }
+    .teamMemberguildInfo {
+      background-color: #a28a0d;
+    }
+    .buttonContets {
+      background-color: #a28a0d;
+      &:before {
+        background-color: #f4e38d;
+      }
+    }
+  }
+}
+
+.memberName {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .twitterIcon {
+    width: 10%;
+  }
+}
+
+.teamMemberContents {
+  width: 78%;
+  margin: 1.3em auto 1.5em auto;
+}
+
+.memberSubName {
+  margin-bottom: 1.5em;
+}
+
+.teamMemberguildInfo {
+  margin: 0.4em 0;
+  padding: 0.3em;
+}
+
+.button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .buttonWidth {
+    width: 48%;
+  }
+  .buttonContets {
+    position: relative;
+    padding: 0.3em 0.1em;
+    border-radius: 9999px;
+    &:before {
+      position: absolute;
+      left: 0%;
+      top: 0%;
+      transform: translate(0.15em, 0.15em);
+      width: 100%;
+      height: 100%;
+      content: "";
+      z-index: -1;
+      border-radius: 9999px;
+    }
+  }
+}
+
+// 特典
+.reward {
+  position: relative;
+  margin: 20em auto;
+  @media screen and (max-width: 767px) {
+    margin: 10em auto;
+  }
+}
+
+.rewardDecoration {
+  width: 72%;
+  position: absolute;
+  top: 0em;
+  left: 0em;
+  transform: translateY(-110%);
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
+}
+
+.rewardDecorationCircle {
+  width: 24%;
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  transform: translate(-50%, -90%);
+}
+
+.teamRewardImage {
+  margin: 3em auto;
+  @media screen and (max-width: 767px) {
+    width: 85%;
+  }
+}
+
+.eventRewardSection {
+  margin: 12em auto;
+  text-align: center;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    margin: 10em auto 2em auto;
+  }
+}
+
+.eventRewardDecoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56%;
+  transform: translate(-50%, -36%);
+  @media screen and (max-width: 767px) {
+    width: 80%;
+    transform: translate(-50%, -100%);
+  }
+}
+
+.eventRewardDecoration_2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24%;
+  transform: translate(5%, -80%);
+  @media screen and (max-width: 767px) {
+    width: 48%;
+    transform: translate(50%, -80%);
+  }
+}
+
+.rewardSectionTittle {
+  width: 48%;
+  margin: auto;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+  }
+}
+
+.rewardSectionText {
+  margin: 2em auto;
+  text-align: center;
+}
+
+.rewardColumn {
+  position: relative;
+}
+
+.rewardSectionHukidashi {
+  width: 32%;
+  transform: translate(64%, -80%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  @media screen and (max-width: 767px) {
+    width: 50%;
+    transform: translate(25%, -80%);
+  }
+}
+
+.secondThirdimageBox .rewardSectionHukidashi {
+  width: 50%;
+  transform: translate(32%, -72%);
+}
+
+// 画像枠
+.imageBox {
+  margin: 1em auto;
+  width: 48%;
+  position: relative;
+  border: 4px solid #6b5c54;
+  aspect-ratio: 5 / 3;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:before {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(0.1em, 0.1em);
+    background-color: #ffffff;
+    width: calc(100% + 0.5em);
+    height: calc(100% + 0.5em);
+    content: "";
+    z-index: -1;
+  }
+}
+
+.secondThirdimageBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .imageBox {
+    width: 50% !important;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+// イベント参加セクション
+
+.join,
+.system {
+  margin-top: 15em;
+}
+
+.joinTittle {
+  position: relative;
+}
+
+.tittleImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  transform: translate(20%, -88%);
+}
+
+.joinColumn {
+  margin: 1em auto 1.5em auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.joinColumnDetail {
+  width: 32%;
+  position: relative;
+  border: 4px solid #6b5c54;
+  padding: 2em 1em 1em 1em;
+  img {
+    width: 42%;
+  }
+
+  h3 {
+    padding-top: 1.5em;
+  }
+
+  h5 {
+    padding-top: 0.5em;
+  }
+
+  &:before {
+    background-color: #dbc77c;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(0.1em, 0.1em);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    content: "";
+    z-index: -1;
+  }
+}
+
+.joinNotes {
+  margin: auto;
+}
+
+// システムセクション
+.systemDecoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28%;
+  transform: translate(-10%, -50%);
+}
+
+.systemImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24%;
+  transform: translate(-25%, -72%);
+}
+
+.systemContents,
+.entirePowerSystem,
+.caslePointSystem {
+  margin: 4em auto;
+}
+
+.systemDetail {
+  margin: 1em auto 1em auto;
+  width: 72%;
+  position: relative;
+  border: 4px solid #6b5c54;
+  padding: 0.5em 1em 0.5em 1em;
+
+  &:before {
+    background-color: #dbc77c;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(0.1em, 0.1em);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    content: "";
+    z-index: -1;
+  }
+  &.levelPoint {
+    width: 47% !important;
+    margin: 1em 0em 0.3em 0em;
+  }
+}
+
+.plus {
+  width: 3%;
+  margin: 1.5em auto;
+}
+
+.levelPointSystemColumn {
+  width: 72%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+// ヘルプセクション
+.helpSectionButton {
+  width: 32%;
+  margin: 3em auto 0.5em auto;
+  background-color: #dbc87e;
+  position: relative;
+  padding: 0.7em 0.1em;
+  border-radius: 9999px;
+  &:before {
+    background-color: #6b5c54;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    transform: translate(0.22em, 0.4em);
+    width: 100%;
+    height: 100%;
+    content: "";
+    z-index: -1;
+    border-radius: 9999px;
+  }
+}
+
+// 利用規約セクション
+.terms {
+  width: 100vw;
+  background-color: #ded9c3;
+}
+.termsText {
+  margin: auto;
+  padding: 2em 0;
+
+  h3 {
+    margin-top: 4em;
+  }
+  h6 {
+    margin-top: 3em;
+    line-height: 2.2em;
+  }
+}
