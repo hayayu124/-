@@ -61,13 +61,13 @@ export default function Home() {
         <div className={cn.teamTittle}>
           <h1>
             推しチームのギルドに入り、
-            <br className={"br"} />
+            <br />
             仲間と協力して勝利を掴み取れ！
           </h1>
-        </div>
 
-        <div className={cn.teamDecorationBorder}>
-          <img src="/img/team_border.png" alt="" />
+          <div className={cn.teamDecorationBorder}>
+            <img src="/img/team_border.png" alt="" />
+          </div>
         </div>
 
         {/* チームA*/}
@@ -402,7 +402,7 @@ export default function Home() {
           <img src="/img/teamrRewardImage.png" alt="" />
         </div>
 
-        <div className={`${cn.eventRewardSection} grid4`}>
+        <div className={`${cn.eventRewardSection}`}>
           <div className={`${cn.rewardSectionTittle}`}>
             <img src="/img/rewardSectionTittle.png" alt="" />
           </div>
@@ -416,55 +416,74 @@ export default function Home() {
           </div>
 
           <h3 className={`${cn.rewardSectionText}`}>
-            イベント上位の参加者も豪華プレゼントがもらえる！
+            イベント上位の参加者も
+            <br className={`${cn.brSp}`} />
+            豪華プレゼントがもらえる！
           </h3>
         </div>
 
-        <div className={`${cn.rewardColumn} tex-c mar-t4`}>
+        <div className={`${cn.rewardColumn} tex-c  grid4`}>
           <div className={`${cn.rewardSectionHukidashi}`}>
             <img src="/img/hukidasi_1.png" alt="" />
           </div>
-
-          <h1 className={`${cn.rewardSectionSubTittle} mar-t4`}>特典の内容</h1>
 
           {/* 各メンバーギルド内パワーランキング１位〜５位*/}
           <div className={`${cn.imageBox}`}>
             <img src="/img/teamrRewardImage.png" alt="" />
           </div>
-          <h4>説明説明説明説明説明説明説明説明説明</h4>
+          <h3 className={`${cn.rewardSectionSubTittle} mar-t1`}>
+            ジョブネット主催・LinQワンマンライブ優先入場券※＋サイン入りチェキ
+            <br />
+            or
+            <br />
+            LinQメンバー全員からのメッセージ動画＋名前・サイン入りチェキ
+            <br />
+            の2つより特典を選べる！
+          </h3>
         </div>
 
-        <div className={`${cn.secondThirdimageBox} tex-c mar-t3`}>
+        <div className={`${cn.rewardColumn} tex-c  grid4`}>
+          <div className={`${cn.rewardSectionHukidashi}`}>
+            <img src="/img/hukidasi_2.png" alt="" />
+          </div>
+
+          {/* 各メンバーギルド内パワーランキング１位〜５位*/}
+          <div className={`${cn.imageBox}`}>
+            <img src="/img/teamrRewardImage.png" alt="" />
+          </div>
+          <h3 className={`${cn.rewardSectionSubTittle} mar-t1`}>
+            参加ギルドのLinQメンバーのチーム全員のメッセージ付きデジショ
+            <br />
+            ＋名前・サイン入りチェキ
+          </h3>
+        </div>
+
+        <div className={`${cn.secondThirdimageBox} tex-c`}>
           <div className={`${cn.rewardColumn} tex-c mar-t4`}>
             <div className={`${cn.rewardSectionHukidashi}`}>
               <img src="/img/hukidasi_2.png" alt="" />
             </div>
 
-            <h1 className={`${cn.rewardSectionSubTittle} mar-t1`}>
-              特典の内容
-            </h1>
-
             {/* 各メンバーギルド内パワーランキング６位〜１０位*/}
             <div className={`${cn.imageBox}`}>
               <img src="/img/teamrRewardImage.png" alt="" />
             </div>
-            <h4>説明説明説明説明説明説明説明説明説明</h4>
+            <h3>
+              参加ギルドのLinQメンバーからメッセージ付き
+              <br />
+              デジショ＋名前・サイン入りチェキ
+            </h3>
           </div>
 
           <div className={`${cn.rewardColumn} tex-c mar-t4`}>
             <div className={`${cn.rewardSectionHukidashi}`}>
               <img src="/img/hukidasi_3.png" alt="" />
             </div>
-
-            <h1 className={`${cn.rewardSectionSubTittle} mar-t1`}>
-              特典の内容
-            </h1>
-
             {/* 画像枠*/}
             <div className={`${cn.imageBox}`}>
               <img src="/img/teamrRewardImage.png" alt="" />
             </div>
-            <h4>説明説明説明説明説明説明説明説明説明</h4>
+            <h3>名前・サイン入りチェキ</h3>
           </div>
         </div>
       </section>
@@ -472,11 +491,11 @@ export default function Home() {
       {/* イベント参加セクション*/}
       <section className={`${cn.join} tex-c`}>
         <div className={`${cn.joinTittle} mar-b4`}>
-          <h1>イベント参加の流れ</h1>
-
           <div className={cn.teamDecoration}>
             <img src="/img/JOIN.png" alt="" />
           </div>
+
+          <h1>イベント参加の流れ</h1>
 
           <div className={cn.tittleImage}>
             <img src="/img/joinImage.png" alt="" />
