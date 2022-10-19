@@ -80,9 +80,10 @@ export default function Home() {
         <div className={cn.teamDetail}>
           <div className={cn.teamAOverview + " " + "grid3"}>
             <img src="/img/teamA.png" alt="" />
-            <h3>
-              Takaki Yuumi / Suzumoto Riona / Oozora Riko / Arimura Minami
-            </h3>
+            <h4>
+              Takaki Yuumi / Suzumoto Riona /<br className={`brSp`} />
+              Oozora Riko / Arimura Minami
+            </h4>
           </div>
 
           <div className={cn.teamMember + " " + "grid1"}>
@@ -256,7 +257,7 @@ export default function Home() {
         <div className={cn.teamDetail}>
           <div className={cn.teamAOverview + " " + "grid4"}>
             <img src="/img/teamB.png" alt="" />
-            <h3>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h3>
+            <h4>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h4>
           </div>
 
           <div className={cn.teamMember + " " + "grid1"}>
@@ -423,7 +424,9 @@ export default function Home() {
           </div>
 
           <h4 className={`${cn.rewardSectionText}`}>
-            イベント上位の参加者も豪華プレゼントがもらえる！
+            イベント上位の参加者も
+            <br className={`brSp`} />
+            豪華プレゼントがもらえる！
           </h4>
         </div>
 
@@ -438,15 +441,19 @@ export default function Home() {
           </div>
           <h4 className={`${cn.rewardSectionSubTittle} mar-t1`}>
             ジョブネット主催・LinQワンマンライブ優先入場券※＋サイン入りチェキ
-            <br />
+            <br className={`br}`} />
             or
-            <br />
+            <br className={`br}`} />
             LinQメンバー全員からのメッセージ動画＋名前・サイン入りチェキ
-            <br />
+            <br className={`br}`} />
             の2つより特典を選べる！
           </h4>
 
-          <h6>※ 特別公演は除きます。チケットは別途必要になります。</h6>
+          <h6>
+            ※ 特別公演は除きます。
+            <br className={`brSp`} />
+            チケットは別途必要になります。
+          </h6>
         </div>
 
         <div className={`${cn.rewardColumn} tex-c  grid4`}>
@@ -614,7 +621,7 @@ export default function Home() {
           <h1>パワーポイントシステム</h1>
           <h4>
             推しのギルドに入り、仲間と協力して勝利を掴み取れ！
-            <br />
+            <br className={`br`} />
             あなたの活躍次第で推しの優勝が決まる？
           </h4>
 

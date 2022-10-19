@@ -895,7 +895,7 @@ h5 {
 }
 
 h6 {
-  font-size: 0.4em;
+  font-size: 0.3em;
 }
 
 //フォントサイズSp
@@ -985,6 +985,7 @@ img {
   @media screen and (max-width: 767px) {
     display: none;
   }
+  display: block;
 }
 
 .brSp {
