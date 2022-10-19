@@ -15,6 +15,12 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https: //fonts.googleapis.com/css2? family=アルカラミ&family= Arbutus+Slab &family= Zen+Kaku+Gothic+New:wght@700 & display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       {/* KV */}
@@ -382,16 +388,17 @@ export default function Home() {
 
       {/*特典*/}
       <section className={`${cn.reward}`}>
+        <div className={cn.rewardDecoration}>
+          <img src="/img/reward.png" alt="" />
+        </div>
+
         <div className={cn.teamTittle}>
           <h1>優勝チーム特典</h1>
-          <h3>
+          <h4>
             優勝チームメンバーは広告モデルとして、
             <br />
             交通広告にてビジュアル掲載！！
-          </h3>
-        </div>
-        <div className={cn.rewardDecoration}>
-          <img src="/img/reward.png" alt="" />
+          </h4>
         </div>
 
         <div className={cn.rewardDecorationCircle}>
@@ -415,11 +422,9 @@ export default function Home() {
             <img src="/img/2square.png" alt="" />
           </div>
 
-          <h3 className={`${cn.rewardSectionText}`}>
-            イベント上位の参加者も
-            <br className={`${cn.brSp}`} />
-            豪華プレゼントがもらえる！
-          </h3>
+          <h4 className={`${cn.rewardSectionText}`}>
+            イベント上位の参加者も豪華プレゼントがもらえる！
+          </h4>
         </div>
 
         <div className={`${cn.rewardColumn} tex-c  grid4`}>
@@ -431,7 +436,7 @@ export default function Home() {
           <div className={`${cn.imageBox}`}>
             <img src="/img/teamrRewardImage.png" alt="" />
           </div>
-          <h3 className={`${cn.rewardSectionSubTittle} mar-t1`}>
+          <h4 className={`${cn.rewardSectionSubTittle} mar-t1`}>
             ジョブネット主催・LinQワンマンライブ優先入場券※＋サイン入りチェキ
             <br />
             or
@@ -439,7 +444,9 @@ export default function Home() {
             LinQメンバー全員からのメッセージ動画＋名前・サイン入りチェキ
             <br />
             の2つより特典を選べる！
-          </h3>
+          </h4>
+
+          <h6>※ 特別公演は除きます。チケットは別途必要になります。</h6>
         </div>
 
         <div className={`${cn.rewardColumn} tex-c  grid4`}>
@@ -451,46 +458,46 @@ export default function Home() {
           <div className={`${cn.imageBox}`}>
             <img src="/img/teamrRewardImage.png" alt="" />
           </div>
-          <h3 className={`${cn.rewardSectionSubTittle} mar-t1`}>
+          <h4 className={`${cn.rewardSectionSubTittle} mar-t1`}>
             参加ギルドのLinQメンバーのチーム全員のメッセージ付きデジショ
             <br />
             ＋名前・サイン入りチェキ
-          </h3>
+          </h4>
         </div>
 
         <div className={`${cn.secondThirdimageBox} tex-c`}>
           <div className={`${cn.rewardColumn} tex-c mar-t4`}>
             <div className={`${cn.rewardSectionHukidashi}`}>
-              <img src="/img/hukidasi_2.png" alt="" />
+              <img src="/img/hukidasi_3.png" alt="" />
             </div>
 
             {/* 各メンバーギルド内パワーランキング６位〜１０位*/}
             <div className={`${cn.imageBox}`}>
               <img src="/img/teamrRewardImage.png" alt="" />
             </div>
-            <h3>
+            <h4>
               参加ギルドのLinQメンバーからメッセージ付き
               <br />
               デジショ＋名前・サイン入りチェキ
-            </h3>
+            </h4>
           </div>
 
           <div className={`${cn.rewardColumn} tex-c mar-t4`}>
             <div className={`${cn.rewardSectionHukidashi}`}>
-              <img src="/img/hukidasi_3.png" alt="" />
+              <img src="/img/hukidasi_4.png" alt="" />
             </div>
             {/* 画像枠*/}
             <div className={`${cn.imageBox}`}>
               <img src="/img/teamrRewardImage.png" alt="" />
             </div>
-            <h3>名前・サイン入りチェキ</h3>
+            <h4>名前・サイン入りチェキ</h4>
           </div>
         </div>
       </section>
 
       {/* イベント参加セクション*/}
       <section className={`${cn.join} tex-c`}>
-        <div className={`${cn.joinTittle} mar-b4`}>
+        <div className={`${cn.joinTittle}`}>
           <div className={cn.teamDecoration}>
             <img src="/img/JOIN.png" alt="" />
           </div>
@@ -519,7 +526,7 @@ export default function Home() {
 
           {/* 手順2*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/joinImage1.png" alt="" />
+            <img src="/img/joinImage2.png" alt="" />
 
             <h3>② コロニーに移動</h3>
 
@@ -532,7 +539,7 @@ export default function Home() {
 
           {/* 手順3*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/joinImage1.png" alt="" />
+            <img src="/img/joinImage3.png" alt="" />
 
             <h3>③ ギルドへ申請</h3>
 
@@ -546,7 +553,7 @@ export default function Home() {
         <div className={`${cn.joinColumn} grid3 tex-l`}>
           {/* 手順4*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/joinImage1.png" alt="" />
+            <img src="/img/joinImage4.png" alt="" />
 
             <h3>④ 指定フォームにIGG IDを記入</h3>
 
@@ -558,7 +565,7 @@ export default function Home() {
 
           {/* 手順5*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/joinImage1.png" alt="" />
+            <img src="/img/joinImage5.png" alt="" />
 
             <h3>⑤ レベルアップ・ギルド人数</h3>
 
@@ -569,7 +576,7 @@ export default function Home() {
 
           {/* 手順6*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/joinImage1.png" alt="" />
+            <img src="/img/joinImage6.png" alt="" />
 
             <h3>⑥ 順位決定</h3>
 
@@ -603,13 +610,13 @@ export default function Home() {
 
       {/* システムセクション*/}
       <section className={`${cn.system} tex-c`}>
-        <div className={`${cn.joinTittle} grid4`}>
+        <div className={`${cn.joinTittle} ${cn.systemTittle} grid4`}>
           <h1>パワーポイントシステム</h1>
-          <h3>
+          <h4>
             推しのギルドに入り、仲間と協力して勝利を掴み取れ！
             <br />
             あなたの活躍次第で推しの優勝が決まる？
-          </h3>
+          </h4>
 
           <div className={cn.systemDecoration}>
             <img src="/img/systemImage.png" alt="" />
@@ -720,23 +727,23 @@ export default function Home() {
           {/* ゲームの進め方に困ったら */}
           <div className={`${cn.helpSection}`}>
             <h1 className={`mar-b1`}>ゲームの進め方に困ったら</h1>
-            <h3>
+            <h4>
               ゲームを進めていて、
               <br />
               特に序盤はわからないことも出てくると思います。
               <br />
               そんな時はこちらのゲームガイドをご覧ください！
-            </h3>
+            </h4>
 
             <div className={`${cn.helpSectionButton}`}>
               <h4>ゲームガイド</h4>
             </div>
 
-            <h3 className={`mar-t4`}>
+            <h4 className={`mar-t4`}>
               ギルド共闘について、下記に詳しい情報が載っています。
               <br />
               是非ご覧ください！
-            </h3>
+            </h4>
 
             <div className={`${cn.helpSectionButton}`}>
               <h4>ギルド共闘について</h4>

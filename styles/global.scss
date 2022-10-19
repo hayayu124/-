@@ -875,7 +875,7 @@ html {
 
 //フォントサイズPc
 h1 {
-  font-size: 2em;
+  font-size: 2.5em;
 }
 
 h2 {
@@ -883,7 +883,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 h4 {
@@ -891,7 +891,7 @@ h4 {
 }
 
 h5 {
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
 h6 {
@@ -901,7 +901,7 @@ h6 {
 //フォントサイズSp
 @media screen and (max-width: 767px) {
   h1 {
-    font-size: 1.4em;
+    font-size: 1.3em;
   }
 
   h2 {
@@ -944,7 +944,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   font-family: var(--zen-font);
   font-weight: 700;
   color: var(--main);
@@ -990,4 +991,5 @@ img {
   @media screen and (min-width: 768px) {
     display: none;
   }
+  display: block;
 }
