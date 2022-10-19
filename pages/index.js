@@ -81,47 +81,6 @@ export default function Home() {
 
           <div className={cn.teamMember + " " + "grid1"}>
             {/* メンバー1*/}
-            <div className={`${cn.teamMemberDetail} ${cn.roseRed}`}>
-              <div className={cn.teamMemberContents}>
-                <img src="/img/LinQ_645-高木.png" alt="" />
-
-                <div className={`${cn.memberName} mar-t2`}>
-                  <h2 className={cn.foncol}>髙木 悠美</h2>
-                  <div className={cn.twitterIcon}>
-                    <img src="/img/2021 Twitter logo - white.png" alt="" />
-                  </div>
-                </div>
-                <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                  Takaki Yuumi
-                </h4>
-
-                <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
-                </div>
-                <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
-                </div>
-                <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
-                </div>
-
-                <div className={`${cn.button} mar-t1`}>
-                  <div className={`${cn.buttonWidth}`}>
-                    <div className={`${cn.buttonContets}`}>
-                      <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                    </div>
-                  </div>
-
-                  <div className={`${cn.buttonWidth}`}>
-                    <div className={`${cn.buttonContets}`}>
-                      <h6 className={cn.foncol}>ギルドに参加</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* メンバー2*/}
             <div className={`${cn.teamMemberDetail} ${cn.red}`}>
               <div className={cn.teamMemberContents}>
                 <img src="/img/LinQ_645-涼本.png" alt="" />
@@ -162,29 +121,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* メンバー3*/}
-            <div className={`${cn.teamMemberDetail} ${cn.orange}`}>
+            {/* メンバー2*/}
+            <div className={`${cn.teamMemberDetail} ${cn.roseRed}`}>
               <div className={cn.teamMemberContents}>
-                <img src="/img/LinQ_645-大空.png" alt="" />
+                <img src="/img/LinQ_645-高木.png" alt="" />
 
                 <div className={`${cn.memberName} mar-t2`}>
-                  <h2 className={cn.foncol}>大空 莉子</h2>
+                  <h2 className={cn.foncol}>髙木 悠美</h2>
                   <div className={cn.twitterIcon}>
                     <img src="/img/2021 Twitter logo - white.png" alt="" />
                   </div>
                 </div>
                 <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                  Oozora Riko
+                  Takaki Yuumi
                 </h4>
 
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルド名 : Oozora Riko A</h5>
+                  <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルドタグ : orA</h5>
+                  <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>座標 : K:1020 X:442 Y:995</h5>
+                  <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
                 </div>
 
                 <div className={`${cn.button} mar-t1`}>
@@ -203,7 +162,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* メンバー4*/}
+            {/* メンバー3*/}
             <div className={`${cn.teamMemberDetail} ${cn.turquoise}`}>
               <div className={cn.teamMemberContents}>
                 <img src="/img/LinQ_645-有村.png" alt="" />
@@ -243,6 +202,47 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            {/* メンバー4*/}
+            <div className={`${cn.teamMemberDetail} ${cn.orange}`}>
+              <div className={cn.teamMemberContents}>
+                <img src="/img/LinQ_645-大空.png" alt="" />
+
+                <div className={`${cn.memberName} mar-t2`}>
+                  <h2 className={cn.foncol}>大空 莉子</h2>
+                  <div className={cn.twitterIcon}>
+                    <img src="/img/2021 Twitter logo - white.png" alt="" />
+                  </div>
+                </div>
+                <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                  Oozora Riko
+                </h4>
+
+                <div className={`${cn.teamMemberguildInfo}`}>
+                  <h5 className={cn.foncol}>ギルド名 : Oozora Riko A</h5>
+                </div>
+                <div className={`${cn.teamMemberguildInfo}`}>
+                  <h5 className={cn.foncol}>ギルドタグ : orA</h5>
+                </div>
+                <div className={`${cn.teamMemberguildInfo}`}>
+                  <h5 className={cn.foncol}>座標 : K:1020 X:442 Y:995</h5>
+                </div>
+
+                <div className={`${cn.button} mar-t1`}>
+                  <div className={`${cn.buttonWidth}`}>
+                    <div className={`${cn.buttonContets}`}>
+                      <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                    </div>
+                  </div>
+
+                  <div className={`${cn.buttonWidth}`}>
+                    <div className={`${cn.buttonContets}`}>
+                      <h6 className={cn.foncol}>ギルドに参加</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -257,7 +257,7 @@ export default function Home() {
             {/* メンバー5*/}
             <div className={`${cn.teamMemberDetail} ${cn.green}`}>
               <div className={cn.teamMemberContents}>
-                <img src="/img/LinQ_645-高木.png" alt="" />
+                <img src="/img/LinQ_645-海月.png" alt="" />
 
                 <div className={`${cn.memberName} mar-t2`}>
                   <h2 className={cn.foncol}>海月 らな</h2>
@@ -298,26 +298,26 @@ export default function Home() {
             {/* メンバー6*/}
             <div className={`${cn.teamMemberDetail} ${cn.blue}`}>
               <div className={cn.teamMemberContents}>
-                <img src="/img/LinQ_645-高木.png" alt="" />
+                <img src="/img/LinQ_645-金子.png" alt="" />
 
                 <div className={`${cn.memberName} mar-t2`}>
-                  <h2 className={cn.foncol}>髙木 悠美</h2>
+                  <h2 className={cn.foncol}>金子 みゆ</h2>
                   <div className={cn.twitterIcon}>
                     <img src="/img/2021 Twitter logo - white.png" alt="" />
                   </div>
                 </div>
                 <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                  Takaki Yuumi
+                  Kaneko Miyu
                 </h4>
 
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
+                  <h5 className={cn.foncol}>ギルド名 : Kaneko Miyu B</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
+                  <h5 className={cn.foncol}>ギルドタグ : kmB</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
+                  <h5 className={cn.foncol}>座標 : K:1020 X:160 Y:779</h5>
                 </div>
 
                 <div className={`${cn.button} mar-t1`}>
@@ -339,26 +339,26 @@ export default function Home() {
             {/* メンバー7*/}
             <div className={`${cn.teamMemberDetail} ${cn.yellow}`}>
               <div className={cn.teamMemberContents}>
-                <img src="/img/LinQ_645-高木.png" alt="" />
+                <img src="/img/LinQ_645-黒田.png" alt="" />
 
                 <div className={`${cn.memberName} mar-t2`}>
-                  <h2 className={cn.foncol}>髙木 悠美</h2>
+                  <h2 className={cn.foncol}>黒田 れい</h2>
                   <div className={cn.twitterIcon}>
                     <img src="/img/2021 Twitter logo - white.png" alt="" />
                   </div>
                 </div>
                 <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                  Takaki Yuumi
+                  Kuroda Rei
                 </h4>
 
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
+                  <h5 className={cn.foncol}>ギルド名 : Kuroda Rei B</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
+                  <h5 className={cn.foncol}>ギルドタグ : krB</h5>
                 </div>
                 <div className={`${cn.teamMemberguildInfo}`}>
-                  <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
+                  <h5 className={cn.foncol}>座標 : K:1020 X:302 Y:970</h5>
                 </div>
 
                 <div className={`${cn.button} mar-t1`}>
@@ -495,18 +495,18 @@ export default function Home() {
             <img src="/img/JOIN.png" alt="" />
           </div>
 
-          <h1>イベント参加の流れ</h1>
-
           <div className={cn.tittleImage}>
             <img src="/img/joinImage.png" alt="" />
           </div>
+
+          <h1>イベント参加の流れ</h1>
         </div>
 
         {/*参加手順*/}
         <div className={`${cn.joinColumn} grid3 tex-l`}>
           {/* 手順1*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
             <h3>① ダウンロード</h3>
 
@@ -519,27 +519,25 @@ export default function Home() {
 
           {/* 手順2*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
-            <h3>① ダウンロード</h3>
+            <h3>② コロニーに移動</h3>
 
             <h5 className={`${cn.memberSubName} mar-b2`}>
-              応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-              イベントには参加条件があります。
-              ページ下部の禁止事項をご確認ください。
+              城レベル５以下でしか使用できない「初心者転
+              送の巻物」を使い、自分の城をギルドのメンバ
+              ーが集まるコロニーに移動！※
             </h5>
           </div>
 
           {/* 手順3*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
-            <h3>① ダウンロード</h3>
+            <h3>③ ギルドへ申請</h3>
 
             <h5 className={`${cn.memberSubName} mar-b2`}>
-              応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-              イベントには参加条件があります。
-              ページ下部の禁止事項をご確認ください。
+              ダウンロード後「イベント参加者」に記載されているギルドタグでギルドを検索し、申請！※
             </h5>
           </div>
         </div>
@@ -548,40 +546,37 @@ export default function Home() {
         <div className={`${cn.joinColumn} grid3 tex-l`}>
           {/* 手順4*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
-            <h3>① ダウンロード</h3>
+            <h3>④ 指定フォームにIGG IDを記入</h3>
 
             <h5 className={`${cn.memberSubName} mar-b2`}>
-              応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-              イベントには参加条件があります。
-              ページ下部の禁止事項をご確認ください。
+              申請後、ゲーム内でIGG
+              IDを確認。その後イベント参加者に記載されている「ギルドへ加入」をタップし、情報を記入！
             </h5>
           </div>
 
           {/* 手順5*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
-            <h3>① ダウンロード</h3>
+            <h3>⑤ レベルアップ・ギルド人数</h3>
 
             <h5 className={`${cn.memberSubName} mar-b2`}>
-              応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-              イベントには参加条件があります。
-              ページ下部の禁止事項をご確認ください。
+              イベント最終週に行われるギルド共闘戦までに同じギルドの仲間と助け合って城レベルを15以上に到達させる！※
             </h5>
           </div>
 
           {/* 手順6*/}
           <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-            <img src="/img/join1Image.png" alt="" />
+            <img src="/img/joinImage1.png" alt="" />
 
-            <h3>① ダウンロード</h3>
+            <h3>⑥ 順位決定</h3>
 
             <h5 className={`${cn.memberSubName} mar-b2`}>
-              応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-              イベントには参加条件があります。
-              ページ下部の禁止事項をご確認ください。
+              イベント最終週に行われるギルド共闘戦での獲
+              得共闘ポイントと各ギルド内の総パワーポイン
+              ト、ギルド内の城レベル別の加算ポイントの合計で順位が決定！
             </h5>
           </div>
         </div>
@@ -608,7 +603,7 @@ export default function Home() {
 
       {/* システムセクション*/}
       <section className={`${cn.system} tex-c`}>
-        <div className={`${cn.joinTittle} `}>
+        <div className={`${cn.joinTittle} grid4`}>
           <h1>パワーポイントシステム</h1>
           <h3>
             推しのギルドに入り、仲間と協力して勝利を掴み取れ！
@@ -724,9 +719,7 @@ export default function Home() {
 
           {/* ゲームの進め方に困ったら */}
           <div className={`${cn.helpSection}`}>
-            <h2 className={`${cn.helpSection} mar-b1`}>
-              ゲームの進め方に困ったら
-            </h2>
+            <h1 className={`mar-b1`}>ゲームの進め方に困ったら</h1>
             <h3>
               ゲームを進めていて、
               <br />
