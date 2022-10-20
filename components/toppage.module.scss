@@ -10,6 +10,10 @@
   background-color: #8e1b1b;
 }
 
+.wrapper {
+  overflow-x: hidden;
+}
+
 .kv {
   width: 100vw;
   height: 0;
@@ -319,14 +323,14 @@
   width: 72%;
 
   .twitterIcon {
-    width: 9%;
+    width: 100%;
     @media screen and (max-width: 767px) {
-      width: 15%;
+      width: 90%;
     }
   }
 
   @media screen and (max-width: 767px) {
-    width: 60%;
+    width: 72%;
   }
 }
 
@@ -353,7 +357,7 @@
   }
   .buttonContets {
     position: relative;
-    padding: 0.3em 0.1em;
+    padding: 0.5em 0.1em;
     border-radius: 9999px;
     &:before {
       position: absolute;
@@ -399,20 +403,20 @@
   right: 0em;
   transform: translate(-42%, -72%);
   @media screen and (max-width: 767px) {
-    transform: translate(0%, 0%);
+    transform: translate(0%, -20%);
   }
 }
 
-.teamRewardImage {
-  margin: 3em auto;
+.teamRewardContents {
+  margin: 4em auto;
   @media screen and (max-width: 767px) {
-    width: 85%;
     margin: 2em auto 0 auto;
+    width: 85%;
   }
 }
 
 .eventRewardSection {
-  margin: 16em auto;
+  margin: 16em auto 4em auto;
   text-align: center;
   position: relative;
   @media screen and (max-width: 767px) {
@@ -468,94 +472,26 @@
 
 .rewardColumn {
   position: relative;
-  margin: 16em auto 0 auto;
+  margin: 6em auto 0 auto;
   @media screen and (max-width: 767px) {
-    margin: 7em auto;
+    margin: 0em auto 3em auto;
     width: 85%;
   }
   h6 {
     text-align: right;
+    margin: 2em auto;
     @media screen and (max-width: 767px) {
-      margin: 4em auto;
+      margin: 4em auto 0em;
+      text-align: left;
     }
-  }
-}
-
-.secondThirdimageBox.rewardColumn {
-  margin: 10em auto 0 auto;
-  @media screen and (max-width: 767px) {
-    margin: 12em auto;
   }
 }
 
 .rewardSectionHukidashi {
   width: 38%;
-  transform: translate(9%, -115%);
-  position: absolute;
-  top: 0;
-  left: 0;
+
   @media screen and (max-width: 767px) {
     width: 50%;
-    transform: translate(0%, -100%);
-  }
-}
-
-.secondThirdimageBox .rewardSectionHukidashi {
-  width: 50%;
-  transform: translate(32%, -90%);
-  @media screen and (max-width: 767px) {
-    width: 64%;
-    transform: translate(0%, -100%);
-  }
-}
-
-// 画像枠
-.imageBox {
-  margin: 1em auto;
-  width: 72%;
-  position: relative;
-  border: 4px solid #6b5c54;
-  aspect-ratio: 5 / 2.5;
-  @media screen and (max-width: 767px) {
-    width: 90%;
-    border: 3px solid #6b5c54;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:before {
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    transform: translate(0.1em, 0.1em);
-    background-color: #ffffff;
-    width: calc(100% + 0.5em);
-    height: calc(100% + 0.5em);
-    content: "";
-    z-index: -1;
-  }
-}
-
-.secondThirdimageBox {
-  width: 75%;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  .imageBox {
-    width: 50% !important;
-    aspect-ratio: 4 / 3;
-  }
-  @media screen and (max-width: 767px) {
-    display: block;
-    width: 85%;
-    .imageBox {
-      width: 90% !important;
-      aspect-ratio: 4 / 3;
-    }
   }
 }
 
@@ -572,8 +508,8 @@
 .joinTittle {
   margin: 0 auto 7em auto;
   @media screen and (max-width: 767px) {
-    width: 77%;
     margin: 0 auto 2em auto;
+    width: 85%;
   }
 }
 
@@ -617,8 +553,14 @@
     border: 3px solid #6b5c54;
   }
 
-  img {
-    width: 42%;
+  .joinIcon {
+    margin: 1em auto 0 auto;
+    width: 60%;
+    img {
+      aspect-ratio: 2 / 1.5;
+      object-fit: contain;
+      object-position: center;
+    }
   }
 
   h3 {
@@ -726,8 +668,16 @@
   @media screen and (max-width: 767px) {
     width: 77%;
     margin: 0.6em auto 0.6em auto;
-    padding: 0.3em 1em 0.3em 1em;
+    padding: 0.3em 0em 0.3em 0em;
     border: 3px solid #6b5c54;
+  }
+  &.rewardSquare {
+    width: 100%;
+    text-align: center;
+    padding: 2em 1em;
+    @media screen and (max-width: 767px) {
+      padding: 1em 1em;
+    }
   }
 }
 
@@ -800,10 +750,10 @@
   padding: 2em 0 2em 0;
 
   h3 {
-    margin-top: 4em;
+    margin-top: 2.5em;
   }
   h6 {
-    margin-top: 2.5em;
+    margin-top: 2em;
     line-height: 2em;
   }
   @media screen and (max-width: 767px) {
