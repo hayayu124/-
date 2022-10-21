@@ -895,7 +895,7 @@ h5 {
 }
 
 h6 {
-  font-size: 0.3em;
+  font-size: 0.5em;
 }
 
 //フォントサイズSp
@@ -965,7 +965,7 @@ img {
 }
 
 .grid1 {
-  width: 88%;
+  width: 92%;
 }
 
 .grid2 {
@@ -993,4 +993,39 @@ img {
     display: none;
   }
   display: block;
+}
+
+// scrollアニメーション
+.int {
+  opacity: 0;
+  transform: translateY(1em);
+  transition: all 0.7s;
+}
+
+.intActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.svg1 {
+  position: relative;
+  path {
+    stroke: #6b5c54; /*線*/
+    stroke-width: 5; /*stroke不要は 0*/
+    stroke-linecap: square; /*round角丸、square直角*/
+    animation: svg1 5s ease-in both; /*5sはアニメーション時間5秒*/ /*infiniteはリピート、 1回のみはforwards*/
+  }
+}
+
+@keyframes svg1 {
+  0% {
+    fill: transparent;
+    stroke-dasharray: 2000; /*細かさ：試しにいろんな数字に置き換えてみてください*/
+    stroke-dashoffset: 2000;
+  }
+  20% {
+    fill: transparent;
+    stroke-dashoffset: 0; /*アニメーション開始〜1.5秒でstroke書き終える*/
+  }
 }

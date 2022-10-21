@@ -1,8 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/toppage.module.scss";
 import Head from "next/head";
+import { motion } from "framer-motion";
+import ScrollEffect from "../components/utility/utilityscrollEffect";
 
-export default function Home() {
+export default function top() {
+  const joinColumn = [
+    {
+      title: "① ダウンロード",
+      description:
+        "応援したいメンバーのダウンロードページからロードモバイルをダウンロード！イベントには参加条件があります。ページ下部の禁止事項をご確認ください。",
+    },
+
+    {
+      title: "② コロニーに移動",
+      description:
+        "城レベル５以下でしか使用できない「初心者転送の巻物」を使い、自分の城をギルドのメンバーが集まるコロニーに移動！※。",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -17,30 +33,74 @@ export default function Home() {
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https: //fonts.googleapis.com/css2? family=アルカラミ&family= Arbutus+Slab &family= Zen+Kaku+Gothic+New:wght@700 & display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
-      <div className={`${cn.wrapper}`}>
-        {/* KV */}
-        <div className={`${cn.kv}`}></div>
+      {/* KV */}
+      <div className={`${cn.kv}`}></div>
 
-        {/*コピーセクション*/}
-        <div className={cn.copyPattern}>
-          <img src="/img/copyPattern.png" alt="" />
-        </div>
+      {/*コピーセクション*/}
+      <div className={cn.copyPattern}>
+        <img src="/img/copyPattern.png" alt="" />
+      </div>
 
-        <div className={cn.copyPatternSP}>
-          <img src="/img/copyPatternSP.png" alt="" />
-        </div>
+      <div className={cn.copyPatternSP}>
+        <img src="/img/copyPatternSP.png" alt="" />
+      </div>
 
+      <ScrollEffect className={cn.int} after={cn.intActive}>
         <section className={cn.copy + " " + "grid1"}>
           <div className={cn.copyText}>
-            <div className={cn.copySubTittle}>
-              <img src="/img/copySubTittle.png" alt="" />
+            {/* フキダシ */}
+            <div className={`${cn.copySubTitle} ${cn.copySubTitleBorder}`}>
+              <ScrollEffect className={cn.int} after="svg1">
+                <svg
+                  version="1.1"
+                  id="レイヤー_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="100%"
+                  viewBox="-5 -5 553.221 240.672"
+                >
+                  <g
+                    id="合体_17"
+                    data-name="合体 17"
+                    transform="translate(4278 -13914.868)"
+                    fill="none"
+                  >
+                    <path
+                      d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                      stroke="none"
+                    />
+                    <path
+                      id="合体_17"
+                      data-name="合体 17"
+                      d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                      transform="translate(4278 -13914.868)"
+                      fill="#6b5c54"
+                    />
+                  </g>
+                </svg>
+              </ScrollEffect>
             </div>
+
+            <ScrollEffect
+              className={`${cn.copySubTitle} ${cn.copySubTitleCoating}`}
+              after={`${cn.after}`}
+            >
+              <img src="/img/hukidasi_coating.svg" alt="" />
+            </ScrollEffect>
+
+            <ScrollEffect
+              className={`${cn.copySubTitle} ${cn.copySubTitleText}`}
+              after={`${cn.after}`}
+            >
+              <img src="/img/hukidasi_text.svg" alt="" />
+            </ScrollEffect>
+
+            {/* <div className={cn.copySubTittle}>
+              <img src="/img/copySubTittle.png" alt="" />
+            </div> */}
 
             <h2>あなたの活躍で</h2>
             <h1>優勝チームが決まる！</h1>
@@ -54,38 +114,44 @@ export default function Home() {
             </div>
           </div>
         </section>
+      </ScrollEffect>
 
+      <div className={`${cn.wrapper}`}>
         {/* チームセクション*/}
         <section className={cn.team}>
-          <div className={cn.teamDecoration}>
-            <img src="/img/TEAM.png" alt="" />
-          </div>
-
-          <div className={cn.teamDecorationCircle}>
-            <img src="/img/team_circle.png" alt="" />
-          </div>
-
-          <div className={cn.teamTittle}>
-            <h1>
-              推しチームのギルドに入り、
-              <br />
-              仲間と協力して勝利を掴み取れ！
-            </h1>
-
-            <div className={cn.teamDecorationBorder}>
-              <img src="/img/team_border.png" alt="" />
+          <ScrollEffect>
+            <div className={cn.teamDecoration}>
+              <img src="/img/TEAM.png" alt="" />
             </div>
-          </div>
+
+            <div className={cn.teamDecorationCircle}>
+              <img src="/img/team_circle.png" alt="" />
+            </div>
+
+            <div className={cn.teamTittle}>
+              <h1>
+                推しチームのギルドに入り、
+                <br />
+                仲間と協力して勝利を掴み取れ！
+              </h1>
+
+              <div className={cn.teamDecorationBorder}>
+                <img src="/img/team_border.png" alt="" />
+              </div>
+            </div>
+          </ScrollEffect>
 
           {/* チームA*/}
           <div className={cn.teamDetail}>
-            <div className={cn.teamAOverview + " " + "grid3"}>
-              <img src="/img/teamA.png" alt="" />
-              <h4>
-                Takaki Yuumi / Suzumoto Riona /<br className={`brSp`} />
-                Oozora Riko / Arimura Minami
-              </h4>
-            </div>
+            <ScrollEffect className={cn.int} after={cn.intActive}>
+              <div className={cn.teamAOverview + " " + "grid3"}>
+                <img src="/img/teamA.png" alt="" />
+                <h4>
+                  Suzumoto Riona / Takaki Yuumi /<br className={`brSp`} />
+                  Arimura Minami / Oozora Riko
+                </h4>
+              </div>
+            </ScrollEffect>
 
             <div className={cn.teamMember + " " + "grid1"}>
               {/* メンバー1*/}
@@ -295,10 +361,12 @@ export default function Home() {
 
           {/* チームB*/}
           <div className={cn.teamDetail}>
-            <div className={cn.teamAOverview + " " + "grid4"}>
-              <img src="/img/teamB.png" alt="" />
-              <h4>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h4>
-            </div>
+            <ScrollEffect className={cn.int} after={cn.intActive}>
+              <div className={cn.teamAOverview + " " + "grid4"}>
+                <img src="/img/teamB.png" alt="" />
+                <h4>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h4>
+              </div>
+            </ScrollEffect>
 
             <div className={cn.teamMember + " " + "grid1"}>
               {/* メンバー5*/}
@@ -458,21 +526,25 @@ export default function Home() {
 
         {/*特典*/}
         <section className={`${cn.reward}`}>
-          <div className={cn.rewardDecoration}>
-            <img src="/img/reward.png" alt="" />
-          </div>
+          <ScrollEffect className={cn.int} after={cn.intActive}>
+            <section className={`${cn.join} tex-c`}>
+              <div className={cn.rewardDecoration}>
+                <img src="/img/reward.png" alt="" />
+              </div>
 
-          <div className={cn.teamTittle}>
-            <h1>
-              優勝チーム・イベント上位者には
-              <br className={`br`} />
-              豪華特典が目白押し！
-            </h1>
-          </div>
+              <div className={cn.teamTittle}>
+                <h1>
+                  優勝チーム・イベント上位者には
+                  <br className={`br`} />
+                  豪華特典が目白押し！
+                </h1>
+              </div>
 
-          <div className={cn.rewardDecorationCircle}>
-            <img src="/img/2circle.png" alt="" />
-          </div>
+              <div className={cn.rewardDecorationCircle}>
+                <img src="/img/2circle.png" alt="" />
+              </div>
+            </section>
+          </ScrollEffect>
 
           <div className={`${cn.teamRewardContents} grid4`}>
             <div className={`${cn.rewardSectionHukidashi}`}>
@@ -578,49 +650,43 @@ export default function Home() {
 
         {/* イベント参加セクション*/}
         <section className={`${cn.join} tex-c`}>
-          <div className={`${cn.joinTittle}`}>
-            <div className={cn.teamDecoration}>
-              <img src="/img/JOIN.png" alt="" />
-            </div>
+          <ScrollEffect className={cn.int} after={cn.intActive}>
+            <div className={`${cn.joinTittle}`}>
+              <div className={cn.teamDecoration}>
+                <img src="/img/JOIN.png" alt="" />
+              </div>
 
-            <div className={cn.tittleImage}>
-              <img src="/img/joinImage.png" alt="" />
-            </div>
+              <div className={cn.tittleImage}>
+                <img src="/img/joinImage.png" alt="" />
+              </div>
 
-            <h1>イベント参加の流れ</h1>
-          </div>
+              <h1>イベント参加の流れ</h1>
+            </div>
+          </ScrollEffect>
 
           {/*参加手順*/}
           <div className={`${cn.joinColumn} grid3 tex-l`}>
             {/* 手順1*/}
-            <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-              <div className={`${cn.joinIcon}`}>
-                <img src="/img/joinImage1.png" alt="" />
-              </div>
+            {/* ループ */}
 
-              <h3>① ダウンロード</h3>
+            {joinColumn.map((el, index) => {
+              return (
+                <div
+                  key={`joinColumn${index}`}
+                  className={`${cn.joinColumnDetail} ${cn.join1}`}
+                >
+                  <div className={`${cn.joinIcon}`}>
+                    <img src={`/img/joinImage${index + 1}.png`} alt="" />
+                  </div>
 
-              <h5 className={`${cn.memberSubName} mar-b2`}>
-                応援したいメンバーのダウンロードページからロードモバイルをダウンロード！
-                イベントには参加条件があります。
-                ページ下部の禁止事項をご確認ください。
-              </h5>
-            </div>
+                  <h3>{el.title}</h3>
 
-            {/* 手順2*/}
-            <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
-              <div className={`${cn.joinIcon}`}>
-                <img src="/img/joinImage2.png" alt="" />
-              </div>
-
-              <h3>② コロニーに移動</h3>
-
-              <h5 className={`${cn.memberSubName} mar-b2`}>
-                城レベル５以下でしか使用できない「初心者転
-                送の巻物」を使い、自分の城をギルドのメンバ
-                ーが集まるコロニーに移動！※
-              </h5>
-            </div>
+                  <h5 className={`${cn.memberSubName} mar-b2`}>
+                    {el.description}
+                  </h5>
+                </div>
+              );
+            })}
 
             {/* 手順3*/}
             <div className={`${cn.joinColumnDetail} ${cn.join1}`}>
@@ -703,22 +769,24 @@ export default function Home() {
 
         {/* システムセクション*/}
         <section className={`${cn.system} tex-c`}>
-          <div className={`${cn.joinTittle} ${cn.systemTittle} grid4`}>
-            <h1>パワーポイントシステム</h1>
-            <h4>
-              推しのギルドに入り、仲間と協力して勝利を掴み取れ！
-              <br className={`br`} />
-              あなたの活躍次第で推しの優勝が決まる？
-            </h4>
+          <ScrollEffect className={cn.int} after={cn.intActive}>
+            <div className={`${cn.joinTittle} ${cn.systemTittle} grid4`}>
+              <h1>パワーポイントシステム</h1>
+              <h4>
+                推しのギルドに入り、仲間と協力して勝利を掴み取れ！
+                <br className={`br`} />
+                あなたの活躍次第で推しの優勝が決まる？
+              </h4>
 
-            <div className={cn.systemDecoration}>
-              <img src="/img/systemImage.png" alt="" />
-            </div>
+              <div className={cn.systemDecoration}>
+                <img src="/img/systemImage.png" alt="" />
+              </div>
 
-            <div className={cn.systemImage}>
-              <img src="/img/2circle_2.png" alt="" />
+              <div className={cn.systemImage}>
+                <img src="/img/2circle_2.png" alt="" />
+              </div>
             </div>
-          </div>
+          </ScrollEffect>
 
           {/* システム説明*/}
           <div className={`${cn.systemContents} grid4`}>
@@ -767,95 +835,100 @@ export default function Home() {
 
                 {/* 要素2*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv21＝1100Pt</h4>
+                  <h4>城Lv16＝200Pt</h4>
                 </div>
 
                 {/* 要素3*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv16＝200Pt</h4>
+                  <h4>城Lv17＝300Pt</h4>
                 </div>
 
                 {/* 要素4*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv22＝1200Pt</h4>
+                  <h4>城Lv18＝400Pt</h4>
                 </div>
 
                 {/* 要素5*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv17＝300Pt</h4>
+                  <h4>城Lv19＝500Pt</h4>
                 </div>
 
                 {/* 要素6*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv23＝1300Pt</h4>
+                  <h4>城Lv20＝1000Pt</h4>
                 </div>
 
                 {/* 要素7*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv18＝400Pt</h4>
+                  <h4>城Lv21＝1100Pt</h4>
                 </div>
 
                 {/* 要素8*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv24＝1400Pt</h4>
+                  <h4>城Lv22＝1200Pt</h4>
                 </div>
 
                 {/* 要素9*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv19＝500Pt</h4>
+                  <h4>城Lv23＝1300Pt</h4>
                 </div>
 
                 {/* 要素10*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv25＝3000Pt</h4>
+                  <h4>城Lv24＝1400Pt</h4>
                 </div>
 
                 {/* 要素11*/}
                 <div className={`${cn.systemDetail} ${cn.levelPoint}`}>
-                  <h4>城Lv20＝1000Pt</h4>
+                  <h4>城Lv25＝3000Pt</h4>
                 </div>
               </div>
             </div>
 
             {/* ゲームの進め方に困ったら */}
             <div className={`${cn.helpSection}`}>
-              <h1 className={`mar-b1`}>ゲームの進め方に困ったら</h1>
-              <h4>
-                ゲームを進めていて、
-                <br />
-                特に序盤はわからないことも出てくると思います。
-                <br />
-                そんな時はこちらのゲームガイドをご覧ください！
-              </h4>
+              <ScrollEffect className={cn.int} after={cn.intActive}>
+                <h1 className={`mar-b1`}>ゲームの進め方に困ったら</h1>
 
-              {/*ゲームガイドボタン*/}
-              <a href="https://lordsmobile.igg.com/project/guide_v2/?game_id=1051109903">
-                <div className={`${cn.helpSectionButton}`}>
-                  <h4>ゲームガイド</h4>
-                </div>
-              </a>
+                <h4>
+                  ゲームを進めていて、
+                  <br />
+                  特に序盤はわからないことも出てくると思います。
+                  <br />
+                  そんな時はこちらのゲームガイドをご覧ください！
+                </h4>
 
-              <h4 className={`mar-t4`}>
-                ギルド共闘について、下記に詳しい情報が載っています。
-                <br />
-                是非ご覧ください！
-              </h4>
+                {/*ゲームガイドボタン*/}
+                <a href="https://lordsmobile.igg.com/project/guide_v2/?game_id=1051109903">
+                  <div className={`${cn.helpSectionButton}`}>
+                    <h4>ゲームガイド</h4>
+                  </div>
+                </a>
 
-              {/*ギルド共闘ボタン*/}
-              <a href="https://lords-mobile.gamerch.com/%E3%82%AE%E3%83%AB%E3%83%89%E5%85%B1%E9%97%98">
-                <div className={`${cn.helpSectionButton}`}>
-                  <h4>ギルド共闘について</h4>
-                </div>
-              </a>
+                <h4 className={`mar-t4`}>
+                  ギルド共闘について、下記に詳しい情報が載っています。
+                  <br />
+                  是非ご覧ください！
+                </h4>
+
+                {/*ギルド共闘ボタン*/}
+                <a href="https://lords-mobile.gamerch.com/%E3%82%AE%E3%83%AB%E3%83%89%E5%85%B1%E9%97%98">
+                  <div className={`${cn.helpSectionButton}`}>
+                    <h4>ギルド共闘について</h4>
+                  </div>
+                </a>
+              </ScrollEffect>
             </div>
           </div>
         </section>
+      </div>
 
-        {/* 利用規約セクション*/}
+      {/* 利用規約セクション*/}
+      <div className={`${cn.footerTerms}`}>
         <section className={`${cn.terms}`}>
           <div className={`${cn.termsText} tex-l grid4`}>
             <h3>禁止事項</h3>
-            <h6>
+            <h5>
               ・メンバーへの直接の絡みやDMは禁止行為です。行った場合は運営の判断により『厳重注意』や『強制退室』の措置を取らせていただきます。
               <br />
               ・イベント運営以外がユーザーの承認を行うこと。
@@ -873,10 +946,10 @@ export default function Home() {
               ※悪質の場合、該当ギルドはペナルティを課すことや、失格となる可能性もございます。
               <br />
               ※アプリ内課金の返金対応はいたしかねます。
-            </h6>
+            </h5>
 
             <h3>利用規約</h3>
-            <h6>
+            <h5>
               運営や企画進行、メンバー様に関する内容はお答えできない場合もございますのであらかじめご了承ください。
               本イベントを主催、運営するイベント運営事務局（以下、「イベント運営」といいます）は、イベント運営が運営/管理するイベント（以下、「本イベント」といいま
               す）の運営にあたり、下記の各条項に定める事項については、免責されるものとします。
@@ -903,29 +976,29 @@ export default function Home() {
               <br />
               ７.本規約に従いイベント運営がユーザーに対して損害賠償の責任を負う場合であっても、イベント運営に故意又は重過失が存する場合を除き、イベント運営が賠償す
               べき損害の範囲は、ユーザーに直接かつ現実的に生じた損害に限定されます。
-            </h6>
+            </h5>
 
             <h3>個人情報の取り扱いについて</h3>
-            <h6>
+            <h5>
               本イベントは、IGGが主体となり、イベント運営事務局が実施、運営と審査協力をするものです。
               又、ユーザーの個人情報をユーザーの同意なしに業務委託先、審査協力先以外の第三者に開示・提供することはございません。
               （法令等により開示を求められた場合を除く。）
-            </h6>
+            </h5>
 
             <h3>お問い合わせ</h3>
-            <h6>
+            <h5>
               本イベントに関するお問い合わせは下記までお願い致します。
               XXXX@gmail.com 受付対応時間/10時00分〜17時00分
               （土・日・祝日を除く）
               ※いただいたご質問によってはお答えできない場合もございます。
-            </h6>
+            </h5>
           </div>
         </section>
+      </div>
 
-        {/* コピーライト*/}
-        <div className={`${cn.termsText} tex-c grid4`}>
-          <h4>®2022 IGG All Rights Reserved</h4>
-        </div>
+      {/* コピーライト*/}
+      <div className={`${cn.termsText} tex-c grid4`}>
+        <h4>®2022 IGG All Rights Reserved</h4>
       </div>
     </>
   );
