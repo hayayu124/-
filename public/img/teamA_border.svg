@@ -1,7 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1444" height="644.728" viewBox="0 0 1444 644.728">
-  <g id="グループ_164" data-name="グループ 164" transform="translate(-240 -3156.542)">
-    <path id="長方形_319" data-name="長方形 319" d="M5,5V552H1439V5H5M0,0H1444V557H0Z" transform="translate(240 3244.27)" fill="#6b5c54"/>
-    <path id="パス_22" data-name="パス 22" d="M1.5,4.089l478.935-1.5-.806,104.222L.69,108.312Z" transform="matrix(0.999, -0.035, 0.035, 0.999, 710.514, 3170.722)" fill="#f7f2df"/>
-    <path id="パス_22_-_アウトライン" data-name="パス 22 - アウトライン" d="M475.392,7.6,6.458,9.074,5.729,103.3l468.935-1.469L475.392,7.6m5.039-5.016-.806,104.222L.69,108.312,1.5,4.089Z" transform="matrix(0.999, -0.035, 0.035, 0.999, 710.514, 3170.722)" fill="#6b5c54"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1447 560">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #6b5c54;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="_レイヤー_1-2" data-name="レイヤー 1">
+    <polyline class="cls-1" points="1.5 558.19 1.5 1.5 1445.5 1.5 1445.5 558.5 1.5 558.5 1.5 558.19"/>
   </g>
 </svg>

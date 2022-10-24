@@ -133,8 +133,8 @@
   position: absolute;
   top: 0%;
   right: 0%;
-  transform: translateY(-28%);
-  width: 50%;
+  transform: translateY(-45%);
+  width: 45%;
   @media screen and (max-width: 767px) {
     position: static;
     transform: translate(0%, 0%);
@@ -145,7 +145,6 @@
 
 .team {
   margin-top: 30em;
-  position: relative;
   @media screen and (max-width: 767px) {
     margin: 5em auto 0 auto;
   }
@@ -210,6 +209,7 @@
 }
 
 .teamAOverview {
+  position: relative;
   margin: auto;
   text-align: center;
   h4 {
@@ -220,14 +220,66 @@
   }
 }
 
+.teamAOverviewTitleBorder {
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.teamAOverviewBorder {
+  position: relative;
+  z-index: 7;
+  height: auto;
+}
+
+.teamAOverviewTitle {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.teamAOverviewTitleCoating {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 8;
+}
+
+.teamAOverviewImage {
+  position: absolute;
+  top: 0%;
+  transform: translate(1%, 2%);
+  z-index: 0;
+  opacity: 0;
+  &.after {
+    opacity: 1.5;
+    transition-delay: 1s;
+    transition-duration: 1s;
+  }
+}
+
+.teamAOverviewSubName {
+  margin-top: 1.5em;
+  margin-bottom: 3em;
+}
+
 .teamMember {
-  margin: 3em auto 0em auto;
+  margin: 2em auto 0em auto;
   display: flex;
   justify-content: center;
   @media screen and (max-width: 767px) {
     display: block;
     margin: 2em auto 0em auto;
   }
+}
+
+// チームB
+.teamBOverviewTitle {
+  width: 100%;
 }
 
 /*メンバー詳細情報*/
@@ -246,7 +298,7 @@
   position: relative;
   border: 4px solid #6b5c54;
   text-align: center;
-  
+
   @media screen and (max-width: 767px) {
     width: 85%;
     margin: auto;
@@ -272,12 +324,12 @@
       background-color: #832a3f;
     }
     .buttonContets {
-      background-color:#832a3f;
-      box-shadow: 0.15em 0.15em 0 #F06788; // ボタンの影
+      background-color: #832a3f;
+      box-shadow: 0.15em 0.15em 0 #f06788; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
   /*メンバー2*/
@@ -293,9 +345,9 @@
       background-color: #8e1b1b;
       box-shadow: 0.15em 0.15em 0 #f58a8a; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 
@@ -312,9 +364,9 @@
       background-color: #9a4119;
       box-shadow: 0.15em 0.15em 0 #f79c74; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 
@@ -331,9 +383,9 @@
       background-color: #3e7074;
       box-shadow: 0.15em 0.15em 0 #2b4f52; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 
@@ -345,14 +397,14 @@
     .teamMemberguildInfo {
       background-color: #24583f;
     }
-    
+
     .buttonContets {
       background-color: #24583f;
       box-shadow: 0.15em 0.15em 0 #42de91; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 
@@ -369,9 +421,9 @@
       background-color: #144064;
       box-shadow: 0.15em 0.15em 0 #5675f5; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 
@@ -388,9 +440,9 @@
       background-color: #a28a0d;
       box-shadow: 0.15em 0.15em 0 #f4e38d; // ボタンの影
     }
-    .buttonContets:hover{
-        transform: translate(0.15em, 0.15em);
-        box-shadow: none;
+    .buttonContets:hover {
+      transform: translate(0.15em, 0.15em);
+      box-shadow: none;
     }
   }
 }
@@ -482,11 +534,69 @@
   }
 }
 
+.rewardSectionHukidashi {
+  position: relative;
+
+  width: 32%;
+  margin-left: 0;
+  margin-bottom: 1.5em;
+  @media screen and (max-width: 767px) {
+    width: 64%;
+    margin-bottom: 0em;
+  }
+}
+
+.rewardSectionHukidashiBorder {
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
 .teamRewardContents {
   margin: 4em auto;
   @media screen and (max-width: 767px) {
     margin: 2em auto 0 auto;
     width: 85%;
+  }
+}
+
+.rewardSectionHukidashiCoating {
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: translate(2%, 1%);
+  z-index: 1;
+  opacity: 0;
+  @media screen and (max-width: 767px) {
+    transform: translate(3%, 3%);
+  }
+  &.after {
+    opacity: 1.5;
+    transition-delay: 1s;
+    transition-duration: 1s;
+  }
+}
+
+.rewardSectionHukidashiTitle {
+  width: 72%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+
+  &.after {
+    opacity: 1.5;
+    transition-delay: 0.7s;
+    transition-duration: 1s;
+  }
+
+  &.hukidasiText_1 {
+    transform: translate(18%, 36%);
+  }
+
+  &.hukidasiText_2 {
+    transform: translate(18%, 20%);
   }
 }
 
@@ -562,14 +672,6 @@
       margin: 4em auto 0em;
       text-align: left;
     }
-  }
-}
-
-.rewardSectionHukidashi {
-  width: 38%;
-
-  @media screen and (max-width: 767px) {
-    width: 50%;
   }
 }
 
@@ -796,7 +898,7 @@
 .helpSectionButton {
   width: 32%;
   margin: 3em auto 0.5em auto;
-  background-color:#DBC87E;
+  background-color: #dbc87e;
   padding: 0.7em 0.1em;
   border-radius: 9999px;
   box-shadow: 0.22em 0.4em 0 #6b5c54; // ボタンの影
@@ -806,7 +908,7 @@
   }
 }
 
-.helpSectionButton:hover{
+.helpSectionButton:hover {
   transform: translate(0.15em, 0.15em);
   box-shadow: none;
 }
@@ -842,5 +944,16 @@
     h3 {
       margin-top: 2em;
     }
+  }
+}
+
+.intDelay {
+  opacity: 0;
+  transform: translateY(1em);
+  transition: all 0.7s;
+  &.intActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.7s;
   }
 }

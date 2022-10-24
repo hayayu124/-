@@ -30,4 +30,5 @@ const ScrollEffect = (props) => {
     </>
   );
 };
+
 export default ScrollEffect;

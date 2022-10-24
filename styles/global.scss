@@ -951,7 +951,8 @@ h6 {
   color: var(--main);
 }
 
-img {
+img,
+svg {
   width: 100%;
 }
 
@@ -1008,6 +1009,28 @@ img {
   transition: all 0.3s;
 }
 
+.svg {
+  position: relative;
+  path {
+    stroke: #6b5c54; /*線*/
+    stroke-width: 5; /*stroke不要は 0*/
+    stroke-linecap: square; /*round角丸、square直角*/
+    animation: svg1 5s ease-in both; /*5sはアニメーション時間5秒*/ /*infiniteはリピート、 1回のみはforwards*/
+  }
+}
+
+@keyframes svg {
+  0% {
+    fill: transparent;
+    stroke-dasharray: 1800; /*細かさ：試しにいろんな数字に置き換えてみてください*/
+    stroke-dashoffset: 1800;
+  }
+  20% {
+    fill: transparent;
+    stroke-dashoffset: 1000; /*アニメーション開始〜1.5秒でstroke書き終える*/
+  }
+}
+
 .svg1 {
   position: relative;
   path {
@@ -1021,11 +1044,11 @@ img {
 @keyframes svg1 {
   0% {
     fill: transparent;
-    stroke-dasharray: 2000; /*細かさ：試しにいろんな数字に置き換えてみてください*/
-    stroke-dashoffset: 2000;
+    stroke-dasharray: 5000; /*細かさ：試しにいろんな数字に置き換えてみてください*/
+    stroke-dashoffset: 5000;
   }
   20% {
     fill: transparent;
-    stroke-dashoffset: 0; /*アニメーション開始〜1.5秒でstroke書き終える*/
+    stroke-dashoffset: 1000; /*アニメーション開始〜1.5秒でstroke書き終える*/
   }
 }
