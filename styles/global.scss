@@ -954,6 +954,7 @@ h6 {
 img,
 svg {
   width: 100%;
+  height: 100%;
 }
 
 .section {
@@ -963,6 +964,21 @@ svg {
   @media screen and (max-width: 767px) {
     margin-top: 3em;
   }
+}
+
+// sp,pc切り替え
+.pcOnly {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  display: block;
+}
+
+.spOnly {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  display: block;
 }
 
 .grid1 {
@@ -1004,6 +1020,24 @@ svg {
 }
 
 .intActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.intActive_right {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.int_left {
+  opacity: 0;
+  transform: translateX(1em);
+  transition: all 0.7s;
+}
+
+.intActive_left {
   opacity: 1;
   transform: translateY(0);
   transition: all 0.3s;

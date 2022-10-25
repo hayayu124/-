@@ -11,16 +11,116 @@
 }
 
 .kv {
+  position: relative;
   width: 100vw;
   height: 0;
   padding-top: 56.25%;
   background-repeat: no-repeat;
-  background-image: url("/img/fv.png");
+  background-image: url("/img/fv_background.png");
   background-size: cover;
   @media screen and (max-width: 767px) {
     padding-top: 141.8%;
-    background-image: url("/img/fv_sp.png");
+    background-image: url("/img/fv_sp_background.png");
   }
+}
+
+.fv_title_logo {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  width: 56%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  @media screen and (max-width: 767px) {
+    width: 90%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.fv_pattern_center {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  width: 72%;
+  transform: translateX(-50%);
+  z-index: 7;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+}
+
+.fv_linQ {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  z-index: 999;
+  @media screen and (max-width: 767px) {
+    z-index: 1250;
+  }
+}
+
+.fv_linQ_part {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 999;
+}
+
+.fvCharcterLeftColumn {
+  opacity: 0;
+  transform: translateX(-1em);
+}
+
+.intActiveLeft {
+  opacity: 1;
+  transform: translateX(0em);
+  transition: all 0.7s;
+}
+
+.fv_charcter_left {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  z-index: 9;
+  @media screen and (max-width: 767px) {
+    height: 40%;
+  }
+}
+
+.fv_charcter_right {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 100%;
+  z-index: 9;
+  @media screen and (max-width: 767px) {
+    height: 60%;
+  }
+}
+
+.fv_charcter_leftBottom {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 48%;
+  z-index: 1001;
+}
+
+.fv_charcter_rightBottom {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 42%;
+  z-index: 1001;
 }
 
 .wrapper {
@@ -239,6 +339,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
+  @media screen and (max-width: 767px) {
+    width: 24%;
+  }
 }
 
 .teamAOverviewTitleCoating {

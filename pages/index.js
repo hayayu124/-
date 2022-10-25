@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import cn from "../components/toppage.module.scss";
 import Head from "next/head";
-import { motion } from "framer-motion";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
+import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function top() {
   const joinColumn = [
@@ -19,6 +19,15 @@ export default function top() {
     },
   ];
 
+  // ロード制御
+  const Home = () => {
+    const [load, setLoad] = useState(false);
+
+    useEffect(() => {
+      setLoad(true);
+    }, []);
+  };
+
   return (
     <>
       <Head>
@@ -33,10 +42,109 @@ export default function top() {
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        {/* OGP&favicon */}
+        <meta property="og:site_name" content="Lord mobile" />
+        <meta property="og:locale" content="ja_JP" />
+
+        <meta property="og:title" content="Lord mobile" />
+        <meta property="og:description" content="ページの説明文" />
+        <meta property="og:url" content="ページのURL" />
+        <meta property="og:image" content="/img/lordsmobile_site_ogp.png" />
+        <meta property="og:type" content="ページの種類" />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/fav/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/fav/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/fav/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/fav/site.webmanifest" />
+        <link
+          rel="mask-icon"
+          href="/fav/safari-pinned-tab.svg"
+          color="#d9795a"
+        />
+        <link rel="shortcut icon" href="/fav/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="msapplication-config" content="/fav/browserconfig.xml" />
+        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       {/* KV */}
-      <div className={`${cn.kv}`}></div>
+      <div className={`${cn.kv}`}>
+        {/* タイトル */}
+        <div className={`${cn.fv_title_logo} pcOnly`}>
+          <img src="/img/fv_title_logo.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_title_logo} spOnly`}>
+          <img src="/img/fv_sp_title_logo.png" alt="" />
+        </div>
+
+        {/* タイトル背景 */}
+        <div className={`${cn.fv_pattern_center} pcOnly`}>
+          <img src="/img/fv_pattern_center.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_pattern_center} spOnly`}>
+          <img src="/img/fv_sp_pattern_center.png" alt="" />
+        </div>
+
+        {/* LinQImage */}
+        <div className={`${cn.fv_linQ} pcOnly`}>
+          <img src="/img/fv_linQ.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_linQ} spOnly`}>
+          <img src="/img/fv_sp_linQ.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_linQ_part} spOnly`}>
+          <img src="/img/fv_sp_linQ_2.png" alt="" />
+        </div>
+
+        {/* キャラクター */}
+
+        <div
+          id={`${cn.fvCharcterLeftColumn} ${cn.load ? cn.intActiveLeft : ""}`}
+        >
+          <div className={`${cn.fv_charcter_left}  pcOnly`}>
+            <img src="/img/fv_charcter_left.png" alt="" />
+          </div>
+
+          <div className={`${cn.fv_charcter_left} spOnly`}>
+            <img src="/img/fv_sp_charcter_left.png" alt="" />
+          </div>
+
+          <div className={`${cn.fv_charcter_leftBottom} spOnly`}>
+            <img src="/img/fv_sp_charcter_leftBottom.png" alt="" />
+          </div>
+        </div>
+
+        <div className={`${cn.fv_charcter_right} pcOnly`}>
+          <img src="/img/fv_charcter_right.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_charcter_right} spOnly`}>
+          <img src="/img/fv_sp_charcter_right.png" alt="" />
+        </div>
+
+        <div className={`${cn.fv_charcter_rightBottom} spOnly`}>
+          <img src="/img/fv_sp_charcter_rightBottom.png" alt="" />
+        </div>
+      </div>
 
       {/*コピーセクション*/}
       <div className={cn.copyPattern}>
@@ -394,9 +502,6 @@ export default function top() {
           <div className={cn.teamDetail}>
             <ScrollEffect>
               <div className={cn.teamAOverview + " " + "grid4"}>
-                {/* <img src="/img/teamB.png" alt="" />
-                <h4>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h4> */}
-
                 <div className={cn.teamAOverviewTitleBorder}>
                   <img src="/img/teamA_title_border.png" alt="" />
                 </div>
@@ -424,7 +529,7 @@ export default function top() {
                 </div>
 
                 <div className={`${cn.teamAOverviewTitle}`}>
-                  <img src="/img/teamA_title.png" alt="" />
+                  <img src="/img/teamB_title.png" alt="" />
                 </div>
 
                 <ScrollEffect
