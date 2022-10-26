@@ -25,6 +25,7 @@
 }
 
 .fv_title_logo {
+  opacity: 1;
   position: absolute;
   top: 42%;
   left: 50%;
@@ -39,26 +40,28 @@
 }
 
 .fv_pattern_center {
+  opacity: 0%;
   position: absolute;
   top: 7%;
   left: 50%;
-  width: 72%;
-  transform: translateX(-50%);
+  width: 50%;
+  transform: translate(-50%, 0%);
   z-index: 7;
   @media screen and (max-width: 767px) {
     width: 100%;
-    top: 50%;
+    top: 30%;
     transform: translate(-50%, -50%);
     z-index: 1000;
   }
 }
 
 .fv_linQ {
+  opacity: 0;
   position: absolute;
   bottom: 0%;
   left: 50%;
   width: 100%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0em);
   z-index: 999;
   @media screen and (max-width: 767px) {
     z-index: 1250;
@@ -66,23 +69,13 @@
 }
 
 .fv_linQ_part {
+  opacity: 0;
   position: absolute;
-  top: 15%;
+  top: 14%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0em);
   width: 100%;
   z-index: 999;
-}
-
-.fvCharcterLeftColumn {
-  opacity: 0;
-  transform: translateX(-1em);
-}
-
-.intActiveLeft {
-  opacity: 1;
-  transform: translateX(0em);
-  transition: all 0.7s;
 }
 
 .fv_charcter_left {
@@ -121,6 +114,82 @@
   right: 0%;
   width: 42%;
   z-index: 1001;
+}
+
+// fvアニメーション
+
+.fvCharcterLeftColumn {
+  opacity: 0.8;
+  transform: translateX(-2em);
+}
+
+.intActiveLeft {
+  opacity: 1;
+  transform: translateX(0em);
+  transition: all 0.7s;
+  transition-delay: 0.2s;
+}
+
+.fvCharcterRightColumn {
+  opacity: 0.9;
+  transform: translateX(2em);
+}
+
+.intActiveRight {
+  opacity: 1;
+  transform: translateX(0em);
+  transition: all 0.7s;
+  transition-delay: 0.2s;
+}
+
+// fvLinQアニメーション
+.fvCenterAnimationActive {
+  opacity: 1;
+  transition: all 0.5s;
+  transition-delay: 0.7s;
+}
+
+//タイトルアニメーション
+.fvtitleAnimationActive {
+  animation: bounceInUp 1s ease 0s 1 normal;
+}
+/* bounceInUp */
+@keyframes bounceInUp {
+  100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -81%) scaleY(1.2);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scaleY(0.9);
+  }
+  75% {
+    transform: translate(-50%, -55%) scaleY(0.95);
+  }
+  85% {
+    transform: translate(-50%, -45%) scaleY(0.985);
+  }
+  90% {
+    transform: translate(-50%, -52%) scaleY(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+//タイトル背景アニメーション
+.fvTitleBackAnimation {
+  opacity: 1;
+  width: 72%;
+  transition: all 0.2s;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    transform: translate(-50%, -5%);
+  }
 }
 
 .wrapper {
@@ -243,6 +312,21 @@
   }
 }
 
+.copyImageColumn {
+  position: relative;
+}
+
+.copyCharcterImage {
+  position: relative;
+  z-index: 999;
+}
+
+.copyBackImage {
+  position: absolute;
+  top: 0%;
+  z-index: 99;
+}
+
 .team {
   margin-top: 30em;
   @media screen and (max-width: 767px) {
@@ -253,7 +337,7 @@
 .teamDecoration {
   position: absolute;
   width: 50%;
-  top: 0%;
+  top: -100%;
   left: 0%;
   transform: translateY(-100%);
   @media screen and (max-width: 767px) {
@@ -335,13 +419,11 @@
 
 .teamAOverviewTitle {
   position: absolute;
+  width: 24%;
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
-  @media screen and (max-width: 767px) {
-    width: 24%;
-  }
 }
 
 .teamAOverviewTitleCoating {
@@ -368,6 +450,13 @@
 .teamAOverviewSubName {
   margin-top: 1.5em;
   margin-bottom: 3em;
+  transform: translate(1%, 2%);
+  opacity: 0;
+  &.after {
+    opacity: 1;
+    transition-delay: 1s;
+    transition-duration: 1s;
+  }
 }
 
 .teamMember {
@@ -562,6 +651,9 @@
 
   .twitterIcon {
     width: 100%;
+    :hover {
+      opacity: 0.7;
+    }
     @media screen and (max-width: 767px) {
       width: 90%;
     }
@@ -615,9 +707,8 @@
 .rewardDecoration {
   width: 72%;
   position: absolute;
-  top: 0em;
+  top: -100%;
   left: 0em;
-  transform: translateY(-110%);
   @media screen and (max-width: 767px) {
     position: static;
     width: 90%;
@@ -629,7 +720,7 @@
 .rewardDecorationCircle {
   width: 27%;
   position: absolute;
-  top: 0em;
+  top: -80%;
   right: 0em;
   transform: translate(-42%, -72%);
   @media screen and (max-width: 767px) {
@@ -781,18 +872,17 @@
 // イベント参加セクション
 
 .join {
-  position: relative;
-  margin-top: 32em;
+  margin-top: 24em;
   @media screen and (max-width: 767px) {
     margin-top: 10em;
   }
 }
 
 .joinTittle {
+  position: relative;
   margin: 0 auto 7em auto;
   @media screen and (max-width: 767px) {
     margin: 0 auto 2em auto;
-    width: 85%;
   }
 }
 
@@ -894,9 +984,9 @@
   top: 0;
   left: 0;
   width: 28%;
-  transform: translate(-10%, -50%);
+  transform: translate(-50%, -50%);
   @media screen and (max-width: 767px) {
-    transform: translate(0%, -90%);
+    transform: translate(-80%, -90%);
   }
 }
 
@@ -905,10 +995,10 @@
   top: 0;
   right: 0;
   width: 24%;
-  transform: translate(-25%, -72%);
+  transform: translate(0%, -72%);
   @media screen and (max-width: 767px) {
     width: 28%;
-    transform: translate(0%, -78%);
+    transform: translate(50%, -78%);
   }
 }
 
@@ -1054,6 +1144,28 @@
   opacity: 0;
   transform: translateY(1em);
   transition: all 0.7s;
+  &.intActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+}
+
+.intMoreDelay {
+  opacity: 0;
+  transform: translateY(1em);
+  transition: all 0.3s;
+  &.intActive {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+}
+
+.intMostDelay {
+  opacity: 0;
+  transform: translateY(1em);
+  transition: all 0.5s;
   &.intActive {
     opacity: 1;
     transform: translateY(0);

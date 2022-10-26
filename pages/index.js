@@ -4,7 +4,7 @@ import Head from "next/head";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function top() {
+export default function Top() {
   const joinColumn = [
     {
       title: "① ダウンロード",
@@ -20,13 +20,12 @@ export default function top() {
   ];
 
   // ロード制御
-  const Home = () => {
-    const [load, setLoad] = useState(false);
 
-    useEffect(() => {
-      setLoad(true);
-    }, []);
-  };
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    setLoad(true);
+  }, []);
 
   return (
     <>
@@ -49,7 +48,7 @@ export default function top() {
 
         <meta property="og:title" content="Lord mobile" />
         <meta property="og:description" content="ページの説明文" />
-        <meta property="og:url" content="ページのURL" />
+        <meta property="og:url" content="https://lordsmobile-g1.com/" />
         <meta property="og:image" content="/img/lordsmobile_site_ogp.png" />
         <meta property="og:type" content="ページの種類" />
 
@@ -85,63 +84,112 @@ export default function top() {
       {/* KV */}
       <div className={`${cn.kv}`}>
         {/* タイトル */}
-        <div className={`${cn.fv_title_logo} pcOnly`}>
+        <div
+          className={`${cn.fv_title_logo} ${
+            load ? cn.fvtitleAnimationActive : ""
+          } pc`}
+        >
           <img src="/img/fv_title_logo.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_title_logo} spOnly`}>
+        <div
+          className={`${cn.fv_title_logo} ${
+            load ? cn.fvtitleAnimationActive : ""
+          } sp`}
+        >
           <img src="/img/fv_sp_title_logo.png" alt="" />
         </div>
 
         {/* タイトル背景 */}
-        <div className={`${cn.fv_pattern_center} pcOnly`}>
+        <div
+          className={`${cn.fv_pattern_center} ${
+            load ? cn.fvTitleBackAnimation : ""
+          } pc`}
+        >
           <img src="/img/fv_pattern_center.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_pattern_center} spOnly`}>
+        <div
+          className={`${cn.fv_pattern_center} ${
+            load ? cn.fvTitleBackAnimation : ""
+          } sp`}
+        >
           <img src="/img/fv_sp_pattern_center.png" alt="" />
         </div>
 
         {/* LinQImage */}
-        <div className={`${cn.fv_linQ} pcOnly`}>
+        <div
+          className={`${cn.fv_linQ} ${cn.fvCenterAnimation} ${
+            load ? cn.fvCenterAnimationActive : ""
+          } pc`}
+        >
           <img src="/img/fv_linQ.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_linQ} spOnly`}>
+        <div
+          className={`${cn.fv_linQ} ${cn.fvCenterAnimation} ${
+            load ? cn.fvCenterAnimationActive : ""
+          } sp`}
+        >
           <img src="/img/fv_sp_linQ.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_linQ_part} spOnly`}>
+        <div
+          className={`${cn.fv_linQ_part} ${cn.fvCenterAnimation} ${
+            load ? cn.fvCenterAnimationActive : ""
+          } sp`}
+        >
           <img src="/img/fv_sp_linQ_2.png" alt="" />
         </div>
 
-        {/* キャラクター */}
+        {/* キャラクター左側 */}
 
         <div
-          id={`${cn.fvCharcterLeftColumn} ${cn.load ? cn.intActiveLeft : ""}`}
+          className={`${cn.fv_charcter_left} ${cn.fvCharcterLeftColumn} ${
+            load ? cn.intActiveLeft : ""
+          }  pc`}
         >
-          <div className={`${cn.fv_charcter_left}  pcOnly`}>
-            <img src="/img/fv_charcter_left.png" alt="" />
-          </div>
-
-          <div className={`${cn.fv_charcter_left} spOnly`}>
-            <img src="/img/fv_sp_charcter_left.png" alt="" />
-          </div>
-
-          <div className={`${cn.fv_charcter_leftBottom} spOnly`}>
-            <img src="/img/fv_sp_charcter_leftBottom.png" alt="" />
-          </div>
+          <img src="/img/fv_charcter_left.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_charcter_right} pcOnly`}>
+        <div
+          className={`${cn.fv_charcter_left} ${cn.fvCharcterLeftColumn} ${
+            load ? cn.intActiveLeft : ""
+          } sp`}
+        >
+          <img src="/img/fv_sp_charcter_left.png" alt="" />
+        </div>
+
+        <div
+          className={`${cn.fv_charcter_leftBottom} ${cn.fvCharcterLeftColumn} ${
+            load ? cn.intActiveLeft : ""
+          } sp`}
+        >
+          <img src="/img/fv_sp_charcter_leftBottom.png" alt="" />
+        </div>
+
+        {/* キャラクター右側 */}
+        <div
+          className={`${cn.fv_charcter_right} ${cn.fvCharcterRightColumn} ${
+            load ? cn.intActiveRight : ""
+          } pc`}
+        >
           <img src="/img/fv_charcter_right.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_charcter_right} spOnly`}>
+        <div
+          className={`${cn.fv_charcter_right} ${cn.fvCharcterRightColumn} ${
+            load ? cn.intActiveRight : ""
+          } sp`}
+        >
           <img src="/img/fv_sp_charcter_right.png" alt="" />
         </div>
 
-        <div className={`${cn.fv_charcter_rightBottom} spOnly`}>
+        <div
+          className={`${cn.fv_charcter_rightBottom} ${
+            cn.fvCharcterRightColumn
+          } ${load ? cn.intActiveRight : ""} sp`}
+        >
           <img src="/img/fv_sp_charcter_rightBottom.png" alt="" />
         </div>
       </div>
@@ -215,7 +263,21 @@ export default function top() {
               </div>
 
               <div className={cn.copyImage}>
-                <img src="/img/copyImage.png" alt="" />
+                <div className={cn.copyImageColumn}>
+                  <ScrollEffect
+                    className={`${cn.copyCharcterImage} ${cn.intMostDelay}`}
+                    after={cn.intActive}
+                  >
+                    <img src="/img/copyImage.png" alt="" />
+                  </ScrollEffect>
+
+                  <ScrollEffect
+                    className={`${cn.copyBackImage} ${cn.intMoreDelay}`}
+                    after={cn.intActive}
+                  >
+                    <img src="/img/copyImageBack.png" alt="" />
+                  </ScrollEffect>
+                </div>
               </div>
             </ScrollEffect>
           </div>
@@ -226,13 +288,19 @@ export default function top() {
         {/* チームセクション*/}
         <section className={cn.team}>
           <ScrollEffect>
-            <div className={cn.teamDecoration}>
+            <ScrollEffect
+              className={`${cn.teamDecoration} ${cn.intMostDelay}`}
+              after={cn.intActive}
+            >
               <img src="/img/TEAM.png" alt="" />
-            </div>
+            </ScrollEffect>
 
-            <div className={cn.teamDecorationCircle}>
+            <ScrollEffect
+              className={`${cn.teamDecorationCircle} ${cn.intMoreDelay}`}
+              after={cn.intActive}
+            >
               <img src="/img/team_circle.png" alt="" />
-            </div>
+            </ScrollEffect>
 
             <div className={cn.teamTittle}>
               <h1>
@@ -262,14 +330,12 @@ export default function top() {
                 <ScrollEffect className={cn.int} after="svg1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="1450"
-                    height="557"
-                    viewBox="0 -5 1475 570"
+                    viewBox="0 -5 1525 570"
                   >
                     <path
                       id="パス_102"
                       data-name="パス 102"
-                      d="M5,0H1444V557H0Z"
+                      d="M5,0H1520V557H0Z"
                       fill="none"
                     />
                   </svg>
@@ -284,218 +350,236 @@ export default function top() {
                 <img src="/img/teamA_image.png" alt="" />
               </ScrollEffect>
 
-              <div className={cn.teamAOverviewSubName}>
+              <ScrollEffect
+                className={cn.teamAOverviewSubName}
+                after={cn.after}
+              >
                 <h4>
                   Suzumoto Riona / Takaki Yuumi /<br className={`brSp`} />
                   Arimura Minami / Oozora Riko
                 </h4>
-              </div>
+              </ScrollEffect>
             </div>
 
-            <div className={cn.teamMember + " " + "grid1"}>
-              {/* メンバー1*/}
-              <div className={`${cn.teamMemberDetail} ${cn.red}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-涼本.png" alt="" />
+            {/* チームAメンバーセクション */}
+            <ScrollEffect className={cn.intDelay} after={cn.intActive}>
+              <div className={cn.teamMember + " " + "grid1"}>
+                {/* メンバー1*/}
+                <div className={`${cn.teamMemberDetail} ${cn.red}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-涼本.png" alt="" />
 
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>涼本 理央那</h2>
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/riona_suzumoto">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Suzumoto Riona
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Suzumoto Riona A</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : srA</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:479 Y:948</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/bbwKy1">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>涼本 理央那</h2>
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/riona_suzumoto">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
                         </div>
                       </a>
                     </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Suzumoto Riona
+                    </h4>
 
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Suzumoto Riona A</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : srA</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:479 Y:948</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/bbwKy1">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* メンバー2*/}
+                <div className={`${cn.teamMemberDetail} ${cn.roseRed}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-高木.png" alt="" />
+
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>髙木 悠美</h2>
+
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/yuumi_takaki">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
                         </div>
                       </a>
+                    </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Takaki Yuumi
+                    </h4>
+
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/R6oAie">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* メンバー3*/}
+                <div className={`${cn.teamMemberDetail} ${cn.turquoise}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-有村.png" alt="" />
+
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>有村 南海</h2>
+
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/arimura_minami">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
+                        </div>
+                      </a>
+                    </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Arimura Minami
+                    </h4>
+
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Arimura Minami A</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : amA</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:67 Y:166</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/nm3Ftd">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* メンバー4*/}
+                <div className={`${cn.teamMemberDetail} ${cn.orange}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-大空.png" alt="" />
+
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>大空 莉子</h2>
+
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/oozora_riko">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
+                        </div>
+                      </a>
+                    </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Oozora Riko
+                    </h4>
+
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Oozora Riko A</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : orA</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:442 Y:995</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/VgS0BT">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* メンバー2*/}
-              <div className={`${cn.teamMemberDetail} ${cn.roseRed}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-高木.png" alt="" />
-
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>髙木 悠美</h2>
-
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/yuumi_takaki">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Takaki Yuumi
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Takaki Yuumi A</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/R6oAie">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* メンバー3*/}
-              <div className={`${cn.teamMemberDetail} ${cn.turquoise}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-有村.png" alt="" />
-
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>有村 南海</h2>
-
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/arimura_minami">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Arimura Minami
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Arimura Minami A</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : amA</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:67 Y:166</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/nm3Ftd">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* メンバー4*/}
-              <div className={`${cn.teamMemberDetail} ${cn.orange}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-大空.png" alt="" />
-
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>大空 莉子</h2>
-
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/oozora_riko">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Oozora Riko
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Oozora Riko A</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : orA</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:442 Y:995</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/VgS0BT">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </ScrollEffect>
           </div>
 
           {/* チームB*/}
@@ -516,12 +600,12 @@ export default function top() {
                       xmlns="http://www.w3.org/2000/svg"
                       width="1205"
                       height="557"
-                      viewBox="5 -5 1205 565"
+                      viewBox="-5 0 1230 565"
                     >
                       <path
                         id="長方形_316"
                         data-name="長方形 316"
-                        d="M5,0H1200V557H0Z"
+                        d="M0,0H1220V557H0Z"
                         fill="none"
                       />
                     </svg>
@@ -539,165 +623,180 @@ export default function top() {
                   <img src="/img/teamB_image.png" alt="" />
                 </ScrollEffect>
 
-                <div className={cn.teamAOverviewSubName}>
+                <ScrollEffect
+                  className={cn.teamAOverviewSubName}
+                  after={cn.after}
+                >
                   <h4>Kaizuki Rana / Kaneko Miyu / Kuroda Rei</h4>
-                </div>
+                </ScrollEffect>
               </div>
             </ScrollEffect>
 
-            <div className={cn.teamMember + " " + "grid1"}>
-              {/* メンバー5*/}
-              <div className={`${cn.teamMemberDetail} ${cn.green}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-海月.png" alt="" />
+            {/* チームBメンバーカラム */}
+            <ScrollEffect className={cn.intDelay} after={cn.intActive}>
+              <div className={cn.teamMember + " " + "grid1"}>
+                {/* メンバー5*/}
+                <div className={`${cn.teamMemberDetail} ${cn.green}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-海月.png" alt="" />
 
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>海月 らな</h2>
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/rana_kaizuki">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Kaizuki Rana
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Kaizuki Rana B</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : krB</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:418 Y:875</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/IjAWuK">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>海月 らな</h2>
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/rana_kaizuki">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
                         </div>
                       </a>
                     </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Kaizuki Rana
+                    </h4>
 
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Kaizuki Rana B</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : krB</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:418 Y:875</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/IjAWuK">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* メンバー6*/}
+                <div className={`${cn.teamMemberDetail} ${cn.blue}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-金子.png" alt="" />
+
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>金子 みゆ</h2>
+
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/kaneko_miyu">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
                         </div>
                       </a>
+                    </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Kaneko Miyu
+                    </h4>
+
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Kaneko Miyu B</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : kmB</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:160 Y:779</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/eMx0Tn">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* メンバー7*/}
+                <div className={`${cn.teamMemberDetail} ${cn.yellow}`}>
+                  <div className={cn.teamMemberContents}>
+                    <img src="/img/LinQ_645-黒田.png" alt="" />
+
+                    <div className={`${cn.memberName} mar-t2`}>
+                      <h2 className={cn.foncol}>黒田 れい</h2>
+
+                      {/* twitterリンク */}
+                      <a href="https://twitter.com/kuroda_rei_1112">
+                        <div className={cn.twitterIcon}>
+                          <img
+                            src="/img/2021 Twitter logo - white.png"
+                            alt=""
+                          />
+                        </div>
+                      </a>
+                    </div>
+                    <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
+                      Kuroda Rei
+                    </h4>
+
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルド名 : Kuroda Rei B</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>ギルドタグ : krB</h5>
+                    </div>
+                    <div className={`${cn.teamMemberguildInfo}`}>
+                      <h5 className={cn.foncol}>座標 : K:1020 X:302 Y:970</h5>
+                    </div>
+
+                    <div className={`${cn.button} mar-t1`}>
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://g.igg.com/5GFm8k">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>アプリをダウンロード</h6>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div className={`${cn.buttonWidth}`}>
+                        {/*アプリのダウンロードリンク */}
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
+                          <div className={`${cn.buttonContets}`}>
+                            <h6 className={cn.foncol}>ギルドに参加</h6>
+                          </div>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* メンバー6*/}
-              <div className={`${cn.teamMemberDetail} ${cn.blue}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-金子.png" alt="" />
-
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>金子 みゆ</h2>
-
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/kaneko_miyu">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Kaneko Miyu
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Kaneko Miyu B</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : kmB</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:160 Y:779</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/eMx0Tn">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* メンバー7*/}
-              <div className={`${cn.teamMemberDetail} ${cn.yellow}`}>
-                <div className={cn.teamMemberContents}>
-                  <img src="/img/LinQ_645-黒田.png" alt="" />
-
-                  <div className={`${cn.memberName} mar-t2`}>
-                    <h2 className={cn.foncol}>黒田 れい</h2>
-
-                    {/* twitterリンク */}
-                    <a href="https://twitter.com/kuroda_rei_1112">
-                      <div className={cn.twitterIcon}>
-                        <img src="/img/2021 Twitter logo - white.png" alt="" />
-                      </div>
-                    </a>
-                  </div>
-                  <h4 className={`${cn.foncol} ${cn.memberSubName} mar-b2`}>
-                    Kuroda Rei
-                  </h4>
-
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルド名 : Kuroda Rei B</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>ギルドタグ : krB</h5>
-                  </div>
-                  <div className={`${cn.teamMemberguildInfo}`}>
-                    <h5 className={cn.foncol}>座標 : K:1020 X:302 Y:970</h5>
-                  </div>
-
-                  <div className={`${cn.button} mar-t1`}>
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://g.igg.com/5GFm8k">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>アプリをダウンロード</h6>
-                        </div>
-                      </a>
-                    </div>
-
-                    <div className={`${cn.buttonWidth}`}>
-                      {/*アプリのダウンロードリンク */}
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWquvAICj5FWBFYjjjsxiFTIIrZRoE2fhGmfAydyuuronuJA/viewform">
-                        <div className={`${cn.buttonContets}`}>
-                          <h6 className={cn.foncol}>ギルドに参加</h6>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </ScrollEffect>
           </div>
         </section>
 
@@ -705,9 +804,12 @@ export default function top() {
         <section className={`${cn.reward}`}>
           <ScrollEffect>
             <section className={`${cn.join} tex-c`}>
-              <div className={cn.rewardDecoration}>
+              <ScrollEffect
+                className={`${cn.rewardDecoration} ${cn.intMostDelay}`}
+                after={cn.intActive}
+              >
                 <img src="/img/reward.png" alt="" />
-              </div>
+              </ScrollEffect>
 
               <div className={cn.teamTittle}>
                 <h1>
@@ -717,18 +819,16 @@ export default function top() {
                 </h1>
               </div>
 
-              <div className={cn.rewardDecorationCircle}>
+              <ScrollEffect
+                className={`${cn.rewardDecorationCircle} ${cn.intMoreDelay}`}
+                after={cn.intActive}
+              >
                 <img src="/img/2circle.png" alt="" />
-              </div>
+              </ScrollEffect>
             </section>
           </ScrollEffect>
 
           <div className={`${cn.teamRewardContents} grid4`}>
-            {/* <div className={`${cn.rewardSectionHukidashi}`}>
-              <img src="/img/hukidasi_1.png" alt="" />
-            </div>
-             */}
-
             {/* フキダシ */}
             <div className={`${cn.rewardSectionHukidashi}`}>
               <div className={`${cn.rewardSectionHukidashiBorder}`}>

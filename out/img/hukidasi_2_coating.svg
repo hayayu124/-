@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="484.259" height="248.013" viewBox="0 0 484.259 248.013">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.829" x2="0.996" y2="-0.001" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#caa747"/>
+      <stop offset="0.493" stop-color="#f7ee7e"/>
+      <stop offset="1" stop-color="#caa646"/>
+    </linearGradient>
+  </defs>
+  <path id="合体_6" data-name="合体 6" d="M55.336,161.128H0V0H465.863V161.128H104.249L79.793,200.415Z" transform="matrix(0.995, -0.105, 0.105, 0.995, -0.002, 48.696)" fill="url(#linear-gradient)"/>
+</svg>
