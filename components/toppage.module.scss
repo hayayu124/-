@@ -355,8 +355,9 @@
   transform: translate(-100%, -64%);
   @media screen and (max-width: 767px) {
     width: 20%;
+    top: 10%;
     left: 70%;
-    transform: translateY(36%);
+    transform: translateY(60%);
   }
 }
 
@@ -724,6 +725,7 @@
   right: 0em;
   transform: translate(-42%, -72%);
   @media screen and (max-width: 767px) {
+    top: 0%;
     transform: translate(0%, -20%);
   }
 }
@@ -872,9 +874,9 @@
 // イベント参加セクション
 
 .join {
-  margin-top: 24em;
+  margin-top: 28em;
   @media screen and (max-width: 767px) {
-    margin-top: 10em;
+    margin-top: 12em;
   }
 }
 
@@ -1133,7 +1135,7 @@
   }
   @media screen and (max-width: 767px) {
     width: 100%;
-    padding: 2em 0 2em 0;
+    padding: 2em 0 3em 0;
     h3 {
       margin-top: 2em;
     }

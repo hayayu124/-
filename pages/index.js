@@ -43,14 +43,23 @@ export default function Top() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
         {/* OGP&favicon */}
-        <meta property="og:site_name" content="Lord mobile" />
+        <meta
+          property="og:site_name"
+          content="ロードモバイル×LinQ 2チーム対抗バトル"
+        />
         <meta property="og:locale" content="ja_JP" />
 
-        <meta property="og:title" content="Lord mobile" />
-        <meta property="og:description" content="ページの説明文" />
+        <meta
+          property="og:title"
+          content="ロードモバイル×LinQ 2チーム対抗バトル"
+        />
+        <meta
+          property="og:description"
+          content="人気スマホゲームアプリ「ロードモバイル」のイベントにLinQが2チームに分かれて参戦！"
+        />
         <meta property="og:url" content="https://lordsmobile-g1.com/" />
         <meta property="og:image" content="/img/lordsmobile_site_ogp.png" />
-        <meta property="og:type" content="ページの種類" />
+        <meta property="og:type" content="website" />
 
         <link
           rel="apple-touch-icon"
@@ -195,9 +204,11 @@ export default function Top() {
       </div>
 
       {/*コピーセクション*/}
-      <div className={cn.copyPattern}>
-        <img src="/img/copyPattern.png" alt="" />
-      </div>
+      <ScrollEffect>
+        <div className={cn.copyPattern}>
+          <img src="/img/copyPattern.png" alt="" />
+        </div>
+      </ScrollEffect>
 
       <div className={cn.copyPatternSP}>
         <img src="/img/copyPatternSP.png" alt="" />
@@ -330,12 +341,12 @@ export default function Top() {
                 <ScrollEffect className={cn.int} after="svg1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 -5 1525 570"
+                    viewBox="-5 -5 1536 580"
                   >
                     <path
                       id="パス_102"
                       data-name="パス 102"
-                      d="M5,0H1520V557H0Z"
+                      d="M0,0H1524V570H0Z"
                       fill="none"
                     />
                   </svg>
@@ -423,7 +434,7 @@ export default function Top() {
                     <img src="/img/LinQ_645-高木.png" alt="" />
 
                     <div className={`${cn.memberName} mar-t2`}>
-                      <h2 className={cn.foncol}>髙木 悠美</h2>
+                      <h2 className={cn.foncol}>髙木 悠未</h2>
 
                       {/* twitterリンク */}
                       <a href="https://twitter.com/yuumi_takaki">
