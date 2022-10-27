@@ -11,6 +11,7 @@
 }
 
 .kv {
+  overflow: hidden;
   position: relative;
   width: 100vw;
   height: 0;
@@ -302,11 +303,9 @@
   position: absolute;
   top: 0%;
   right: 0%;
-  transform: translateY(-45%);
   width: 45%;
   @media screen and (max-width: 767px) {
     position: static;
-    transform: translate(0%, 0%);
     margin: 2em auto 0 auto;
     width: 90%;
   }
@@ -337,13 +336,10 @@
 .teamDecoration {
   position: absolute;
   width: 50%;
-  top: -100%;
+  top: 0%;
   left: 0%;
-  transform: translateY(-100%);
   @media screen and (max-width: 767px) {
-    position: static;
-    width: 72%;
-    transform: translate(0%, 0%);
+    width: 64%;
   }
 }
 
@@ -352,7 +348,6 @@
   width: 16%;
   top: 0%;
   right: 0%;
-  transform: translate(-100%, -64%);
   @media screen and (max-width: 767px) {
     width: 20%;
     top: 10%;
@@ -708,26 +703,19 @@
 .rewardDecoration {
   width: 72%;
   position: absolute;
-  top: -100%;
+  top: 0%;
   left: 0em;
   @media screen and (max-width: 767px) {
-    position: static;
     width: 90%;
     left: 0em;
-    transform: translateX(0%);
   }
 }
 
 .rewardDecorationCircle {
   width: 27%;
   position: absolute;
-  top: -80%;
+  top: 0%;
   right: 0em;
-  transform: translate(-42%, -72%);
-  @media screen and (max-width: 767px) {
-    top: 0%;
-    transform: translate(0%, -20%);
-  }
 }
 
 .rewardSectionHukidashi {
@@ -735,7 +723,6 @@
 
   width: 32%;
   margin-left: 0;
-  margin-bottom: 1.5em;
   @media screen and (max-width: 767px) {
     width: 64%;
     margin-bottom: 0em;
@@ -892,12 +879,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 45%;
-  transform: translate(20%, -90%);
+  width: 40%;
   @media screen and (max-width: 767px) {
-    width: 48%;
-    right: 0%;
-    transform: translate(0%, -72%);
     img {
       aspect-ratio: 1.5 / 2;
       object-fit: cover;
@@ -1046,13 +1029,36 @@
     padding: 0.3em 0.2em 0.3em 0.2em;
     border: 3px solid #6b5c54;
   }
-  &.rewardSquare {
-    width: 100%;
-    text-align: center;
-    padding: 2em 1em;
-    @media screen and (max-width: 767px) {
-      padding: 1em 1em;
-    }
+}
+
+.rewardSquare {
+  width: 100%;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    padding: 1em 1em;
+  }
+}
+
+.rewardGiftSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rewardGift {
+  width: 45%;
+  h4 {
+    margin-top: 1.7em;
+  }
+}
+
+.or {
+  width: 24%;
+  height: auto;
+  padding: 0 3em;
+  transform: translateY(90%);
+  img {
+    object-fit: cover;
   }
 }
 
@@ -1155,8 +1161,62 @@
 
 .intMoreDelay {
   opacity: 0;
-  transform: translateY(1em);
   transition: all 0.3s;
+
+  &.copyBackImageMotion {
+    transform: translateY(10%);
+  }
+
+  &.copyBackImageMotionActive {
+    opacity: 1;
+    transform: translateY(-50%);
+    @media screen and (max-width: 767px) {
+      transform: translateY(0%);
+    }
+  }
+
+  &.teamDecorationCircleMotion {
+    transform: translateY(-60%);
+  }
+
+  &.teamDecorationCircleMotionActive {
+    transform: translateY(-64%);
+    opacity: 1;
+    transition-delay: 0.7s;
+  }
+
+  &.rewardDecorationCircleMotion {
+    transform: translate(-30%, -70%);
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, -70%);
+    }
+  }
+
+  &.rewardDecorationCircleMotionActive {
+    opacity: 1;
+    transform: translate(-30%, -72%);
+    transition-delay: 0.3s;
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, -72%);
+    }
+  }
+
+  &.joinImageMotion {
+    transform: translate(0%, -98%);
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, -98%);
+    }
+  }
+
+  &.joinImageMotionActive {
+    opacity: 1;
+    transform: translate(0%, -100%);
+    transition-delay: 0.3s;
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, -100%);
+    }
+  }
+
   &.intActive {
     opacity: 1;
     transform: translateY(0);
@@ -1166,8 +1226,44 @@
 
 .intMostDelay {
   opacity: 0;
-  transform: translateY(1em);
   transition: all 0.5s;
+
+  &.copyCharcterImageMotion {
+    transform: translateY(-30%);
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, 10%);
+    }
+  }
+
+  &.copyCharcterImageMotionActive {
+    transform: translateY(-45%);
+    opacity: 1;
+    transition-delay: 0.5s;
+    @media screen and (max-width: 767px) {
+      transform: translate(0%, 0%);
+    }
+  }
+
+  &.teamSectionMotion {
+    transform: translateY(-80%);
+  }
+
+  &.teamSectionMotionActive {
+    transform: translateY(-100%);
+    opacity: 1;
+    transition-delay: 0.7s;
+  }
+
+  &.rewardDecorationMotion {
+    transform: translateY(-90%);
+  }
+
+  &.rewardDecorationMotionActive {
+    opacity: 1;
+    transform: translateY(-100%);
+    transition-delay: 0.7s;
+  }
+
   &.intActive {
     opacity: 1;
     transform: translateY(0);

@@ -276,15 +276,15 @@ export default function Top() {
               <div className={cn.copyImage}>
                 <div className={cn.copyImageColumn}>
                   <ScrollEffect
-                    className={`${cn.copyCharcterImage} ${cn.intMostDelay}`}
-                    after={cn.intActive}
+                    className={`${cn.copyCharcterImage} ${cn.intMostDelay} ${cn.copyCharcterImageMotion}`}
+                    after={cn.copyCharcterImageMotionActive}
                   >
                     <img src="/img/copyImage.png" alt="" />
                   </ScrollEffect>
 
                   <ScrollEffect
-                    className={`${cn.copyBackImage} ${cn.intMoreDelay}`}
-                    after={cn.intActive}
+                    className={`${cn.copyBackImage} ${cn.intMoreDelay} ${cn.copyBackImageMotion}`}
+                    after={cn.copyBackImageMotionActive}
                   >
                     <img src="/img/copyImageBack.png" alt="" />
                   </ScrollEffect>
@@ -300,15 +300,15 @@ export default function Top() {
         <section className={cn.team}>
           <ScrollEffect>
             <ScrollEffect
-              className={`${cn.teamDecoration} ${cn.intMostDelay}`}
-              after={cn.intActive}
+              className={`${cn.teamDecoration} ${cn.intMostDelay} ${cn.teamSectionMotion}`}
+              after={cn.teamSectionMotionActive}
             >
               <img src="/img/TEAM.png" alt="" />
             </ScrollEffect>
 
             <ScrollEffect
-              className={`${cn.teamDecorationCircle} ${cn.intMoreDelay}`}
-              after={cn.intActive}
+              className={`${cn.teamDecorationCircle} ${cn.intMoreDelay} ${cn.teamDecorationCircleMotion}`}
+              after={cn.teamDecorationCircleMotionActive}
             >
               <img src="/img/team_circle.png" alt="" />
             </ScrollEffect>
@@ -816,8 +816,8 @@ export default function Top() {
           <ScrollEffect>
             <section className={`${cn.join} tex-c`}>
               <ScrollEffect
-                className={`${cn.rewardDecoration} ${cn.intMostDelay}`}
-                after={cn.intActive}
+                className={`${cn.rewardDecoration} ${cn.intMostDelay} ${cn.rewardDecorationMotion}`}
+                after={cn.rewardDecorationMotionActive}
               >
                 <img src="/img/reward.png" alt="" />
               </ScrollEffect>
@@ -831,8 +831,8 @@ export default function Top() {
               </div>
 
               <ScrollEffect
-                className={`${cn.rewardDecorationCircle} ${cn.intMoreDelay}`}
-                after={cn.intActive}
+                className={`${cn.rewardDecorationCircle} ${cn.intMoreDelay} ${cn.rewardDecorationCircleMotion}`}
+                after={cn.rewardDecorationCircleMotionActive}
               >
                 <img src="/img/2circle.png" alt="" />
               </ScrollEffect>
@@ -891,12 +891,8 @@ export default function Top() {
             </div>
 
             <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.systemDetail} ${cn.rewardSquare}`}>
-                <h4>
-                  優勝チームメンバーは広告モデルとして、
-                  <br className={`br`} />
-                  交通広告にてビジュアル掲載！！
-                </h4>
+              <div className={`${cn.rewardSquare}`}>
+                <img src="/img/rewardSectionImage.png" alt="" />
               </div>
             </ScrollEffect>
           </div>
@@ -974,23 +970,40 @@ export default function Top() {
 
             {/* 各メンバーギルド内パワーランキング１位〜５位*/}
             <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.systemDetail} ${cn.rewardSquare}`}>
-                <h4 className={`${cn.rewardSectionSubTittle}`}>
-                  ジョブネット主催・LinQワンマンライブ優先入場券※＋サイン入りチェキ
-                  <br className={`br}`} />
-                  or
-                  <br className={`br}`} />
-                  LinQメンバー全員からのメッセージ動画＋名前・サイン入りチェキ
-                  <br className={`br}`} />
-                  の2つより特典を選べる！
-                </h4>
-              </div>
+              <div className={`${cn.rewardSquare}`}>
+                <h1>２つの特典から選べる！</h1>
+                <h6>
+                  ※ 特別公演は除きます。
+                  <br className={`brSp`} />
+                  チケットは別途必要になります。
+                </h6>
 
-              <h6>
-                ※ 特別公演は除きます。
-                <br className={`brSp`} />
-                チケットは別途必要になります。
-              </h6>
+                <div className={`${cn.rewardGiftSection}`}>
+                  <div className={`${cn.rewardGift}`}>
+                    <div className={`${cn.rewardGiftImage}`}>
+                      <img src="/img/rewardSectionImage_1.png" alt="" />
+                    </div>
+                    <h4 className={`${cn.rewardSectionSubTittle}`}>
+                      ジョブネット主催・ LinQワンマンライブ優先入場券※
+                      ＋サイン入りチェキ
+                    </h4>
+                  </div>
+
+                  <div className={`${cn.or}`}>
+                    <img src="/img/or.png" alt="" />
+                  </div>
+
+                  <div className={`${cn.rewardGift}`}>
+                    <div className={`${cn.rewardGiftImage}`}>
+                      <img src="/img/rewardSectionImage_2.png" alt="" />
+                    </div>
+                    <h4>
+                      LinQメンバー全員からのメッセージ
+                      動画＋名前・サイン入りチェキ
+                    </h4>
+                  </div>
+                </div>
+              </div>
             </ScrollEffect>
           </div>
 
@@ -1186,13 +1199,19 @@ export default function Top() {
         <section className={`${cn.join} tex-c`}>
           <ScrollEffect>
             <div className={`${cn.joinTittle}`}>
-              <div className={cn.teamDecoration}>
+              <ScrollEffect
+                className={`${cn.teamDecoration} ${cn.intMostDelay} ${cn.rewardDecorationMotion}`}
+                after={cn.rewardDecorationMotionActive}
+              >
                 <img src="/img/JOIN.png" alt="" />
-              </div>
+              </ScrollEffect>
 
-              <div className={cn.tittleImage}>
+              <ScrollEffect
+                className={`${cn.tittleImage} ${cn.intMoreDelay} ${cn.joinImageMotion}`}
+                after={cn.joinImageMotionActive}
+              >
                 <img src="/img/joinImage.png" alt="" />
-              </div>
+              </ScrollEffect>
 
               <h1>イベント参加の流れ</h1>
             </div>
