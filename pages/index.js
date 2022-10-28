@@ -5,6 +5,8 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function Top() {
+  // refをtrueで初期化。
+
   const joinColumn = [
     {
       title: "① ダウンロード",
@@ -21,10 +23,27 @@ export default function Top() {
 
   // ロード制御
 
+  const [loading, setLoading] = useState(false);
   const [load, setLoad] = useState(false);
+  const [loadingEnd, setLoadingEnd] = useState(false);
+  const [color, setColor] = useState("");
+
+  const randRange = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
 
   useEffect(() => {
-    setLoad(true);
+    const body = document.body; //scroll制御
+    body.classList.add("noScroll");
+    setColor(randRange(1, 7));
+    setTimeout(() => {
+      setLoading(true);
+      setLoad(true);
+      body.classList.remove("noScroll");
+    }, 2000);
+
+    setTimeout(() => {
+      setLoadingEnd(true);
+    }, 2500);
   }, []);
 
   return (
@@ -89,6 +108,17 @@ export default function Top() {
         <meta name="msapplication-config" content="/fav/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
+
+      {/* ローディング画面 */}
+      <div
+        className={`${cn.loadingBack} backColor${color} ${
+          loading ? cn.loadingNone : ""
+        } ${loadingEnd ? cn.loadingEnd : ""}`}
+      >
+        <div className={`${cn.loadingImage}`}>
+          <img src="/img/fv_title_logo.png" alt="" />
+        </div>
+      </div>
 
       {/* KV */}
       <div className={`${cn.kv}`}>
@@ -403,7 +433,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : srA</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:479 Y:948</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:486 Y:218</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -457,7 +487,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : tyA</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:437 Y:402</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:315 Y:259</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -511,7 +541,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : amA</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:67 Y:166</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:462 Y:286</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -565,7 +595,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : orA</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:442 Y:995</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:497 Y:231</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -674,7 +704,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : krB</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:418 Y:875</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:11 Y:375</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -728,7 +758,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : kmB</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:160 Y:779</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:116 Y:136</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -782,7 +812,7 @@ export default function Top() {
                       <h5 className={cn.foncol}>ギルドタグ : krB</h5>
                     </div>
                     <div className={`${cn.teamMemberguildInfo}`}>
-                      <h5 className={cn.foncol}>座標 : K:1020 X:302 Y:970</h5>
+                      <h5 className={cn.foncol}>座標 : K:1178 X:111 Y:969</h5>
                     </div>
 
                     <div className={`${cn.button} mar-t1`}>
@@ -840,60 +870,67 @@ export default function Top() {
           </ScrollEffect>
 
           <div className={`${cn.teamRewardContents} grid4`}>
-            {/* フキダシ */}
-            <div className={`${cn.rewardSectionHukidashi}`}>
-              <div className={`${cn.rewardSectionHukidashiBorder}`}>
-                <ScrollEffect className={cn.int} after="svg1">
-                  <svg
-                    version="1.1"
-                    id="レイヤー_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    width="100%"
-                    viewBox="-5 -5 553.221 240.672"
+            <ScrollEffect
+              className={`${cn.intDelay} ${cn.victorColumn}`}
+              after={cn.intActive}
+            >
+              {/* フキダシ */}
+              <div className={`${cn.victorHukidashi}`}>
+                <div className={`${cn.rewardSectionHukidashi}`}>
+                  <div className={`${cn.rewardSectionHukidashiBorder}`}>
+                    <ScrollEffect className={cn.int} after="svg1">
+                      <svg
+                        version="1.1"
+                        id="レイヤー_1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        width="100%"
+                        viewBox="-5 -5 553.221 240.672"
+                      >
+                        <g
+                          id="合体_17"
+                          data-name="合体 17"
+                          transform="translate(4278 -13914.868)"
+                          fill="none"
+                        >
+                          <path
+                            d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                            stroke="none"
+                          />
+                          <path
+                            id="合体_17"
+                            data-name="合体 17"
+                            d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                            transform="translate(4278 -13914.868)"
+                            fill="#6b5c54"
+                          />
+                        </g>
+                      </svg>
+                    </ScrollEffect>
+                  </div>
+
+                  <ScrollEffect
+                    className={`${cn.rewardSectionHukidashiCoating}`}
+                    after={`${cn.after}`}
                   >
-                    <g
-                      id="合体_17"
-                      data-name="合体 17"
-                      transform="translate(4278 -13914.868)"
-                      fill="none"
-                    >
-                      <path
-                        d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
-                        stroke="none"
-                      />
-                      <path
-                        id="合体_17"
-                        data-name="合体 17"
-                        d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
-                        transform="translate(4278 -13914.868)"
-                        fill="#6b5c54"
-                      />
-                    </g>
-                  </svg>
-                </ScrollEffect>
+                    <img src="/img/hukidasi_1_coating.svg" alt="" />
+                  </ScrollEffect>
+
+                  <ScrollEffect
+                    className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_1}`}
+                    after={`${cn.after}`}
+                  >
+                    <img src="/img/hukidasi_1_text.png" alt="" />
+                  </ScrollEffect>
+                </div>
               </div>
-
               <ScrollEffect
-                className={`${cn.rewardSectionHukidashiCoating}`}
-                after={`${cn.after}`}
+                className={`${cn.rewardSquare} ${cn.victorRewardImage} ${cn.intDelay} ${cn.victorColumn}`}
+                after={cn.intActive}
               >
-                <img src="/img/hukidasi_1_coating.svg" alt="" />
-              </ScrollEffect>
-
-              <ScrollEffect
-                className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_1}`}
-                after={`${cn.after}`}
-              >
-                <img src="/img/hukidasi_1_text.png" alt="" />
-              </ScrollEffect>
-            </div>
-
-            <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.rewardSquare}`}>
                 <img src="/img/rewardSectionImage.png" alt="" />
-              </div>
+              </ScrollEffect>
             </ScrollEffect>
           </div>
 
@@ -970,13 +1007,22 @@ export default function Top() {
 
             {/* 各メンバーギルド内パワーランキング１位〜５位*/}
             <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.rewardSquare}`}>
-                <h1>２つの特典から選べる！</h1>
-                <h6>
-                  ※ 特別公演は除きます。
-                  <br className={`brSp`} />
-                  チケットは別途必要になります。
-                </h6>
+              <div className={`${cn.rewardSquare} ${cn.firstRewardTitle}`}>
+                <h1 className={`${cn.firstRewardText}`}>
+                  ２つの特典から選べる！
+                </h1>
+
+                <div className={`${cn.firstRewardDecoration}`}>
+                  <img src="/img/blueLine.png" alt="" />
+                </div>
+
+                <div className={`${cn.firstRewardDecoration}`}>
+                  <img src="/img/blueLine.png" alt="" />
+                </div>
+
+                <div className={`${cn.firstRewardDecoration2}`}>
+                  <img src="/img/redLineYellowCircle.png" alt="" />
+                </div>
 
                 <div className={`${cn.rewardGiftSection}`}>
                   <div className={`${cn.rewardGift}`}>
@@ -984,9 +1030,14 @@ export default function Top() {
                       <img src="/img/rewardSectionImage_1.png" alt="" />
                     </div>
                     <h4 className={`${cn.rewardSectionSubTittle}`}>
-                      ジョブネット主催・ LinQワンマンライブ優先入場券※
+                      ジョブネット主催・LinQワンマンライブ優先入場券※
                       ＋サイン入りチェキ
                     </h4>
+                    <h6>
+                      ※ 特別公演は除きます。
+                      <br className={`brSp`} />
+                      チケットは別途必要になります。
+                    </h6>
                   </div>
 
                   <div className={`${cn.or}`}>
@@ -998,8 +1049,9 @@ export default function Top() {
                       <img src="/img/rewardSectionImage_2.png" alt="" />
                     </div>
                     <h4>
-                      LinQメンバー全員からのメッセージ
-                      動画＋名前・サイン入りチェキ
+                      LinQメンバー全員のメッセージ動画＋
+                      <br className="beSp" />
+                      名前・サイン入りチェキ
                     </h4>
                   </div>
                 </div>
@@ -1007,6 +1059,7 @@ export default function Top() {
             </ScrollEffect>
           </div>
 
+          {/* 全参加者でのパワーランキング２位*/}
           <div className={`${cn.rewardColumn} tex-c  grid4`}>
             {/* フキダシ */}
             <div className={`${cn.rewardSectionHukidashi}`}>
@@ -1058,140 +1111,179 @@ export default function Top() {
               </ScrollEffect>
             </div>
 
-            {/* 各メンバーギルド内パワーランキング１位〜５位*/}
             <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.systemDetail} ${cn.rewardSquare}`}>
-                <h4 className={`${cn.rewardSectionSubTittle} `}>
-                  参加ギルドのLinQメンバーのチーム全員のメッセージ付きデジショ
+              <div className={`${cn.rewardSquare}`}>
+                <h2 className={`${cn.secondText}`}>
+                  参加チームの
+                  <br className="brSp" />
+                  全LinQメンバーの
+                </h2>
+                <h3>
+                  メッセージ付きデジショ＋
                   <br />
-                  ＋名前・サイン入りチェキ
-                </h4>
+                  名前・サイン入りチェキ
+                </h3>
+
+                <div className={`${cn.secondRewardDecoration}`}>
+                  <img src="/img/red3Line.png" alt="" />
+                </div>
+
+                <div className={`${cn.secondRewardDecoration2}`}>
+                  <img src="/img/yellowCirclePinkCircle.png" alt="" />
+                </div>
+
+                <div className={`${cn.secondRewardDecoration3}`}>
+                  <img src="/img/blueCircle.png" alt="" />
+                </div>
               </div>
             </ScrollEffect>
           </div>
 
-          <div className={`${cn.rewardColumn} tex-c  grid4`}>
-            {/* フキダシ */}
-            <div className={`${cn.rewardSectionHukidashi}`}>
-              <div className={`${cn.rewardSectionHukidashiBorder}`}>
-                <ScrollEffect className={cn.int} after="svg1">
-                  <svg
-                    version="1.1"
-                    id="レイヤー_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    width="100%"
-                    viewBox="-5 -5 553.221 240.672"
-                  >
-                    <g
-                      id="合体_17"
-                      data-name="合体 17"
-                      transform="translate(4278 -13914.868)"
-                      fill="none"
+          {/* 全参加者でのパワーランキング３位*/}
+          <div className={`${cn.thirdFifthColumn} tex-c  grid4`}>
+            <div className={`${cn.rewardColumn}`}>
+              {/* フキダシ */}
+              <div
+                className={`${cn.rewardSectionHukidashi} ${cn.thirdRewardHukidashi}`}
+              >
+                <div className={`${cn.rewardSectionHukidashiBorder}`}>
+                  <ScrollEffect className={cn.int} after="svg1">
+                    <svg
+                      version="1.1"
+                      id="レイヤー_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="100%"
+                      viewBox="-5 -5 553.221 240.672"
                     >
-                      <path
-                        d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
-                        stroke="none"
-                      />
-                      <path
-                        id="合体_21"
-                        data-name="合体 21"
-                        d="M66.26,161.364H0V0H528.715V161.364H122.108L94.5,200.953Z"
-                        transform="matrix(0.995, -0.105, 0.105, 0.995, -0.001, 55.269)"
-                        fill="url(#linear-gradient)"
-                      />
-                    </g>
-                  </svg>
+                      <g
+                        id="合体_17"
+                        data-name="合体 17"
+                        transform="translate(4278 -13914.868)"
+                        fill="none"
+                      >
+                        <path
+                          d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                          stroke="none"
+                        />
+                        <path
+                          id="合体_21"
+                          data-name="合体 21"
+                          d="M66.26,161.364H0V0H528.715V161.364H122.108L94.5,200.953Z"
+                          transform="matrix(0.995, -0.105, 0.105, 0.995, -0.001, 55.269)"
+                          fill="url(#linear-gradient)"
+                        />
+                      </g>
+                    </svg>
+                  </ScrollEffect>
+                </div>
+
+                <ScrollEffect
+                  className={`${cn.rewardSectionHukidashiCoating}`}
+                  after={`${cn.after}`}
+                >
+                  <img src="/img/hukidasi_4_coating.svg" alt="" />
+                </ScrollEffect>
+
+                <ScrollEffect
+                  className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_2}`}
+                  after={`${cn.after}`}
+                >
+                  <img src="/img/hukidasi_4_text.png" alt="" />
                 </ScrollEffect>
               </div>
 
-              <ScrollEffect
-                className={`${cn.rewardSectionHukidashiCoating}`}
-                after={`${cn.after}`}
-              >
-                <img src="/img/hukidasi_4_coating.svg" alt="" />
-              </ScrollEffect>
+              <ScrollEffect className={cn.intDelay} after={cn.intActive}>
+                <div className={`${cn.rewardSquare}`}>
+                  <h4 className={`${cn.thirdText}`}>
+                    参加ギルドのLinQメンバーの
+                  </h4>
+                  <h4>
+                    メッセージ付きデジショ
+                    <br />
+                    ＋名前・サイン入りチェキ
+                  </h4>
 
-              <ScrollEffect
-                className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_2}`}
-                after={`${cn.after}`}
-              >
-                <img src="/img/hukidasi_4_text.png" alt="" />
+                  <div className={`${cn.thirdRewardDecoration3}`}>
+                    <img src="/img/blueHexagonal.png" alt="" />
+                  </div>
+                </div>
               </ScrollEffect>
             </div>
 
-            {/* 各メンバーギルド内パワーランキング１位〜５位*/}
-            <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.systemDetail} ${cn.rewardSquare}`}>
-                <h4 className={`${cn.rewardSectionSubTittle}`}>
-                  参加ギルドのLinQメンバーからメッセージ付きデジショ＋
-                  <br />
-                  名前・サイン入りチェキ
-                </h4>
-              </div>
-            </ScrollEffect>
-          </div>
-
-          <div className={`${cn.rewardColumn} tex-c  grid4`}>
-            {/* フキダシ */}
-            <div className={`${cn.rewardSectionHukidashi}`}>
-              <div className={`${cn.rewardSectionHukidashiBorder}`}>
-                <ScrollEffect className={cn.int} after="svg1">
-                  <svg
-                    version="1.1"
-                    id="レイヤー_1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    x="0px"
-                    y="0px"
-                    width="100%"
-                    viewBox="-5 -5 553.221 240.672"
-                  >
-                    <g
-                      id="合体_17"
-                      data-name="合体 17"
-                      transform="translate(4278 -13914.868)"
-                      fill="none"
+            {/* 全参加者でのパワーランキング４~５位 */}
+            <div className={`${cn.rewardColumn}`}>
+              {/* フキダシ */}
+              <div
+                className={`${cn.rewardSectionHukidashi} ${cn.fifthRewardHukidashi}`}
+              >
+                <div className={`${cn.rewardSectionHukidashiBorder}`}>
+                  <ScrollEffect className={cn.int} after="svg1">
+                    <svg
+                      version="1.1"
+                      id="レイヤー_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="100%"
+                      viewBox="-5 -5 553.221 240.672"
                     >
-                      <path
-                        d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
-                        stroke="none"
-                      />
-                      <path
-                        id="合体_21"
-                        data-name="合体 21"
-                        d="M66.26,161.364H0V0H528.715V161.364H122.108L94.5,200.953Z"
-                        transform="matrix(0.995, -0.105, 0.105, 0.995, -0.001, 55.269)"
-                        fill="url(#linear-gradient)"
-                      />
-                    </g>
-                  </svg>
+                      <g
+                        id="合体_17"
+                        data-name="合体 17"
+                        transform="translate(4278 -13914.868)"
+                        fill="none"
+                      >
+                        <path
+                          d="M-4192.962,14117.723l-65.878,6.087L-4278,13963.563l527.062-48.7,19.159,160.246-411.448,38.014-20.669,37.412Z"
+                          stroke="none"
+                        />
+                        <path
+                          id="合体_21"
+                          data-name="合体 21"
+                          d="M66.26,161.364H0V0H528.715V161.364H122.108L94.5,200.953Z"
+                          transform="matrix(0.995, -0.105, 0.105, 0.995, -0.001, 55.269)"
+                          fill="url(#linear-gradient)"
+                        />
+                      </g>
+                    </svg>
+                  </ScrollEffect>
+                </div>
+
+                <ScrollEffect
+                  className={`${cn.rewardSectionHukidashiCoating}`}
+                  after={`${cn.after}`}
+                >
+                  <img src="/img/hukidasi_5_coating.svg" alt="" />
+                </ScrollEffect>
+
+                <ScrollEffect
+                  className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_2}`}
+                  after={`${cn.after}`}
+                >
+                  <img src="/img/hukidasi_5_text.png" alt="" />
                 </ScrollEffect>
               </div>
 
-              <ScrollEffect
-                className={`${cn.rewardSectionHukidashiCoating}`}
-                after={`${cn.after}`}
-              >
-                <img src="/img/hukidasi_5_coating.svg" alt="" />
-              </ScrollEffect>
+              <ScrollEffect className={cn.intDelay} after={cn.intActive}>
+                <div className={`${cn.rewardSquare}`}>
+                  <h4 className={`${cn.fifthText}`}>
+                    参加ギルドのLinQメンバーの
+                    <br />
+                    名前・サイン入りチェキ
+                  </h4>
 
-              <ScrollEffect
-                className={`${cn.rewardSectionHukidashiTitle} ${cn.hukidasiText_2}`}
-                after={`${cn.after}`}
-              >
-                <img src="/img/hukidasi_5_text.png" alt="" />
+                  <div className={`${cn.fifthRewardDecoration}`}>
+                    <img src="/img/orangHexagonalPinkCircle.png" alt="" />
+                  </div>
+
+                  <div className={`${cn.fifthRewardDecoration2}`}>
+                    <img src="/img/redWaveLine.png" alt="" />
+                  </div>
+                </div>
               </ScrollEffect>
             </div>
-
-            {/* 各メンバーギルド内パワーランキング１位〜５位*/}
-            <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.systemDetail} ${cn.rewardSquare}`}>
-                <h4 className={`${cn.rewardSectionSubTittle} `}>
-                  名前・サイン入りチェキ
-                </h4>
-              </div>
-            </ScrollEffect>
           </div>
         </section>
 
@@ -1508,41 +1600,33 @@ export default function Top() {
               す）の運営にあたり、下記の各条項に定める事項については、免責されるものとします。
               本イベントにご参加のお客様（以下、「ユーザー」といいます）は、本免責事項の内容をご承諾頂いたものと見なしますので、ご了承ください。
               <br />
-              １.イベント運営は、本イベントの内容、本イベントにより提供する一切の情報、データ等について、その完全性、正確性、適法性、目的適合性等いかなる保証も行わ
-              ず、一切の責任を負いません。
+              １.イベント運営は、本イベントの内容、本イベントにより提供する一切の情報、データ等について、その完全性、正確性、適法性、目的適合性等いかなる保証も行わず、一切の責任を負いません。
               <br />
-              ２.イベント運営は、イベント運営が本イベントにより提供する一切の情報、データ等、またはユーザーが掲載する一切の情報、データ等を確実に保存することを
-              保証するものではなく、かかる情報、データ等が消失したとしても、一切の責任を負いません。
+              ２.イベント運営は、イベント運営が本イベントにより提供する一切の情報、データ等、またはユーザーが掲載する一切の情報、データ等を確実に保存することを保証するものではなく、かかる情報、データ等が消失したとしても、一切の責任を負いません。
               <br />
-              ３.本イベントの提供、遅滞、変更、中止もしくは廃止、本イベントを通じて登録、提供される情報等の流失もしくは消失等、およびその他本イベントに関連して発生
-              したユーザーおよび第三者の損害について、イベント運営は一切の責任を負いません。
+              ３.本イベントの提供、遅滞、変更、中止もしくは廃止、本イベントを通じて登録、提供される情報等の流失もしくは消失等、およびその他本イベントに関連して発生したユーザーおよび第三者の損害について、イベント運営は一切の責任を負いません。
               <br />
-              ４.本イベントへの参加に関連して、ユーザーが他のユーザーもしくは第三者に対して損害を与えた場合、またはユーザーが他のユーザーもしくは第三者と紛争を生じ
-              た場合、当該ユーザーは自己の費用と責任で解決するものとし、イベント運営に何等の迷惑または損害を与えないものとします。また、ユーザーが本イベントの参加に
-              関連してイベント運営に損害を生じさせた場合は、当該ユーザーはイベント運営に生じた損害を賠償するものとします。
+              ４.本イベントへの参加に関連して、ユーザーが他のユーザーもしくは第三者に対して損害を与えた場合、またはユーザーが他のユーザーもしくは第三者と紛争を生じた場合、当該ユーザーは自己の費用と責任で解決するものとし、イベント運営に何等の迷惑または損害を与えないものとします。また、ユーザーが本イベントの参加に関連してイベント運営に損害を生じさせた場合は、当該ユーザーはイベント運営に生じた損害を賠償するものとします。
               <br />
-              ５.イベント運営は、本イベントに関連したサービスを提供するコンピューターシステムの稼働状況について保証するものではなく、本イベントに関連したサービス提
-              供のためのコンピューターシステムの障害等、いかなる原因に基づき生じた損害についても、一切の責任を負いません。
+              ５.イベント運営は、本イベントに関連したサービスを提供するコンピューターシステムの稼働状況について保証するものではなく、本イベントに関連したサービス提供のためのコンピューターシステムの障害等、いかなる原因に基づき生じた損害についても、一切の責任を負いません。
               <br />
-              ６.イベント運営は、本イベントに関連したサービスの利用、本サイトからのダウンロード、コンピュータウイルス感染等により、コンピュータ、周辺機器、回線、ソ
-              フトウェアなどに生じた損害について、一切の責任を負いません。
+              ６.イベント運営は、本イベントに関連したサービスの利用、本サイトからのダウンロード、コンピュータウイルス感染等により、コンピュータ、周辺機器、回線、ソフトウェアなどに生じた損害について、一切の責任を負いません。
               <br />
-              ７.本規約に従いイベント運営がユーザーに対して損害賠償の責任を負う場合であっても、イベント運営に故意又は重過失が存する場合を除き、イベント運営が賠償す
-              べき損害の範囲は、ユーザーに直接かつ現実的に生じた損害に限定されます。
+              ７.本規約に従いイベント運営がユーザーに対して損害賠償の責任を負う場合であっても、イベント運営に故意又は重過失が存する場合を除き、イベント運営が賠償すべき損害の範囲は、ユーザーに直接かつ現実的に生じた損害に限定されます。
             </h5>
 
             <h3>個人情報の取り扱いについて</h3>
             <h5>
-              本イベントは、IGGが主体となり、イベント運営事務局が実施、運営と審査協力をするものです。
-              又、ユーザーの個人情報をユーザーの同意なしに業務委託先、審査協力先以外の第三者に開示・提供することはございません。
-              （法令等により開示を求められた場合を除く。）
+              本イベントは、IGGが主体となり、イベント運営事務局が実施、運営と審査協力をするものです。又、ユーザーの個人情報をユーザーの同意なしに業務委託先、審査協力先以外の第三者に開示・提供することはございません。（法令等により開示を求められた場合を除く。）
             </h5>
 
             <h3>お問い合わせ</h3>
             <h5>
               本イベントに関するお問い合わせは下記までお願い致します。
-              XXXX@gmail.com 受付対応時間/10時00分〜17時00分
+              <br />
+              lordsmobile.ge01@gmail.com 受付対応時間/10時00分〜17時00分
               （土・日・祝日を除く）
+              <br />
               ※いただいたご質問によってはお答えできない場合もございます。
             </h5>
           </div>
