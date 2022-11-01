@@ -148,10 +148,11 @@
   position: absolute;
   top: 0%;
   left: 0%;
-  height: 100%;
+  width: 30%;
+  height: auto;
   z-index: 9;
   @media screen and (max-width: 767px) {
-    height: 40%;
+    width: 50%;
   }
 }
 
@@ -159,10 +160,11 @@
   position: absolute;
   top: 0%;
   right: 0%;
-  height: 100%;
+  width: 30%;
+  height: auto;
   z-index: 9;
   @media screen and (max-width: 767px) {
-    height: 60%;
+    width: 40%;
   }
 }
 
@@ -797,7 +799,7 @@
 
 .rewardSectionHukidashi {
   position: relative;
-  width: 32%;
+  width: 36%;
   margin-left: 0;
   @media screen and (max-width: 767px) {
     width: 64%;
@@ -928,14 +930,17 @@
     margin: 0em auto 5em auto;
     width: 85%;
   }
+  h3 {
+    margin-top: 1.5em;
+  }
   h6 {
     text-align: left;
-    margin: 2em auto;
-    @media screen and (max-width: 767px) {
-      margin: 2em auto 0em;
-      text-align: left;
-    }
+    margin: 3em auto;
   }
+}
+
+.secondRewardSquare h3 {
+  margin-top: 0.7em;
 }
 
 .firstRewardTitle {
@@ -1202,6 +1207,15 @@
   @media screen and (max-width: 767px) {
     width: 100%;
   }
+
+  h6 {
+    position: absolute;
+    right: 0%;
+    bottom: 2%;
+    @media screen and (max-width: 767px) {
+      bottom: -5%;
+    }
+  }
 }
 
 .secondText {
@@ -1244,23 +1258,14 @@
   transform: translateY(60%);
 }
 
-.rewardGiftSection {
-  margin-top: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  @media screen and (max-width: 767px) {
-    display: block;
-  }
-}
-
 .rewardGift {
-  width: 45%;
+  margin: 2em auto 0 auto;
+  width: 80%;
   h4 {
     margin-top: 1.7em;
   }
   @media screen and (max-width: 767px) {
-    margin: auto;
+    margin: 1em auto 0 auto;
     width: 100%;
   }
 }
@@ -1314,16 +1319,19 @@
   }
 }
 
+.helpSectionContent {
+  margin-top: 5em;
+}
+
 .helpSectionButton {
   width: 32%;
-  margin: 3em auto 0.5em auto;
+  margin: 1em auto 0.5em auto;
   background-color: #dbc87e;
   padding: 0.7em 0.1em;
   border-radius: 9999px;
   box-shadow: 0.22em 0.4em 0 #6b5c54; // ボタンの影
   @media screen and (max-width: 767px) {
     width: 64%;
-    margin: 2em auto 2em auto;
   }
 }
 

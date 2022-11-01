@@ -46,10 +46,14 @@ export default function Top() {
     }, 2500);
   }, []);
 
+  // サイトタイトル
+  const siteTitle = "ロードモバイル×LinQ 2チーム対抗バトル";
+
   return (
     <>
       <Head>
-        <title>ロードモバイル</title>
+        <title>ロードモバイル×LinQ 2チーム対抗バトル</title>
+        <meta name="description" content={siteTitle} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,16 +66,10 @@ export default function Top() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
         {/* OGP&favicon */}
-        <meta
-          property="og:site_name"
-          content="ロードモバイル×LinQ 2チーム対抗バトル"
-        />
+        <meta property="og:site_name" content={siteTitle} />
         <meta property="og:locale" content="ja_JP" />
 
-        <meta
-          property="og:title"
-          content="ロードモバイル×LinQ 2チーム対抗バトル"
-        />
+        <meta property="og:title" content={siteTitle} />
         <meta
           property="og:description"
           content="人気スマホゲームアプリ「ロードモバイル」のイベントにLinQが2チームに分かれて参戦！"
@@ -929,7 +927,9 @@ export default function Top() {
                 className={`${cn.rewardSquare} ${cn.victorRewardImage} ${cn.intDelay} ${cn.victorColumn}`}
                 after={cn.intActive}
               >
-                <img src="/img/rewardSectionImage.png" alt="" />
+                <img src="/img/trafic_ad.png" alt="" />
+
+                <h6>※画像はイメージです。</h6>
               </ScrollEffect>
             </ScrollEffect>
           </div>
@@ -1024,36 +1024,26 @@ export default function Top() {
                   <img src="/img/redLineYellowCircle.png" alt="" />
                 </div>
 
-                <div className={`${cn.rewardGiftSection}`}>
-                  <div className={`${cn.rewardGift}`}>
-                    <div className={`${cn.rewardGiftImage}`}>
-                      <img src="/img/rewardSectionImage_1.png" alt="" />
-                    </div>
-                    <h4 className={`${cn.rewardSectionSubTittle}`}>
-                      ジョブネット主催・LinQワンマンライブ優先入場券※
-                      ＋サイン入りチェキ
-                    </h4>
-                    <h6>
-                      ※ 特別公演は除きます。
-                      <br className={`brSp`} />
-                      チケットは別途必要になります。
-                    </h6>
+                <div className={`${cn.rewardGift}`}>
+                  <div className={`${cn.rewardGiftImage}`}>
+                    <img src="/img/LinQ_artistPhoto.png" alt="" />
                   </div>
-
-                  <div className={`${cn.or}`}>
-                    <img src="/img/or.png" alt="" />
-                  </div>
-
-                  <div className={`${cn.rewardGift}`}>
-                    <div className={`${cn.rewardGiftImage}`}>
-                      <img src="/img/rewardSectionImage_2.png" alt="" />
-                    </div>
-                    <h4>
-                      LinQメンバー全員のメッセージ動画＋
-                      <br className="beSp" />
-                      名前・サイン入りチェキ
-                    </h4>
-                  </div>
+                  <h3 className={`${cn.rewardSectionSubTittle}`}>
+                    LinQメンバー全員からのメッセージ動画
+                    <br />
+                    ＋名前・サイン入りチェキ
+                    <br />
+                    OR
+                    <br />
+                    ジョブネット主催・LinQワンマンライブ優先入場券※
+                    <br className={`br`} />
+                    ＋サイン入りチェキ
+                  </h3>
+                  <h6>
+                    ※ 特別公演は除きます。
+                    <br className={`brSp`} />
+                    チケットは別途必要になります。
+                  </h6>
                 </div>
               </div>
             </ScrollEffect>
@@ -1112,16 +1102,16 @@ export default function Top() {
             </div>
 
             <ScrollEffect className={cn.intDelay} after={cn.intActive}>
-              <div className={`${cn.rewardSquare}`}>
+              <div className={`${cn.rewardSquare} ${cn.secondRewardSquare}`}>
                 <h2 className={`${cn.secondText}`}>
                   参加チームの
                   <br className="brSp" />
                   全LinQメンバーの
                 </h2>
                 <h3>
-                  メッセージ付きデジショ＋
+                  メッセージ付きデジショ
                   <br />
-                  名前・サイン入りチェキ
+                  ＋名前・サイン入りチェキ
                 </h3>
 
                 <div className={`${cn.secondRewardDecoration}`}>
@@ -1342,7 +1332,7 @@ export default function Top() {
               <h3>③ ギルドへ申請</h3>
 
               <h5 className={`${cn.memberSubName} mar-b2`}>
-                ダウンロード後「イベント参加者」に記載されているギルドタグでギルドを検索し、申請！※
+                ダウンロード後「イベント参加者」に記載されているギルドタグでギルドを検索して申請！※
               </h5>
             </div>
           </div>
@@ -1385,9 +1375,7 @@ export default function Top() {
               <h3>⑥ 順位決定</h3>
 
               <h5 className={`${cn.memberSubName} mar-b2`}>
-                イベント最終週に行われるギルド共闘戦での獲
-                得共闘ポイントと各ギルド内の総パワーポイン
-                ト、ギルド内の城レベル別の加算ポイントの合計で順位が決定！
+                イベント最終週に行われるギルド共闘戦での獲得共闘ポイントと各ギルド内の総パワーポイント、ギルド内の城レベル別の加算ポイントの合計で順位が決定！
               </h5>
             </div>
           </div>
@@ -1400,7 +1388,7 @@ export default function Top() {
               <br />
               ※ギルドを作ってから３日間経過しても人数が１１人に足りない場合は強制解散されるリマインドメールが来ます。また、ギルドを作ってから５日間経過しても１１人に足りない場合はギルド強制解散されます。
               <br />
-              ※１ギルドにつき１００名まで参加可能。
+              ※１ギルドにつき１００名まで参加可能です。
               <br />
               ※Apple製品をお使いの方はトラッキングを必ず許可してください。
               <br />
@@ -1550,7 +1538,7 @@ export default function Top() {
                   </div>
                 </a>
 
-                <h4 className={`mar-t4`}>
+                <h4 className={cn.helpSectionContent}>
                   ギルド共闘について、下記に詳しい情報が載っています。
                   <br />
                   是非ご覧ください！
