@@ -1,0 +1,36 @@
+.newsArticle {
+  h3 {
+    font-weight: 700;
+  }
+
+  .seriesTittle {
+    margin: 5em auto 0 auto;
+    @media screen and (max-width: 767px) {
+      width: 89%;
+    }
+  }
+
+  .shareIconColumn {
+    width: 16%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0;
+    margin-left: auto;
+    img {
+      width: 1.2em;
+      padding-left: 0.1em;
+    }
+    @media screen and (max-width: 767px) {
+      img {
+        width: 1.8em;
+        padding-left: 0.7em;
+      }
+    }
+  }
+
+  .otherNews {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 7em;
+  }
+}

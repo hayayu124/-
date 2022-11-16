@@ -1,0 +1,126 @@
+.foncolW {
+  color: white !important;
+}
+
+.backColor1 {
+  background-color: #000;
+}
+
+//KV
+.kv {
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-image: url("/img/aboutKV.jpg");
+  background-size: cover;
+  background-position: center;
+
+  .kvTitleColumn {
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @media screen and (max-width: 767px) {
+      width: 72%;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 88vh;
+  }
+}
+
+//特徴
+.feature {
+  .featureFeatureColumn {
+    margin-left: auto;
+    margin-right: auto;
+    .featureFeaturePic {
+      width: 30%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+//人物
+.persons {
+  @media screen and (max-width: 767px) {
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .personsPic {
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  .personsProfile {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: left;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-left: 0;
+      display: block;
+    }
+    h2 {
+      margin: 0.5em 0;
+    }
+
+    .personsProfileDetail:nth-child(1) {
+      margin-right: 7em;
+      @media screen and (max-width: 767px) {
+        margin-right: 0;
+        margin-bottom: 5em;
+      }
+    }
+    .miwakoProfileDetail {
+      line-height: 2em;
+    }
+    .imaiProfileDetail {
+      line-height: 2.5em;
+    }
+  }
+}
+
+//アクセス
+.access {
+  background-color: var(--main);
+  padding: 2em 0 5em 0;
+  .accessColumn {
+    margin-top: 4em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .accessDetail {
+      h3 {
+        font-weight: 700;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+
+  .accessDetail h3:nth-child(3) {
+    margin-top: 2em;
+  }
+
+  .accessMap {
+    width: 54%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+  }
+}

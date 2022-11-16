@@ -1,7 +1,3 @@
-.foncolW {
-  color: white !important;
-}
-
 .backColor1 {
   background-color: #000;
 }
@@ -12,7 +8,6 @@
 .header {
   position: fixed;
   width: 100vw;
-  height: 5vw;
   top: 0;
   left: 0;
   z-index: 10000;
@@ -22,10 +17,17 @@
     padding: 1em 0;
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      width: 89%;
+      padding: 0.8em 0;
+    }
 
     .headerLogo {
       width: 10%;
       height: auto;
+      @media screen and (max-width: 767px) {
+        width: 32%;
+      }
     }
 
     .headerMenuColumn {
@@ -33,10 +35,75 @@
       justify-content: space-between;
       align-items: center;
       .headerMenu {
-        h5 {
-          margin-left: 2em;
-          color: #fff;
+        color: #fff;
+        margin-left: 2em;
+      }
+      //コレクションのサブメニュー
+      .headerCollectionMenu {
+        position: relative;
+        .headerCollectionSubMenu {
+          width: 11em;
+          background-color: var(--main);
+          padding: 0.1em 0;
+          position: absolute;
+          top: 0%;
+          left: 0%;
+          transform: translateY(20%);
+          h5 {
+            margin: 1em 1em;
+          }
         }
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    //ハンバーガーメニュー
+    .humburgerMenu {
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+
+      .humburgerbutton {
+        width: 100%;
+      }
+    }
+  }
+  .humburgerContents {
+    color: #fff;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    background-color: var(--main);
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    .humburgerMenuColumn {
+      width: 67%;
+      margin-left: auto;
+      margin-right: auto;
+      h4:nth-child(2n-1):nth-child(n + 2),
+      h4:nth-child(n + 10) {
+        margin-top: 2em;
+      }
+
+      h5:nth-child(n + 7):nth-child(-n + 9) {
+        margin-top: 0.8em;
+        margin-left: 2em;
+      }
+
+      h5:nth-child(14) {
+        margin-top: 5em;
+      }
+
+      //ボーダー
+      .humburgerBorder {
+        background-color: var(--gl);
+        width: 100%;
+        height: 0.01em;
       }
     }
   }
@@ -50,6 +117,7 @@
   background-repeat: no-repeat;
   background-image: url("/img/kv.jpg");
   background-size: cover;
+  background-position: center;
   h1,
   h5 {
     color: #fff;
@@ -59,39 +127,122 @@
     position: absolute;
     top: 60%;
     left: 5%;
+    @media screen and (max-width: 767px) {
+      top: 56%;
+      .kvTitle {
+        margin-top: 0.5em;
+      }
+    }
+  }
+}
+
+//装飾
+.decoration {
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  &.aboutDecoration1 {
+    width: 10%;
+    transform: translateY(-40%);
+    @media screen and (max-width: 767px) {
+      width: 24%;
+      left: 0%;
+      transform: translate(-20%, -50%);
+    }
+  }
+  &.newsDecoration1 {
+    width: 10%;
+    transform: translateY(-10%);
+    @media screen and (max-width: 767px) {
+      width: 24%;
+      left: 0%;
+      transform: translate(-20%, -50%);
+    }
+  }
+  &.collectionDecoration1 {
+    width: 50%;
+    transform: translateY(-150%);
+    @media screen and (max-width: 767px) {
+      width: 88%;
+      left: 0%;
+    }
+  }
+  &.varityDecoration1 {
+    width: 88%;
+    left: 0%;
+    transform: translateY(-100%);
+  }
+}
+
+.decoration2 {
+  width: 20%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  &.aboutDecoration2 {
+    width: 20%;
+    transform: translateY(-10%);
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+
+.decoration3 {
+  position: absolute;
+  bottom: 0%;
+  left: 5%;
+  &.aboutDecoration3 {
+    width: 30%;
+    transform: translateY(250%);
+    @media screen and (max-width: 767px) {
+      width: 72%;
+      left: 0%;
+      transform: translateY(130%);
+    }
+  }
+}
+
+.aboutDecoration4 {
+  aspect-ratio: 1/1;
+  img {
+    object-fit: cover;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 }
 
 // about
 .about {
   position: relative;
-  margin-top: 12em;
+
   .aboutColumn {
     position: relative;
     text-align: center;
   }
-
-  .aboutDecoration {
-    width: 10%;
-    position: absolute;
-    top: 0%;
-    left: 5%;
-    transform: translateY(-40%);
+  h5 {
+    line-height: 2em;
   }
 
-  .aboutDecoration2 {
-    width: 20%;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    transform: translateY(-10%);
+  .aboutText {
+    @media screen and (max-width: 767px) {
+      width: 67%;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
+}
 
-  .aboutDecoration3 {
-    width: 30%;
-    position: absolute;
-    bottom: 0%;
-    left: 5%;
-    transform: translateY(250%);
+//news
+.news,
+.collection {
+  position: relative;
+}
+
+.collection {
+  margin-bottom: 8em;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 5em;
   }
 }
