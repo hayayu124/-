@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/varietyList.module.scss";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
@@ -225,6 +225,23 @@ export default function Top() {
     brandNewDisplayColumn.push(brandNewColumn[i]);
   }
 
+  //クリック時にプルダウンを開く
+  const [click, setClick] = useState(false);
+  const dropdownListRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickToCloseDropdown = () => {
+      const element = dropdownListRef.current;
+      // if (!click || element.contains(event.target)) return;
+      setClick(false);
+    };
+
+    window.addEventListener("click", handleClickToCloseDropdown);
+    return () => {
+      window.removeEventListener("click", handleClickToCloseDropdown);
+    };
+  }, [click, dropdownListRef]);
+
   return (
     <>
       {/* 品種一覧 */}
@@ -237,13 +254,64 @@ export default function Top() {
           </div>
         </div>
 
-        <div className={`varietyFilterColumn sectionSpaceM grid1 filter`}>
+        <div className={`varietyFilterColumn sectionSpaceM grid2 filter`}>
           {/* フィルターPC */}
           <div className={`varietyListFilter`}>
             <div className={`flowerSpecFilter`}>
-              <div className={`flowerSpecDetail`}>
+              <div
+                onClick={() => {
+                  setClick((prevState) => !prevState);
+                }}
+                className={`flowerSpecDetail`}
+              >
                 <h5>色</h5>
                 <img className={`pulldown`} src="/img/pulldown.png" alt="" />
+
+                {/* プルダウンメニュー */}
+                <div
+                  ref={dropdownListRef}
+                  className={`colorPullDownMenu ${click ? "active" : ""}`}
+                >
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="pink" value="sort" />
+                    <h5>Pink</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="lightPink" value="sort" />
+                    <h5>Light Pink</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="Purple" value="sort" />
+                    <h5>Purple</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="Beige" value="sort" />
+                    <h5>Beige</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="orange" value="sort" />
+                    <h5>Orange</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="Yellow" value="sort" />
+                    <h5>Yellow</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="White" value="sort" />
+                    <h5>White</h5>
+                  </div>
+
+                  <div className={`FilterSubMenuContents`}>
+                    <input type="checkbox" name="MultiColor" value="sort" />
+                    <h5>Multi Color</h5>
+                  </div>
+                </div>
               </div>
 
               <div className={`flowerSpecDetail`}>
@@ -327,7 +395,7 @@ export default function Top() {
         <div className={`border mar-t1`}></div>
 
         {/* 品種一覧 */}
-        <div className={`varietyListColumn varietyListColumn mar-t1 grid1`}>
+        <div className={`varietyListColumn varietyListColumn mar-t1 grid2`}>
           <div className={`result mar-t1`}>
             <h4>絞り込み結果 : 14品種がヒットしました</h4>
           </div>
