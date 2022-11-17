@@ -3,6 +3,9 @@ import cn from "../components/toppage.module.scss";
 import Link from "next/link";
 
 export default function Header() {
+  //ハンバーガーボタン
+  const [button, setButton] = useState(false);
+  
   return (
     <>
       {/* header */}
@@ -44,7 +47,9 @@ export default function Header() {
               </div>
             </div>
             <div className={`${cn.headerMenu}`}>
-              <h5>お気に入り</h5>
+              <Link href="/favorite">
+                <h5>お気に入り</h5>
+              </Link>
             </div>
             <div className={`${cn.headerMenu}`}>
               <Link href="/contact">
@@ -58,13 +63,20 @@ export default function Header() {
 
           {/* SPメニュー */}
           <div className={`${cn.humburgerMenu}`}>
-            <div className={`${cn.humburgerbutton}`}>
-              <img src="/img/hamburger.png" alt="" />
+            <div
+              onClick={() => {
+                setButton((prevState) => !prevState);
+              }}
+              className={`${cn.humburgerbutton} ${button ? cn.active : ""}`}
+            >
+              <div className={`${cn.humburgerBorder}`}></div>
+              <div className={`${cn.humburgerBorder}`}></div>
+              <div className={`${cn.humburgerBorder}`}></div>
             </div>
           </div>
         </div>
         {/* ハンバーガーメニュー */}
-        <div className={`${cn.humburgerContents}`}>
+        <div className={`${cn.humburgerContents} ${button ? cn.active : ""}`}>
           <div className={`${cn.humburgerMenuColumn} sectionSpaceS`}>
             <Link href="/about">
               <h4>About</h4>

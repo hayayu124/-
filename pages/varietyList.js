@@ -230,9 +230,9 @@ export default function Top() {
   const dropdownListRef = useRef(null);
 
   useEffect(() => {
-    const handleClickToCloseDropdown = () => {
+    const handleClickToCloseDropdown = (event) => {
       const element = dropdownListRef.current;
-      // if (!click || element.contains(event.target)) return;
+      if (!click || element.contains(event.target)) return;
       setClick(false);
     };
 
@@ -258,20 +258,18 @@ export default function Top() {
           {/* フィルターPC */}
           <div className={`varietyListFilter`}>
             <div className={`flowerSpecFilter`}>
-              <div
-                onClick={() => {
-                  setClick((prevState) => !prevState);
-                }}
-                className={`flowerSpecDetail`}
-              >
-                <h5>色</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
+              <div ref={dropdownListRef} className={`flowerSpecDetail`}>
+                <div
+                  onClick={() => {
+                    setClick((prevState) => !prevState);
+                  }}
+                >
+                  <h5>色</h5>
+                  <img className={`pulldown`} src="/img/pulldown.png" alt="" />
+                </div>
 
                 {/* プルダウンメニュー */}
-                <div
-                  ref={dropdownListRef}
-                  className={`colorPullDownMenu ${click ? "active" : ""}`}
-                >
+                <div className={`colorPullDownMenu ${click ? "active" : ""}`}>
                   <div className={`FilterSubMenuContents`}>
                     <input type="checkbox" name="pink" value="sort" />
                     <h5>Pink</h5>

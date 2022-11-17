@@ -79,43 +79,66 @@
 
       .humburgerbutton {
         width: 100%;
+        .humburgerBorder {
+          background-color: var(--gl);
+          width: 1.9em;
+          height: 0.02em;
+        }
+        .humburgerBorder:nth-child(-n + 2) {
+          margin-bottom: 0.5em;
+        }
+        &.active {
+          margin-top: 0.5em;
+          .humburgerBorder:nth-child(1) {
+            transform: translateY(0.25em) rotate(-45deg);
+          }
+          .humburgerBorder:nth-child(2) {
+            display: none;
+          }
+          .humburgerBorder:nth-child(3) {
+            transform: translateY(-0.25em) rotate(45deg);
+          }
+        }
       }
     }
   }
   .humburgerContents {
     color: #fff;
-    display: none;
+    overflow: hidden;
+    height: 0;
 
     @media screen and (min-width: 768px) {
       display: none;
     }
-    background-color: var(--main);
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    .humburgerMenuColumn {
-      width: 67%;
-      margin-left: auto;
-      margin-right: auto;
-      h4:nth-child(2n-1):nth-child(n + 2),
-      h4:nth-child(n + 10) {
-        margin-top: 2em;
-      }
+    &.active {
+      background-color: var(--main);
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      .humburgerMenuColumn {
+        width: 67%;
+        margin-left: auto;
+        margin-right: auto;
+        h4:nth-child(2n-1):nth-child(n + 2),
+        h4:nth-child(n + 10) {
+          margin-top: 2em;
+        }
 
-      h5:nth-child(n + 7):nth-child(-n + 9) {
-        margin-top: 0.8em;
-        margin-left: 2em;
-      }
+        h5:nth-child(n + 7):nth-child(-n + 9) {
+          margin-top: 0.8em;
+          margin-left: 2em;
+        }
 
-      h5:nth-child(14) {
-        margin-top: 5em;
-      }
+        h5:nth-child(14) {
+          margin-top: 5em;
+        }
 
-      //ボーダー
-      .humburgerBorder {
-        background-color: var(--gl);
-        width: 100%;
-        height: 0.01em;
+        //ボーダー
+        .humburgerBorder {
+          background-color: var(--gl);
+          width: 100%;
+          height: 0.01em;
+        }
       }
     }
   }
