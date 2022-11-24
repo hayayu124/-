@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cn from "../components/flowerDetail.module.scss";
+import Filter from "../components/filter.js";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
@@ -255,91 +256,8 @@ export default function Top() {
           </div>
         </div>
 
-        <div className={`varietyFilterColumn sectionSpaceM grid1 filter`}>
-          {/* フィルターPC */}
-          <div className={`varietyListFilter`}>
-            <div className={`flowerSpecFilter`}>
-              <div className={`flowerSpecDetail`}>
-                <h5>色</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>大きさ</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>形</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>Scent</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>Length</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>Harvest</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>Harvest</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-
-              <div className={`flowerSpecDetail`}>
-                <h5>バラのタイプ</h5>
-                <img className={`pulldown`} src="/img/pulldown.png" alt="" />
-              </div>
-            </div>
-
-            <div className={`varietyNameFilter`}>
-              <div className={`inputWithIcon`}>
-                <input type="text" placeholder="花の名前" />
-                <img src="/img/magnifying-glass.png" alt="" />
-              </div>
-            </div>
-          </div>
-
-          {/* フィルターSP */}
-          <div className={`varietyListFilterSp`}>
-            <div className={`FilterButtonSp`}>
-              <h4>品種を絞り込む</h4>
-              <div className={`Filtercon`}>
-                <img src="/img/filterIcon.png" alt="" />
-              </div>
-            </div>
-          </div>
-
-          <div className={`tagOrReset mar-t1`}>
-            <div className={`tag`}>
-              <div className={`specTag`}>
-                <h5>名前:SP</h5>
-                <div className={`ban`}>
-                  <img src="/img/ban.png" alt="" />
-                </div>
-              </div>
-
-              <div className={`specTag`}>
-                <h5>Yellow</h5>
-                <div className={`ban`}>
-                  <img src="/img/ban.png" alt="" />
-                </div>
-              </div>
-            </div>
-
-            <div className={`filterReset`}>
-              <h5>フィルターをクリア</h5>
-            </div>
-          </div>
-        </div>
+        {/* フィルター */}
+        <Filter />
 
         {/* ボーダー */}
         <div className={`border mar-t1`}></div>
