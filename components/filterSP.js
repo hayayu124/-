@@ -26,13 +26,13 @@ export default function FilterSP({ category, posts }) {
         {/* フィルターSP */}
         <div className={`${fl.varietyListFilterSp}`}>
           <div className={`${fl.FilterButtonSp}`}>
-            <h4
+            <div
               onClick={() => {
                 setSpFilter((prevState) => !prevState);
               }}
             >
               品種を絞り込む
-            </h4>
+            </div>
             <div
               onClick={() => {
                 setSpFilter((prevState) => !prevState);
