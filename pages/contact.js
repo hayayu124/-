@@ -1,10 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import cn from "../components/contact.module.scss";
+import emailjs from "@emailjs/browser";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function Top() {
+  // フォームの入力内容
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [content, setContent] = useState("");
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        form.current
+      )
+      .then(
+        (result) => {
+          setOpen(true);
+          setName("");
+          setReply("");
+          setMail("");
+          setTelnumber("");
+          setMessage("");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+  const disableSend =
+    (name !== "" && mail !== "" && message !== "") ||
+    (name !== "" && telnumber !== "" && message !== "");
+
   return (
     <>
       {/* 品種一覧 */}
@@ -91,7 +124,7 @@ export default function Top() {
               name="name"
               required
               minlength="4"
-              maxlength="8"
+              maxlength="100"
               size="10"
             />
 
@@ -122,7 +155,12 @@ export default function Top() {
           </div>
 
           {/* 送信 */}
-          <div className={`moreViewButton sectionSpaceS sendButton`}>
+          <div
+            className={`${cn.button} ${
+              disableSend ? cn.active : ""
+            } button moreViewButton sectionSpaceS sendButton`}
+            onClick={sendEmail}
+          >
             <h5 className={`foncolW moreViewButton sendButtonText`}>送信</h5>
           </div>
         </div>
