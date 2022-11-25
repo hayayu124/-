@@ -218,35 +218,45 @@ h6 {
       margin-right: auto;
       display: flex;
       justify-content: center;
-      .flowerName {
-        margin-bottom: 2em;
-      }
-      .flowerSpec {
-        padding-right: 4em;
-      }
-      .flowerSpecDetail {
-        display: flex;
-        justify-content: left;
-        align-items: flex-start;
-        margin-bottom: 0.3em;
+      .flowerDetail {
+        position: relative;
+        .flowerName {
+          margin-bottom: 2em;
+        }
+        .flowerSpec {
+          padding-right: 4em;
+        }
+        .flowerSpecDetail {
+          display: flex;
+          justify-content: left;
+          align-items: flex-start;
+          margin-bottom: 0.3em;
 
-        .flowerColorBox {
-          width: 0.8em;
-          height: 0.8em;
-          background-color: rgb(236, 217, 0);
-          margin-right: 0.5em;
+          .flowerColorBox {
+            width: 0.8em;
+            height: 0.8em;
+            background-color: rgb(236, 217, 0);
+            margin-right: 0.5em;
+          }
+
+          .flowerheart {
+            width: 1em;
+            margin-left: 0;
+            margin-right: 0.5em;
+            object-fit: contain;
+          }
         }
 
-        .flowerheart {
-          width: 1em;
-          margin-left: 0;
-          margin-right: 0.5em;
-          object-fit: contain;
+        .flowerSpec .flowerSpecDetail:nth-child(7) {
+          margin: 6em 0 2em 0;
         }
-      }
-
-      .flowerSpec .flowerSpecDetail:nth-child(7) {
-        margin: 6em 0 2em 0;
+        .flowerAwardIcon {
+          width: 6em;
+          height: auto;
+          position: absolute;
+          top: 0%;
+          right: 0%;
+        }
       }
     }
     .flowerPicColumn {

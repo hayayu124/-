@@ -20,6 +20,7 @@ export default function Top() {
       harvest: "約350 本",
       explanation:
         "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
+      award: "/img/prize_2021_2022_color_E1.png",
       date: "2020-06-11T09:29:41.084Z",
     },
     {
@@ -34,6 +35,7 @@ export default function Top() {
       harvest: "約350 本",
       explanation:
         "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
+      award: "/img/prize_2021_2022_color_E1.png",
       date: "2020-06-11T09:29:41.084Z",
     },
     {
@@ -48,6 +50,7 @@ export default function Top() {
       harvest: "約350 本",
       explanation:
         "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
+      award: "/img/prize_2021_2022_color_E1.png",
       date: "2020-06-11T09:29:41.084Z",
     },
     {
@@ -62,6 +65,7 @@ export default function Top() {
       harvest: "約350 本",
       explanation:
         "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
+      award: "/img/prize_2021_2022_color_E1.png",
       date: "2020-06-11T09:29:41.084Z",
     },
     {
@@ -76,6 +80,7 @@ export default function Top() {
       harvest: "約350 本",
       explanation:
         "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
+      award: "/img/prize_2021_2022_color_E1.png",
       date: "2020-06-11T09:29:41.084Z",
     },
   ];
@@ -121,59 +126,64 @@ export default function Top() {
                 <div className={`flowerBreedPc`}>
                   <div className={`flowerDetailColumn`}>
                     <div className={`flowerDetail tex-l`}>
-                      <div className={`flowerSpecDetail`}>
-                        <div className={`flowerColorBox`}></div>
-                        <h5 className={`flowerColorText`}>Yellow</h5>
-                      </div>
-                      <div className={`flowerName`}>
-                        <h3>{el.name}</h3>
-                      </div>
-
-                      <div className={`flowerSpec`}>
+                      <div className={`flowerSpecColumn`}>
                         <div className={`flowerSpecDetail`}>
-                          <h5>
-                            Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          </h5>
-                          <h5>{el.color}</h5>
+                          <div className={`flowerColorBox`}></div>
+                          <h5 className={`flowerColorText`}>Yellow</h5>
+                        </div>
+                        <div className={`flowerName`}>
+                          <h3>{el.name}</h3>
                         </div>
 
-                        <div className={`flowerSpecDetail`}>
-                          <h5>
-                            Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                          </h5>
-                          <h5>{el.size}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                          <h5>{el.shape}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                          <h5>{el.scent}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                          <h5>{el.length}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                          <h5>{el.harvest}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <h5>{el.explanation}</h5>
-                        </div>
-
-                        <div className={`flowerSpecDetail`}>
-                          <div className={`flowerheart`}>
-                            <img src="/img/heart.jpg" alt="" />
+                        <div className={`flowerSpec`}>
+                          <div className={`flowerSpecDetail`}>
+                            <h5>
+                              Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </h5>
+                            <h5>{el.color}</h5>
                           </div>
-                          <h6>お気に入りに追加</h6>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>
+                              Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                            </h5>
+                            <h5>{el.size}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                            <h5>{el.shape}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
+                            <h5>{el.scent}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
+                            <h5>{el.length}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                            <h5>{el.harvest}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>{el.explanation}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <div className={`flowerheart`}>
+                              <img src="/img/heart.jpg" alt="" />
+                            </div>
+                            <h6>お気に入りに追加</h6>
+                          </div>
                         </div>
+                      </div>
+                      <div className={`flowerAwardIcon`}>
+                        <img src={el.award} alt="" />
                       </div>
                     </div>
 

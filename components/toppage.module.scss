@@ -42,28 +42,38 @@
       .headerCollectionMenu {
         position: relative;
         .headerCollectionSubMenu {
-          height: 0;
           overflow: hidden;
+          padding: 0.5em 1em 0.5em 1em;
           z-index: 99999;
           width: 11em;
           background-color: var(--main);
           position: absolute;
-          top: 0%;
+          top: -1000%;
           left: 0%;
           transform: translateY(15%);
-          h5 {
+
+          .headerCollectionSubMenuDetail {
             display: inline-block;
-            margin: 0.7em 1em;
+            position: relative;
           }
-          h5:hover {
-            border-bottom: 0.1em solid var(--gl);
+
+          .headerCollectionSubMenuDetail:hover {
+            .border {
+              width: 100%;
+              height: 0.1px;
+              background-color: var(--gl);
+              position: absolute;
+              left: 0em;
+              bottom: 0em;
+              z-index: 999999;
+            }
           }
         }
       }
       .headerCollectionMenu:hover {
         .headerCollectionSubMenu {
           height: auto;
-          overflow: visible;
+          top: 0%;
         }
       }
       @media screen and (max-width: 767px) {

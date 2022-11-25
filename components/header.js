@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Header() {
   //ハンバーガーボタン
   const [button, setButton] = useState(false);
-  
+
   return (
     <>
       {/* header */}
@@ -33,17 +33,26 @@ export default function Header() {
             <div className={`${cn.headerMenu} ${cn.headerCollectionMenu}`}>
               <h5>コレクション</h5>
               <div className={`${cn.headerCollectionSubMenu}`}>
-                <Link href="/collection">
-                  <h5>Brand-New</h5>
-                </Link>
+                <div className={`${cn.headerCollectionSubMenuDetail}`}>
+                  <Link href="/collection">
+                    <h5>Brand-New</h5>
+                  </Link>
+                  <div className={`${cn.border}`}></div>
+                </div>
 
-                <Link href="/collection">
-                  <h5>MIWAKO TIQUE Serious</h5>
-                </Link>
+                <div className={`${cn.headerCollectionSubMenuDetail}`}>
+                  <Link href="/collection">
+                    <h5>MIWAKO TIQUE Serious</h5>
+                  </Link>
+                  <div className={`${cn.border}`}></div>
+                </div>
 
-                <Link href="/varietyList">
-                  <h5>品種一覧</h5>
-                </Link>
+                <div className={`${cn.headerCollectionSubMenuDetail}`}>
+                  <Link href="/varietyList">
+                    <h5>品種一覧</h5>
+                  </Link>
+                  <div className={`${cn.border}`}></div>
+                </div>
               </div>
             </div>
             <div className={`${cn.headerMenu}`}>
