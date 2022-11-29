@@ -5,6 +5,10 @@
     }
   }
 
+  .formColumn {
+    margin-bottom: 5em;
+  }
+
   .contactContents {
     @media screen and (max-width: 767px) {
       width: 89%;
@@ -15,18 +19,10 @@
       font-weight: 700;
     }
 
-    input[type="text"] {
-      width: 100%;
-      height: 2em;
-      border: 2px solid var(--main);
-      padding: 0.7em;
-      box-sizing: border-box;
-    }
-
     textarea {
       width: 100%;
-      height: 16em;
-      border: 2px solid var(--main);
+      height: 12em;
+
       padding: 0.7em;
       box-sizing: border-box;
     }
@@ -45,5 +41,19 @@
         margin-right: 1em;
       }
     }
+    .button {
+      opacity: 50%;
+
+      &.active {
+        opacity: 100%;
+        transition-duration: 0.5s;
+      }
+    }
+    // .thanksMessage {
+    //   display: none;
+    //   &.active {
+    //     display: block;
+    //   }
+    // }
   }
 }

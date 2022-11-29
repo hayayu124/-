@@ -1,42 +1,52 @@
 import React, { useState, useRef, useEffect } from "react";
 import cn from "../components/contact.module.scss";
 import emailjs from "@emailjs/browser";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
-import ScrollEffect from "../components/utility/utilityscrollEffect";
-import LoadingEffect from "../components/utility/loadingEffect";
-
-export default function Top() {
+export default function Contact() {
   // フォームの入力内容
   const [name, setName] = useState("");
+  const [nameRuby, setNameRuby] = useState("");
   const [email, setEmail] = useState("");
-  const [content, setContent] = useState("");
+  const [telnumber, setTelnumber] = useState(""); // 「件名」の部分
+  const [message, setMessage] = useState(""); // 「お問い合わせ内容」の部分
+  const [cheakBox, setCheakBox] = useState("");
+  // const [sendMessage, setSendMessage] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
+
     emailjs
       .sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        form.current
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
       .then(
         (result) => {
-          setOpen(true);
           setName("");
-          setReply("");
-          setMail("");
+          setNameRuby("");
+          setEmail("");
           setTelnumber("");
           setMessage("");
+          setCheakBox("");
+          // setSendMessage(true);
         },
         (error) => {
-          console.log(error.text);
+          console.log(送れませんでした);
         }
       );
   };
+
   const disableSend =
-    (name !== "" && mail !== "" && message !== "") ||
-    (name !== "" && telnumber !== "" && message !== "");
+    name !== "" &&
+    nameRuby !== "" &&
+    email !== "" &&
+    message !== "" &&
+    cheakBox == true;
 
   return (
     <>
@@ -89,81 +99,156 @@ export default function Top() {
           </div>
         </div>
 
-        <div className={`${cn.contactContents} sectionSpaceS grid5`}>
-          <div className={`collectionName`}>
-            <h3>お名前</h3>
-            <h5>（企業の方は会社名も記入してください）</h5>
-            <input
-              className={`mar-t1`}
-              type="text"
-              id="name"
-              name="name"
-              required
-              minlength="4"
-              maxlength="8"
-              size="10"
-            />
+        <form ref={form} className={`${cn.formColumn} t_main`}>
+          {/* 名前 */}
+          <div className={`${cn.contactContents} sectionSpaceS grid5`}>
+            <div className={`collectionName`}>
+              <h3>お名前</h3>
+              <h5>（企業の方は会社名も記入してください）</h5>
 
-            <h3 className={`mar-t2`}>ふりがな</h3>
-            <input
-              className={`mar-t1`}
-              type="text"
-              id="nameRuby"
-              name="name"
-              required
-              minlength="4"
-              maxlength="8"
-              size="10"
-            />
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+                className={`mar-t1`}
+                type="text"
+                id="name"
+                name="user_name"
+                required
+                size="10"
+                onChange={(e) => setName(e.target.value)}
+              >
+                <div>
+                  <TextField required id="outlined-required"></TextField>
+                </div>
+              </Box>
 
-            <h3 className={`mar-t2`}>メールアドレス</h3>
-            <input
-              className={`mar-t1`}
-              type="text"
-              id="address"
-              name="name"
-              required
-              minlength="4"
-              maxlength="100"
-              size="10"
-            />
+              {/* ふりがな */}
+              <h3 className={`mar-t2`}>ふりがな</h3>
 
-            <h3 className={`mar-t2`}>電話番号</h3>
-            <input
-              className={`mar-t1`}
-              type="text"
-              id="tel"
-              name="name"
-              required
-              minlength="4"
-              maxlength="8"
-              size="10"
-            />
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+                className={`mar-t1`}
+                type="text"
+                id="name_ruby"
+                name="nameRuby"
+                required
+                size="10"
+                onChange={(e) => setNameRuby(e.target.value)}
+              >
+                <div>
+                  <TextField required id="outlined-required"></TextField>
+                </div>
+              </Box>
 
-            <h3 className={`mar-t2`}>お問い合わせ内容</h3>
-            <textarea className={`mar-t1`} name="comment"></textarea>
+              {/* email */}
+              <h3 className={`mar-t2`}>メールアドレス</h3>
+
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+                className={`mar-t1`}
+                type="text"
+                id="outlined-required"
+                name="user_email"
+                required
+                size="10"
+                onChange={(e) => setEmail(e.target.value)}
+              >
+                <div>
+                  <TextField required id="outlined-required"></TextField>
+                </div>
+              </Box>
+
+              <h3 className={`mar-t2`}>電話番号</h3>
+
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 0, width: "100%" },
+                }}
+                noValidate
+                autoComplete="off"
+                className={`mar-t1`}
+                type="text"
+                id="tel"
+                name="user_telnumber"
+                required
+                size="10"
+                onChange={(e) => setTelnumber(e.target.value)}
+              >
+                <div>
+                  <TextField required id="outlined-required"></TextField>
+                </div>
+              </Box>
+
+              <h3 className={`mar-t2`}>お問い合わせ内容</h3>
+
+              <TextField
+                className={`mar-t1`}
+                name="message"
+                onChange={(e) => setMessage(e.target.value)}
+                id="outlined-multiline-static"
+                label="Multiline"
+                multiline
+                fullWidth={true}
+                rows={4}
+              />
+            </div>
+
+            <div className={`${cn.privacyPolicy} sectionSpaceS`}>
+              <input
+                type="checkbox"
+                id="privacyPolicy"
+                name="privacyPolicy"
+                value="agree"
+                onClick={() => {
+                  setCheakBox((prevState) => !prevState);
+                }}
+              />
+
+              <h6>
+                「プライバシーポリシー」をお読みいただき、 同意の上「確認画面
+                へ」をクリックしてください。
+                お客様の個人情報は「プライバシーポリシー」に則り 管理させてい
+                ただきます。
+              </h6>
+            </div>
+
+            {/* 送信 */}
+            <div
+              disabled={!disableSend}
+              className={`${cn.button} ${
+                disableSend ? cn.active : ""
+              } button moreViewButton sectionSpaceS sendButton`}
+              onClick={sendEmail}
+            >
+              <h5 className={`foncolW moreViewButton sendButtonText`}>送信</h5>
+            </div>
+
+            {/* <div
+              className={`${cn.thanksMessage} ${sendMessage ? cn.active : ""}`}
+            >
+              <h5 className="mar-t3 mar-b1 tex-c">
+                お問い合わせありがとうございます。
+                <br />
+                返信は３営業日以内にご連絡いたします。
+              </h5>
+            </div> */}
           </div>
-
-          <div className={`${cn.privacyPolicy} sectionSpaceS`}>
-            <input type="checkbox" name="privacyPolicy" value="agree" />
-            <h6>
-              「プライバシーポリシー」をお読みいただき、 同意の上「確認画面
-              へ」をクリックしてください。
-              お客様の個人情報は「プライバシーポリシー」に則り 管理させてい
-              ただきます。
-            </h6>
-          </div>
-
-          {/* 送信 */}
-          <div
-            className={`${cn.button} ${
-              disableSend ? cn.active : ""
-            } button moreViewButton sectionSpaceS sendButton`}
-            onClick={sendEmail}
-          >
-            <h5 className={`foncolW moreViewButton sendButtonText`}>送信</h5>
-          </div>
-        </div>
+        </form>
       </section>
     </>
   );
