@@ -8,6 +8,10 @@ export default function VarietyList({ posts }) {
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const [isDisplay, setIsDisplay] = useState(false);
 
+  useEffect(() => {
+    console.log(posts);
+  }, []);
+
   const brandNewColumn = [
     {
       pic1: "/img/SP スイートオールド_1.jpg",
@@ -335,32 +339,58 @@ export default function VarietyList({ posts }) {
   }
 }
 
-// export const roseInfo = async () => {
-//   const res = await fetch(`http://localhost/rosetique/graphql`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       query: `
-//       roseFormas {
-//         edges {
-//           node {
-//             date
-//             id
-//             uri
-//             title
-//             excerpt
-//             link
-//           }
-//         }
-//       }
-// 			`,
-//     }),
-//   });
+export const roseInfo = async () => {
+  const res = await fetch(`http://localhost/rosetique/graphql`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query NewQuery {
+        roseFormas {
+          edges {
+            node {
+              uri
+              title
+              featuredImage {
+                node {
+                  link
+                }
+              }
+              terms {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+              rose_spec {
+                award
+                fieldGroupName
+                roseColor
+                roseExplanation
+                roseHarvest
+                roseLength
+                roseName
+                rosePetal
+                roseScent
+                roseShape
+                roseSize
+                imageSub {
+                  link
+                }
+              }
+            }
+          }
+        }
+      }
+			`,
+    }),
+  });
 
-//   const json = await res.json();
-//   return {
-//     props: {
-//       posts: json.data.roseFormas,
-//     },
-//   };
-// };
+  const json = await res.json();
+  return {
+    props: {
+      posts: json.data.roseFormas,
+    },
+  };
+};

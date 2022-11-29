@@ -99,7 +99,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <form ref={form} className={`${cn.formColumn} t_main`}>
+        <div ref={form} className={`${cn.formColumn} t_main`}>
           {/* 名前 */}
           <div className={`${cn.contactContents} sectionSpaceS grid5`}>
             <div className={`collectionName`}>
@@ -119,6 +119,7 @@ export default function Contact() {
                 name="user_name"
                 required
                 size="10"
+                value="name"
                 onChange={(e) => setName(e.target.value)}
               >
                 <div>
@@ -248,7 +249,7 @@ export default function Contact() {
               </h5>
             </div> */}
           </div>
-        </form>
+        </div>
       </section>
     </>
   );
