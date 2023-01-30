@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 :root {
-  --main: #000;
-  --gl: #fff;
+  --main: #2b1d26;
+  --gl: #fffdfe;
   --lg: #bababa;
   --slg: #f3f3f3;
   --noto-font: "Noto Serif JP", serif;
@@ -10,7 +10,7 @@
 
 html {
   font-size: 62.5%;
-
+  font-family: var(--noto-font);
   // font-size: calc(62.5% + 25 * (100vw - 320px) / 1600);
   font-size: calc(1rem + ((1vw - 3.2px) * 0.5));
   min-height: 0vw;
@@ -27,33 +27,9 @@ html {
   }
 }
 
-//背景色をランダム
-.backColor1 {
-  background-color: #f03737 !important;
-}
-
-.backColor2 {
-  background-color: #ce3e60 !important;
-}
-
-.backColor3 {
-  background-color: #5eaeb5 !important;
-}
-
-.backColor4 {
-  background-color: #e96123 !important;
-}
-
-.backColor5 {
-  background-color: #3eb47b !important;
-}
-
-.backColor6 {
-  background-color: #286eca !important;
-}
-
-.backColor7 {
-  background-color: #eed452 !important;
+//中央寄せ
+.sec-c {
+  margin: 0 auto;
 }
 
 /* ボタン */
@@ -230,6 +206,81 @@ h6 {
 
   h6 {
     font-size: 0.7em;
+  }
+}
+
+//フォントサイズPc
+.fon1 {
+  @media screen and (min-width: 768px) {
+    font-size: 2.5em;
+  }
+}
+
+.fon2 {
+  @media screen and (min-width: 768px) {
+    font-size: 2.3em;
+  }
+}
+
+.fon3 {
+  @media screen and (min-width: 768px) {
+    font-size: 1.5em;
+  }
+}
+
+.fon4 {
+  @media screen and (min-width: 768px) {
+    font-size: 0.8em;
+  }
+}
+
+.fon5 {
+  @media screen and (min-width: 768px) {
+    font-size: 0.6em;
+  }
+}
+
+.fon6 {
+  @media screen and (min-width: 768px) {
+    font-size: 0.5em;
+  }
+}
+
+//フォントサイズSp
+
+.fonSp1 {
+  @media screen and (max-width: 767px) {
+    font-size: 2em;
+  }
+}
+
+.fonSp2 {
+  @media screen and (max-width: 767px) {
+    font-size: 1.8em;
+  }
+}
+
+.fonSp3 {
+  @media screen and (max-width: 767px) {
+    font-size: 1.2em;
+  }
+}
+
+.fonSp4 {
+  @media screen and (max-width: 767px) {
+    font-size: 0.8em;
+  }
+}
+
+.fonSp5 {
+  @media screen and (max-width: 767px) {
+    font-size: 0.6em;
+  }
+}
+
+.fonSp6 {
+  @media screen and (max-width: 767px) {
+    font-size: 0.5em;
   }
 }
 

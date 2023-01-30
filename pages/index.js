@@ -83,14 +83,14 @@ export default function Top() {
       <div className={cn.kv}>
         <div className={`${cn.kvTitleColumn}`}>
           <div className={`${cn.kvSubTitle} `}>
-            <h5>
+            <h5 className={`fon4 fon4Sp`}>
               The Rose Maker IMAI KIYOSHI
               <br />
               Cut Rose Collection
             </h5>
           </div>
           <div className={`${cn.kvTitle}`}>
-            <h1>Rosetique Japan</h1>
+            <h1 className={`fon1 fonSp1`}>Rosetique Japan</h1>
           </div>
         </div>
       </div>

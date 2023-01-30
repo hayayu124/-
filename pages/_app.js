@@ -20,7 +20,10 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Rosetique カタログサイト</title>
-        <meta name="description" content={siteTitle} />
+        <meta
+          name="description"
+          content="日本を代表する育種家、今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップです。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,11 +47,12 @@ export default function MyApp({ Component, pageProps }) {
         <meta property="og:title" content={siteTitle} />
         <meta
           property="og:description"
-          content="人気スマホゲームアプリ「ロードモバイル」のイベントにLinQが2チームに分かれて参戦！"
+          content="日本を代表する育種家、今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップです。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。"
         />
         <meta property="og:url" content="https://lordsmobile-g1.com/" />
-        <meta property="og:image" content="/img/lordsmobile_site_ogp.png" />
+        <meta property="og:image" content="/img/ogp.jpg" />
         <meta property="og:type" content="website" />
+        <meta name="robots" content="noindex,nofollow" />
 
         <link
           rel="apple-touch-icon"

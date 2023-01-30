@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import cn from "../components/contact.module.scss";
+import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -202,7 +203,6 @@ export default function Contact() {
                 name="message"
                 onChange={(e) => setMessage(e.target.value)}
                 id="outlined-multiline-static"
-                label="Multiline"
                 multiline
                 fullWidth={true}
                 rows={4}
@@ -221,7 +221,8 @@ export default function Contact() {
               />
 
               <h6>
-                「プライバシーポリシー」をお読みいただき、 同意の上「確認画面
+                <Link href="/privacyPolicy">「プライバシーポリシー」</Link>
+                をお読みいただき、 同意の上「確認画面
                 へ」をクリックしてください。
                 お客様の個人情報は「プライバシーポリシー」に則り 管理させてい
                 ただきます。

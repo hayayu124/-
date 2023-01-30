@@ -200,10 +200,7 @@ html {
 }
 
 body {
-  color: #191919;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
-    "Helvetica Neue", HelveticaNeue, YuGothic, "Yu Gothic Medium", "Yu Gothic",
-    Verdana, Meiryo, sans-serif;
+  font-family: var(--noto-font);
   /* paltは基本設定、文字幅を自動で詰めてくれる。tradは旧字体用設定。*/
   -webkit-font-feature-settings: "palt";
   -webkit-font-smoothing: antialiased;
