@@ -3,9 +3,21 @@
 :root {
   --main: #2b1d26;
   --gl: #fffdfe;
-  --lg: #bababa;
-  --slg: #f3f3f3;
+  --pn: #f2055c;
+  --lpn: #f2a7d8;
+  --pr: #9530d9;
+  --be: #d9b68b;
+  --or: #f2a413;
+  --ye: #f2c438;
+  --wh: #d9d9d9;
+  --multi: linear-gradient(-20deg, #db57cd 0%, #01e466 100%);
+
   --noto-font: "Noto Serif JP", serif;
+}
+
+//フォントウェイト
+.bold {
+  font-weight: 700;
 }
 
 html {
@@ -285,11 +297,12 @@ h6 {
 }
 
 body {
+  opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
   width: 100vw;
-  background-color: var(--gl);
+  background-color: var(--main);
 
   &.noscroll {
     height: 100vh;
@@ -302,6 +315,11 @@ body {
   &.noScroll {
     height: 100vh;
     overflow: hidden;
+  }
+  &.active {
+    background-color: var(--gl);
+    opacity: 1;
+    transition: 1.2s;
   }
 }
 h1,
@@ -376,10 +394,35 @@ svg {
   transition: all 0.3s;
 }
 
-.intActive_right {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.3s;
+//スクロールアニメーション
+.intDelay {
+  opacity: 0;
+  transition: all 2s;
+  &.intActive {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+}
+
+.intMoreDelay {
+  opacity: 0;
+  transition: all 0.5s;
+
+  &.intActive {
+    opacity: 1;
+    transition-delay: 0.3s;
+  }
+}
+
+.intMostDelay {
+  opacity: 0;
+  transition-delay: all 0.7s;
+
+  &.intActive {
+    opacity: 1;
+    transition-delay: 0.3s;
+    transition-duration: 1.5s;
+  }
 }
 
 .svg {

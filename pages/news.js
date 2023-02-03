@@ -1,76 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/news.module.scss";
+import Link from "next/link";
+import Button from "../components/button.js";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function Top() {
-  //ニュースを自動処理
-  const newsColumn = [
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース1",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.04.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース2",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.03.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース3",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.02.29",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース1",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.04.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース2",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.03.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース3",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.02.29",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース1",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.04.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース2",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.03.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース3",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.02.29",
-    },
-  ];
+export default function News(newss) {
+  const newsColumn = newss.newss.edges;
+  const [i, setI] = useState(3);
+  const [moreView, setMoreView] = useState(false);
+  const isFirstRender = useRef(false);
+
+  useEffect(() => {
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    isFirstRender.current = true;
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // 初回レンダー判定
+      isFirstRender.current = false; // もう初回レンダーじゃないよ代入
+    } else {
+      setI(i + 3);
+    }
+  }, [moreView]);
+
+  var news = newsColumn.slice(0, i);
+
+  console.log(news);
 
   return (
     <>
@@ -91,19 +49,21 @@ export default function Top() {
         >
           {/* 記事 */}
 
-          {newsColumn.map((el, index) => {
+          {news.map((el, index) => {
             return (
               <div
-                key={`joinColumn${index}`}
+                key={`news${index}`}
                 className={`${cn.newsPageDetail} newsDetail`}
               >
-                <div className={`newsDetailPic`}>
-                  <img src={el.newsPic} alt="" />
-                </div>
+                <Link href={`./news/${el.node.newsId}`}>
+                  <div className={`newsDetailPic`}>
+                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
+                  </div>
+                </Link>
 
                 <div className={`newsDetailText`}>
-                  <h4>{el.newsTitle}</h4>
-                  <h6>{el.newsDescription}</h6>
+                  <h4>{el.node.title}</h4>
+                  <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
 
                   <h6 className={`newsDate`}>{el.newsDate}</h6>
                   <div className={`moreViewText`}>
@@ -114,7 +74,62 @@ export default function Top() {
             );
           })}
         </div>
+
+        <div
+          onClick={() => {
+            setMoreView((prevState) => !prevState);
+          }}
+        >
+          <Button />
+        </div>
       </section>
     </>
   );
 }
+
+//wordpress
+export const getStaticProps = async () => {
+  //wordpressシダのデータ
+
+  //ニュースの情報をインポート
+  const resNews = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query NewQuery {
+        newss {
+          edges {
+            node {
+              date
+              newsId
+              content
+              title
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              news_date_detail {
+                newsImage {
+                  newsImage {
+                    mediaItemUrl
+                  }
+                }
+                newsDate
+              }
+            }
+          }
+        }
+      }
+      `,
+    }),
+  });
+
+  const jsonNews = await resNews.json();
+  return {
+    props: {
+      newss: jsonNews.data.newss,
+    },
+  };
+};

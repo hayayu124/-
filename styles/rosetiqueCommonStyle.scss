@@ -1,10 +1,5 @@
 @charset "utf-8";
 
-:root {
-  --main: #000;
-  --gl: #fff;
-}
-
 .foncolW {
   color: var(--gl) !important;
 }
@@ -69,13 +64,30 @@ h6 {
   }
   .newsDetail {
     width: 30%;
+    cursor: pointer;
+
+    .newsDetailPic {
+      aspect-ratio: 1/1;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
     .newsDetailText {
       padding-top: 1.2em;
       h6 {
         padding-top: 1.7em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        word-break: break-all;
+        cursor: pointer;
       }
 
       .moreViewText {
+        cursor: pointer;
         width: 5em;
         text-align: center;
         margin-top: 0.7em;
@@ -109,6 +121,7 @@ h6 {
   margin-left: auto;
   display: flex;
   justify-content: space-between;
+
   @media screen and (max-width: 767px) {
     width: 89%;
   }
@@ -141,46 +154,8 @@ h6 {
     margin-top: 0.4em;
     text-align: center;
   }
-}
-
-// もっと見るボタン
-.moreViewButton {
-  position: relative;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: black;
-  width: 10em;
-  padding: 0.4em;
-  h5 {
-    text-align: center;
-  }
-  .borderBlack,
-  .borderWhite {
-    position: absolute;
-    background-color: var(--main);
-    width: 1.5em;
-    height: 0.08em;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .borderBlack {
-    background-color: var(--main);
-    left: 0%;
-    transform: translateX(-100%);
-  }
-
-  .borderWhite {
-    background-color: #fff;
-    left: 0%;
-  }
-
-  //送信ボタン
-  .sendButtonText {
-    font-weight: 700;
-  }
-
-  &.sendButton {
-    border-radius: 9999px;
+  &:first-child {
+    animation: slide1 60s -30s linear infinite;
   }
 }
 
@@ -201,141 +176,93 @@ h6 {
     line-height: 2;
   }
 
-  .flowerBreed {
-    @media screen and (max-width: 767px) {
-      margin-top: 4em;
-    }
-  }
-
-  //PC版デザイン
+  //品種詳細ページデザイン
   .flowerBreedPc {
-    @media screen and (max-width: 767px) {
-      display: none;
-    }
-
-    .flowerDetailColumn {
-      margin-left: auto;
-      margin-right: auto;
-      display: flex;
-      justify-content: center;
-      .flowerDetail {
-        position: relative;
-        .flowerName {
-          margin-bottom: 2em;
-        }
-        .flowerSpec {
-          padding-right: 4em;
-        }
-        .flowerSpecDetail {
-          display: flex;
-          justify-content: left;
-          align-items: flex-start;
-          margin-bottom: 0.3em;
-
-          .flowerColorBox {
-            width: 0.8em;
-            height: 0.8em;
-            background-color: rgb(236, 217, 0);
-            margin-right: 0.5em;
-          }
-
-          .flowerheart {
-            width: 1em;
-            margin-left: 0;
-            margin-right: 0.5em;
-            object-fit: contain;
-          }
-        }
-
-        .flowerSpec .flowerSpecDetail:nth-child(7) {
-          margin: 6em 0 2em 0;
-        }
-        .flowerAwardIcon {
-          width: 6em;
-          height: auto;
-          position: absolute;
-          top: 0%;
-          right: 0%;
-        }
+    .flowerTitleColPc {
+      @media screen and (max-width: 767px) {
+        display: none;
       }
     }
-    .flowerPicColumn {
-      width: 64%;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      .flowerPic1 {
-        width: 27%;
-      }
-      .flowerPic2 {
-        width: 70%;
-        img {
-          object-fit: cover;
-        }
+    .flowerTitleColSp {
+      @media screen and (min-width: 768px) {
+        display: none;
       }
     }
-  }
-
-  //SP版デザイン
-  .flowerBreedSp {
     .flowerSpecDetail {
       display: flex;
       justify-content: left;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 0.3em;
+      p {
+        margin-left: 1em;
+      }
+    }
+    .flowerDetailColumn {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+      }
 
-      .flowerColorBox {
-        width: 0.8em;
-        height: 0.8em;
-        background-color: rgb(236, 217, 0);
-        margin-right: 0.5em;
+      .flowerName {
+        margin-bottom: 2em;
+      }
+      .flowerSpec {
+        padding-right: 4em;
+        @media screen and (max-width: 767px) {
+          padding-right: 0em;
+        }
+      }
+
+      .flowerSpec .flowerSpecDetail:nth-child(7) {
+        margin: 6em 0 2em 0;
+        @media screen and (max-width: 767px) {
+          margin: 4em 0;
+        }
+      }
+      .flowerAwardIcon {
+        width: 6em;
+        height: auto;
+        position: absolute;
+        top: 0%;
+        right: 0%;
       }
     }
 
+    .flowerDetail {
+      width: 50%;
+      @media screen and (max-width: 767px) {
+        order: 1;
+        margin: 1em 0;
+      }
+    }
     .flowerPicColumn {
+      order: 1;
+      width: 50%;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       .flowerPic1 {
-        width: 58%;
+        width: 35%;
+        @media screen and (max-width: 767px) {
+          order: 1;
+        }
       }
       .flowerPic2 {
-        height: 100%;
-        width: 36%;
+        width: 60%;
+        @media screen and (max-width: 767px) {
+          order: 0;
+        }
         img {
           object-fit: cover;
         }
       }
-    }
-    .flowerSpec {
-      margin-top: 1.5em;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      .flowerSpecBorder {
-        width: 0.04em;
-        height: 3em;
-        background-color: var(--main);
-        margin-right: 0.4em;
+      @media screen and (max-width: 767px) {
+        order: 0;
+        width: 100%;
+        margin: 2em auto;
       }
-      .flowerSpecDetail1 {
-        margin-right: 1.5em;
-      }
-    }
-
-    .flowerFavorite {
-      display: flex;
-      justify-content: right;
-      align-items: center;
-      .flowerheart {
-        width: 1em;
-        margin-right: 0.5em;
-        object-fit: contain;
-      }
-    }
-
-    @media screen and (min-width: 768px) {
-      display: none;
     }
   }
 }
@@ -369,26 +296,20 @@ h6 {
         width: 100%;
       }
       .flowerBreedPic {
-        position: relative;
+        width: 100%;
+        aspect-ratio: 2/3;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
         .flowerFavorite {
           width: 1.5em;
           position: absolute;
           bottom: 0%;
           right: 0%;
           transform: translate(-27%, -27%);
-        }
-      }
-
-      .flowerColor {
-        margin-top: 0.5em;
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        .flowerColorBox {
-          width: 1em;
-          height: 1em;
-          margin-right: 0.3em;
-          background-color: yellow;
         }
       }
 
@@ -412,6 +333,39 @@ h6 {
         }
       }
     }
+  }
+}
+
+//flowerColorBox
+.flowerColorBox {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  &.pink {
+    background-color: var(--pn);
+  }
+  &.lightPink {
+    background-color: var(--lpn);
+  }
+  &.purple {
+    background-color: var(--pr);
+  }
+  &.beige {
+    background-color: var(--be);
+  }
+  &.orange {
+    background-color: var(--or);
+  }
+  &.yellow {
+    background-color: var(--ye);
+  }
+  &.white {
+    background-color: var(--wh);
+  }
+  &.multi {
+    background: linear-gradient(-20deg, var(--pr), var(--ye));
+
+    // background-color: linear-gradient(-20deg, #db57cd 0%, #01e466 100%);
   }
 }
 
@@ -447,70 +401,32 @@ h6 {
   }
 }
 
-//フッター
-.footer {
-  background-color: var(--main);
-  color: var(--gl) !important;
-
-  h1,
-  h3 {
-    font-weight: 700;
-    margin-bottom: 1.5em;
+//品種ページのハート
+.flowerheart {
+  width: 1.5em; /* 正方形を作る */
+  height: 1.5em; /* 正方形を作る */
+  position: relative; /* 基準位置とする */
+  &.active::before,
+  &.active::after {
+    content: ""; /* 疑似要素に必須 */
+    background-color: var(--pn);
   }
-  .footerColumn {
-    width: 89%;
-    padding: 7em 0 4em 0;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    h3 {
-      margin-top: 0.5em;
-    }
-    @media screen and (max-width: 767px) {
-      padding: 5em 0 4em 0;
-      display: block;
-    }
-  }
-  .footerContentsDetail,
-  .footerContactDetail {
-    h5,
-    h6 {
-      margin-bottom: 0.8em;
-    }
-    h6 {
-      padding-left: 1em;
-    }
-    .contactButton {
-      width: 8em;
-      @media screen and (max-width: 767px) {
-        width: 10em;
-      }
-    }
-    //SNS
-    .snsColumn {
-      width: 48%;
-      display: flex;
-      justify-content: space-between;
-      @media screen and (max-width: 767px) {
-        width: 36%;
-      }
-    }
-  }
-
-  .rosetiqueInfo,
-  .footerContents {
-    padding-right: 2em;
-
-    @media screen and (max-width: 767px) {
-      padding: 0;
-      margin-bottom: 4em;
-    }
-  }
-  .footerCopilight {
-    text-align: center;
-    padding: 1.5em 0;
-    @media screen and (max-width: 767px) {
-      padding: 2em 0;
-    }
-  }
+}
+.flowerheart::before,
+.flowerheart::after {
+  content: ""; /* 疑似要素に必須 */
+  width: 50%; /* ハートの丸い部分の大きさにかかわる */
+  height: 80%; /* ハートの高さにかかわる */
+  border-radius: 25px 25px 0 0; /* ハートの半円を生成 */
+  display: block; /* ブロック要素にする */
+  position: absolute; /* 相対位置に指定 */
+  background-color: #9f9f9f;
+}
+.flowerheart::before {
+  transform: rotate(-45deg); /* 左に回転 */
+  left: 14%; /* 左からの位置を指定 */
+}
+.flowerheart::after {
+  transform: rotate(45deg); /* 右に回転 */
+  right: 14%; /* 右からの位置を指定 */
 }

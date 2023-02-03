@@ -1,0 +1,155 @@
+.backColor1 {
+  background-color: var(--main);
+}
+
+//ローディング画面
+
+//ヘッダー
+.header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+
+  .headerContents {
+    margin: auto;
+    padding: 1em 0;
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      width: 89%;
+      padding: 0.8em 0;
+    }
+
+    .headerLogo {
+      width: 10%;
+      height: auto;
+      @media screen and (max-width: 767px) {
+        width: 32%;
+      }
+    }
+
+    .headerMenuColumn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .headerMenu {
+        color: #fff;
+        margin-left: 2em;
+      }
+      //コレクションのサブメニュー
+      .headerCollectionMenu {
+        position: relative;
+        .headerCollectionSubMenu {
+          overflow: hidden;
+          padding: 0.5em 1em 0.5em 1em;
+          z-index: 99999;
+          width: 11em;
+          background-color: var(--main);
+          position: absolute;
+          top: -1000%;
+          left: 0%;
+          transform: translateY(15%);
+
+          .headerCollectionSubMenuDetail {
+            display: inline-block;
+            position: relative;
+          }
+
+          .headerCollectionSubMenuDetail:hover {
+            .border {
+              width: 100%;
+              height: 0.1px;
+              background-color: var(--gl);
+              position: absolute;
+              left: 0em;
+              bottom: 0em;
+              z-index: 999999;
+            }
+          }
+        }
+      }
+      .headerCollectionMenu:hover {
+        .headerCollectionSubMenu {
+          height: auto;
+          top: 0%;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+
+    //ハンバーガーメニュー
+    .humburgerMenu {
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+
+      .humburgerbutton {
+        width: 100%;
+        .humburgerBorder {
+          background-color: var(--gl);
+          width: 1.9em;
+          height: 0.02em;
+        }
+        .humburgerBorder:nth-child(-n + 2) {
+          margin-bottom: 0.5em;
+        }
+        &.active {
+          margin-top: 0.5em;
+          .humburgerBorder:nth-child(1) {
+            transform: translateY(0.25em) rotate(-45deg);
+          }
+          .humburgerBorder:nth-child(2) {
+            display: none;
+          }
+          .humburgerBorder:nth-child(3) {
+            transform: translateY(-0.25em) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+  .humburgerContents {
+    color: #fff;
+    overflow: hidden;
+    height: 0;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+    &.active {
+      background-color: var(--main);
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      .humburgerMenuColumn {
+        width: 67%;
+        margin-left: auto;
+        margin-right: auto;
+        h4:nth-child(2n-1):nth-child(n + 2),
+        h4:nth-child(n + 10) {
+          margin-top: 2em;
+        }
+
+        h5:nth-child(n + 7):nth-child(-n + 9) {
+          margin-top: 0.8em;
+          margin-left: 2em;
+        }
+
+        h5:nth-child(14) {
+          margin-top: 5em;
+        }
+
+        //ボーダー
+        .humburgerBorder {
+          background-color: var(--gl);
+          width: 100%;
+          height: 0.01em;
+        }
+      }
+    }
+  }
+}

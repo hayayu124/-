@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import cn from "../components/toppage.module.scss";
+import cn from "../components/footer.module.scss";
 import Link from "next/link";
 
 export default function Footer() {
   return (
     <>
-      <footer className={`footer`}>
-        <div className={`footerColumn grid3`}>
-          <div className={`rosetiqueInfo`}>
+      <footer className={`${cn.footer}`}>
+        <div className={`${cn.footerColumn} grid3`}>
+          <div className={`${cn.rosetiqueInfo}`}>
             <h1>Rosetique Japan</h1>
             <h5>
               The Rose Maker IMAI KIYOSHI
@@ -16,10 +16,10 @@ export default function Footer() {
             </h5>
           </div>
 
-          <div className={`footerContents`}>
+          <div className={`${cn.footerContents}`}>
             <h3>Contents</h3>
 
-            <div className={`footerContentsDetail`}>
+            <div className={`${cn.footerContentsDetail}`}>
               <Link href="/">
                 <h5>TOP</h5>
               </Link>
@@ -51,10 +51,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className={`footerContact`}>
+          <div className={`${cn.footerContact}`}>
             <h3>Contact</h3>
 
-            <div className={`footerContactDetail`}>
+            <div className={`${cn.footerContactDetail}`}>
               <h5>
                 品種に関するお問い合わせ、
                 <br />
@@ -63,28 +63,38 @@ export default function Footer() {
 
               {/* お問い合わせボタン */}
               <Link href="/contact">
-                <div className={`contactButton mar-t1`}>
+                <div className={`${cn.contactButton} mar-t1`}>
                   <img src="/img/contactButton.png" alt="" />
                 </div>
               </Link>
 
               {/* SNS */}
-              <div className={`snsColumn mar-t2`}>
-                <div className={`snsIcon`}>
-                  <img src="/img/instagram.png" alt="" />
+              <div className={`${cn.snsColumn} mar-t2`}>
+                <div className={`${cn.snsIcon}`}>
+                  <a
+                    href="https://m.facebook.com/people/Rosetique-by-Miwako/100063798622514/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="/img/facebook.png" alt="" />
+                  </a>
                 </div>
-                <div className={`snsIcon`}>
-                  <img src="/img/facebook.png" alt="" />
-                </div>
-                <div className={`snsIcon`}>
-                  <img src="/img/twitter.png" alt="" />
+
+                <div className={`${cn.snsIcon}`}>
+                  <a
+                    href="https://twitter.com/_rosetique_"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="/img/twitter.png" alt="" />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className={`footerCopilight`}>
+        <div className={`${cn.footerCopilight}`}>
           <h6>© 2022 ROSETIQUE JAPAN Inc.</h6>
         </div>
       </footer>

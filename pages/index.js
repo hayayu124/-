@@ -1,96 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/toppage.module.scss";
+import Button from "../components/button.js";
+import Link from "next/link";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
+import { formatMuiErrorMessage } from "@mui/utils";
 
-export default function Top() {
-  //ニュースを自動処理
-  const newsColumn = [
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース1",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.04.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース2",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.03.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース3",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.02.29",
-    },
-  ];
+export default function Top({ newss, formas }) {
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
 
-  //花のカラムを自動処理
+  //配列の読み込み
+  const newsColumn = newss.slice(0, 3);
+  const roseFormas = formas;
 
-  const brandNewColumn = [
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2018/02/05",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2017/01/05",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2019/01/05",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2018/12/05",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2018/01/04",
-    },
-    {
-      flowerPic: "/img/spベイビーカメレオン.jpg",
-      flowerName: "SP ベイビーカメレオン",
-      flowerDate: "2018/07/05",
-    },
-  ];
+  //brand-newとTiqueシリーズに分ける
+  const brandNew = roseFormas
+    .filter((n) => n.node.rose_spec.genre == "Brand-new")
+    .slice(0, 5);
 
-  var brandNewDisplayColumn = [];
-  for (let i = 0; i < 5; i++) {
-    brandNewDisplayColumn.push(brandNewColumn[i]);
-  }
+  const tique = roseFormas
+    .filter((n) => n.node.rose_spec.genre == "Miwako Tique Series")
+    .slice(0, 6);
+
+  const other = roseFormas
+    .filter(
+      (n) =>
+        n.node.rose_spec.genre !== "Miwako Tique Series" &&
+        n.node.rose_spec.genre !== "Brand-new"
+    )
+    .slice(0, 6);
+
+  const other2 = roseFormas
+    .filter(
+      (n) =>
+        n.node.rose_spec.genre !== "Miwako Tique Series" &&
+        n.node.rose_spec.genre !== "Brand-new"
+    )
+    .slice(6, 12);
 
   return (
     <>
-      {/* KV */}
-
       {/* kv */}
       <div className={cn.kv}>
         <div className={`${cn.kvTitleColumn}`}>
           <div className={`${cn.kvSubTitle} `}>
-            <h5 className={`fon4 fon4Sp`}>
-              The Rose Maker IMAI KIYOSHI
-              <br />
-              Cut Rose Collection
-            </h5>
+            <ScrollEffect className={`${cn.intDelay}`} after={cn.intActive}>
+              <h5 className={`fon4 fon4Sp`}>
+                The Rose Maker IMAI KIYOSHI
+                <br />
+                Cut Rose Collection
+              </h5>
+            </ScrollEffect>
           </div>
           <div className={`${cn.kvTitle}`}>
-            <h1 className={`fon1 fonSp1`}>Rosetique Japan</h1>
+            <ScrollEffect className={`${cn.intDelay}`} after={cn.intMostActive}>
+              <h1 className={`fon1 fonSp1`}>Rosetique Japan</h1>
+            </ScrollEffect>
           </div>
         </div>
       </div>
@@ -105,10 +79,12 @@ export default function Top() {
           <img src="/img/flower_1.jpg" alt="" />
         </div>
 
-        <div className={cn.aboutColumn} tex-c>
-          <div className={cn.aboutTittle}>
-            <h2>Rosetique Japan</h2>
-          </div>
+        <div className={cn.aboutColumn}>
+          <ScrollEffect className={`${cn.intDelay}`} after={cn.intActive}>
+            <div className={cn.aboutTittle}>
+              <h2>Rosetique Japan</h2>
+            </div>
+          </ScrollEffect>
 
           <div className={`${cn.aboutText} mar-t2`}>
             <h5>
@@ -156,31 +132,29 @@ export default function Top() {
           {newsColumn.map((el, index) => {
             return (
               <div key={`joinColumn${index}`} className={`newsDetail`}>
-                <div className={`newsDetailPic`}>
-                  <img src={el.newsPic} alt="" />
-                </div>
+                <Link href={`./news/${el.node.newsId}`}>
+                  <div className={`newsDetailPic`}>
+                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
+                  </div>
+                </Link>
 
                 <div className={`newsDetailText`}>
-                  <h4>{el.newsTitle}</h4>
-                  <h6>{el.newsDescription}</h6>
+                  <h4>{el.node.title}</h4>
+                  <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
 
                   <h6 className={`newsDate`}>{el.newsDate}</h6>
-                  <div className={`moreViewText`}>
-                    <img src="/img/moreViewText.png" alt="" />
-                  </div>
+                  <Link href={`./news/${el.node.newsId}`}>
+                    <div className={`moreViewText`}>
+                      <img src="/img/moreViewText.png" alt="" />
+                    </div>
+                  </Link>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* もっと見るボタン */}
-        <div className={`moreViewButton sectionSpaceS`}>
-          <h5 className={`foncolW moreViewButton`}>もっと見る</h5>
-
-          <div className={`borderBlack`}></div>
-          <div className={`borderWhite`}></div>
-        </div>
+        <Button link="/news" />
       </section>
 
       {/* Brand-new */}
@@ -205,15 +179,15 @@ export default function Top() {
         </div>
         {/* フラワーカラム */}
         <div className={`flowerColumn mar-t4 grid1`}>
-          {brandNewDisplayColumn.map((el, index) => {
+          {brandNew.map((el, index) => {
             return (
               <div key={`flowerColumn${index}`} className={`flowerDetail`}>
                 <div className={`flowerColumnPic`}>
-                  <img src={el.flowerPic} alt="" />
+                  <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
                 </div>
 
                 <div className={`flowerName`}>
-                  <h6>{el.flowerName}</h6>
+                  <h6>{el.node.title}</h6>
                 </div>
               </div>
             );
@@ -221,12 +195,7 @@ export default function Top() {
         </div>
 
         {/* もっと見るボタン */}
-        <div className={`moreViewButton sectionSpaceS`}>
-          <h5 className={`foncolW moreViewButton`}>もっと見る</h5>
-
-          <div className={`borderBlack`}></div>
-          <div className={`borderWhite`}></div>
-        </div>
+        <Button link="/brandNew" />
       </section>
 
       {/* MIWAKO Tique Serious */}
@@ -247,16 +216,16 @@ export default function Top() {
           </div>
         </div>
         {/* フラワーカラム */}
-        <div className={`flowerColumn mar-t4 grid1`}>
-          {brandNewDisplayColumn.map((el, index) => {
+        <div className={`flowerColumn mar-t4`}>
+          {tique.map((el, index) => {
             return (
               <div key={`flowerColumn${index}`} className={`flowerDetail`}>
                 <div className={`flowerColumnPic`}>
-                  <img src={el.flowerPic} alt="" />
+                  <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
                 </div>
 
                 <div className={`flowerName`}>
-                  <h6>{el.flowerName}</h6>
+                  <h6>{el.node.title}</h6>
                 </div>
               </div>
             );
@@ -264,12 +233,7 @@ export default function Top() {
         </div>
 
         {/* もっと見るボタン */}
-        <div className={`moreViewButton sectionSpaceS`}>
-          <h5 className={`foncolW moreViewButton`}>もっと見る</h5>
-
-          <div className={`borderBlack`}></div>
-          <div className={`borderWhite`}></div>
-        </div>
+        <Button link="/miwakoTiqueSeries" />
       </section>
 
       {/* 品種 */}
@@ -295,20 +259,15 @@ export default function Top() {
         </div>
 
         {/* もっと見るボタン */}
-        <div className={`moreViewButton sectionSpaceS`}>
-          <h5 className={`foncolW moreViewButton`}>もっと見る</h5>
-
-          <div className={`borderBlack`}></div>
-          <div className={`borderWhite`}></div>
-        </div>
+        <Button link="/varietyList" />
 
         {/* フラワーカラム */}
         <div className={`flowerColumn mar-t4`}>
-          {brandNewDisplayColumn.map((el, index) => {
+          {other.map((el, index) => {
             return (
               <div key={`flowerColumn${index}`} className={`flowerDetail`}>
                 <div className={`flowerColumnPic`}>
-                  <img src={el.flowerPic} alt="" />
+                  <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
                 </div>
 
                 <div className={`flowerName`}>
@@ -320,11 +279,11 @@ export default function Top() {
         </div>
 
         <div className={`flowerColumn mar-t2`}>
-          {brandNewDisplayColumn.map((el, index) => {
+          {other2.map((el, index) => {
             return (
               <div key={`flowerColumn${index}`} className={`flowerDetail`}>
                 <div className={`flowerColumnPic`}>
-                  <img src={el.flowerPic} alt="" />
+                  <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
                 </div>
 
                 <div className={`flowerName`}>
@@ -338,3 +297,99 @@ export default function Top() {
     </>
   );
 }
+
+//wordpress
+export const getStaticProps = async () => {
+  //バラの情報をインポート
+  const roseFormas = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query NewQuery {
+        roseFormas(first: 100) {
+          edges {
+            node {
+              uri
+              title
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              terms {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+              rose_spec {
+                award
+                fieldGroupName
+                roseColor
+                roseExplanation
+                roseHarvest
+                roseLength
+                roseName
+                rosePetal
+                roseScent
+                roseShape
+                roseSize
+                imageSub {
+                  mediaItemUrl
+                }
+                genre
+              }
+            }
+          }
+        }
+      }
+      `,
+    }),
+  });
+
+  //ニュースの情報をインポート
+  const resNews = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: `
+      query NewQuery {
+        newss {
+          edges {
+            node {
+              date
+              newsId
+              content
+              title
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              news_date_detail {
+                newsImage {
+                  newsImage {
+                    mediaItemUrl
+                  }
+                }
+                newsDate
+              }
+            }
+          }
+        }
+      }
+      `,
+    }),
+  });
+
+  const jsonNews = await resNews.json();
+  const jsonRose = await roseFormas.json();
+  return {
+    props: {
+      newss: jsonNews.data.newss.edges,
+      formas: jsonRose.data.roseFormas.edges,
+    },
+  };
+};

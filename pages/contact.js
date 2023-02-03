@@ -13,11 +13,14 @@ export default function Contact() {
   const [telnumber, setTelnumber] = useState(""); // 「件名」の部分
   const [message, setMessage] = useState(""); // 「お問い合わせ内容」の部分
   const [cheakBox, setCheakBox] = useState("");
-  // const [sendMessage, setSendMessage] = useState(false);
+  const [sendMessage, setSendMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const form = useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
+    console.log("aa");
 
     emailjs
       .sendForm(
@@ -34,10 +37,12 @@ export default function Contact() {
           setTelnumber("");
           setMessage("");
           setCheakBox("");
-          // setSendMessage(true);
+          setSendMessage(true);
+          setErrorMessage(false);
         },
         (error) => {
           console.log(送れませんでした);
+          setErrorMessage(true);
         }
       );
   };
@@ -100,7 +105,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div ref={form} className={`${cn.formColumn} t_main`}>
+        <form ref={form} className={`${cn.formColumn} t_main`}>
           {/* 名前 */}
           <div className={`${cn.contactContents} sectionSpaceS grid5`}>
             <div className={`collectionName`}>
@@ -108,7 +113,6 @@ export default function Contact() {
               <h5>（企業の方は会社名も記入してください）</h5>
 
               <Box
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 0, width: "100%" },
                 }}
@@ -117,14 +121,18 @@ export default function Contact() {
                 className={`mar-t1`}
                 type="text"
                 id="name"
-                name="user_name"
                 required
                 size="10"
                 value="name"
                 onChange={(e) => setName(e.target.value)}
               >
                 <div>
-                  <TextField required id="outlined-required"></TextField>
+                  <TextField
+                    name="user_name"
+                    required
+                    id="outlined-required"
+                    value={name}
+                  ></TextField>
                 </div>
               </Box>
 
@@ -132,7 +140,6 @@ export default function Contact() {
               <h3 className={`mar-t2`}>ふりがな</h3>
 
               <Box
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 0, width: "100%" },
                 }}
@@ -141,13 +148,17 @@ export default function Contact() {
                 className={`mar-t1`}
                 type="text"
                 id="name_ruby"
-                name="nameRuby"
                 required
                 size="10"
                 onChange={(e) => setNameRuby(e.target.value)}
               >
                 <div>
-                  <TextField required id="outlined-required"></TextField>
+                  <TextField
+                    name="user_ruby"
+                    required
+                    id="outlined-required"
+                    value={nameRuby}
+                  ></TextField>
                 </div>
               </Box>
 
@@ -155,7 +166,6 @@ export default function Contact() {
               <h3 className={`mar-t2`}>メールアドレス</h3>
 
               <Box
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 0, width: "100%" },
                 }}
@@ -164,20 +174,23 @@ export default function Contact() {
                 className={`mar-t1`}
                 type="text"
                 id="outlined-required"
-                name="user_email"
                 required
                 size="10"
                 onChange={(e) => setEmail(e.target.value)}
               >
                 <div>
-                  <TextField required id="outlined-required"></TextField>
+                  <TextField
+                    name="user_email"
+                    required
+                    id="outlined-required"
+                    value={email}
+                  ></TextField>
                 </div>
               </Box>
 
               <h3 className={`mar-t2`}>電話番号</h3>
 
               <Box
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 0, width: "100%" },
                 }}
@@ -186,13 +199,17 @@ export default function Contact() {
                 className={`mar-t1`}
                 type="text"
                 id="tel"
-                name="user_telnumber"
                 required
                 size="10"
                 onChange={(e) => setTelnumber(e.target.value)}
               >
                 <div>
-                  <TextField required id="outlined-required"></TextField>
+                  <TextField
+                    name="user_telnumber"
+                    required
+                    id="outlined-required"
+                    value={telnumber}
+                  ></TextField>
                 </div>
               </Box>
 
@@ -206,6 +223,7 @@ export default function Contact() {
                 multiline
                 fullWidth={true}
                 rows={4}
+                value={message}
               />
             </div>
 
@@ -214,7 +232,7 @@ export default function Contact() {
                 type="checkbox"
                 id="privacyPolicy"
                 name="privacyPolicy"
-                value="agree"
+                value={cheakBox}
                 onClick={() => {
                   setCheakBox((prevState) => !prevState);
                 }}
@@ -234,23 +252,33 @@ export default function Contact() {
               disabled={!disableSend}
               className={`${cn.button} ${
                 disableSend ? cn.active : ""
-              } button moreViewButton sectionSpaceS sendButton`}
+              } sectionSpaceS`}
               onClick={sendEmail}
             >
-              <h5 className={`foncolW moreViewButton sendButtonText`}>送信</h5>
+              <h5 className={`foncolW`}>送信</h5>
             </div>
 
-            {/* <div
+            <div
               className={`${cn.thanksMessage} ${sendMessage ? cn.active : ""}`}
             >
-              <h5 className="mar-t3 mar-b1 tex-c">
+              <h5 className="mar-t3 mar-b1 tex-c bold">
                 お問い合わせありがとうございます。
                 <br />
                 返信は３営業日以内にご連絡いたします。
               </h5>
-            </div> */}
+            </div>
+
+            <div
+              className={`${cn.errorMessage} ${errorMessage ? cn.active : ""}`}
+            >
+              <p className="mar-t2 tex-c fon5 fonSp3">
+                エラー : メッセージを送信できませんんでした。
+                <br />
+                もう一度お試しください
+              </p>
+            </div>
           </div>
-        </div>
+        </form>
       </section>
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import cn from "../components/toppage.module.scss";
+import cn from "../components/header.module.scss";
 import Link from "next/link";
 
 export default function Header() {
@@ -34,14 +34,14 @@ export default function Header() {
               <h5>コレクション</h5>
               <div className={`${cn.headerCollectionSubMenu}`}>
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
-                  <Link href="/collection">
+                  <Link href="/brandNew">
                     <h5>Brand-New</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>
                 </div>
 
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
-                  <Link href="/collection">
+                  <Link href="/miwakoTiqueSeries">
                     <h5>MIWAKO TIQUE Serious</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>

@@ -2,233 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/varietyList.module.scss";
 import Filter from "../components/filter.js";
 import FilterSP from "../components/filterSP.js";
+import ColorBox from "../components/colorBox.js";
+import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 
-export default function VarietyList({ posts }) {
+export default function VarietyList({ formas }) {
+  const brandNewColumn = formas;
+  console.log(brandNewColumn);
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const [isDisplay, setIsDisplay] = useState(false);
 
-  useEffect(() => {
-    console.log(posts);
-  }, []);
-
-  const brandNewColumn = [
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-    {
-      pic1: "/img/SP スイートオールド_1.jpg",
-      pic2: "/img/SP スイートオールド_2.jpg",
-      name: "SP ベイビーカメレオン",
-      color: "Yellow",
-      size: "中輪",
-      shape: "高芯半剣弁",
-      scent: "ティー香",
-      length: "60~80cm",
-      harvest: "約350 本",
-      explanation:
-        "カップ咲きの白の代表品種で、樹勢が強く採花本数も多いが、うどん粉病に弱い。",
-      date: "2020-06-11T09:29:41.084Z",
-    },
-  ];
-
-  var brandNewDisplayColumn = [];
-  for (let i = 0; i < 10; i++) {
-    brandNewDisplayColumn.push(brandNewColumn[i]);
-  }
+  var brandNewDisplayColumn = brandNewColumn.slice(0, 20);
 
   // useEffect(() => {
   //   console.log(posts);
@@ -259,10 +43,12 @@ export default function VarietyList({ posts }) {
           <div className={`border mar-t1`}></div>
 
           {/* 品種一覧 */}
+
           <div className={`varietyListColumn varietyListColumn mar-t1 grid2`}>
             <div className={`result mar-t1`}>
               <h4>絞り込み結果 : 14品種がヒットしました</h4>
             </div>
+
             <div className={`flowerListColumn mar-t1 `}>
               {/* 品種１ */}
               {brandNewDisplayColumn.map((el, index) => {
@@ -271,41 +57,61 @@ export default function VarietyList({ posts }) {
                     key={`varietyList${index}`}
                     className={`flowerBreed1 mar-t3`}
                   >
-                    <div className={`flowerBreedPic`}>
-                      <img src={el.pic2} alt="" />
+                    <div className={`flowerBreedPic pos-r`}>
+                      <Link href={`./rose/${el.node.roseFormaId}`}>
+                        <img
+                          src={el.node.featuredImage.node.mediaItemUrl}
+                          alt=""
+                        />
+                      </Link>
 
                       <div className={`flowerFavorite`}>
                         <img src="/img/heart2.png" alt="" />
                       </div>
                     </div>
 
-                    <div className={`flowerColor`}>
-                      <div className={`flowerColorBox`}></div>
-                      <h6 className={`flowerColorText`}>{el.color}</h6>
+                    <div className={`flowerColor mar-t1`}>
+                      <div className={`flowerColorBox`}>
+                        <ColorBox roseCo={el.node.colors} />
+                      </div>
+                      <h6 className={`flowerColorText`}>
+                        {/* {el.node.colors.nodes[0].name} */}
+                      </h6>
                     </div>
 
                     <div className={`flowerName`}>
-                      <h3>{el.name}</h3>
+                      <h3>{el.node.title}</h3>
                     </div>
 
                     {/* フラワースペック */}
                     <div className={`varietyListSpec`}>
                       <div className={`varietyListSpecBorder`}></div>
                       <div className={`varietyListSpecDetail1`}>
-                        <h6>Color&nbsp;&nbsp;&nbsp;&nbsp;{el.color}</h6>
-                        <h6>Shape&nbsp;&nbsp;&nbsp;&nbsp;{el.shape}</h6>
-                        <h6>Length&nbsp;&nbsp;{el.length}</h6>
+                        <h6>
+                          Color&nbsp;&nbsp;&nbsp;&nbsp;
+                          {el.node.rose_spec.roseColor}
+                        </h6>
+                        <h6>
+                          Shape&nbsp;&nbsp;&nbsp;&nbsp;
+                          {el.node.rose_spec.roseShape}
+                        </h6>
+                        <h6>
+                          Length&nbsp;&nbsp;{el.node.rose_spec.roseLength}
+                        </h6>
                       </div>
                       <div className={`varietyListSpecBorder`}></div>
                       <div className={`varietyListSpecDetail2`}>
                         <h6>
                           Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          {el.size}
+                          {el.node.rose_spec.roseSize}
                         </h6>
                         <h6>
-                          Scent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{el.scent}
+                          Scent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          {el.node.rose_spec.roseScent}
                         </h6>
-                        <h6>Harvest&nbsp;&nbsp;{el.harvest}</h6>
+                        <h6>
+                          Harvest&nbsp;&nbsp;{el.node.rose_spec.roseHarvest}
+                        </h6>
                       </div>
                     </div>
                   </div>
@@ -339,58 +145,60 @@ export default function VarietyList({ posts }) {
   }
 }
 
-export const roseInfo = async () => {
-  const res = await fetch(`http://localhost/rosetique/graphql`, {
+//wordpress
+export const getStaticProps = async () => {
+  //ニュースの情報をインポート
+  const roseFormas = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
       query NewQuery {
-        roseFormas {
+        roseFormas(first: 100) {
           edges {
             node {
               uri
               title
               featuredImage {
                 node {
-                  link
-                }
-              }
-              terms {
-                edges {
-                  node {
-                    name
-                  }
+                  mediaItemUrl
                 }
               }
               rose_spec {
                 award
                 fieldGroupName
                 roseColor
-                roseExplanation
-                roseHarvest
-                roseLength
-                roseName
-                rosePetal
-                roseScent
                 roseShape
                 roseSize
                 imageSub {
-                  link
+                  mediaItemUrl
+                }
+                genre
+                rosePetal
+                roseScent
+                roseName
+                roseLength
+                roseHarvest
+                roseExplanation
+              }
+              colors {
+                nodes {
+                  name
                 }
               }
+              roseFormaId
             }
           }
         }
       }
-			`,
+      `,
     }),
   });
 
-  const json = await res.json();
+  const jsonRose = await roseFormas.json();
   return {
     props: {
-      posts: json.data.roseFormas,
+      formas: jsonRose.data.roseFormas.edges,
     },
   };
 };

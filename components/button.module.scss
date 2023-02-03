@@ -1,0 +1,84 @@
+// もっと見るボタン
+.button {
+  width: 10em;
+  cursor: pointer;
+}
+
+.button:hover {
+  .borderWhite {
+    display: none;
+  }
+}
+
+.btn {
+  width: 100%;
+  height: auto;
+  background: var(--main);
+  /*アニメーションの起点とするためrelativeを指定*/
+  position: relative;
+  overflow: hidden;
+  /*ボタンの形状*/
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid var(--main); /* ボーダーの色と太さ */
+  padding: 0.7em 2.4em;
+  text-align: center;
+  outline: none;
+  /*アニメーションの指定*/
+  transition: ease 0.2s;
+}
+
+//ボーダー
+.borderBlack {
+  width: 2em;
+  height: 0.1em;
+  background-color: var(--main);
+  left: -2em;
+  top: 50%;
+  transform: translateY(-0.1em);
+}
+
+.borderWhite {
+  width: 2em;
+  height: 0.1em;
+  background-color: var(--gl);
+  left: 0;
+  top: 50%;
+  transform: translateY(-0.1em);
+}
+
+/*ボタン内spanの形状*/
+.btn span {
+  position: relative;
+  z-index: 3; /*z-indexの数値をあげて文字を背景よりも手前に表示*/
+  color: var(--gl);
+}
+
+.btn:hover span {
+  color: var(--main);
+}
+
+/*== 背景が流れる（斜め） */
+.bgskew::before {
+  content: "";
+  /*絶対配置で位置を指定*/
+  position: absolute;
+  top: 0;
+  left: -130%;
+  /*色や形状*/
+  background: var(--gl);
+  width: 120%;
+  height: 100%;
+  transform: skewX(-25deg);
+}
+
+/*hoverした時のアニメーション*/
+.bgskew:hover::before {
+  animation: skewanime 0.5s forwards; /*アニメーションの名前と速度を定義*/
+}
+
+@keyframes skewanime {
+  100% {
+    left: -10%; /*画面の見えていない左から右へ移動する終了地点*/
+  }
+}

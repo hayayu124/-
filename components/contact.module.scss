@@ -1,4 +1,5 @@
 .contact {
+  margin-bottom: 10em;
   .contactInfo {
     @media screen and (max-width: 767px) {
       width: 89%;
@@ -27,19 +28,53 @@
       justify-content: center;
       align-items: center;
     }
+
     .button {
       opacity: 50%;
+      position: relative;
+      margin-right: auto;
+      margin-left: auto;
+      background-color: black;
+      width: 10em;
+      border-radius: 9999px;
+      padding: 0.4em;
+      h5 {
+        font-weight: 700;
+        text-align: center;
+        padding: 0.7em;
+      }
 
       &.active {
         opacity: 100%;
         transition-duration: 0.5s;
       }
+      &.active:hover {
+        opacity: 0.5;
+        transition-duration: 0.1s;
+      }
     }
-    // .thanksMessage {
-    //   display: none;
-    //   &.active {
-    //     display: block;
-    //   }
-    // }
+
+    //thanks message
+    .thanksMessage {
+      display: none;
+      &.active {
+        display: block;
+        color: var(--main);
+        p {
+          line-height: 1.5em !important;
+        }
+      }
+    }
+
+    //error message
+    .errorMessage {
+      display: none;
+      &.active {
+        display: block;
+        p {
+          color: rgb(176, 16, 16);
+        }
+      }
+    }
   }
 }
