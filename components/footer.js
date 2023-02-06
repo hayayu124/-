@@ -8,7 +8,8 @@ export default function Footer() {
       <footer className={`${cn.footer}`}>
         <div className={`${cn.footerColumn} grid3`}>
           <div className={`${cn.rosetiqueInfo}`}>
-            <h1>Rosetique Japan</h1>
+            <h1>Rosetique</h1>
+            <p>Japan</p>
             <h5>
               The Rose Maker IMAI KIYOSHI
               <br />

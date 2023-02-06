@@ -18,32 +18,16 @@ export default function newsArticle(props) {
     .filter((n) => n.node.newsId !== post.newsId)
     .slice(0, 3);
   const content = post.content.replace(/(<([^>]+)>)/gi, "");
-  console.log(otherNews);
 
-  //ニュースを自動処理
-  const newsColumn = [
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース1",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.04.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース2",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.03.20",
-    },
-    {
-      newsPic: "/img/newsPic.jpg",
-      newsTitle: "ニュース3",
-      newsDescription:
-        "ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。ニュースの抜粋が入ります。",
-      newsDate: "2022.02.29",
-    },
-  ];
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
 
   return (
     <>

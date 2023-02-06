@@ -2,10 +2,21 @@ import React, { useState, useEffect } from "react";
 import cn from "../../components/flowerDetail.module.scss";
 import ColorBox from "../../components/colorBox.js";
 import Filter from "../../components/filter.js";
+import ScrollEffect from "../../components/utility/utilityscrollEffect";
 
 export default function RoseDetail(props) {
   const rose = props.post;
   console.log(rose);
+
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
 
   //お気に入りのハートボタン
   const [fav, setFav] = useState(false);
@@ -13,117 +24,142 @@ export default function RoseDetail(props) {
   return (
     <>
       {/* 品種一覧 */}
-      <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
-        <div className={`varietyListTitle titleColumn`}>
-          <div className={`varietyListText mar-t2`}>
-            <h5>品種一覧</h5>
+      <ScrollEffect>
+        <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
+          <div className={`varietyListTitle titleColumn`}>
+            <div className={`varietyListText mar-t2`}>
+              <ScrollEffect className={`intDelay`} after={`intActive`}>
+                <h5>品種一覧</h5>
+              </ScrollEffect>
 
-            <h2>Variety list</h2>
+              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+                <h2>Variety list</h2>
+              </ScrollEffect>
+            </div>
           </div>
-        </div>
 
-        {/* ボーダー */}
-        <div className={`border mar-t1`}></div>
+          <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+            {/* ボーダー */}
+            <div className={`border mar-t1`}></div>
 
-        {/* フラワーのカラム */}
-        <div className={`collectionColumn sectionSpaceS tex-c grid3`}>
-          {/* 品種１ */}
+            {/* フラワーのカラム */}
+            <div className={`collectionColumn sectionSpaceS tex-c grid3`}>
+              {/* 品種１ */}
 
-          <div className={`flowerBreed sectionSpaceS`}>
-            {/* PCの表示 */}
-            <div className={`flowerBreedPc`}>
-              <div className={`flowerTitleColSp tex-l`}>
-                <div className={`flowerSpecDetail`}>
-                  <div className={`flowerColorBox`}></div>
-                  <h5 className={`flowerColorText`}>Yellow</h5>
-                </div>
-                <div className={`flowerName`}>
-                  <h3>{rose.title}</h3>
-                </div>
-              </div>
-              <div className={`flowerDetailColumn`}>
-                <div className={`flowerDetail tex-l pos-r`}>
-                  <div className={`flowerTitleColPc tex-l`}>
+              <div className={`flowerBreed sectionSpaceS`}>
+                {/* PCの表示 */}
+                <div className={`flowerBreedPc`}>
+                  <div className={`flowerTitleColSp tex-l`}>
                     <div className={`flowerSpecDetail`}>
-                      <div className={`flowerColorBox`}></div>
-                      <h5 className={`flowerColorText`}>Yellow</h5>
+                      <div className={`flowerColorBox`}>
+                        <ColorBox roseCo={rose.colors} />
+                      </div>
+                      <h5 className={`flowerColorText`}>
+                        {rose.colors.nodes[0].name}
+                      </h5>
                     </div>
                     <div className={`flowerName`}>
                       <h3>{rose.title}</h3>
                     </div>
                   </div>
-                  <div className={`flowerSpecColumn`}>
-                    <div className={`flowerSpec`}>
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
-                        <h5>{rose.rose_spec.roseColor}</h5>
+                  <div className={`flowerDetailColumn`}>
+                    <div className={`flowerDetail tex-l pos-r`}>
+                      <div className={`flowerTitleColPc tex-l`}>
+                        <div className={`flowerSpecDetail`}>
+                          <div className={`flowerColorBox`}>
+                            <ColorBox roseCo={rose.colors} />
+                          </div>
+                          <h5 className={`flowerColorText`}>
+                            {rose.colors.nodes[0].name}
+                          </h5>
+                        </div>
+                        <div className={`flowerName`}>
+                          <h3>{rose.title}</h3>
+                        </div>
                       </div>
+                      <div className={`flowerSpecColumn`}>
+                        <div className={`flowerSpec`}>
+                          <div className={`flowerSpecDetail`}>
+                            <h5>
+                              Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </h5>
+                            <h5>{rose.rose_spec.roseColor}</h5>
+                          </div>
 
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                        <h5>{rose.rose_spec.roseSize}</h5>
+                          <div className={`flowerSpecDetail`}>
+                            <h5>
+                              Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                            </h5>
+                            <h5>{rose.rose_spec.roseSize}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                            <h5>{rose.rose_spec.roseShape}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
+                            <h5>{rose.rose_spec.roseScent}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
+                            <h5>{rose.rose_spec.roseLength}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                            <h5>{rose.rose_spec.roseHarvest}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <h5>{rose.rose_spec.roseExplanation}</h5>
+                          </div>
+
+                          <div className={`flowerSpecDetail`}>
+                            <div
+                              onClick={() => {
+                                setFav((prevState) => !prevState);
+                              }}
+                              className={`flowerheart ${fav ? "active" : ""}`}
+                            ></div>
+                            <p className={`fon5 fonSp4`}>お気に入りに追加</p>
+                          </div>
+                        </div>
                       </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                        <h5>{rose.rose_spec.roseShape}</h5>
-                      </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                        <h5>{rose.rose_spec.roseScent}</h5>
-                      </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                        <h5>{rose.rose_spec.roseLength}</h5>
-                      </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                        <h5>{rose.rose_spec.roseHarvest}</h5>
-                      </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <h5>{rose.rose_spec.roseExplanation}</h5>
-                      </div>
-
-                      <div className={`flowerSpecDetail`}>
-                        <div
-                          onClick={() => {
-                            setFav((prevState) => !prevState);
-                          }}
-                          className={`flowerheart ${fav ? "active" : ""}`}
-                        ></div>
-                        <p className={`fon5 fonSp4`}>お気に入りに追加</p>
+                      <div className={`flowerAwardIcon`}>
+                        <img src={rose.rose_spec.award} alt="" />
                       </div>
                     </div>
-                  </div>
-                  <div className={`flowerAwardIcon`}>
-                    <img src={rose.rose_spec.award} alt="" />
-                  </div>
-                </div>
 
-                <div className={`flowerPicColumn`}>
-                  <div className={`flowerPic1`}>
-                    <img src={rose.featuredImage.node.mediaItemUrl} alt="" />
-                  </div>
-                  <div className={`flowerPic2`}>
-                    <img src={rose.rose_spec.imageSub.mediaItemUrl} alt="" />
+                    <div className={`flowerPicColumn`}>
+                      <div className={`flowerPic1`}>
+                        <img
+                          src={rose.featuredImage.node.mediaItemUrl}
+                          alt=""
+                        />
+                      </div>
+                      <div className={`flowerPic2`}>
+                        <img
+                          src={rose.rose_spec.imageSub.mediaItemUrl}
+                          alt=""
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* お気に入り品種 */}
-        <div className={`collectionName tex-c sectionSpaceM`}>
-          <h3>お気に入りに追加した品種</h3>
-        </div>
+            {/* お気に入り品種 */}
+            <div className={`collectionName tex-c sectionSpaceM`}>
+              <h3>お気に入りに追加した品種</h3>
+            </div>
+          </ScrollEffect>
 
-        <div className={`varietyListColumn varietyListColumn mar-t1 grid1`}>
-          {/* <div className={`flowerListColumn mar-t1 `}>
+          <div className={`varietyListColumn varietyListColumn mar-t1 grid1`}>
+            {/* <div className={`flowerListColumn mar-t1 `}>
             
             {rose.map((el, index) => {
               return (
@@ -173,15 +209,16 @@ export default function RoseDetail(props) {
             })}
           </div> */}
 
-          {/* もっと見るボタン */}
-          <div className={`moreViewButton sectionSpaceS`}>
-            <h5 className={`foncolW moreViewButton`}>一覧へ戻る</h5>
+            {/* もっと見るボタン */}
+            <div className={`moreViewButton sectionSpaceS`}>
+              <h5 className={`foncolW moreViewButton`}>一覧へ戻る</h5>
 
-            <div className={`borderBlack`}></div>
-            <div className={`borderWhite`}></div>
+              <div className={`borderBlack`}></div>
+              <div className={`borderWhite`}></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollEffect>
     </>
   );
 }
@@ -220,6 +257,11 @@ export async function getStaticProps(context) {
           }
           title
           roseFormaId
+          colors {
+            nodes {
+              name
+            }
+          }
         }
       }
 			`,

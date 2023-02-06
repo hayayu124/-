@@ -27,7 +27,9 @@ export default function CollectionColumn({ roseCo }) {
                       <div className={`flowerColorBox`}>
                         <ColorBox roseCo={el.node.colors} />
                       </div>
-                      <h5 className={`flowerColorText`}></h5>
+                      <h5 className={`flowerColorText`}>
+                        {el.node.colors.nodes[0].name}
+                      </h5>
                     </div>
                     <div className={`flowerName`}>
                       <h3>{el.node.title}</h3>

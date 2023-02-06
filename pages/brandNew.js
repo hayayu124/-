@@ -8,6 +8,16 @@ import LoadingEffect from "../components/utility/loadingEffect";
 export default function BrandNew(props) {
   const brandNewColumn = props.formas;
 
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
+
   //brand-newの品種を抽出
   const brandNew = brandNewColumn.filter(
     (n) => n.node.rose_spec.genre == "Brand-new"
@@ -16,29 +26,41 @@ export default function BrandNew(props) {
   return (
     <>
       {/* コレクションページ */}
+
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
         <div className={`collectionTitle titleColumn`}>
           <div className={`collectionText mar-t2`}>
-            <h5>おすすめ品種の説明</h5>
+            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+              <h5>おすすめ品種の説明</h5>
+            </ScrollEffect>
 
-            <h2>Collection</h2>
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h2>Collection</h2>
+            </ScrollEffect>
           </div>
         </div>
 
         {/* 花の品種 */}
         <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
           <div className={`collectionName`}>
-            <h3>Brand New</h3>
-            <h5 className={`collectionName mar-t3`}>
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-              <br className="br" />
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-              <br className="br" />
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-            </h5>
+            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+              <h3>Brand New</h3>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`collectionName mar-t3`}>
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                <br className="br" />
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                <br className="br" />
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+              </h5>
+            </ScrollEffect>
           </div>
 
-          <CollectionColumn roseCo={brandNew} />
+          <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+            <CollectionColumn roseCo={brandNew} />
+          </ScrollEffect>
         </div>
       </section>
     </>

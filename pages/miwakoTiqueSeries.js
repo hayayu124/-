@@ -8,6 +8,16 @@ import LoadingEffect from "../components/utility/loadingEffect";
 export default function miwakoTiqueSerious(props) {
   const tique = props.formas;
 
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
+
   //brand-newの品種を抽出
   const tiqueCo = tique.filter(
     (n) => n.node.rose_spec.genre == "Miwako Tique Series"
@@ -16,31 +26,44 @@ export default function miwakoTiqueSerious(props) {
   return (
     <>
       {/* コレクションページ */}
-      <section className={`${cn.collection} sectionSpaceM`}>
-        <div className={`collectionTitle titleColumn`}>
-          <div className={`collectionText mar-t2`}>
-            <h5>おすすめ品種の説明</h5>
+      <ScrollEffect>
+        <section className={`${cn.collection} sectionSpaceM`}>
+          <div className={`collectionTitle titleColumn`}>
+            <div className={`collectionText mar-t2`}>
+              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+                <h5>おすすめ品種の説明</h5>
+              </ScrollEffect>
 
-            <h2>Collection</h2>
-          </div>
-        </div>
-
-        {/* 花の品種 */}
-        <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
-          <div className={`collectionName`}>
-            <h3>Miwako Tique Serious</h3>
-            <h5 className={`collectionName mar-t3`}>
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-              <br className="br" />
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-              <br className="br" />
-              おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-            </h5>
+              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+                <h2>Collection</h2>
+              </ScrollEffect>
+            </div>
           </div>
 
-          <CollectionColumn roseCo={tiqueCo} />
-        </div>
-      </section>
+          {/* 花の品種 */}
+          <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
+            <div className={`collectionName`}>
+              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+                <h3>Miwako Tique Serious</h3>
+              </ScrollEffect>
+
+              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+                <h5 className={`collectionName mar-t3`}>
+                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                  <br className="br" />
+                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                  <br className="br" />
+                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                </h5>
+              </ScrollEffect>
+            </div>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <CollectionColumn roseCo={tiqueCo} />
+            </ScrollEffect>
+          </div>
+        </section>
+      </ScrollEffect>
     </>
   );
 }

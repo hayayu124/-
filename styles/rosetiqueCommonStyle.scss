@@ -68,10 +68,15 @@ h6 {
 
     .newsDetailPic {
       aspect-ratio: 1/1;
+      overflow: hidden;
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      :hover {
+        transform: scale(1.07);
+        transition-duration: 0.3s;
       }
     }
     .newsDetailText {
@@ -112,50 +117,6 @@ h6 {
         }
       }
     }
-  }
-}
-
-//フラワのーカラム
-.flowerColumn {
-  margin-right: auto;
-  margin-left: auto;
-  display: flex;
-  justify-content: space-between;
-
-  @media screen and (max-width: 767px) {
-    width: 89%;
-  }
-
-  .flowerDetail {
-    padding: 0 0.5em;
-    width: 19%;
-    &.varietyFlowerDetail {
-      padding: 0 0.3em;
-    }
-  }
-
-  @media screen and (max-width: 767px) {
-    .flowerDetail {
-      width: 30%;
-      padding: 0%;
-    }
-    .flowerDetail:nth-child(n + 4) {
-      display: none;
-    }
-  }
-
-  .flowerColumnPic {
-    aspect-ratio: 1/1;
-    img {
-      object-fit: cover;
-    }
-  }
-  .flowerName {
-    margin-top: 0.4em;
-    text-align: center;
-  }
-  &:first-child {
-    animation: slide1 60s -30s linear infinite;
   }
 }
 
@@ -313,7 +274,12 @@ h6 {
         }
       }
 
+      .flowerColor {
+        align-items: center;
+      }
+
       .flowerName {
+        font-size: 0.8em;
         margin-top: 0.7em;
       }
 

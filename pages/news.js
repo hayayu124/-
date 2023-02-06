@@ -12,6 +12,16 @@ export default function News(newss) {
   const [moreView, setMoreView] = useState(false);
   const isFirstRender = useRef(false);
 
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
+
   useEffect(() => {
     // このeffectは初回レンダー時のみ呼ばれるeffect
     isFirstRender.current = true;
@@ -32,57 +42,70 @@ export default function News(newss) {
 
   return (
     <>
-      <section className={`${cn.news} sectionSpaceM`}>
-        <div className={`${cn.newsTittle} titleColumn`}>
-          <div className={`${cn.newsText} mar-t2`}>
-            <h5>お知らせ</h5>
+      <ScrollEffect>
+        <section className={`${cn.news} sectionSpaceM`}>
+          <div className={`${cn.newsTittle} titleColumn`}>
+            <div className={`${cn.newsText} mar-t2`}>
+              <ScrollEffect>
+                <h5>お知らせ</h5>
+              </ScrollEffect>
 
-            <h2>News</h2>
+              <ScrollEffect className={`intDelay`} after={`intActive`}>
+                <h2>News</h2>
+              </ScrollEffect>
 
-            <h5>今井ナーセリーの最新情報を随時更新しております。</h5>
+              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+                <h5>今井ナーセリーの最新情報を随時更新しております。</h5>
+              </ScrollEffect>
+            </div>
           </div>
-        </div>
 
-        {/* ニュースの記事一覧 */}
-        <div
-          className={`${cn.newsColumn} newsColumn newsPageDetail grid4 sectionSpaceS`}
-        >
-          {/* 記事 */}
+          {/* ニュースの記事一覧 */}
+          <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+            <div
+              className={`${cn.newsColumn} newsColumn newsPageDetail grid4 sectionSpaceS`}
+            >
+              {/* 記事 */}
 
-          {news.map((el, index) => {
-            return (
-              <div
-                key={`news${index}`}
-                className={`${cn.newsPageDetail} newsDetail`}
-              >
-                <Link href={`./news/${el.node.newsId}`}>
-                  <div className={`newsDetailPic`}>
-                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
+              {news.map((el, index) => {
+                return (
+                  <div
+                    key={`news${index}`}
+                    className={`${cn.newsPageDetail} newsDetail`}
+                  >
+                    <Link href={`./news/${el.node.newsId}`}>
+                      <div className={`newsDetailPic`}>
+                        <img
+                          src={el.node.featuredImage.node.mediaItemUrl}
+                          alt=""
+                        />
+                      </div>
+                    </Link>
+
+                    <div className={`newsDetailText`}>
+                      <h4>{el.node.title}</h4>
+                      <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+
+                      <h6 className={`newsDate`}>{el.newsDate}</h6>
+                      <div className={`moreViewText`}>
+                        <img src="/img/moreViewText.png" alt="" />
+                      </div>
+                    </div>
                   </div>
-                </Link>
+                );
+              })}
+            </div>
 
-                <div className={`newsDetailText`}>
-                  <h4>{el.node.title}</h4>
-                  <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
-
-                  <h6 className={`newsDate`}>{el.newsDate}</h6>
-                  <div className={`moreViewText`}>
-                    <img src="/img/moreViewText.png" alt="" />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div
-          onClick={() => {
-            setMoreView((prevState) => !prevState);
-          }}
-        >
-          <Button />
-        </div>
-      </section>
+            <div
+              onClick={() => {
+                setMoreView((prevState) => !prevState);
+              }}
+            >
+              <Button />
+            </div>
+          </ScrollEffect>
+        </section>
+      </ScrollEffect>
     </>
   );
 }
