@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import cn from "../components/collectionColumn.module.scss";
 import Button from "../components/button.js";
 import ColorBox from "../components/colorBox.js";

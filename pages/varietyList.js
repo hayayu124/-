@@ -18,18 +18,19 @@ export default function VarietyList({ formas }) {
     }, 500);
   }, []);
 
+  //GraphQLより品種情報を読み込み
   const brandNewColumn = formas;
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const [isDisplay, setIsDisplay] = useState(false);
 
   var brandNewDisplayColumn = brandNewColumn.slice(0, 72);
 
-  //お気に入りのハートボタン
-  const [fav, setFav] = useState(false);
-
   useEffect(() => {
     setIsDisplay(true);
   }, []);
+
+  //お気に入りのハートボタン
+  const [fav, setFav] = useState(false);
 
   if (isDisplay) {
     return (
@@ -86,7 +87,7 @@ export default function VarietyList({ formas }) {
                             }}
                             className={`flowerFavorite flowerheart ${
                               fav ? "active" : ""
-                            }${index}`}
+                            }`}
                           ></div>
                         </div>
 

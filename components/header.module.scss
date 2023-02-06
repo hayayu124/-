@@ -25,6 +25,7 @@
     .headerLogo {
       width: 10%;
       height: auto;
+      cursor: pointer;
       @media screen and (max-width: 767px) {
         width: 32%;
       }
@@ -37,6 +38,7 @@
       .headerMenu {
         color: #fff;
         margin-left: 2em;
+        cursor: pointer;
       }
       //コレクションのサブメニュー
       .headerCollectionMenu {

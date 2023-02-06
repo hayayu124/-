@@ -22,7 +22,6 @@ export default function ColorBox({ roseCo }) {
         } else if (roseCol[0].name == "White") {
           return <div className="flowerColorBox white"></div>;
         } else if (roseCol.length >= 2 || roseCol[0].name == "Multi Color") {
-          console.log("multi");
           return <div className="flowerColorBox multi"></div>;
         }
       })()}

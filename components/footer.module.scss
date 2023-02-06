@@ -35,6 +35,10 @@
     h6 {
       padding-left: 1em;
     }
+    .footerMenu {
+      cursor: pointer;
+    }
+
     .contactButton {
       width: 8em;
       @media screen and (max-width: 767px) {

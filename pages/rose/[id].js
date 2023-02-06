@@ -284,7 +284,7 @@ export async function getStaticPaths() {
     body: JSON.stringify({
       query: `
       query SinglePost {
-        roseFormas {
+        roseFormas(first: 1000) {
           nodes {
             roseFormaId
           }

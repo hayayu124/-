@@ -161,7 +161,7 @@ h6 {
     .flowerDetailColumn {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       @media screen and (max-width: 767px) {
         flex-direction: column;
       }
@@ -177,7 +177,7 @@ h6 {
       }
 
       .flowerSpec .flowerSpecDetail:nth-child(7) {
-        margin: 6em 0 2em 0;
+        margin: 2em 0;
         @media screen and (max-width: 767px) {
           margin: 4em 0;
         }
@@ -372,6 +372,7 @@ h6 {
   width: 1.5em; /* 正方形を作る */
   height: 1.5em; /* 正方形を作る */
   position: relative; /* 基準位置とする */
+  cursor: pointer;
   &.active::before,
   &.active::after {
     content: ""; /* 疑似要素に必須 */

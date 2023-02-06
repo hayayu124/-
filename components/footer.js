@@ -22,32 +22,32 @@ export default function Footer() {
 
             <div className={`${cn.footerContentsDetail}`}>
               <Link href="/">
-                <h5>TOP</h5>
+                <h5 className={`${cn.footerMenu}`}>TOP</h5>
               </Link>
 
               <Link href="/about">
-                <h5>About</h5>
+                <h5 className={`${cn.footerMenu}`}>About</h5>
               </Link>
 
               <Link href="/news">
-                <h5>NEWS</h5>
+                <h5 className={`${cn.footerMenu}`}>NEWS</h5>
               </Link>
 
               <h5>コレクション</h5>
 
               <Link href="/collection">
-                <h6>&nbsp;&nbsp;Brand-New</h6>
+                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Brand-New</h6>
               </Link>
               <h6>&nbsp;&nbsp;MIWAKO TIQUE Serious</h6>
 
               <Link href="/varietyList">
-                <h6>&nbsp;&nbsp;品種一覧</h6>
+                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;品種一覧</h6>
               </Link>
 
-              <h5>お気に入り</h5>
+              <h5 className={`${cn.footerMenu}`}>お気に入り</h5>
 
               <Link href="/company">
-                <h5>会社概要</h5>
+                <h5 className={`${cn.footerMenu}`}>会社概要</h5>
               </Link>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Footer() {
 
               {/* お問い合わせボタン */}
               <Link href="/contact">
-                <div className={`${cn.contactButton} mar-t1`}>
+                <div className={`${cn.contactButton} ${cn.footerMenu} mar-t1`}>
                   <img src="/img/contactButton.png" alt="" />
                 </div>
               </Link>
