@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/brandNew.module.scss";
 import CollectionColumn from "../components/collectionColumn.js";
+import Button from "../components/button.js";
+import FButton from "../components/foldingButton.js";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function BrandNew(props) {
-  const brandNewColumn = props.formas;
+  const brandNew = props.formas;
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -19,9 +21,44 @@ export default function BrandNew(props) {
   }, []);
 
   //brand-newの品種を抽出
-  const brandNew = brandNewColumn.filter(
+  const [sliceNumber, setSliceNumber] = useState(10);
+  const [moreView, setMoreView] = useState(false);
+  const isFirstRender = useRef(false);
+  const number = brandNew.filter(
     (n) => n.node.rose_spec.genre == "Brand-new"
-  );
+  ).length;
+  const brandNewCol = brandNew
+    .filter((n) => n.node.rose_spec.genre == "Brand-new")
+    .slice(0, sliceNumber);
+
+  //ボタンの変換
+  const [folding, setFolding] = useState(false);
+  const [view, setView] = useState(false);
+
+  //More View
+  useEffect(() => {
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    isFirstRender.current = true;
+
+    //項目が10個以上のときはボタンを表示
+    if (number > 10) {
+      setFolding(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // 初回レンダー判定
+      isFirstRender.current = false; // もう初回レンダーじゃないよ代入
+    } else if (sliceNumber < number - 10) {
+      setSliceNumber(sliceNumber + 10);
+    } else if (sliceNumber >= number - 10) {
+      setSliceNumber(sliceNumber + 10);
+      setFolding(false);
+    }
+  }, [moreView]);
+
+  console.log(brandNew);
 
   return (
     <>
@@ -44,7 +81,7 @@ export default function BrandNew(props) {
         <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
           <div className={`collectionName`}>
             <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h3>Brand New</h3>
+              <h3>Miwako Tique Serious</h3>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
@@ -59,8 +96,18 @@ export default function BrandNew(props) {
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-            <CollectionColumn roseCo={brandNew} />
+            <CollectionColumn roseCo={brandNewCol} />
           </ScrollEffect>
+        </div>
+
+        {/* moreView */}
+        <div
+          onClick={() => {
+            setMoreView((prevState) => !prevState);
+          }}
+          className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
+        >
+          <Button />
         </div>
       </section>
     </>

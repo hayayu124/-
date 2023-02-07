@@ -4,7 +4,6 @@ import Link from "next/link";
 
 export default function Button({ link }) {
   //ニュースを自動処理
-  console.log(link);
   return (
     <>
       {(() => {

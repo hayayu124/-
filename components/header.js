@@ -88,13 +88,25 @@ export default function Header() {
         <div className={`${cn.humburgerContents} ${button ? cn.active : ""}`}>
           <div className={`${cn.humburgerMenuColumn} sectionSpaceS`}>
             <Link href="/about">
-              <h4>About</h4>
+              <h4
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                About
+              </h4>
             </Link>
 
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/news">
-              <h4>News</h4>
+              <h4
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                News
+              </h4>
             </Link>
 
             <div className={`${cn.humburgerBorder}`}></div>
@@ -103,22 +115,52 @@ export default function Header() {
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/collection">
-              <h5>Brand-New</h5>
+              <h5
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                Brand-New
+              </h5>
             </Link>
 
             <Link href="/collection">
-              <h5>MIWAKO TIQUE Serious</h5>
+              <h5
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                MIWAKO TIQUE Serious
+              </h5>
             </Link>
 
             <Link href="/collection">
-              <h5>品種一覧</h5>
+              <h5
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                品種一覧
+              </h5>
             </Link>
 
-            <h4>お気に入り</h4>
+            <h4
+              onClick={() => {
+                setButton((prevState) => !prevState);
+              }}
+            >
+              お気に入り
+            </h4>
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/contact">
-              <h4>お問い合わせ</h4>
+              <h4
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+              >
+                お問い合わせ
+              </h4>
             </Link>
             <div className={`${cn.humburgerBorder}`}></div>
 

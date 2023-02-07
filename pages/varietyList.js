@@ -3,6 +3,8 @@ import cn from "../components/varietyList.module.scss";
 import Filter from "../components/filter.js";
 import FilterSP from "../components/filterSP.js";
 import ColorBox from "../components/colorBox.js";
+import Button from "../components/button.js";
+import FButton from "../components/foldingButton.js";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
@@ -10,6 +12,20 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 export default function VarietyList({ formas }) {
   // ロード制御
   const [load, setLoad] = useState(false);
+  const [i, setI] = useState(12);
+  const [moreView, setMoreView] = useState(false);
+  const isFirstRender = useRef(false);
+
+  //GraphQLより品種情報を読み込み
+  const brandNewColumn = formas;
+  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
+  const [isDisplay, setIsDisplay] = useState(false);
+
+  //ボタンの変換
+  const [folding, setFolding] = useState(true);
+  const [view, setView] = useState(false);
+  const [reset, setReset] = useState(false);
+
   useEffect(() => {
     const body = document.body; //scroll制御
     body.classList.add("active");
@@ -18,12 +34,33 @@ export default function VarietyList({ formas }) {
     }, 500);
   }, []);
 
-  //GraphQLより品種情報を読み込み
-  const brandNewColumn = formas;
-  const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
-  const [isDisplay, setIsDisplay] = useState(false);
+  //More View
+  console.log(folding);
+  useEffect(() => {
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    isFirstRender.current = true;
+  }, []);
 
-  var brandNewDisplayColumn = brandNewColumn.slice(0, 72);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // 初回レンダー判定
+      isFirstRender.current = false; // もう初回レンダーじゃないよ代入
+    } else if (i <= brandNewColumn.length - 12) {
+      setI(i + 12);
+    } else if (i >= brandNewColumn.length - 12) {
+      setI(i + 12);
+      setFolding(false);
+      setView(true);
+    }
+  }, [moreView]);
+
+  useEffect(() => {
+    setI(12);
+    setFolding(true);
+    setView(false);
+  }, [reset]);
+
+  var brandNewDisplayColumn = brandNewColumn.slice(0, i);
 
   useEffect(() => {
     setIsDisplay(true);
@@ -140,8 +177,27 @@ export default function VarietyList({ formas }) {
                   })}
                 </div>
 
-                {/* ページ送り */}
-                <div className={`pageOption mar-t4`}>
+                {/* morreView */}
+                <div
+                  onClick={() => {
+                    setMoreView((prevState) => !prevState);
+                  }}
+                  className={`moreView ${folding ? "" : "active"}`}
+                >
+                  <Button />
+                </div>
+
+                {/* Folding */}
+                <div
+                  onClick={() => {
+                    setReset((prevState) => !prevState);
+                  }}
+                  className={`foldingButton ${view ? "active" : ""}`}
+                >
+                  <FButton />
+                </div>
+
+                {/* <div className={`pageOption mar-t4`}>
                   <div className={`pageOptionPart`}>
                     <h3>1</h3>
                     <div className={`pageOptionBorder`}></div>
@@ -158,7 +214,7 @@ export default function VarietyList({ formas }) {
                   <div className={`pageOptionPart`}>
                     <h5>4</h5>
                   </div>
-                </div>
+                </div> */}
               </div>
             </ScrollEffect>
           </section>

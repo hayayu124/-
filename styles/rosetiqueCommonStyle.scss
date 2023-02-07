@@ -397,3 +397,18 @@ h6 {
   transform: rotate(45deg); /* 右に回転 */
   right: 14%; /* 右からの位置を指定 */
 }
+
+//More View/Foldingの制御
+.moreView {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.foldingButton {
+  display: none;
+  &.active {
+    display: block;
+  }
+}

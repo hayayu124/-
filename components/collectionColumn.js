@@ -99,9 +99,6 @@ export default function CollectionColumn({ roseCo }) {
           </div>
         );
       })}
-      <div className={`sectionSpaceM`}>
-        <Button />
-      </div>
     </>
   );
 }

@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/news.module.scss";
 import Link from "next/link";
 import Button from "../components/button.js";
+import FButton from "../components/foldingButton.js";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function News(newss) {
   const newsColumn = newss.newss.edges;
-  const [i, setI] = useState(3);
-  const [moreView, setMoreView] = useState(false);
   const isFirstRender = useRef(false);
 
   // ロード制御
@@ -22,23 +21,39 @@ export default function News(newss) {
     }, 500);
   }, []);
 
+  //Newsの品種を抽出
+  const [sliceNumber, setSliceNumber] = useState(6);
+  const [moreView, setMoreView] = useState(false);
+  const number = newsColumn.length;
+  var news = newsColumn.slice(0, sliceNumber);
+
+  //ボタンの変換
+  const [folding, setFolding] = useState(false);
+
+  //More View
   useEffect(() => {
     // このeffectは初回レンダー時のみ呼ばれるeffect
     isFirstRender.current = true;
+
+    //項目が10個以上のときはボタンを表示
+    if (number > 10) {
+      setFolding(true);
+    }
   }, []);
 
   useEffect(() => {
     if (isFirstRender.current) {
       // 初回レンダー判定
       isFirstRender.current = false; // もう初回レンダーじゃないよ代入
-    } else {
-      setI(i + 3);
+    } else if (sliceNumber < number - 10) {
+      setSliceNumber(sliceNumber + 10);
+    } else if (sliceNumber >= number - 10) {
+      setSliceNumber(sliceNumber + 10);
+      setFolding(false);
     }
   }, [moreView]);
 
-  var news = newsColumn.slice(0, i);
-
-  console.log(news);
+  console.log(number);
 
   return (
     <>
@@ -96,10 +111,12 @@ export default function News(newss) {
               })}
             </div>
 
+            {/* morreView */}
             <div
               onClick={() => {
                 setMoreView((prevState) => !prevState);
               }}
+              className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
             >
               <Button />
             </div>
@@ -121,7 +138,7 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss {
+        newss(first: 1000) {
           edges {
             node {
               date

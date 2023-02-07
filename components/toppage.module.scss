@@ -81,6 +81,9 @@
     width: 50%;
     left: 0%;
     transform: translateY(-100%);
+    @media screen and (max-width: 767px) {
+      width: 88%;
+    }
   }
 }
 
@@ -159,6 +162,7 @@
 
 //フラワのーカラム
 .flowerColumn {
+  margin-top: 3em;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -215,25 +219,11 @@
         justify-content: space-between;
         list-style: none;
 
-        @media screen and (max-width: 767px) {
-          width: 89%;
-        }
-
         .flowerDetail {
           padding: 0 0.5em;
           width: calc(100vw / 6);
           &.varietyFlowerDetail {
             padding: 0 0.3em;
-          }
-        }
-
-        @media screen and (max-width: 767px) {
-          .flowerDetail {
-            width: 30%;
-            padding: 0%;
-          }
-          .flowerDetail:nth-child(n + 4) {
-            display: none;
           }
         }
 

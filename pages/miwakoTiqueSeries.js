@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/brandNew.module.scss";
 import CollectionColumn from "../components/collectionColumn.js";
+import Button from "../components/button.js";
+import FButton from "../components/foldingButton.js";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function miwakoTiqueSerious(props) {
+export default function BrandNew(props) {
   const tique = props.formas;
 
   // ロード制御
@@ -19,51 +21,95 @@ export default function miwakoTiqueSerious(props) {
   }, []);
 
   //brand-newの品種を抽出
-  const tiqueCo = tique.filter(
+  const [sliceNumber, setSliceNumber] = useState(10);
+  const [moreView, setMoreView] = useState(false);
+  const isFirstRender = useRef(false);
+  const number = tique.filter(
     (n) => n.node.rose_spec.genre == "Miwako Tique Series"
-  );
+  ).length;
+  const tiqueSerious = tique
+    .filter((n) => n.node.rose_spec.genre == "Miwako Tique Series")
+    .slice(0, sliceNumber);
+
+  //ボタンの変換
+  const [folding, setFolding] = useState(false);
+  const [view, setView] = useState(false);
+
+  //More View
+  useEffect(() => {
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    isFirstRender.current = true;
+
+    //項目が10個以上のときはボタンを表示
+    if (number > 10) {
+      setFolding(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // 初回レンダー判定
+      isFirstRender.current = false; // もう初回レンダーじゃないよ代入
+    } else if (sliceNumber < number - 10) {
+      setSliceNumber(sliceNumber + 10);
+    } else if (sliceNumber >= number - 10) {
+      setSliceNumber(sliceNumber + 10);
+      setFolding(false);
+    }
+  }, [moreView]);
+
+  console.log(number);
 
   return (
     <>
       {/* コレクションページ */}
-      <ScrollEffect>
-        <section className={`${cn.collection} sectionSpaceM`}>
-          <div className={`collectionTitle titleColumn`}>
-            <div className={`collectionText mar-t2`}>
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h5>おすすめ品種の説明</h5>
-              </ScrollEffect>
 
-              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h2>Collection</h2>
-              </ScrollEffect>
-            </div>
-          </div>
-
-          {/* 花の品種 */}
-          <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
-            <div className={`collectionName`}>
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h3>Miwako Tique Serious</h3>
-              </ScrollEffect>
-
-              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5 className={`collectionName mar-t3`}>
-                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-                  <br className="br" />
-                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-                  <br className="br" />
-                  おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-                </h5>
-              </ScrollEffect>
-            </div>
+      <section className={`${cn.brandNew} collection sectionSpaceM`}>
+        <div className={`collectionTitle titleColumn`}>
+          <div className={`collectionText mar-t2`}>
+            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+              <h5>おすすめ品種の説明</h5>
+            </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <CollectionColumn roseCo={tiqueCo} />
+              <h2>Collection</h2>
             </ScrollEffect>
           </div>
-        </section>
-      </ScrollEffect>
+        </div>
+
+        {/* 花の品種 */}
+        <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
+          <div className={`collectionName`}>
+            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+              <h3>Miwako Tique Serious</h3>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`collectionName mar-t3`}>
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                <br className="br" />
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                <br className="br" />
+                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+              </h5>
+            </ScrollEffect>
+          </div>
+
+          <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+            <CollectionColumn roseCo={tiqueSerious} />
+          </ScrollEffect>
+        </div>
+
+        {/* moreView */}
+        <div
+          onClick={() => {
+            setMoreView((prevState) => !prevState);
+          }}
+          className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
+        >
+          <Button />
+        </div>
+      </section>
     </>
   );
 }

@@ -274,7 +274,7 @@ export default function Top({ newss, formas }) {
           </div>
           {/* フラワーカラム */}
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
-            <div className={`${cn.flowerColumn} mar-t4`}>
+            <div className={`${cn.flowerColumn} sec-c `}>
               {tique.map((el, index) => {
                 return (
                   <div

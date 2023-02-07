@@ -91,20 +91,30 @@ export default function newsArticle(props) {
             {otherNews.map((el, index) => {
               return (
                 <div key={`joinColumn${index}`} className={`newsDetail`}>
-                  <div className={`newsDetailPic`}>
-                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
-                  </div>
+                  <Link href={`/news/${el.node.newsId}`}>
+                    <div className={`newsDetailPic`}>
+                      <img
+                        src={el.node.featuredImage.node.mediaItemUrl}
+                        alt=""
+                      />
+                    </div>
+                  </Link>
 
                   <div className={`newsDetailText`}>
-                    <h4>{el.node.title}</h4>
+                    <Link href={`/news/${el.node.newsId}`}>
+                      <h4>{el.node.title}</h4>
+                    </Link>
                     <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
 
                     <h6 className={`newsDate`}>
                       {format(new Date(post.date), "yyyy/MM/dd")}
                     </h6>
-                    <div className={`moreViewText`}>
-                      <img src="/img/moreViewText.png" alt="" />
-                    </div>
+
+                    <Link href={`/news/${el.node.newsId}`}>
+                      <div className={`moreViewText`}>
+                        <img src="/img/moreViewText.png" alt="" />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               );
