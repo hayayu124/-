@@ -162,7 +162,6 @@
 
 //フラワのーカラム
 .flowerColumn {
-  margin-top: 3em;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -210,34 +209,29 @@
 //品種詳細ページ - その他の品種フラワのーカラム
 .otherSec {
   .otherFlowerCol {
-    .flowerColumnSec {
-      display: flex;
-      overflow: hidden;
+    overflow: hidden;
 
-      .flowerColumn {
-        display: flex;
-        justify-content: space-between;
-        list-style: none;
+    justify-content: space-between;
+    list-style: none;
 
-        .flowerDetail {
-          padding: 0 0.5em;
-          width: calc(100vw / 6);
-          &.varietyFlowerDetail {
-            padding: 0 0.3em;
-          }
-        }
-
-        .flowerColumnPic {
-          aspect-ratio: 1/1;
-          img {
-            object-fit: cover;
-          }
-        }
-        .flowerName {
-          margin-top: 0.4em;
-          text-align: center;
-        }
+    .flowerDetail {
+      padding: 0 0.5em;
+      width: calc(100vw / 6);
+      @media screen and (max-width: 767px) {
+        width: calc(100vw / 1.5);
       }
+    }
+
+    .flowerColumnPic {
+      aspect-ratio: 1/1;
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .flowerName {
+      margin-top: 0.4em;
+      text-align: center;
     }
   }
 
@@ -260,27 +254,11 @@
     }
   }
 
-  .otherFlowerCol {
-    overflow: hidden;
-  }
-
-  .flowerColumn {
-    display: flex;
-    list-style: none;
-  }
-
   .aniLef {
     animation: infinity-scroll-left 95s infinite linear 0.5s both;
   }
 
   .aniRig {
     animation: infinity-scroll-right 95s infinite linear 0.5s both;
-  }
-
-  .flowerDetail {
-    width: calc(100vw / 6);
-  }
-  .flowerDetail > img {
-    width: 100%;
   }
 }

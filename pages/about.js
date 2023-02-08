@@ -196,7 +196,7 @@ export default function Top() {
             </div>
           </div>
 
-          <div className={`${cn.accessColumn} sec-c grid2`}>
+          <div className={`${cn.accessColumn} sec-c grid2 fle-f`}>
             <div className={`${cn.accessDetail}`}>
               <h3>育種圃場 今井ナーセリー</h3>
               <h5>

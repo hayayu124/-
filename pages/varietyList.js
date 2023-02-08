@@ -5,6 +5,7 @@ import FilterSP from "../components/filterSP.js";
 import ColorBox from "../components/colorBox.js";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
+import FavButton from "../components/utilityFavlButton.js";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
@@ -118,14 +119,16 @@ export default function VarietyList({ formas }) {
                             />
                           </Link>
 
-                          <div
+                          {/* <div
                             onClick={() => {
                               setFav((prevState) => !prevState);
                             }}
                             className={`flowerFavorite flowerheart ${
                               fav ? "active" : ""
                             }`}
-                          ></div>
+                          ></div> */}
+
+                          <FavButton favId={el.node.roseFormaId} />
                         </div>
 
                         <div className={`flowerColor fle-f mar-t1`}>
@@ -146,11 +149,11 @@ export default function VarietyList({ formas }) {
                           <div className={`varietyListSpecBorder`}></div>
                           <div className={`varietyListSpecDetail1`}>
                             <h6>
-                              Color&nbsp;&nbsp;&nbsp;&nbsp;
+                              Color&nbsp;&nbsp;
                               {el.node.rose_spec.roseColor}
                             </h6>
                             <h6>
-                              Shape&nbsp;&nbsp;&nbsp;&nbsp;
+                              Shape&nbsp;&nbsp;
                               {el.node.rose_spec.roseShape}
                             </h6>
                             <h6>
@@ -160,11 +163,11 @@ export default function VarietyList({ formas }) {
                           <div className={`varietyListSpecBorder`}></div>
                           <div className={`varietyListSpecDetail2`}>
                             <h6>
-                              Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Size&nbsp;&nbsp;
                               {el.node.rose_spec.roseSize}
                             </h6>
                             <h6>
-                              Scent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              Scent&nbsp;&nbsp;
                               {el.node.rose_spec.roseScent}
                             </h6>
                             <h6>

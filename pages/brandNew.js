@@ -65,20 +65,15 @@ export default function BrandNew(props) {
       {/* コレクションページ */}
 
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
-        <div className={`collectionTitle titleColumn`}>
+        <div className={`collectionTitle titleColumn sec-c`}>
           <div className={`collectionText mar-t2`}>
-            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h5>おすすめ品種の説明</h5>
-            </ScrollEffect>
-
-            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h2>Collection</h2>
-            </ScrollEffect>
+            <h5>おすすめ品種の説明</h5>
+            <h2>Collection</h2>
           </div>
         </div>
 
         {/* 花の品種 */}
-        <div className={`collectionColumn sectionSpaceM tex-c grid3`}>
+        <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
           <div className={`collectionName`}>
             <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
               <h3>Miwako Tique Serious</h3>

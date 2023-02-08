@@ -16,61 +16,76 @@ export default function CollectionColumn({ roseCo }) {
         return (
           <div
             key={`collection${index}`}
-            className={`flowerBreed sectionSpaceM`}
+            className={`${cn.flowerBreed} sectionSpaceM`}
           >
             {/* PCの表示 */}
-            <div className={`flowerBreedPc`}>
-              <div className={`flowerDetailColumn`}>
-                <div className={`flowerDetail tex-l`}>
-                  <div className={`flowerSpecColumn`}>
-                    <div className={`flowerSpecDetail`}>
-                      <div className={`flowerColorBox`}>
+            <div className={`${cn.flowerBreedPc}`}>
+              <div className={`${cn.flowerDetailColumn}`}>
+                <div className={`${cn.flowerDetail} tex-l`}>
+                  <div className={`${cn.flowerSpecColumn}`}>
+                    <div className={`${cn.flowerSpecDetail}`}>
+                      <div className={`${cn.flowerColorBox}`}>
                         <ColorBox roseCo={el.node.colors} />
                       </div>
-                      <h5 className={`flowerColorText`}>
+                      <h5 className={`${cn.flowerColorText}`}>
                         {el.node.colors.nodes[0].name}
                       </h5>
                     </div>
-                    <div className={`flowerName`}>
+                    <div className={`${cn.flowerName}`}>
                       <h3>{el.node.title}</h3>
                     </div>
 
-                    <div className={`flowerSpec`}>
-                      <div className={`flowerSpecDetail`}>
+                    <div className={`${cn.flowerPicColumnSp}`}>
+                      <div className={`${cn.flowerPic1}`}>
+                        <img
+                          src={el.node.featuredImage.node.mediaItemUrl}
+                          alt=""
+                        />
+                      </div>
+                      <div className={`${cn.flowerPic2}`}>
+                        <img
+                          src={el.node.featuredImage.node.mediaItemUrl}
+                          alt=""
+                        />
+                      </div>
+                    </div>
+
+                    <div className={`${cn.flowerSpec}`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
                         <h5>{el.node.title}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
                         <h5>{el.node.rose_spec.roseSize}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
                         <h5>{el.node.rose_spec.roseShape}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
                         <h5>{el.node.rose_spec.roseScent}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
                         <h5>{el.node.rose_spec.roseLength}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
                         <h5>{el.node.rose_spec.roseHarvest}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <h5>{el.node.rose_spec.roseExplanation}</h5>
                       </div>
 
-                      <div className={`flowerSpecDetail`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
                         <div
                           onClick={() => {
                             setFav((prevState) => !prevState);
@@ -81,17 +96,23 @@ export default function CollectionColumn({ roseCo }) {
                       </div>
                     </div>
                   </div>
-                  <div className={`flowerAwardIcon`}>
+                  <div className={`${cn.flowerAwardIcon}`}>
                     <img src={el.award} alt="" />
                   </div>
-                </div>
 
-                <div className={`flowerPicColumn`}>
-                  <div className={`flowerPic1`}>
-                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
-                  </div>
-                  <div className={`flowerPic2`}>
-                    <img src={el.node.featuredImage.node.mediaItemUrl} alt="" />
+                  <div className={`${cn.flowerPicColumn}`}>
+                    <div className={`${cn.flowerPic1}`}>
+                      <img
+                        src={el.node.featuredImage.node.mediaItemUrl}
+                        alt=""
+                      />
+                    </div>
+                    <div className={`${cn.flowerPic2}`}>
+                      <img
+                        src={el.node.featuredImage.node.mediaItemUrl}
+                        alt=""
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

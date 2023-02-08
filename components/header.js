@@ -86,35 +86,37 @@ export default function Header() {
         </div>
         {/* ハンバーガーメニュー */}
         <div className={`${cn.humburgerContents} ${button ? cn.active : ""}`}>
-          <div className={`${cn.humburgerMenuColumn} sectionSpaceS`}>
+          <div className={`${cn.humburgerMenuColumn}`}>
             <Link href="/about">
-              <h4
+              <h3
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
+                className={`fon3Sp`}
               >
                 About
-              </h4>
+              </h3>
             </Link>
 
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/news">
-              <h4
+              <h3
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
+                className={`fon3Sp`}
               >
                 News
-              </h4>
+              </h3>
             </Link>
 
             <div className={`${cn.humburgerBorder}`}></div>
 
-            <h4>コレクション</h4>
+            <h3 className={`fon3Sp bold`}>コレクション</h3>
             <div className={`${cn.humburgerBorder}`}></div>
 
-            <Link href="/collection">
+            <Link href="/brandNew">
               <h5
                 onClick={() => {
                   setButton((prevState) => !prevState);
@@ -124,7 +126,7 @@ export default function Header() {
               </h5>
             </Link>
 
-            <Link href="/collection">
+            <Link href="/miwakoTiqueSeries">
               <h5
                 onClick={() => {
                   setButton((prevState) => !prevState);
@@ -134,7 +136,7 @@ export default function Header() {
               </h5>
             </Link>
 
-            <Link href="/collection">
+            <Link href="/varietyList">
               <h5
                 onClick={() => {
                   setButton((prevState) => !prevState);
@@ -144,23 +146,25 @@ export default function Header() {
               </h5>
             </Link>
 
-            <h4
+            <h3
               onClick={() => {
                 setButton((prevState) => !prevState);
               }}
+              className={`fon3Sp`}
             >
               お気に入り
-            </h4>
+            </h3>
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/contact">
-              <h4
+              <h3
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
+                className={`fon3Sp`}
               >
                 お問い合わせ
-              </h4>
+              </h3>
             </Link>
             <div className={`${cn.humburgerBorder}`}></div>
 

@@ -21,7 +21,7 @@
   }
 
   @media screen and (max-width: 767px) {
-    height: 88vh;
+    height: 100vh;
   }
 }
 
@@ -31,6 +31,9 @@
     margin-left: auto;
     margin-right: auto;
     justify-content: space-between;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+    }
     .featureFeaturePic {
       width: 30%;
       overflow: hidden;
@@ -98,10 +101,12 @@
   padding: 2em 0 5em 0;
   .accessColumn {
     margin-top: 4em;
-
-    display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 767px) {
+      display: block;
+    }
 
     .accessDetail {
       h3 {
@@ -121,6 +126,10 @@
   .accessMap {
     width: 45%;
     background-color: var(--main);
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-top: 3em;
+    }
     .mapImage {
       aspect-ratio: 1/1;
       img {

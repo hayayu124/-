@@ -249,7 +249,7 @@ export default function Top({ newss, formas }) {
       <ScrollEffect>
         <section className={`${cn.collection} sectionSpaceM`}>
           <div className={`${cn.collectionTittle} titleColumn`}>
-            <div className={`${cn.collectionText} mar-t2`}>
+            <div className={`${cn.collectionText} mar-t2 mar-b2`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}
                 after={cn.intActive}
@@ -274,7 +274,7 @@ export default function Top({ newss, formas }) {
           </div>
           {/* フラワーカラム */}
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
-            <div className={`${cn.flowerColumn} sec-c `}>
+            <div className={`${cn.flowerColumn} sec-c`}>
               {tique.map((el, index) => {
                 return (
                   <div
