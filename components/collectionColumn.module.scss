@@ -12,6 +12,7 @@
       }
     }
     .flowerTitleColSp {
+      order: 0;
       @media screen and (min-width: 768px) {
         display: none;
       }
@@ -36,42 +37,17 @@
       .flowerName {
         margin-bottom: 2em;
       }
-      .flowerPicColumnSp {
-        display: none;
-        @media screen and (max-width: 767px) {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          margin-bottom: 2em;
-          .flowerPic1 {
-            width: 35%;
-            @media screen and (max-width: 767px) {
-              order: 1;
-            }
-          }
-          .flowerPic2 {
-            width: 60%;
-            @media screen and (max-width: 767px) {
-              order: 0;
-            }
-            img {
-              object-fit: cover;
-            }
-          }
-        }
-      }
+
       .flowerSpec {
         padding-right: 4em;
         @media screen and (max-width: 767px) {
+          margin-top: 1em;
           padding-right: 0em;
         }
       }
 
       .flowerSpec .flowerSpecDetail:nth-child(7) {
         margin: 2em 0;
-        @media screen and (max-width: 767px) {
-          margin: 4em 0;
-        }
       }
       .flowerAwardIcon {
         width: 6em;
@@ -112,7 +88,8 @@
         }
       }
       @media screen and (max-width: 767px) {
-        display: none;
+        order: 0;
+        width: 100%;
       }
     }
   }

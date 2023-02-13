@@ -35,10 +35,15 @@ export default function Footer() {
 
               <h5>コレクション</h5>
 
-              <Link href="/collection">
+              <Link href="/brandNew">
                 <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Brand-New</h6>
               </Link>
-              <h6>&nbsp;&nbsp;MIWAKO TIQUE Serious</h6>
+
+              <Link href="/miwakoTiqueSeries">
+                <h6 className={`${cn.footerMenu}`}>
+                  &nbsp;&nbsp;MIWAKO TIQUE Serious
+                </h6>
+              </Link>
 
               <Link href="/varietyList">
                 <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;品種一覧</h6>

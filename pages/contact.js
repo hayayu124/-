@@ -70,7 +70,7 @@ export default function Contact() {
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.contact} sectionSpaceM mar-b4`}>
-          <div className={`titleColumn`}>
+          <div className={`titleColumn sec-c`}>
             <div className={`mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>お問い合わせ</h5>
@@ -84,7 +84,7 @@ export default function Contact() {
 
           <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
             <div
-              className={`${cn.contactInfo} collectionColumn sectionSpaceS tex-l grid4`}
+              className={`${cn.contactInfo} collectionColumn sectionSpaceS tex-l grid4 sec-c`}
             >
               <div className={`collectionName`}>
                 <h3>品種に関するお問い合わせ先</h3>
@@ -117,7 +117,7 @@ export default function Contact() {
           <ScrollEffect>
             <ScrollEffect className={`intDelay`} after={`intActive`}>
               {/* コンタクト */}
-              <div className={`titleColumn sectionSpaceM`}>
+              <div className={`titleColumn sectionSpaceM sec-c`}>
                 <div className={`mar-t2`}>
                   <h5>フォーム</h5>
 

@@ -5,7 +5,7 @@ import FilterSP from "../components/filterSP.js";
 import ColorBox from "../components/colorBox.js";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
-import FavButton from "../components/utilityFavlButton.js";
+import FavButton from "../components/utilityFavButton.js";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
@@ -36,7 +36,6 @@ export default function VarietyList({ formas }) {
   }, []);
 
   //More View
-  console.log(folding);
   useEffect(() => {
     // このeffectは初回レンダー時のみ呼ばれるeffect
     isFirstRender.current = true;
@@ -68,7 +67,7 @@ export default function VarietyList({ formas }) {
   }, []);
 
   //お気に入りのハートボタン
-  const [fav, setFav] = useState(false);
+  const favList = [];
 
   if (isDisplay) {
     return (
@@ -76,7 +75,7 @@ export default function VarietyList({ formas }) {
         <ScrollEffect>
           {/* 品種一覧 */}
           <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
-            <div className={`varietyListTitle titleColumn`}>
+            <div className={`varietyListTitle titleColum tex-c`}>
               <div className={`varietyListText mar-t2`}>
                 <ScrollEffect>
                   <h5>品種一覧</h5>
@@ -119,16 +118,10 @@ export default function VarietyList({ formas }) {
                             />
                           </Link>
 
-                          {/* <div
-                            onClick={() => {
-                              setFav((prevState) => !prevState);
-                            }}
-                            className={`flowerFavorite flowerheart ${
-                              fav ? "active" : ""
-                            }`}
-                          ></div> */}
-
-                          <FavButton favId={el.node.roseFormaId} />
+                          <FavButton
+                            favId={el.node.roseFormaId}
+                            favList={favList}
+                          />
                         </div>
 
                         <div className={`flowerColor fle-f mar-t1`}>
@@ -180,7 +173,7 @@ export default function VarietyList({ formas }) {
                   })}
                 </div>
 
-                {/* morreView */}
+                {/* moreView */}
                 <div
                   onClick={() => {
                     setMoreView((prevState) => !prevState);

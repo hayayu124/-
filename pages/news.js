@@ -59,7 +59,7 @@ export default function News(newss) {
     <>
       <ScrollEffect>
         <section className={`${cn.news} sectionSpaceM`}>
-          <div className={`${cn.newsTittle} titleColumn`}>
+          <div className={`${cn.newsTittle} titleColumn sec-c`}>
             <div className={`${cn.newsText} mar-t2`}>
               <ScrollEffect>
                 <h5>お知らせ</h5>

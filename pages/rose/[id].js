@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import cn from "../../components/flowerDetail.module.scss";
 import ColorBox from "../../components/colorBox.js";
 import Filter from "../../components/filter.js";
+import Button from "../../components/button.js";
+
 import ScrollEffect from "../../components/utility/utilityscrollEffect";
 
 export default function RoseDetail(props) {
@@ -26,15 +28,10 @@ export default function RoseDetail(props) {
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
-          <div className={`varietyListTitle titleColumn`}>
+          <div className={`varietyListTitle titleColumn sec-c`}>
             <div className={`varietyListText mar-t2`}>
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h5>品種一覧</h5>
-              </ScrollEffect>
-
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h2>Variety list</h2>
-              </ScrollEffect>
+              <h5>品種一覧</h5>
+              <h2>Variety list</h2>
             </div>
           </div>
 
@@ -43,81 +40,85 @@ export default function RoseDetail(props) {
             <div className={`border mar-t1`}></div>
 
             {/* フラワーのカラム */}
-            <div className={`collectionColumn sectionSpaceS tex-c grid3`}>
+            <div
+              className={`${cn.collectionColumn} sectionSpaceS tex-c grid3 sec-c`}
+            >
               {/* 品種１ */}
 
-              <div className={`flowerBreed sectionSpaceS`}>
+              <div className={`${cn.flowerBreed} sectionSpaceS`}>
                 {/* PCの表示 */}
-                <div className={`flowerBreedPc`}>
-                  <div className={`flowerTitleColSp tex-l`}>
-                    <div className={`flowerSpecDetail`}>
-                      <div className={`flowerColorBox`}>
+                <div className={`${cn.flowerBreedPc}`}>
+                  {/* SPタイトル */}
+                  <div className={`${cn.flowerTitleColSp} tex-l mar-b2`}>
+                    <div className={`${cn.flowerSpecDetail}`}>
+                      <div className={`${cn.flowerColorBox}`}>
                         <ColorBox roseCo={rose.colors} />
                       </div>
-                      <h5 className={`flowerColorText`}>
+                      <h5 className={`${cn.flowerColorText}`}>
                         {rose.colors.nodes[0].name}
                       </h5>
                     </div>
-                    <div className={`flowerName`}>
+                    <div className={`${cn.flowerName}`}>
                       <h3>{rose.title}</h3>
                     </div>
                   </div>
-                  <div className={`flowerDetailColumn`}>
-                    <div className={`flowerDetail tex-l pos-r`}>
-                      <div className={`flowerTitleColPc tex-l`}>
-                        <div className={`flowerSpecDetail`}>
-                          <div className={`flowerColorBox`}>
+                  <div className={`${cn.flowerDetailColumn}`}>
+                    <div className={`${cn.flowerDetail} tex-l pos-r`}>
+                      {/* PCタイトル */}
+                      <div className={`${cn.flowerTitleColPc} tex-l`}>
+                        <div className={`${cn.flowerSpecDetail}`}>
+                          <div className={`${cn.flowerColorBox}`}>
                             <ColorBox roseCo={rose.colors} />
                           </div>
-                          <h5 className={`flowerColorText`}>
+                          <h6 className={`${cn.flowerColorText}`}>
                             {rose.colors.nodes[0].name}
-                          </h5>
+                          </h6>
                         </div>
-                        <div className={`flowerName`}>
+                        <div className={`${cn.flowerName}`}>
                           <h3>{rose.title}</h3>
                         </div>
                       </div>
-                      <div className={`flowerSpecColumn`}>
-                        <div className={`flowerSpec`}>
-                          <div className={`flowerSpecDetail`}>
-                            <h5>
+                      <div className={`${cn.flowerSpecColumn}`}>
+                        <div className={`${cn.flowerSpec}`}>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>
                               Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </h5>
-                            <h5>{rose.rose_spec.roseColor}</h5>
+                            </h6>
+                            <h6>{rose.rose_spec.roseColor}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>
                               Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                            </h5>
-                            <h5>{rose.rose_spec.roseSize}</h5>
+                            </h6>
+                            <h6>{rose.rose_spec.roseSize}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h6>
                             <h5>{rose.rose_spec.roseShape}</h5>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                            <h5>{rose.rose_spec.roseScent}</h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>Scent&emsp;&emsp;&emsp;&emsp;</h6>
+                            <h6>{rose.rose_spec.roseScent}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                            <h5>{rose.rose_spec.roseLength}</h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>Length&emsp;&emsp;&emsp;&nbsp;</h6>
+                            <h6>{rose.rose_spec.roseLength}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                            <h5>{rose.rose_spec.roseHarvest}</h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h6>
+                            <h6>{rose.rose_spec.roseHarvest}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
-                            <h5>{rose.rose_spec.roseExplanation}</h5>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <h6>{rose.rose_spec.roseExplanation}</h6>
                           </div>
 
-                          <div className={`flowerSpecDetail`}>
+                          <div className={`${cn.flowerSpecDetail}`}>
                             <div
                               onClick={() => {
                                 setFav((prevState) => !prevState);
@@ -128,19 +129,19 @@ export default function RoseDetail(props) {
                           </div>
                         </div>
                       </div>
-                      <div className={`flowerAwardIcon`}>
+                      <div className={`${cn.flowerAwardIcon}`}>
                         <img src={rose.rose_spec.award} alt="" />
                       </div>
                     </div>
-
-                    <div className={`flowerPicColumn`}>
-                      <div className={`flowerPic1`}>
+                    {/* 写真 */}
+                    <div className={`${cn.flowerPicColumn}`}>
+                      <div className={`${cn.flowerPic1}`}>
                         <img
                           src={rose.featuredImage.node.mediaItemUrl}
                           alt=""
                         />
                       </div>
-                      <div className={`flowerPic2`}>
+                      <div className={`${cn.flowerPic2}`}>
                         <img
                           src={rose.rose_spec.imageSub.mediaItemUrl}
                           alt=""
@@ -153,12 +154,14 @@ export default function RoseDetail(props) {
             </div>
 
             {/* お気に入り品種 */}
-            <div className={`collectionName tex-c sectionSpaceM`}>
+            <div className={`${cn.collectionName} tex-c sectionSpaceM`}>
               <h3>お気に入りに追加した品種</h3>
             </div>
           </ScrollEffect>
 
-          <div className={`varietyListColumn varietyListColumn mar-t1 grid1`}>
+          <div
+            className={`${cn.varietyListColumn} ${cn.varietyListColumn} mar-t1 grid1`}
+          >
             {/* <div className={`flowerListColumn mar-t1 `}>
             
             {rose.map((el, index) => {

@@ -27,7 +27,7 @@ export default function Top() {
       {/* 特徴 */}
       <ScrollEffect>
         <section className={`${cn.feature} sectionSpaceM`}>
-          <div className={`${cn.featureTitle} titleColumn`}>
+          <div className={`${cn.featureTitle} titleColumn sec-c`}>
             <div className={`${cn.newsText} mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>今井ナーセリーの特徴</h5>
@@ -73,7 +73,7 @@ export default function Top() {
       {/* 見学/販売 */}
       <ScrollEffect>
         <section className={`${cn.tour} sectionSpaceM`}>
-          <div className={`${cn.tourTitle} titleColumn`}>
+          <div className={`${cn.tourTitle} titleColumn sec-c`}>
             <div className={`${cn.tourText} mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>見学,販売</h5>
@@ -105,7 +105,7 @@ export default function Top() {
       {/* 人物 */}
       <ScrollEffect>
         <section className={`${cn.persons} sectionSpaceM`}>
-          <div className={`${cn.personsTitle} titleColumn`}>
+          <div className={`${cn.personsTitle} titleColumn sec-c`}>
             <div className={`${cn.personsText} mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>人物</h5>
@@ -188,7 +188,7 @@ export default function Top() {
       {/* アクセス */}
       <ScrollEffect>
         <section className={`${cn.access} foncolW sectionSpaceM`}>
-          <div className={`${cn.accessTitle} titleColumn`}>
+          <div className={`${cn.accessTitle} titleColumn sec-c`}>
             <div className={`${cn.accessText} mar-t2`}>
               <h5>アクセス</h5>
 

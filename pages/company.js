@@ -19,21 +19,17 @@ export default function Company() {
     <>
       {/* 品種一覧 */}
       <section className={`${cn.company} sectionSpaceM mar-b4`}>
-        <div className={`titleColumn`}>
+        <div className={`titleColumn sec-c`}>
           <div className={`mar-t2`}>
-            <ScrollEffect className={`intDelay`} after={`intActive`}>
-              <h5>会社概要</h5>
-            </ScrollEffect>
+            <h5>会社概要</h5>
 
-            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h2>Company</h2>
-            </ScrollEffect>
+            <h2>Company</h2>
           </div>
         </div>
 
         <ScrollEffect className={`intMostDelay`} after={`intActive`}>
           <div
-            className={`${cn.companyColumn} collectionColumn sectionSpaceM tex-L grid4`}
+            className={`${cn.companyColumn} collectionColumn sectionSpaceM tex-L grid4 sec-c`}
           >
             <div className={`collectionName`}>
               <h3 className={`titleBorder`}>株式会社Rosetique Japan</h3>

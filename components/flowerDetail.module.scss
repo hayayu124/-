@@ -1,2 +1,102 @@
 .varietyList {
+  .flowerBreed {
+    @media screen and (max-width: 767px) {
+      margin-top: 2em;
+    }
+  }
+}
+
+//品種詳細ページデザイン
+
+.flowerTitleColSp {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.flowerTitleColPc {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.flowerBreedPc {
+  .flowerSpecDetail {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 0.3em;
+    p {
+      margin-left: 1em;
+    }
+  }
+  .flowerDetailColumn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+
+    .flowerName {
+      margin-bottom: 2em;
+    }
+
+    .flowerSpec {
+      padding-right: 4em;
+      @media screen and (max-width: 767px) {
+        padding-right: 0em;
+      }
+    }
+
+    .flowerSpec .flowerSpecDetail:nth-child(7) {
+      margin: 2em 0;
+      @media screen and (max-width: 767px) {
+        margin: 2em 0;
+      }
+    }
+    .flowerAwardIcon {
+      width: 6em;
+      height: auto;
+      position: absolute;
+      top: 0%;
+      right: 0%;
+    }
+  }
+
+  .flowerDetail {
+    width: 50%;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      order: 1;
+      margin: 1em 0;
+    }
+  }
+  .flowerPicColumn {
+    order: 1;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .flowerPic1 {
+      width: 35%;
+      @media screen and (max-width: 767px) {
+        order: 1;
+      }
+    }
+    .flowerPic2 {
+      width: 60%;
+      @media screen and (max-width: 767px) {
+        order: 0;
+      }
+      img {
+        object-fit: cover;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      order: 0;
+      width: 100%;
+      margin-bottom: 1em;
+    }
+  }
 }

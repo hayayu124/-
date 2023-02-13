@@ -126,7 +126,7 @@ export default function Top({ newss, formas }) {
               <img src="/img/news.png" alt="" />
             </div>
           </ScrollEffect>
-          <div className={`${cn.newsTittle} titleColumn`}>
+          <div className={`${cn.newsTittle} titleColumn sec-c`}>
             <div className={`${cn.newsText} mar-t2`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}
@@ -189,7 +189,7 @@ export default function Top({ newss, formas }) {
           <div className={`${cn.decoration} ${cn.collectionDecoration1}`}>
             <img src="/img/collection.png" alt="" />
           </div>
-          <div className={`${cn.collectionTittle} titleColumn mar-b4`}>
+          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
             <div className={`${cn.collectionText} mar-t2`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}
@@ -223,7 +223,7 @@ export default function Top({ newss, formas }) {
                     className={`${cn.flowerDetail}`}
                   >
                     <Link href={`./rose/${el.node.roseFormaId}`}>
-                      <div className={`${cn.flowerColumnPic}`}>
+                      <div className={`${cn.flowerColumnPic} mar-t2`}>
                         <img
                           src={el.node.featuredImage.node.mediaItemUrl}
                           alt=""
@@ -248,7 +248,7 @@ export default function Top({ newss, formas }) {
       {/* MIWAKO Tique Serious */}
       <ScrollEffect>
         <section className={`${cn.collection} sectionSpaceM`}>
-          <div className={`${cn.collectionTittle} titleColumn`}>
+          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
             <div className={`${cn.collectionText} mar-t2 mar-b2`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}
@@ -310,7 +310,7 @@ export default function Top({ newss, formas }) {
           <div className={`${cn.decoration} ${cn.varityDecoration1}`}>
             <img src="/img/varity.png" alt="" />
           </div>
-          <div className={`${cn.collectionTittle} titleColumn`}>
+          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
             <div className={`${cn.collectionText} mar-t2`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}

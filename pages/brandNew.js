@@ -58,8 +58,6 @@ export default function BrandNew(props) {
     }
   }, [moreView]);
 
-  console.log(brandNew);
-
   return (
     <>
       {/* コレクションページ */}
@@ -76,7 +74,7 @@ export default function BrandNew(props) {
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
           <div className={`collectionName`}>
             <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h3>Miwako Tique Serious</h3>
+              <h3>Brand New</h3>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
