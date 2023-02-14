@@ -37,7 +37,7 @@ export default function RoseDetail(props) {
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
             {/* ボーダー */}
-            <div className={`border mar-t1`}></div>
+            {/* <div className={`border mar-t1`}></div> */}
 
             {/* フラワーのカラム */}
             <div
@@ -81,41 +81,41 @@ export default function RoseDetail(props) {
                       <div className={`${cn.flowerSpecColumn}`}>
                         <div className={`${cn.flowerSpec}`}>
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>
+                            <h5>
                               Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </h6>
-                            <h6>{rose.rose_spec.roseColor}</h6>
+                            </h5>
+                            <h5>{rose.rose_spec.roseColor}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>
+                            <h5>
                               Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                            </h6>
-                            <h6>{rose.rose_spec.roseSize}</h6>
+                            </h5>
+                            <h5>{rose.rose_spec.roseSize}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h6>
+                            <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
                             <h5>{rose.rose_spec.roseShape}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>Scent&emsp;&emsp;&emsp;&emsp;</h6>
-                            <h6>{rose.rose_spec.roseScent}</h6>
+                            <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
+                            <h5>{rose.rose_spec.roseScent}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>Length&emsp;&emsp;&emsp;&nbsp;</h6>
-                            <h6>{rose.rose_spec.roseLength}</h6>
+                            <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
+                            <h5>{rose.rose_spec.roseLength}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h6>
-                            <h6>{rose.rose_spec.roseHarvest}</h6>
+                            <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                            <h5>{rose.rose_spec.roseHarvest}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <h6>{rose.rose_spec.roseExplanation}</h6>
+                            <h5>{rose.rose_spec.roseExplanation}</h5>
                           </div>
 
                           <div className={`${cn.flowerSpecDetail}`}>
@@ -154,9 +154,9 @@ export default function RoseDetail(props) {
             </div>
 
             {/* お気に入り品種 */}
-            <div className={`${cn.collectionName} tex-c sectionSpaceM`}>
+            {/* <div className={`${cn.collectionName} tex-c sectionSpaceM`}>
               <h3>お気に入りに追加した品種</h3>
-            </div>
+            </div> */}
           </ScrollEffect>
 
           <div

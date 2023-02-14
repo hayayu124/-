@@ -314,9 +314,10 @@ h6 {
 
 //More View/Foldingの制御
 .moreView {
-  display: none;
+  display: block;
+  margin: 7em 0;
   &.active {
-    display: block;
+    display: none;
   }
 }
 

@@ -4,7 +4,7 @@
   color: var(--gl) !important;
 
   p {
-    color: var(--lpn);
+    color: var(--pink);
     font-weight: 700;
     margin-bottom: 1.5em;
   }
@@ -30,7 +30,10 @@
   .footerContactDetail {
     h5,
     h6 {
-      margin-bottom: 0.8em;
+      margin-bottom: 1em;
+    }
+    h5:last-child {
+      margin-top: 1.2em;
     }
     h6 {
       padding-left: 1em;

@@ -98,7 +98,7 @@ export default function BrandNew(props) {
           onClick={() => {
             setMoreView((prevState) => !prevState);
           }}
-          className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
+          className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
         >
           <Button />
         </div>

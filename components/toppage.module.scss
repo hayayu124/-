@@ -55,9 +55,9 @@
     width: 10%;
     transform: translateY(-20%);
     @media screen and (max-width: 767px) {
-      width: 24%;
+      width: 20%;
       left: 0%;
-      transform: translate(-20%, -50%);
+      transform: translate(-20%, -20%);
     }
   }
   &.newsDecoration1 {
@@ -129,6 +129,9 @@
 // about
 .about {
   position: relative;
+  @media screen and (max-width: 767px) {
+    margin-top: 5em;
+  }
 
   .aboutColumn {
     position: relative;

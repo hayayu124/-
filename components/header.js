@@ -20,6 +20,12 @@ export default function Header() {
           {/* PCメニュー */}
           <div className={`${cn.headerMenuColumn}`}>
             <div className={`${cn.headerMenu} `}>
+              <Link href="/">
+                <h5>Top</h5>
+              </Link>
+            </div>
+
+            <div className={`${cn.headerMenu} `}>
               <Link href="/about">
                 <h5>About</h5>
               </Link>
@@ -55,11 +61,13 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <div className={`${cn.headerMenu}`}>
+
+            {/* お気に入り */}
+            {/* <div className={`${cn.headerMenu}`}>
               <Link href="/favorite">
                 <h5>お気に入り</h5>
               </Link>
-            </div>
+            </div> */}
             <div className={`${cn.headerMenu}`}>
               <Link href="/contact">
                 <h5>お問い合わせ</h5>
@@ -146,7 +154,7 @@ export default function Header() {
               </h5>
             </Link>
 
-            <h3
+            {/* <h3
               onClick={() => {
                 setButton((prevState) => !prevState);
               }}
@@ -154,7 +162,7 @@ export default function Header() {
             >
               お気に入り
             </h3>
-            <div className={`${cn.humburgerBorder}`}></div>
+            <div className={`${cn.humburgerBorder}`}></div> */}
 
             <Link href="/contact">
               <h3

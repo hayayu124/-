@@ -5,7 +5,7 @@ import FilterSP from "../components/filterSP.js";
 import ColorBox from "../components/colorBox.js";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
-import FavButton from "../components/utilityFavButton.js";
+import FavButton from "../components/utility/utilityFavButton.js";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
@@ -26,17 +26,21 @@ export default function VarietyList({ formas }) {
   const [folding, setFolding] = useState(true);
   const [view, setView] = useState(false);
   const [reset, setReset] = useState(false);
+  const [favList, setFavList] = useState([]);
 
   useEffect(() => {
+    setIsDisplay(true);
     const body = document.body; //scroll制御
     body.classList.add("active");
     setTimeout(() => {
       setLoad(true);
     }, 500);
-  }, []);
 
-  //More View
-  useEffect(() => {
+    //Favボタン
+    const favFlower = localStorage.getItem("id");
+    setFavList(JSON.parse(favFlower));
+    console.log(favList);
+
     // このeffectは初回レンダー時のみ呼ばれるeffect
     isFirstRender.current = true;
   }, []);
@@ -45,7 +49,7 @@ export default function VarietyList({ formas }) {
     if (isFirstRender.current) {
       // 初回レンダー判定
       isFirstRender.current = false; // もう初回レンダーじゃないよ代入
-    } else if (i <= brandNewColumn.length - 12) {
+    } else if (i < brandNewColumn.length - 12) {
       setI(i + 12);
     } else if (i >= brandNewColumn.length - 12) {
       setI(i + 12);
@@ -61,13 +65,6 @@ export default function VarietyList({ formas }) {
   }, [reset]);
 
   var brandNewDisplayColumn = brandNewColumn.slice(0, i);
-
-  useEffect(() => {
-    setIsDisplay(true);
-  }, []);
-
-  //お気に入りのハートボタン
-  const favList = [];
 
   if (isDisplay) {
     return (
@@ -90,17 +87,15 @@ export default function VarietyList({ formas }) {
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               {/* フィルター */}
 
-              {isDesktop ? <Filter /> : <FilterSP />}
+              {/* {isDesktop ? <Filter /> : <FilterSP />} */}
 
               {/* ボーダー */}
-              <div className={`border mar-t1`}></div>
+              {/* <div className={`border mar-t1`}></div> */}
 
-              {/* 品種一覧 */}
-
-              <div className={`varietyListColumn mar-t1 grid2`}>
-                <div className={`result mar-t1`}>
+              <div className={`varietyListColumn sectionSpaceS grid2`}>
+                {/* <div className={`result mar-t1`}>
                   <h4>絞り込み結果 : 14品種がヒットしました</h4>
-                </div>
+                </div> */}
 
                 <div className={`flowerListColumn mar-t1 `}>
                   {/* 品種１ */}
@@ -118,10 +113,12 @@ export default function VarietyList({ formas }) {
                             />
                           </Link>
 
-                          <FavButton
+                          {/* お気に入りボタン */}
+                          {/* <FavButton
                             favId={el.node.roseFormaId}
                             favList={favList}
-                          />
+                            setFavList={setFavList}
+                          /> */}
                         </div>
 
                         <div className={`flowerColor fle-f mar-t1`}>
@@ -178,38 +175,19 @@ export default function VarietyList({ formas }) {
                   onClick={() => {
                     setMoreView((prevState) => !prevState);
                   }}
-                  className={`moreView ${folding ? "" : "active"}`}
+                  className={`moreView ${folding ? "" : "active"} `}
                 >
                   <Button />
                 </div>
 
                 {/* Folding */}
-                <div
+                {/* <div
                   onClick={() => {
                     setReset((prevState) => !prevState);
                   }}
                   className={`foldingButton ${view ? "active" : ""}`}
                 >
                   <FButton />
-                </div>
-
-                {/* <div className={`pageOption mar-t4`}>
-                  <div className={`pageOptionPart`}>
-                    <h3>1</h3>
-                    <div className={`pageOptionBorder`}></div>
-                  </div>
-
-                  <div className={`pageOptionPart`}>
-                    <h5>2</h5>
-                  </div>
-
-                  <div className={`pageOptionPart`}>
-                    <h5>3</h5>
-                  </div>
-
-                  <div className={`pageOptionPart`}>
-                    <h5>4</h5>
-                  </div>
                 </div> */}
               </div>
             </ScrollEffect>

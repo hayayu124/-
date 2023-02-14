@@ -27,7 +27,7 @@ export default function BrandNew(props) {
   const number = tique.filter(
     (n) => n.node.rose_spec.genre == "Miwako Tique Series"
   ).length;
-  const tiqueSerious = tique
+  const brandNewCol = tique
     .filter((n) => n.node.rose_spec.genre == "Miwako Tique Series")
     .slice(0, sliceNumber);
 
@@ -58,12 +58,8 @@ export default function BrandNew(props) {
     }
   }, [moreView]);
 
-  console.log(number);
-
   return (
     <>
-      {/* コレクションページ */}
-
       {/* コレクションページ */}
 
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
@@ -93,7 +89,7 @@ export default function BrandNew(props) {
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-            <CollectionColumn roseCo={tique} />
+            <CollectionColumn roseCo={brandNewCol} />
           </ScrollEffect>
         </div>
 
@@ -102,7 +98,7 @@ export default function BrandNew(props) {
           onClick={() => {
             setMoreView((prevState) => !prevState);
           }}
-          className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
+          className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
         >
           <Button />
         </div>

@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import cn from "../components/collectionColumn.module.scss";
 import Button from "../components/button.js";
 import ColorBox from "../components/colorBox.js";
-import FavButton from "../components/utilityFavButton.js";
+import FavButton from "./utility/utilityFavButton.js";
 
 import ScrollEffect from "./utility/utilityscrollEffect";
 import LoadingEffect from "./utility/loadingEffect";
 
 export default function CollectionColumn({ roseCo }) {
   //お気に入りのハートボタン
-  const [fav, setFav] = useState(false);
+  // const [fav, setFav] = useState(false);
   return (
     <>
       {/* 品種１ */}
@@ -86,10 +86,11 @@ export default function CollectionColumn({ roseCo }) {
                         <h5>{el.node.rose_spec.roseExplanation}</h5>
                       </div>
 
-                      <div className={`${cn.flowerSpecDetail}`}>
+                      {/* お気に入りボタン */}
+                      {/* <div className={`${cn.flowerSpecDetail}`}>
                         <FavButton favId={el.node.roseFormaId} />
                         <h6>お気に入りに追加</h6>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 

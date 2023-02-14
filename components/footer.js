@@ -49,7 +49,7 @@ export default function Footer() {
                 <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;品種一覧</h6>
               </Link>
 
-              <h5 className={`${cn.footerMenu}`}>お気に入り</h5>
+              {/* <h5 className={`${cn.footerMenu}`}>お気に入り</h5> */}
 
               <Link href="/company">
                 <h5 className={`${cn.footerMenu}`}>会社概要</h5>
@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         <div className={`${cn.footerCopilight}`}>
-          <h6>© 2022 ROSETIQUE JAPAN Inc.</h6>
+          <h6>© 2023 ROSETIQUE JAPAN Inc.</h6>
         </div>
       </footer>
     </>

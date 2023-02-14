@@ -1,24 +1,33 @@
 import { useState, useRef, useEffect, memo, useCallback } from "react";
 
-const FavButton = ({ favId, favList }) => {
+const FavButton = ({ favId, favList, setFavList }) => {
   const [fav, setFav] = useState(false);
+  const isFirstRender = useRef(false);
 
   const handleOn = (id) => {
     if (fav == false) {
       setFav(id);
-      favList.push(id);
+      setFavList((prevState) => [...prevState, id]);
     } else {
+      setFavList(favList.filter((favList, index) => favList !== id));
       setFav(false);
-      const delateN = favList.indexOf(id);
-      favList.splice(delateN, 1);
     }
   };
 
+  //More View
   useEffect(() => {
-    if (window.localStorage) {
+    // このeffectは初回レンダー時のみ呼ばれるeffect
+    isFirstRender.current = true;
+
+    if (favList.indexOf(favId) !== -1) {
+      setFav(favId);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
       let favJsonList = JSON.stringify(favList, undefined, 1);
       localStorage.setItem("id", favJsonList);
-      console.log(localStorage.getItem("id"));
     }
   }, [fav]);
 
