@@ -4,7 +4,7 @@ import cn from "../components/button.module.scss";
 import ScrollEffect from "./utility/utilityscrollEffect";
 import LoadingEffect from "./utility/loadingEffect";
 
-export default function Button() {
+export default function backButton() {
   return (
     <>
       <div className={`sectionSpaceS tex-c pos-r ${cn.button} sec-c`}>

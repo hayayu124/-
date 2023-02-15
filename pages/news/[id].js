@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import ScrollEffect from "../../components/utility/utilityscrollEffect";
 import LoadingEffect from "../../components/utility/loadingEffect";
 
-export default function newsArticle(props) {
+export default function NewsArticle(props) {
   const news = props.newss.edges;
   const post = props.post;
 
@@ -40,43 +40,46 @@ export default function newsArticle(props) {
           </div>
         </div>
 
-        <div className={`${cn.seriesTittle} grid4`}>
-          <h3>{post.title}</h3>
-          <h5 className={`mar-t3`}>{content}</h5>
+        <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+          <div className={`${cn.seriesTittle} grid4`}>
+            <h3>{post.title}</h3>
+            <h5 className={`mar-t3`}>{content}</h5>
 
-          <h5 className={`${cn.newsDate} mar-t2`}>
-            {format(new Date(post.date), "yyyy/MM/dd")}
-          </h5>
+            <h5 className={`${cn.newsDate} mar-t2`}>
+              {format(new Date(post.date), "yyyy/MM/dd")}
+            </h5>
 
-          <div className={`${cn.shareIconColumn} mar-t1`}>
-            <div className={`${cn.snsIcon}`}>
-              <a
-                href={`//twitter.com/intent/tweet?url=${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`}
-                data-text={post.title}
-                data-via="FERNtasTIQU by Miwako"
-                data-size="large"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-              >
-                <img src="/img/2021TwitterLogoBlack.png" alt="" />
-              </a>
+            <div className={`${cn.shareIconColumn} mar-t1`}>
+              <div className={`${cn.snsIcon}`}>
+                <a
+                  href={`//twitter.com/intent/tweet?url=${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`}
+                  data-text={post.title}
+                  data-via="FERNtasTIQU by Miwako"
+                  data-size="large"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                >
+                  <img src="/img/2021TwitterLogoBlack.png" alt="" />
+                </a>
+              </div>
+
+              <div className={`${cn.snsIcon}`}>
+                <a
+                  href={`http://www.facebook.com/share.php?u=https://ferntastique.tokyo/${router.asPath}`}
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                >
+                  <img src="/img/f_logo_RGB-Black_1024.png" alt="" />
+                </a>
+              </div>
             </div>
-
-            <div className={`${cn.snsIcon}`}>
-              <a
-                href={`http://www.facebook.com/share.php?u=https://ferntastique.tokyo/${router.asPath}`}
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-              >
-                <img src="/img/f_logo_RGB-Black_1024.png" alt="" />
-              </a>
-            </div>
+            <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
+              <div className={`${cn.articlePic} sectionSpaceS`}>
+                <img src={post.featuredImage.node.mediaItemUrl} alt="" />
+              </div>
+            </ScrollEffect>
           </div>
-
-          <div className={`${cn.articlePic} sectionSpaceS`}>
-            <img src={post.featuredImage.node.mediaItemUrl} alt="" />
-          </div>
-        </div>
+        </ScrollEffect>
 
         {/* その他のニュース */}
         <div className={`${cn.otherNews} sectionSpaceM`}>

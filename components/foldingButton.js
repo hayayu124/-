@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import cn from "../components/button.module.scss";
 import Link from "next/link";
 
-export default function Button(props) {
+export default function FoldingButton(props) {
   //ニュースを自動処理
   return (
     <>

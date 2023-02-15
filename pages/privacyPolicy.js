@@ -4,7 +4,7 @@ import cn from "../components/privacyPolicy.module.scss";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function Top() {
+export default function PrivacyPolicy() {
   return (
     <>
       {/* 品種一覧 */}

@@ -8,7 +8,6 @@ import ScrollEffect from "../../components/utility/utilityscrollEffect";
 
 export default function RoseDetail(props) {
   const rose = props.post;
-  console.log(rose);
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -61,6 +60,9 @@ export default function RoseDetail(props) {
                       </div>
                       <div className={`${cn.flowerName}`}>
                         <h3>{rose.title}</h3>
+                        {rose.rose_spec.roseSubname !== "" && (
+                          <h6>{rose.rose_spec.roseSubname}</h6>
+                        )}
                       </div>
                     </div>
 
@@ -85,6 +87,9 @@ export default function RoseDetail(props) {
                           </div>
                           <div className={`${cn.flowerName}`}>
                             <h3>{rose.title}</h3>
+                            {rose.rose_spec.roseSubname !== "" && (
+                              <h6>{rose.rose_spec.roseSubname}</h6>
+                            )}
                           </div>
                         </div>
                         <div className={`${cn.flowerAwardIcon}`}>
@@ -268,6 +273,7 @@ export async function getStaticProps(context) {
             roseHarvest
             roseLength
             roseName
+            roseSubname
             rosePetal
             roseScent
             roseShape

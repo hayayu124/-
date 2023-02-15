@@ -4,7 +4,7 @@ import cn from "../components/about.module.scss";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function Top() {
+export default function About() {
   // ロード制御
   const [load, setLoad] = useState(false);
   useEffect(() => {

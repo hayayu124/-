@@ -11,7 +11,6 @@ export default function CollectionColumn({ roseCo }) {
   //お気に入りのハートボタン
   // const [fav, setFav] = useState(false);
 
-  console.log(roseCo);
   return (
     <>
       {/* 品種１ */}
@@ -29,12 +28,16 @@ export default function CollectionColumn({ roseCo }) {
                     <div className={`${cn.flowerColorBox}`}>
                       <ColorBox roseCo={el.node.colors} />
                     </div>
+
                     <h5 className={`${cn.flowerColorText}`}>
                       {el.node.colors.nodes[0].name}
                     </h5>
                   </div>
                   <div className={`${cn.flowerName}`}>
                     <h3>{el.node.title}</h3>
+                    {el.node.rose_spec.roseSubname !== "" && (
+                      <h6>{el.node.rose_spec.roseSubname}</h6>
+                    )}
                   </div>
                 </div>
 
@@ -59,6 +62,10 @@ export default function CollectionColumn({ roseCo }) {
                         </div>
                         <div className={`${cn.flowerName}`}>
                           <h3>{el.node.title}</h3>
+
+                          {el.node.rose_spec.roseSubname !== "" && (
+                            <h6>{el.node.rose_spec.roseSubname}</h6>
+                          )}
                         </div>
                       </div>
                       <div className={`${cn.flowerAwardIcon}`}>

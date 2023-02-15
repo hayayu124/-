@@ -141,6 +141,9 @@ export default function VarietyList({ formas }) {
                         </div>
 
                         <div className={`flowerName`}>
+                          {el.node.rose_spec.roseSubname !== "" && (
+                            <h6>{el.node.rose_spec.roseSubname}</h6>
+                          )}
                           <h3 className={`fonSp3`}>{el.node.title}</h3>
                         </div>
 
@@ -249,6 +252,7 @@ export const getStaticProps = async () => {
                 roseLength
                 roseHarvest
                 roseExplanation
+                roseSubname
               }
               colors {
                 nodes {

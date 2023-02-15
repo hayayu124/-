@@ -7,7 +7,7 @@ import FButton from "../components/foldingButton.js";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function BrandNew(props) {
+export default function MiwakoTiqueSerious(props) {
   const tique = props.formas;
 
   // ロード制御
@@ -144,6 +144,7 @@ export const getStaticProps = async () => {
                 roseLength
                 roseHarvest
                 roseExplanation
+                roseSubname
               }
               colors {
                 nodes {

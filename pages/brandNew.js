@@ -144,6 +144,7 @@ export const getStaticProps = async () => {
                 roseLength
                 roseHarvest
                 roseExplanation
+                roseSubname
               }
               colors {
                 nodes {
