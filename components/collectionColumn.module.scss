@@ -1,10 +1,14 @@
 .flowerBreed {
   @media screen and (max-width: 767px) {
-    margin-top: 2em;
+    margin-top: 5em;
   }
 
   //品種詳細ページデザイン
-
+  //アワードアイコン
+  .flowerAwardIcon {
+    width: 5em;
+    margin-left: 2em;
+  }
   .flowerBreedPc {
     .flowerTitleColPc {
       @media screen and (max-width: 767px) {
@@ -26,6 +30,11 @@
         margin-left: 1em;
       }
     }
+    .roseExplanation {
+      @media screen and (min-width: 768px) {
+        margin-right: 4em;
+      }
+    }
     .flowerDetailColumn {
       display: flex;
       justify-content: space-between;
@@ -44,17 +53,15 @@
           margin-top: 1em;
           padding-right: 0em;
         }
-      }
 
-      .flowerSpec .flowerSpecDetail:nth-child(7) {
-        margin: 2em 0;
-      }
-      .flowerAwardIcon {
-        width: 6em;
-        height: auto;
-        position: absolute;
-        top: 0%;
-        right: 0%;
+        .specBorder {
+          @media screen and (min-width: 768px) {
+            display: none;
+          }
+          width: 1px;
+          background-color: var(--main);
+          margin-right: 1em;
+        }
       }
     }
 

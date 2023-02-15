@@ -36,7 +36,7 @@ export default function News(newss) {
     isFirstRender.current = true;
 
     //項目が10個以上のときはボタンを表示
-    if (number > 10) {
+    if (number > 6) {
       setFolding(true);
     }
   }, []);
@@ -45,10 +45,10 @@ export default function News(newss) {
     if (isFirstRender.current) {
       // 初回レンダー判定
       isFirstRender.current = false; // もう初回レンダーじゃないよ代入
-    } else if (sliceNumber < number - 10) {
-      setSliceNumber(sliceNumber + 10);
-    } else if (sliceNumber >= number - 10) {
-      setSliceNumber(sliceNumber + 10);
+    } else if (sliceNumber < number - 6) {
+      setSliceNumber(sliceNumber + 6);
+    } else if (sliceNumber >= number - 6) {
+      setSliceNumber(sliceNumber + 6);
       setFolding(false);
     }
   }, [moreView]);
@@ -116,7 +116,7 @@ export default function News(newss) {
               onClick={() => {
                 setMoreView((prevState) => !prevState);
               }}
-              className={`moreView ${folding ? "active" : ""} sectionSpaceM`}
+              className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
             >
               <Button />
             </div>

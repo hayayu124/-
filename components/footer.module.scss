@@ -47,11 +47,17 @@
       @media screen and (max-width: 767px) {
         width: 10em;
       }
+      :hover {
+        opacity: 0.7;
+      }
     }
     //SNS
     .snsColumn {
       display: flex;
       justify-content: left;
+      :hover {
+        opacity: 0.7;
+      }
       @media screen and (max-width: 767px) {
         width: 36%;
       }

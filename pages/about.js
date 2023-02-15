@@ -18,11 +18,13 @@ export default function Top() {
   return (
     <>
       {/* kv */}
-      <section className={cn.kv}>
-        <div className={`${cn.kvTitleColumn}`}>
-          <img src="/img/kvCathcCopy.png" alt="" />
-        </div>
-      </section>
+      <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+        <section className={cn.kv}>
+          <div className={`${cn.kvTitleColumn}`}>
+            <img src="/img/kvCathcCopy.png" alt="" />
+          </div>
+        </section>
+      </ScrollEffect>
 
       {/* 特徴 */}
       <ScrollEffect>

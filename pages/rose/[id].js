@@ -21,7 +21,7 @@ export default function RoseDetail(props) {
   }, []);
 
   //お気に入りのハートボタン
-  const [fav, setFav] = useState(false);
+  // const [fav, setFav] = useState(false);
 
   return (
     <>
@@ -49,33 +49,51 @@ export default function RoseDetail(props) {
                 {/* PCの表示 */}
                 <div className={`${cn.flowerBreedPc}`}>
                   {/* SPタイトル */}
-                  <div className={`${cn.flowerTitleColSp} tex-l mar-b2`}>
-                    <div className={`${cn.flowerSpecDetail}`}>
-                      <div className={`${cn.flowerColorBox}`}>
-                        <ColorBox roseCo={rose.colors} />
+                  <div className={`${cn.flowerTitleColSp} tex-l mar-b2 fle-f`}>
+                    <div className={`${cn.flowerTitle}`}>
+                      <div className={`${cn.flowerSpecDetail}`}>
+                        <div className={`${cn.flowerColorBox}`}>
+                          <ColorBox roseCo={rose.colors} />
+                        </div>
+                        <h5 className={`${cn.flowerColorText}`}>
+                          {rose.colors.nodes[0].name}
+                        </h5>
                       </div>
-                      <h5 className={`${cn.flowerColorText}`}>
-                        {rose.colors.nodes[0].name}
-                      </h5>
+                      <div className={`${cn.flowerName}`}>
+                        <h3>{rose.title}</h3>
+                      </div>
                     </div>
-                    <div className={`${cn.flowerName}`}>
-                      <h3>{rose.title}</h3>
+
+                    <div className={`${cn.flowerAwardIcon}`}>
+                      {rose.rose_spec.award == "award2022" && (
+                        <img src="/img/prize_2021_2022_color_E1.png" alt="" />
+                      )}
                     </div>
                   </div>
                   <div className={`${cn.flowerDetailColumn}`}>
                     <div className={`${cn.flowerDetail} tex-l pos-r`}>
                       {/* PCタイトル */}
-                      <div className={`${cn.flowerTitleColPc} tex-l`}>
-                        <div className={`${cn.flowerSpecDetail}`}>
-                          <div className={`${cn.flowerColorBox}`}>
-                            <ColorBox roseCo={rose.colors} />
+                      <div className={`${cn.flowerTitleColPc} tex-l fle-f`}>
+                        <div className={`${cn.flowerTitle}`}>
+                          <div className={`${cn.flowerSpecDetail}`}>
+                            <div className={`${cn.flowerColorBox}`}>
+                              <ColorBox roseCo={rose.colors} />
+                            </div>
+                            <h6 className={`${cn.flowerColorText}`}>
+                              {rose.colors.nodes[0].name}
+                            </h6>
                           </div>
-                          <h6 className={`${cn.flowerColorText}`}>
-                            {rose.colors.nodes[0].name}
-                          </h6>
+                          <div className={`${cn.flowerName}`}>
+                            <h3>{rose.title}</h3>
+                          </div>
                         </div>
-                        <div className={`${cn.flowerName}`}>
-                          <h3>{rose.title}</h3>
+                        <div className={`${cn.flowerAwardIcon}`}>
+                          {rose.rose_spec.award == "award2022" && (
+                            <img
+                              src="/img/prize_2021_2022_color_E1.png"
+                              alt=""
+                            />
+                          )}
                         </div>
                       </div>
                       <div className={`${cn.flowerSpecColumn}`}>
@@ -118,7 +136,7 @@ export default function RoseDetail(props) {
                             <h5>{rose.rose_spec.roseExplanation}</h5>
                           </div>
 
-                          <div className={`${cn.flowerSpecDetail}`}>
+                          {/* <div className={`${cn.flowerSpecDetail}`}>
                             <div
                               onClick={() => {
                                 setFav((prevState) => !prevState);
@@ -126,7 +144,7 @@ export default function RoseDetail(props) {
                               className={`flowerheart ${fav ? "active" : ""}`}
                             ></div>
                             <p className={`fon5 fonSp4`}>お気に入りに追加</p>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                       <div className={`${cn.flowerAwardIcon}`}>

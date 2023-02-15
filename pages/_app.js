@@ -19,7 +19,9 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Rosetique カタログサイト</title>
+        <title>
+          ROSETIQUE by Miwako | 日本発、お花に特化したライフスタイルブランド
+        </title>
         <meta
           name="description"
           content="日本を代表する育種家、今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップです。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。"

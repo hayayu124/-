@@ -113,6 +113,16 @@ export default function VarietyList({ formas }) {
                             />
                           </Link>
 
+                          {/* アワードアイコン */}
+                          <div className={`${cn.flowerAwardIcon} pos-a`}>
+                            {el.node.rose_spec.award == "award2022" && (
+                              <img
+                                src="/img/prize_2021_2022_color_E1.png"
+                                alt=""
+                              />
+                            )}
+                          </div>
+
                           {/* お気に入りボタン */}
                           {/* <FavButton
                             favId={el.node.roseFormaId}
@@ -136,33 +146,39 @@ export default function VarietyList({ formas }) {
 
                         {/* フラワースペック */}
                         <div className={`varietyListSpec`}>
-                          <div className={`varietyListSpecBorder`}></div>
-                          <div className={`varietyListSpecDetail1`}>
-                            <h6>
-                              Color&nbsp;&nbsp;
-                              {el.node.rose_spec.roseColor}
-                            </h6>
-                            <h6>
-                              Shape&nbsp;&nbsp;
-                              {el.node.rose_spec.roseShape}
-                            </h6>
-                            <h6>
-                              Length&nbsp;&nbsp;{el.node.rose_spec.roseLength}
-                            </h6>
+                          <div className={`varietyListSpecDetail1 fle-f`}>
+                            <div className={`varietyListSpecBorder`}></div>
+                            <div className={`varietyListSpecDetail`}>
+                              <h6>
+                                Color&nbsp;&nbsp;
+                                {el.node.rose_spec.roseColor}
+                              </h6>
+                              <h6>
+                                Shape&nbsp;&nbsp;
+                                {el.node.rose_spec.roseShape}
+                              </h6>
+                              <h6>
+                                Length&nbsp;&nbsp;{el.node.rose_spec.roseLength}
+                              </h6>
+                            </div>
                           </div>
-                          <div className={`varietyListSpecBorder`}></div>
-                          <div className={`varietyListSpecDetail2`}>
-                            <h6>
-                              Size&nbsp;&nbsp;
-                              {el.node.rose_spec.roseSize}
-                            </h6>
-                            <h6>
-                              Scent&nbsp;&nbsp;
-                              {el.node.rose_spec.roseScent}
-                            </h6>
-                            <h6>
-                              Harvest&nbsp;&nbsp;{el.node.rose_spec.roseHarvest}
-                            </h6>
+
+                          <div className={`varietyListSpecDetail2 fle-f`}>
+                            <div className={`varietyListSpecBorder`}></div>
+                            <div className={`varietyListSpecDetail`}>
+                              <h6>
+                                Size&nbsp;&nbsp;
+                                {el.node.rose_spec.roseSize}
+                              </h6>
+                              <h6>
+                                Scent&nbsp;&nbsp;
+                                {el.node.rose_spec.roseScent}
+                              </h6>
+                              <h6>
+                                Harvest&nbsp;&nbsp;
+                                {el.node.rose_spec.roseHarvest}
+                              </h6>
+                            </div>
                           </div>
                         </div>
                       </div>
