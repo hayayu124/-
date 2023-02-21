@@ -4,6 +4,31 @@
   width: 100vw;
   height: 100vh;
 
+  .kvImgback {
+    background-color: var(--main);
+    mix-blend-mode: multiply;
+    opacity: 0.2;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+  }
+
+  .kvImg {
+    width: 100vw;
+    height: 100vh;
+    top: 0%;
+    left: 0%;
+    z-index: 0;
+    -webkit-animation: zoom 30s 1;
+    animation: zoom 60s 1;
+    animation-fill-mode: forwards;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
   h1,
   h5 {
     color: var(--gl);
@@ -19,9 +44,14 @@
   }
 
   .kvTitleColumn {
-    position: absolute;
     top: 60%;
     left: 5%;
+    z-index: 2;
+
+    h1,
+    h5 {
+      text-shadow: 3px 4px 12px var(--main);
+    }
 
     @media screen and (max-width: 767px) {
       top: 56%;
@@ -32,20 +62,6 @@
   }
 }
 
-.kv:before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url("/img/kv.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-animation: zoom 10s 1;
-  animation: zoom 60s 1;
-  animation-fill-mode: forwards;
-}
-
 //装飾
 .decoration {
   position: absolute;
@@ -53,6 +69,7 @@
   left: 5%;
   &.aboutDecoration1 {
     width: 10%;
+    max-width: 200px;
     transform: translateY(-20%);
     @media screen and (max-width: 767px) {
       width: 20%;
@@ -62,7 +79,8 @@
   }
   &.newsDecoration1 {
     width: 10%;
-    transform: translateY(-10%);
+    max-width: 200px;
+
     @media screen and (max-width: 767px) {
       width: 24%;
       left: 0%;
@@ -94,6 +112,7 @@
   right: 0%;
   &.aboutDecoration2 {
     width: 20%;
+    max-width: 400px;
     transform: translateY(-10%);
     @media screen and (max-width: 767px) {
       display: none;
@@ -107,7 +126,8 @@
   left: 5%;
   &.aboutDecoration3 {
     width: 30%;
-    transform: translateY(250%);
+    max-width: 500px;
+    transform: translateY(270%);
     @media screen and (max-width: 767px) {
       width: 72%;
       left: 0%;
@@ -128,6 +148,9 @@
 
 // about
 .about {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
   @media screen and (max-width: 767px) {
     margin-top: 5em;
@@ -153,6 +176,10 @@
 //news
 .news,
 .collection {
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16em;
   position: relative;
 }
 
@@ -160,6 +187,13 @@
   margin-bottom: 8em;
   @media screen and (max-width: 767px) {
     margin-bottom: 5em;
+  }
+}
+
+.button {
+  display: block;
+  &.active {
+    display: none;
   }
 }
 
@@ -209,13 +243,27 @@
   }
 }
 
+//brand-new tiqueがないときの処理
+.brandNewButton,
+.tiqueButton {
+  display: block;
+  &.active {
+    display: none;
+  }
+}
+
 //品種詳細ページ - その他の品種フラワのーカラム
 .otherSec {
+  width: 100vw;
+  overflow: visible;
+  margin-left: auto;
+  margin-right: auto;
   .otherFlowerCol {
-    overflow: hidden;
-
     justify-content: space-between;
     list-style: none;
+    @media screen and (max-width: 767px) {
+      overflow: hidden;
+    }
 
     .flowerDetail {
       padding: 0 0.5em;

@@ -5,8 +5,16 @@
 
   .seriesTittle {
     margin: 5em auto 0 auto;
+    line-height: 1.5em;
     @media screen and (max-width: 767px) {
       width: 89%;
+    }
+    h5 {
+      margin-bottom: 0.7em;
+    }
+    p,
+    img {
+      margin-bottom: 2em;
     }
   }
 

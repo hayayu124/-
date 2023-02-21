@@ -5,13 +5,14 @@
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-image: url("/img/aboutKV.jpg");
+  background-image: url("/img/aboutKv.jpg");
+
   background-size: cover;
   background-position: center;
 
   .kvTitleColumn {
     position: absolute;
-    width: 36%;
+    width: 20em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -27,6 +28,7 @@
 
 //特徴
 .feature {
+  max-width: 1920px;
   .featureFeatureColumn {
     margin-left: auto;
     margin-right: auto;
@@ -51,6 +53,7 @@
 
 //人物
 .persons {
+  max-width: 1920px;
   @media screen and (max-width: 767px) {
     width: 88%;
     margin-left: auto;
@@ -99,6 +102,7 @@
   background-color: var(--main);
   padding: 2em 0 5em 0;
   .accessColumn {
+    max-width: 1920px;
     margin-top: 4em;
     justify-content: space-between;
     align-items: center;

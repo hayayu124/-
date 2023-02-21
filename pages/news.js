@@ -58,12 +58,10 @@ export default function News(newss) {
   return (
     <>
       <ScrollEffect>
-        <section className={`${cn.news} sectionSpaceM`}>
+        <section className={`${cn.news} sectionSpaceM sec-c`}>
           <div className={`${cn.newsTittle} titleColumn sec-c`}>
             <div className={`${cn.newsText} mar-t2`}>
-              <ScrollEffect>
-                <h5>お知らせ</h5>
-              </ScrollEffect>
+              <h5>お知らせ</h5>
 
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h2>News</h2>
@@ -119,6 +117,14 @@ export default function News(newss) {
               className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
             >
               <Button />
+            </div>
+
+            <div
+              className={`newsMessage ${
+                newsColumn.length == 0 ? "active" : ""
+              } tex-c`}
+            >
+              <h5>ニュースはありません。</h5>
             </div>
           </ScrollEffect>
         </section>

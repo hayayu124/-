@@ -37,7 +37,7 @@ export default function Header() {
               </Link>
             </div>
             <div className={`${cn.headerMenu} ${cn.headerCollectionMenu}`}>
-              <h5>コレクション</h5>
+              <h5>Collection</h5>
               <div className={`${cn.headerCollectionSubMenu}`}>
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
                   <Link href="/brandNew">
@@ -55,7 +55,7 @@ export default function Header() {
 
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
                   <Link href="/varietyList">
-                    <h5>品種一覧</h5>
+                    <h5>Variety</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>
                 </div>
@@ -70,12 +70,12 @@ export default function Header() {
             </div> */}
             <div className={`${cn.headerMenu}`}>
               <Link href="/contact">
-                <h5>お問い合わせ</h5>
+                <h5>Contact</h5>
               </Link>
             </div>
-            <div className={`${cn.headerMenu}`}>
+            {/* <div className={`${cn.headerMenu}`}>
               <h5>EN/JP</h5>
-            </div>
+            </div> */}
           </div>
 
           {/* SPメニュー */}
@@ -93,8 +93,10 @@ export default function Header() {
           </div>
         </div>
         {/* ハンバーガーメニュー */}
-        <div className={`${cn.humburgerContents} ${button ? cn.active : ""}`}>
-          <div className={`${cn.humburgerMenuColumn}`}>
+        <div
+          className={`${cn.humburgerContents} ${button ? cn.active : ""} pos-r`}
+        >
+          <div className={`${cn.humburgerMenuColumn} pos-a`}>
             <Link href="/about">
               <h3
                 onClick={() => {
@@ -121,7 +123,7 @@ export default function Header() {
 
             <div className={`${cn.humburgerBorder}`}></div>
 
-            <h3 className={`fon3Sp bold`}>コレクション</h3>
+            <h3 className={`fon3Sp bold`}>Collection</h3>
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/brandNew">
@@ -150,7 +152,7 @@ export default function Header() {
                   setButton((prevState) => !prevState);
                 }}
               >
-                品種一覧
+                Variety
               </h5>
             </Link>
 
@@ -171,12 +173,12 @@ export default function Header() {
                 }}
                 className={`fon3Sp`}
               >
-                お問い合わせ
+                Contact
               </h3>
             </Link>
             <div className={`${cn.humburgerBorder}`}></div>
 
-            <h5>EN/JP</h5>
+            {/* <h5>EN/JP</h5> */}
           </div>
         </div>
       </div>

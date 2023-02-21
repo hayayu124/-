@@ -8,6 +8,7 @@ import ScrollEffect from "../../components/utility/utilityscrollEffect";
 
 export default function RoseDetail(props) {
   const rose = props.post;
+  console.log(rose);
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -51,12 +52,16 @@ export default function RoseDetail(props) {
                   <div className={`${cn.flowerTitleColSp} tex-l mar-b2 fle-f`}>
                     <div className={`${cn.flowerTitle}`}>
                       <div className={`${cn.flowerSpecDetail}`}>
-                        <div className={`${cn.flowerColorBox}`}>
-                          <ColorBox roseCo={rose.colors} />
-                        </div>
-                        <h5 className={`${cn.flowerColorText}`}>
-                          {rose.colors.nodes[0].name}
-                        </h5>
+                        {rose.colors.nodes.length !== 0 && (
+                          <div className={`${cn.flowerColorBox}`}>
+                            <ColorBox roseCo={rose.colors} />
+                          </div>
+                        )}
+                        {rose.colors.nodes.length !== 0 && (
+                          <h5 className={`${cn.flowerColorText}`}>
+                            {rose.colors.nodes[0].name}
+                          </h5>
+                        )}
                       </div>
                       <div className={`${cn.flowerName}`}>
                         <h3>{rose.title}</h3>
@@ -78,15 +83,21 @@ export default function RoseDetail(props) {
                       <div className={`${cn.flowerTitleColPc} tex-l fle-f`}>
                         <div className={`${cn.flowerTitle}`}>
                           <div className={`${cn.flowerSpecDetail}`}>
-                            <div className={`${cn.flowerColorBox}`}>
-                              <ColorBox roseCo={rose.colors} />
-                            </div>
-                            <h6 className={`${cn.flowerColorText}`}>
-                              {rose.colors.nodes[0].name}
-                            </h6>
+                            {rose.colors.nodes.length !== 0 && (
+                              <div className={`${cn.flowerColorBox}`}>
+                                <ColorBox roseCo={rose.colors} />
+                              </div>
+                            )}
+                            {rose.colors.nodes.length !== 0 && (
+                              <h5 className={`${cn.flowerColorText}`}>
+                                {rose.colors.nodes[0].name}
+                              </h5>
+                            )}
                           </div>
                           <div className={`${cn.flowerName}`}>
-                            <h3>{rose.title}</h3>
+                            {rose.roseTitle !== null && (
+                              <h3>{rose.rose_spec.roseName}</h3>
+                            )}
                             {rose.rose_spec.roseSubname !== "" && (
                               <h6>{rose.rose_spec.roseSubname}</h6>
                             )}
@@ -103,43 +114,68 @@ export default function RoseDetail(props) {
                       </div>
                       <div className={`${cn.flowerSpecColumn}`}>
                         <div className={`${cn.flowerSpec}`}>
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>
-                              Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </h5>
-                            <h5>{rose.rose_spec.roseColor}</h5>
-                          </div>
+                          {rose.rose_spec.roseColor !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>
+                                Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              </h5>
+                              <h5>{rose.rose_spec.roseColor}</h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>
-                              Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                            </h5>
-                            <h5>{rose.rose_spec.roseSize}</h5>
-                          </div>
+                          {rose.rose_spec.roseSize !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>
+                                Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                              </h5>
+                              <h5>{rose.rose_spec.roseSize}</h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                            <h5>{rose.rose_spec.roseShape}</h5>
-                          </div>
+                          {rose.rose_spec.roseShape !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                              <h5>{rose.rose_spec.roseShape}</h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                            <h5>{rose.rose_spec.roseScent}</h5>
-                          </div>
+                          {rose.rose_spec.rosePetal !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>
+                                Petal&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {rose.rose_spec.rosePetal}
+                              </h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                            <h5>{rose.rose_spec.roseLength}</h5>
-                          </div>
+                          {rose.rose_spec.roseScent !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
+                              <h5>{rose.rose_spec.roseScent}</h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                            <h5>{rose.rose_spec.roseHarvest}</h5>
-                          </div>
+                          {rose.rose_spec.roseLength !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
+                              <h5>{rose.rose_spec.roseLength}</h5>
+                            </div>
+                          )}
 
-                          <div className={`${cn.flowerSpecDetail}`}>
-                            <h5>{rose.rose_spec.roseExplanation}</h5>
-                          </div>
+                          {rose.rose_spec.roseHarvest !== null && (
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
+                              <h5>{rose.rose_spec.roseHarvest}</h5>
+                            </div>
+                          )}
+
+                          {rose.rose_spec.roseExplanation !== null && (
+                            <div
+                              className={`${cn.flowerSpecDetail} ${cn.roseExplanation}`}
+                            >
+                              <h5>{rose.rose_spec.roseExplanation}</h5>
+                            </div>
+                          )}
 
                           {/* <div className={`${cn.flowerSpecDetail}`}>
                             <div
@@ -152,24 +188,25 @@ export default function RoseDetail(props) {
                           </div> */}
                         </div>
                       </div>
-                      <div className={`${cn.flowerAwardIcon}`}>
-                        <img src={rose.rose_spec.award} alt="" />
-                      </div>
                     </div>
                     {/* 写真 */}
                     <div className={`${cn.flowerPicColumn}`}>
-                      <div className={`${cn.flowerPic1}`}>
-                        <img
-                          src={rose.featuredImage.node.mediaItemUrl}
-                          alt=""
-                        />
-                      </div>
-                      <div className={`${cn.flowerPic2}`}>
-                        <img
-                          src={rose.rose_spec.imageSub.mediaItemUrl}
-                          alt=""
-                        />
-                      </div>
+                      {rose.featuredImage !== null && (
+                        <div className={`${cn.flowerPic1}`}>
+                          <img
+                            src={rose.rose_spec.imageSub.mediaItemUrl}
+                            alt=""
+                          />
+                        </div>
+                      )}
+                      {rose.rose_spec.imageSub !== null && (
+                        <div className={`${cn.flowerPic2}`}>
+                          <img
+                            src={rose.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

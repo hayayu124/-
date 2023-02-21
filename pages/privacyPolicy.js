@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
   return (
     <>
       {/* 品種一覧 */}
-      <section className={`${cn.company} sectionSpaceM mar-b4`}>
+      <section className={`${cn.privacyPolicy} sectionSpaceM mar-b4 sec-c`}>
         <div className={`tex-c`}>
           <div className={`mar-t2`}>
             <h5 className={`fon5`}>プライバシーポリシー</h5>

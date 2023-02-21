@@ -7,17 +7,30 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 import { formatMuiErrorMessage } from "@mui/utils";
 
-export default function Top({ newss, formas }) {
-  // ロード制御
-  const [load, setLoad] = useState(false);
-  useEffect(() => {
-    const body = document.body; //scroll制御
-    body.classList.add("active");
-    setTimeout(() => {
-      setLoad(true);
-    }, 500);
-  }, []);
+//スワイパー
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/bundle";
+import SwiperCore, {
+  Thumbs,
+  Pagination,
+  Navigation,
+  Lazy,
+  Controller,
+  Autoplay,
+  EffectFade,
+} from "swiper";
 
+SwiperCore.use([
+  Thumbs,
+  Pagination,
+  Navigation,
+  Lazy,
+  Controller,
+  Autoplay,
+  EffectFade,
+]);
+
+export default function Top({ newss, formas }) {
   //配列の読み込み
   const newsColumn = newss.slice(0, 3);
   const roseFormas = formas;
@@ -49,26 +62,62 @@ export default function Top({ newss, formas }) {
     )
     .slice(6, 12);
 
+  // ロード制御
+  const [load, setLoad] = useState(false);
+  useEffect(() => {
+    const body = document.body; //scroll制御
+    body.classList.add("active");
+    setTimeout(() => {
+      setLoad(true);
+    }, 500);
+  }, []);
+
+  // スワイパー
+  const kvImg = [1, 2, 3, 4, 5];
+  const kvSwiperParams = {
+    slidesPerView: 1,
+    loop: true,
+    speed: 7000,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+  };
+
   return (
     <>
       {/* kv */}
       <div className={`${cn.kv} pos-r`}>
-        <div className={`${cn.kvTitleColumn}`}>
-          <div className={`${cn.kvSubTitle}`}>
-            <ScrollEffect className={`intDelay`} after={`intActive`}>
-              <h5 className={`fon4 fon4Sp`}>
-                The Rose Maker IMAI KIYOSHI
-                <br />
-                Cut Rose Collection
-              </h5>
-            </ScrollEffect>
-          </div>
-          <div className={`${cn.kvTitle}`}>
-            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h1 className={`fon1 fonSp1`}>Rosetique Japan</h1>
-            </ScrollEffect>
-          </div>
-        </div>
+        {/* スライド */}
+        <Swiper {...kvSwiperParams}>
+          {kvImg.map((key) => (
+            <SwiperSlide key={key}>
+              <div className={`${cn.kvImgColumn} pos-r`}>
+                <div className={`${cn.kvImgback} pos-r`}></div>
+                <div className={`${cn.kvImg} pos-a`}>
+                  <img src={`/img/kv0${key}.jpg`} alt="" />
+                </div>
+              </div>
+
+              <div className={`${cn.kvTitleColumn} pos-a`}>
+                <div className={`${cn.kvSubTitle}`}>
+                  <ScrollEffect className={`intDelay`} after={`intActive`}>
+                    <h5 className={`fon4 fon4Sp`}>Cut Rose Collection</h5>
+                  </ScrollEffect>
+                </div>
+                <div className={`${cn.kvTitle}`}>
+                  <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
+                    <h1 className={`fon1 fonSp1`}>ROSETIQUE JAPAN</h1>
+                  </ScrollEffect>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
 
       {/* about */}
@@ -120,11 +169,13 @@ export default function Top({ newss, formas }) {
 
       {/* News */}
       <ScrollEffect>
-        <section className={`${cn.news} sectionSpace`}>
+        <section className={`${cn.news}`}>
           <ScrollEffect className={`${cn.intDelay}`} after={cn.intActive}>
-            <div className={`${cn.decoration} ${cn.newsDecoration1}`}>
-              <img src="/img/news.png" alt="" />
-            </div>
+            {newsColumn.length !== 0 && (
+              <div className={`${cn.decoration} ${cn.newsDecoration1}`}>
+                <img src="/img/news.png" alt="" />
+              </div>
+            )}
           </ScrollEffect>
           <div className={`${cn.newsTittle} titleColumn sec-c`}>
             <div className={`${cn.newsText} mar-t2`}>
@@ -136,12 +187,16 @@ export default function Top({ newss, formas }) {
                 <h2>News</h2>
               </ScrollEffect>
 
-              <ScrollEffect
-                className={`${cn.intMostDelay}`}
-                after={cn.intActive}
-              >
-                <h5>今井ナーセリーに関する情報を随時発信しています。</h5>
-              </ScrollEffect>
+              {newsColumn.length !== 0 ? (
+                <ScrollEffect
+                  className={`${cn.intMostDelay}`}
+                  after={cn.intActive}
+                >
+                  <h5>今井ナーセリーに関する情報を随時発信しています。</h5>
+                </ScrollEffect>
+              ) : (
+                <h5>現在お知らせはございません。</h5>
+              )}
             </div>
           </div>
 
@@ -149,25 +204,30 @@ export default function Top({ newss, formas }) {
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
             <div className={`${cn.newsColumn} newsColumn grid4 sectionSpaceS`}>
               {/* 記事 */}
-
               {newsColumn.map((el, index) => {
                 return (
                   <div key={`joinColumn${index}`} className={`newsDetail`}>
-                    <Link href={`./news/${el.node.newsId}`}>
+                    <Link href={`./news/${el.newsId}`}>
                       <div className={`newsDetailPic`}>
-                        <img
-                          src={el.node.featuredImage.node.mediaItemUrl}
-                          alt=""
-                        />
+                        {el.featuredImage !== null && (
+                          <img
+                            src={el.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        )}
                       </div>
                     </Link>
 
                     <div className={`newsDetailText`}>
-                      <h4>{el.node.title}</h4>
-                      <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                      <h4>{el.title}</h4>
+                      {el.content !== null && (
+                        <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                      )}
 
-                      <h6 className={`newsDate`}>{el.newsDate}</h6>
-                      <Link href={`./news/${el.node.newsId}`}>
+                      {el.date !== null && (
+                        <h6 className={`newsDate`}>{el.date}</h6>
+                      )}
+                      <Link href={`./news/${el.newsId}`}>
                         <div className={`moreViewText`}>
                           <img src="/img/moreViewText.png" alt="" />
                         </div>
@@ -179,7 +239,9 @@ export default function Top({ newss, formas }) {
             </div>
           </ScrollEffect>
 
-          <Button link="/news" />
+          <div className={`${cn.button} ${newss.length == 0 ? cn.active : ""}`}>
+            <Button link="/news" />
+          </div>
         </section>
       </ScrollEffect>
 
@@ -222,25 +284,43 @@ export default function Top({ newss, formas }) {
                     key={`flowerColumn${index}`}
                     className={`${cn.flowerDetail}`}
                   >
-                    <Link href={`./rose/${el.node.roseFormaId}`}>
-                      <div className={`${cn.flowerColumnPic} mar-t2`}>
-                        <img
-                          src={el.node.featuredImage.node.mediaItemUrl}
-                          alt=""
-                        />
-                      </div>
-                    </Link>
+                    {el.node.featuredImage !== null && (
+                      <Link href={`./rose/${el.node.roseFormaId}`}>
+                        <div className={`${cn.flowerColumnPic} mar-t2`}>
+                          <img
+                            src={el.node.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        </div>
+                      </Link>
+                    )}
 
-                    <div className={`${cn.flowerName}`}>
-                      <h6>{el.node.title}</h6>
-                    </div>
+                    {el.node.featuredImage !== null && (
+                      <div className={`${cn.flowerName}`}>
+                        <h6>{el.node.title}</h6>
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
 
             {/* もっと見るボタン */}
-            <Button link="/brandNew" />
+            <div
+              className={`${cn.brandNewButton} ${
+                brandNew.length == 0 ? cn.active : ""
+              }`}
+            >
+              <Button link="/brandNew" />
+            </div>
+
+            <div
+              className={`newsMessage ${
+                brandNew.length == 0 ? "active" : ""
+              } tex-c`}
+            >
+              <h5>品種がありません。</h5>
+            </div>
           </ScrollEffect>
         </section>
       </ScrollEffect>
@@ -281,25 +361,43 @@ export default function Top({ newss, formas }) {
                     key={`flowerColumn${index}`}
                     className={`${cn.flowerDetail}`}
                   >
-                    <Link href={`./rose/${el.node.roseFormaId}`}>
-                      <div className={`${cn.flowerColumnPic}`}>
-                        <img
-                          src={el.node.featuredImage.node.mediaItemUrl}
-                          alt=""
-                        />
-                      </div>
-                    </Link>
+                    {el.node.featuredImage !== null && (
+                      <Link href={`./rose/${el.node.roseFormaId}`}>
+                        <div className={`${cn.flowerColumnPic}`}>
+                          <img
+                            src={el.node.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        </div>
+                      </Link>
+                    )}
 
-                    <div className={`${cn.flowerName}`}>
-                      <h6>{el.node.title}</h6>
-                    </div>
+                    {el.node.featuredImage !== null && (
+                      <div className={`${cn.flowerName}`}>
+                        <h6>{el.node.title}</h6>
+                      </div>
+                    )}
                   </div>
                 );
               })}
             </div>
 
             {/* もっと見るボタン */}
-            <Button link="/miwakoTiqueSeries" />
+            <div
+              className={`${cn.tiqueButton} ${
+                tique.length == 0 ? cn.active : ""
+              }`}
+            >
+              <Button link="/miwakoTiqueSeries" />
+            </div>
+
+            <div
+              className={`newsMessage ${
+                tique.length == 0 ? "active" : ""
+              } tex-c`}
+            >
+              <h5>品種がありません。</h5>
+            </div>
           </ScrollEffect>
         </section>
       </ScrollEffect>
@@ -338,7 +436,13 @@ export default function Top({ newss, formas }) {
 
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
             {/* もっと見るボタン */}
-            <Button link="/varietyList" />
+            <div
+              className={`${cn.varietyButton} ${
+                roseFormas.length == 0 ? cn.active : ""
+              }`}
+            >
+              <Button link="/varietyList" />
+            </div>
 
             {/* フラワーカラム */}
             <div className={`${cn.otherSec} mar-t4`}>
@@ -350,14 +454,16 @@ export default function Top({ newss, formas }) {
                         key={`flowerColumn${index}`}
                         className={`${cn.flowerDetail}`}
                       >
-                        <Link href={`./rose/${el.node.roseFormaId}`}>
-                          <div className={`${cn.flowerColumnPic}`}>
-                            <img
-                              src={el.node.featuredImage.node.mediaItemUrl}
-                              alt=""
-                            />
-                          </div>
-                        </Link>
+                        {el.node.featuredImage !== null && (
+                          <Link href={`./rose/${el.node.roseFormaId}`}>
+                            <div className={`${cn.flowerColumnPic}`}>
+                              <img
+                                src={el.node.featuredImage.node.mediaItemUrl}
+                                alt=""
+                              />
+                            </div>
+                          </Link>
+                        )}
 
                         {/* <div className={`${cn.flowerName}`}>
                           <h6>{el.node.title}</h6>
@@ -374,14 +480,16 @@ export default function Top({ newss, formas }) {
                         key={`flowerColumn${index}`}
                         className={`${cn.flowerDetail}`}
                       >
-                        <Link href={`./rose/${el.node.roseFormaId}`}>
-                          <div className={`${cn.flowerColumnPic}`}>
-                            <img
-                              src={el.node.featuredImage.node.mediaItemUrl}
-                              alt=""
-                            />
-                          </div>
-                        </Link>
+                        {el.node.featuredImage !== null && (
+                          <Link href={`./rose/${el.node.roseFormaId}`}>
+                            <div className={`${cn.flowerColumnPic}`}>
+                              <img
+                                src={el.node.featuredImage.node.mediaItemUrl}
+                                alt=""
+                              />
+                            </div>
+                          </Link>
+                        )}
 
                         {/* <div className={`${cn.flowerName}`}>
                           <h6>{el.node.title}</h6>
@@ -400,14 +508,16 @@ export default function Top({ newss, formas }) {
                         key={`flowerColumn${index}`}
                         className={`${cn.flowerDetail}`}
                       >
-                        <Link href={`./rose/${el.node.roseFormaId}`}>
-                          <div className={`${cn.flowerColumnPic}`}>
-                            <img
-                              src={el.node.featuredImage.node.mediaItemUrl}
-                              alt=""
-                            />
-                          </div>
-                        </Link>
+                        {el.node.featuredImage !== null && (
+                          <Link href={`./rose/${el.node.roseFormaId}`}>
+                            <div className={`${cn.flowerColumnPic}`}>
+                              <img
+                                src={el.node.featuredImage.node.mediaItemUrl}
+                                alt=""
+                              />
+                            </div>
+                          </Link>
+                        )}
 
                         {/* <div className={`${cn.flowerName}`}>
                           <h6>{el.node.title}</h6>
@@ -424,14 +534,16 @@ export default function Top({ newss, formas }) {
                         key={`flowerColumn${index}`}
                         className={`${cn.flowerDetail}`}
                       >
-                        <Link href={`./rose/${el.node.roseFormaId}`}>
-                          <div className={`${cn.flowerColumnPic}`}>
-                            <img
-                              src={el.node.featuredImage.node.mediaItemUrl}
-                              alt=""
-                            />
-                          </div>
-                        </Link>
+                        {el.node.featuredImage !== null && (
+                          <Link href={`./rose/${el.node.roseFormaId}`}>
+                            <div className={`${cn.flowerColumnPic}`}>
+                              <img
+                                src={el.node.featuredImage.node.mediaItemUrl}
+                                alt=""
+                              />
+                            </div>
+                          </Link>
+                        )}
 
                         {/* <div className={`${cn.flowerName}`}>
                           <h6>{el.node.title}</h6>
@@ -441,6 +553,14 @@ export default function Top({ newss, formas }) {
                   })}
                 </div>
               </div>
+            </div>
+
+            <div
+              className={`newsMessage ${
+                roseFormas.length == 0 ? "active" : ""
+              } tex-c`}
+            >
+              <h5>品種がありません。</h5>
             </div>
           </ScrollEffect>
         </section>
@@ -506,39 +626,30 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss {
-          edges {
-            node {
-              date
-              newsId
-              content
-              title
-              featuredImage {
-                node {
-                  mediaItemUrl
+        newss(first: 1000) {
+          nodes {
+            content
+            date
+            title
+            featuredImage {
+              node {
+                mediaItemUrl
                 }
               }
-              news_date_detail {
-                newsImage {
-                  newsImage {
-                    mediaItemUrl
-                  }
-                }
-                newsDate
-              }
+            newsId
             }
           }
         }
-      }
       `,
     }),
   });
 
   const jsonNews = await resNews.json();
   const jsonRose = await roseFormas.json();
+
   return {
     props: {
-      newss: jsonNews.data.newss.edges,
+      newss: jsonNews.data.newss.nodes,
       formas: jsonRose.data.roseFormas.edges,
     },
   };

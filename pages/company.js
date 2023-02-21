@@ -18,7 +18,7 @@ export default function Company() {
   return (
     <>
       {/* 品種一覧 */}
-      <section className={`${cn.company} sectionSpaceM mar-b4`}>
+      <section className={`${cn.company} sectionSpaceM mar-b4 sec-c`}>
         <div className={`titleColumn sec-c`}>
           <div className={`mar-t2`}>
             <h5>会社概要</h5>

@@ -69,7 +69,7 @@ export default function Contact() {
     <>
       {/* 品種一覧 */}
       <ScrollEffect>
-        <section className={`${cn.contact} sectionSpaceM mar-b4`}>
+        <section className={`${cn.contact} sectionSpaceM mar-b4 sec-c`}>
           <div className={`titleColumn sec-c`}>
             <div className={`mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>

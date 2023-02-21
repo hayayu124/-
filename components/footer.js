@@ -33,7 +33,7 @@ export default function Footer() {
                 <h5 className={`${cn.footerMenu}`}>NEWS</h5>
               </Link>
 
-              <h5>コレクション</h5>
+              <h5>Collection</h5>
 
               <Link href="/brandNew">
                 <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Brand-New</h6>
@@ -46,13 +46,13 @@ export default function Footer() {
               </Link>
 
               <Link href="/varietyList">
-                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;品種一覧</h6>
+                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Variety</h6>
               </Link>
 
               {/* <h5 className={`${cn.footerMenu}`}>お気に入り</h5> */}
 
               <Link href="/company">
-                <h5 className={`${cn.footerMenu}`}>会社概要</h5>
+                <h5 className={`${cn.footerMenu}`}>Company</h5>
               </Link>
             </div>
           </div>

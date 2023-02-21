@@ -118,6 +118,14 @@ h6 {
   }
 }
 
+//ニュースがないときの処理
+.newsMessage {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
 //コレクションページ-品種のカラム
 .collection {
   @media screen and (max-width: 767px) {
@@ -146,6 +154,7 @@ h6 {
 .varietyListColumn {
   margin-left: auto;
   margin-right: auto;
+
   @media screen and (max-width: 767px) {
     width: 89%;
   }
@@ -161,6 +170,9 @@ h6 {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
+    &.active {
+      margin-bottom: 7em;
+    }
     @media screen and (max-width: 767px) {
       display: block;
     }

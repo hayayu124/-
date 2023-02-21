@@ -1,3 +1,11 @@
+.collectionColumn {
+  max-width: 1920px;
+  display: block;
+  &.active {
+    display: none;
+  }
+}
+
 .flowerBreed {
   @media screen and (max-width: 767px) {
     margin-top: 5em;

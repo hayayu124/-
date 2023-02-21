@@ -66,6 +66,7 @@ export default function MiwakoTiqueSerious(props) {
         <div className={`collectionTitle titleColumn sec-c`}>
           <div className={`collectionText mar-t2`}>
             <h5>おすすめ品種の説明</h5>
+
             <h2>Collection</h2>
           </div>
         </div>
@@ -101,6 +102,12 @@ export default function MiwakoTiqueSerious(props) {
           className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
         >
           <Button />
+        </div>
+
+        <div
+          className={`newsMessage ${tique.length == 0 ? "active" : ""} tex-c`}
+        >
+          <h5>品種がありません。</h5>
         </div>
       </section>
     </>

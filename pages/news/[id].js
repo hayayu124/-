@@ -8,15 +8,13 @@ import ScrollEffect from "../../components/utility/utilityscrollEffect";
 import LoadingEffect from "../../components/utility/loadingEffect";
 
 export default function NewsArticle(props) {
-  const news = props.newss.edges;
+  const news = props.newss.nodes;
   const post = props.post;
 
   //URLを取得
   const router = useRouter();
 
-  const otherNews = news
-    .filter((n) => n.node.newsId !== post.newsId)
-    .slice(0, 3);
+  const otherNews = news.filter((n) => n.newsId !== post.newsId).slice(0, 3);
   const content = post.content.replace(/(<([^>]+)>)/gi, "");
 
   // ロード制御
@@ -32,7 +30,7 @@ export default function NewsArticle(props) {
   return (
     <>
       <section className={`${cn.newsArticle} sectionSpaceM`}>
-        <div className={`${cn.newsTittle} titleColumn`}>
+        <div className={`${cn.newsTittle} titleColumn sec-c`}>
           <div className={`${cn.newsText} mar-t2`}>
             <h5>ニュース</h5>
 
@@ -42,12 +40,20 @@ export default function NewsArticle(props) {
 
         <ScrollEffect className={`intMostDelay`} after={`intActive`}>
           <div className={`${cn.seriesTittle} grid4`}>
+            {post.date !== null && (
+              <h5 className={`${cn.newsDate} mar-t2`}>
+                {format(new Date(post.date), "yyyy/MM/dd")}
+              </h5>
+            )}
             <h3>{post.title}</h3>
-            <h5 className={`mar-t3`}>{content}</h5>
+            {/* {content !== null && <h5 className={`mar-t3`}>{content}</h5>} */}
 
-            <h5 className={`${cn.newsDate} mar-t2`}>
-              {format(new Date(post.date), "yyyy/MM/dd")}
-            </h5>
+            {post.content !== null && (
+              <div
+                className={`${cn.newsDe} fon5 fonSp4 mar-t4 ${cn.content} + " " + ""`}
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            )}
 
             <div className={`${cn.shareIconColumn} mar-t1`}>
               <div className={`${cn.snsIcon}`}>
@@ -59,7 +65,7 @@ export default function NewsArticle(props) {
                   target="_blank"
                   rel="nofollow noopener noreferrer"
                 >
-                  <img src="/img/2021TwitterLogoBlack.png" alt="" />
+                  <img src="/img/2021TwitterlogoBlack.png" alt="" />
                 </a>
               </div>
 
@@ -73,18 +79,13 @@ export default function NewsArticle(props) {
                 </a>
               </div>
             </div>
-            <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
-              <div className={`${cn.articlePic} sectionSpaceS`}>
-                <img src={post.featuredImage.node.mediaItemUrl} alt="" />
-              </div>
-            </ScrollEffect>
           </div>
         </ScrollEffect>
 
         {/* その他のニュース */}
         <div className={`${cn.otherNews} sectionSpaceM`}>
-          <div className={`${cn.newsText} titleColumn tex-c`}>
-            <h3>その他のニュース</h3>
+          <div className={`${cn.newsText} titleColumn sec-c`}>
+            <h3 className={`tex-c`}>その他のニュース</h3>
           </div>
 
           {/* ニュースの記事一覧 */}
@@ -94,26 +95,23 @@ export default function NewsArticle(props) {
             {otherNews.map((el, index) => {
               return (
                 <div key={`joinColumn${index}`} className={`newsDetail`}>
-                  <Link href={`/news/${el.node.newsId}`}>
-                    <div className={`newsDetailPic`}>
-                      <img
-                        src={el.node.featuredImage.node.mediaItemUrl}
-                        alt=""
-                      />
-                    </div>
-                  </Link>
+                  {el.featuredImage !== null && (
+                    <Link href={`/news/${el.newsId}`}>
+                      <div className={`newsDetailPic`}>
+                        <img src={el.featuredImage.node.mediaItemUrl} alt="" />
+                      </div>
+                    </Link>
+                  )}
 
                   <div className={`newsDetailText`}>
-                    <Link href={`/news/${el.node.newsId}`}>
-                      <h4>{el.node.title}</h4>
+                    <Link href={`/news/${el.newsId}`}>
+                      <h4>{el.title}</h4>
                     </Link>
-                    <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                    {el.content !== null && (
+                      <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                    )}
 
-                    <h6 className={`newsDate`}>
-                      {format(new Date(post.date), "yyyy/MM/dd")}
-                    </h6>
-
-                    <Link href={`/news/${el.node.newsId}`}>
+                    <Link href={`/news/${el.newsId}`}>
                       <div className={`moreViewText`}>
                         <img src="/img/moreViewText.png" alt="" />
                       </div>
@@ -142,27 +140,18 @@ export async function getStaticProps(context) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
-				query SinglePost {
-					news(idType: DATABASE_ID, id: "${context.params.id}") {
-            date
-            newsId
-						content
-            title
-            featuredImage {
-              node {
-                mediaItemUrl
-              }
-            }
-            news_date_detail {
-              newsImage {
-                newsImage {
-                  mediaItemUrl
-                }
-              }
-              newsDate
-            }
-					}
-				}
+      query SinglePost {news(idType: DATABASE_ID, id: "${context.params.id}") {
+        date
+        featuredImage {
+          node {
+            mediaItemUrl
+          }
+        }
+        title
+        content
+        newsId
+      }
+    }
 			`,
     }),
   });
@@ -176,27 +165,17 @@ export async function getStaticProps(context) {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss {
-          edges {
-            node {
-              date
-              newsId
-              content
-              title
-              featuredImage {
-                node {
-                  mediaItemUrl
-                }
-              }
-              news_date_detail {
-                newsImage {
-                  newsImage {
-                    mediaItemUrl
-                  }
-                }
-                newsDate
+        newss(first: 1000) {
+          nodes {
+            content
+            date
+            title
+            featuredImage {
+              node {
+                mediaItemUrl
               }
             }
+            newsId
           }
         }
       }

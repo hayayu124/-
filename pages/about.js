@@ -18,18 +18,17 @@ export default function About() {
   return (
     <>
       {/* kv */}
-      <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-        <section className={cn.kv}>
-          <div className={`${cn.kvTitleColumn}`}>
-            <img src="/img/kvCathcCopy.png" alt="" />
-          </div>
-        </section>
-      </ScrollEffect>
+
+      <section className={`${cn.kv}`}>
+        <div className={`${cn.kvTitleColumn}`}>
+          <img src="/img/kvCathcCopy.png" alt="" />
+        </div>
+      </section>
 
       {/* 特徴 */}
       <ScrollEffect>
-        <section className={`${cn.feature} sectionSpaceM`}>
-          <div className={`${cn.featureTitle} titleColumn sec-c`}>
+        <section className={`${cn.feature} sectionSpaceM sec-c`}>
+          <div className={`${cn.featureTitle} titleColumn`}>
             <div className={`${cn.newsText} mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>今井ナーセリーの特徴</h5>
@@ -106,8 +105,8 @@ export default function About() {
 
       {/* 人物 */}
       <ScrollEffect>
-        <section className={`${cn.persons} sectionSpaceM`}>
-          <div className={`${cn.personsTitle} titleColumn sec-c`}>
+        <section className={`${cn.persons} sectionSpaceM sec-c`}>
+          <div className={`${cn.personsTitle} titleColumn`}>
             <div className={`${cn.personsText} mar-t2`}>
               <ScrollEffect className={`intDelay`} after={`intActive`}>
                 <h5>人物</h5>
@@ -189,8 +188,8 @@ export default function About() {
 
       {/* アクセス */}
       <ScrollEffect>
-        <section className={`${cn.access} foncolW sectionSpaceM`}>
-          <div className={`${cn.accessTitle} titleColumn sec-c`}>
+        <section className={`${cn.access} foncolW sectionSpaceM sec-c`}>
+          <div className={`${cn.accessTitle} titleColumn`}>
             <div className={`${cn.accessText} mar-t2`}>
               <h5>アクセス</h5>
 
