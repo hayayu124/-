@@ -106,7 +106,7 @@ export default function VarietyList({ formas }) {
                     return (
                       <div
                         key={`varietyList${index}`}
-                        className={`flowerBreed1 mar-t3`}
+                        className={`flowerBreed1 mar-t3 cursor`}
                       >
                         <div className={`flowerBreedPic pos-r`}>
                           {el.node.featuredImage !== null && (

@@ -8,7 +8,7 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function News(newss) {
-  const newsColumn = newss.newss.edges;
+  const newsColumn = newss.newss.nodes;
   const isFirstRender = useRef(false);
 
   // ロード制御
@@ -86,18 +86,15 @@ export default function News(newss) {
                     key={`news${index}`}
                     className={`${cn.newsPageDetail} newsDetail`}
                   >
-                    <Link href={`./news/${el.node.newsId}`}>
+                    <Link href={`./news/${el.newsId}`}>
                       <div className={`newsDetailPic`}>
-                        <img
-                          src={el.node.featuredImage.node.mediaItemUrl}
-                          alt=""
-                        />
+                        <img src={el.featuredImage.node.mediaItemUrl} alt="" />
                       </div>
                     </Link>
 
                     <div className={`newsDetailText`}>
-                      <h4>{el.node.title}</h4>
-                      <h6>{el.node.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                      <h4>{el.title}</h4>
+                      <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
 
                       <h6 className={`newsDate`}>{el.newsDate}</h6>
                       <div className={`moreViewText`}>
@@ -145,29 +142,19 @@ export const getStaticProps = async () => {
       query: `
       query NewQuery {
         newss(first: 1000) {
-          edges {
-            node {
-              date
-              newsId
-              content
-              title
-              featuredImage {
-                node {
-                  mediaItemUrl
+          nodes {
+            content
+            date
+            title
+            featuredImage {
+              node {
+                mediaItemUrl
                 }
               }
-              news_date_detail {
-                newsImage {
-                  newsImage {
-                    mediaItemUrl
-                  }
-                }
-                newsDate
-              }
+            newsId
             }
           }
         }
-      }
       `,
     }),
   });
