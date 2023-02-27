@@ -41,9 +41,9 @@ export default function NewsArticle(props) {
         <ScrollEffect className={`intMostDelay`} after={`intActive`}>
           <div className={`${cn.seriesTittle} grid4`}>
             {post.date !== null && (
-              <h5 className={`${cn.newsDate} mar-t2`}>
+              <p className={`${cn.newsDate} fon6 fonSp6 mar-t2`}>
                 {format(new Date(post.date), "yyyy/MM/dd")}
-              </h5>
+              </p>
             )}
             <h3>{post.title}</h3>
             {/* {content !== null && <h5 className={`mar-t3`}>{content}</h5>} */}
@@ -104,6 +104,9 @@ export default function NewsArticle(props) {
                   )}
 
                   <div className={`newsDetailText`}>
+                    <p className={`fon6 fonSp6 newsDate`}>
+                      {format(new Date(el.date), "yyyy/MM/dd")}
+                    </p>
                     <Link href={`/news/${el.newsId}`}>
                       <h4>{el.title}</h4>
                     </Link>

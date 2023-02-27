@@ -24,7 +24,7 @@
     animation-fill-mode: forwards;
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
   }
@@ -84,7 +84,7 @@
     @media screen and (max-width: 767px) {
       width: 24%;
       left: 0%;
-      transform: translate(-20%, -50%);
+      transform: translate(-20%, -20%);
     }
   }
   &.collectionDecoration1 {
@@ -111,11 +111,17 @@
   top: 0%;
   right: 0%;
   &.aboutDecoration2 {
-    width: 20%;
+    width: 10em;
+    height: 16em;
     max-width: 400px;
     transform: translateY(-10%);
     @media screen and (max-width: 767px) {
       display: none;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
@@ -126,12 +132,17 @@
   left: 5%;
   &.aboutDecoration3 {
     width: 30%;
+    height: 24%;
     max-width: 500px;
-    transform: translateY(270%);
+    transform: translateY(200%);
     @media screen and (max-width: 767px) {
       width: 72%;
+      height: 7%;
       left: 0%;
       transform: translateY(130%);
+    }
+    img {
+      object-fit: cover;
     }
   }
 }
@@ -179,14 +190,21 @@
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 16em;
+  margin-top: 14em;
   position: relative;
+  &.tique {
+    margin-top: 10em;
+  }
 }
 
 .collection {
   margin-bottom: 8em;
   @media screen and (max-width: 767px) {
+    margin-top: 10em;
     margin-bottom: 5em;
+    &.tique {
+      margin-top: 5em;
+    }
   }
 }
 

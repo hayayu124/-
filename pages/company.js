@@ -32,7 +32,7 @@ export default function Company() {
             className={`${cn.companyColumn} collectionColumn sectionSpaceM tex-L grid4 sec-c`}
           >
             <div className={`collectionName`}>
-              <h3 className={`titleBorder`}>株式会社Rosetique Japan</h3>
+              <h3 className={`titleBorder`}>株式会社ROSETIQUE JAPAN</h3>
               <h5 className={`collectionName mar-t3 lin-9`}>
                 日本を代表する育種家今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップとしての役割を担います。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。
               </h5>

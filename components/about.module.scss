@@ -11,7 +11,8 @@
   background-position: center;
 
   .kvTitleColumn {
-    position: absolute;
+    color: var(--gl);
+    background-color: var(--main);
     width: 20em;
     top: 50%;
     left: 50%;

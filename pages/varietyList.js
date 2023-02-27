@@ -58,8 +58,7 @@ export default function VarietyList({ formas }) {
   }, [moreView]);
 
   useEffect(() => {
-    //setI(12);
-    setI(76);
+    setI(12);
     setFolding(true);
     setView(false);
   }, [reset]);

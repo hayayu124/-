@@ -8,8 +8,12 @@ export default function Footer() {
       <footer className={`${cn.footer}`}>
         <div className={`${cn.footerColumn} grid3`}>
           <div className={`${cn.rosetiqueInfo}`}>
-            <h1>Rosetique</h1>
-            <p>Japan</p>
+            <h1 className={`fon3 fonSp2 ${cn.footerTitle}`}>
+              ROSETIQUE
+              <br />
+              JAPAN
+            </h1>
+
             <h5>
               The Rose Maker IMAI KIYOSHI
               <br />
@@ -25,9 +29,9 @@ export default function Footer() {
                 <h5 className={`${cn.footerMenu}`}>TOP</h5>
               </Link>
 
-              <Link href="/about">
+              {/* <Link href="/about">
                 <h5 className={`${cn.footerMenu}`}>About</h5>
-              </Link>
+              </Link> */}
 
               <Link href="/news">
                 <h5 className={`${cn.footerMenu}`}>NEWS</h5>

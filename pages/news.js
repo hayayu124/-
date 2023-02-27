@@ -3,6 +3,7 @@ import cn from "../components/news.module.scss";
 import Link from "next/link";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
+import { formatDistance, format } from "date-fns";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
@@ -93,6 +94,9 @@ export default function News(newss) {
                     </Link>
 
                     <div className={`newsDetailText`}>
+                      <p className={`fon6 fonSp6 newsDate`}>
+                        {format(new Date(el.date), "yyyy/MM/dd")}
+                      </p>
                       <h4>{el.title}</h4>
                       <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
 

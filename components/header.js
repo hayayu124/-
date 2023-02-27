@@ -25,11 +25,11 @@ export default function Header() {
               </Link>
             </div>
 
-            <div className={`${cn.headerMenu} `}>
+            {/* <div className={`${cn.headerMenu} `}>
               <Link href="/about">
                 <h5>About</h5>
               </Link>
-            </div>
+            </div> */}
 
             <div className={`${cn.headerMenu} `}>
               <Link href="/news">
@@ -97,7 +97,7 @@ export default function Header() {
           className={`${cn.humburgerContents} ${button ? cn.active : ""} pos-r`}
         >
           <div className={`${cn.humburgerMenuColumn} pos-a`}>
-            <Link href="/about">
+            {/* <Link href="/about">
               <h3
                 onClick={() => {
                   setButton((prevState) => !prevState);
@@ -105,6 +105,19 @@ export default function Header() {
                 className={`fon3Sp`}
               >
                 About
+              </h3>
+            </Link>
+
+            <div className={`${cn.humburgerBorder}`}></div> */}
+
+            <Link href="/">
+              <h3
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+                className={`fon3Sp`}
+              >
+                Top
               </h3>
             </Link>
 

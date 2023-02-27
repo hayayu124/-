@@ -20,8 +20,12 @@ export default function About() {
       {/* kv */}
 
       <section className={`${cn.kv}`}>
-        <div className={`${cn.kvTitleColumn}`}>
-          <img src="/img/kvCathcCopy.png" alt="" />
+        <div className={`${cn.kvTitleColumn} pos-a`}>
+          <div className={`${cn.kvText} tex-c`}>
+            <h5>DREAM ROSE JAPAN</h5>
+            <h2>日本のバラを世界へ</h2>
+            <h5>今井ナーセリーの特徴</h5>
+          </div>
         </div>
       </section>
 
@@ -72,7 +76,7 @@ export default function About() {
       </ScrollEffect>
 
       {/* 見学/販売 */}
-      <ScrollEffect>
+      {/* <ScrollEffect>
         <section className={`${cn.tour} sectionSpaceM`}>
           <div className={`${cn.tourTitle} titleColumn sec-c`}>
             <div className={`${cn.tourText} mar-t2`}>
@@ -101,7 +105,7 @@ export default function About() {
             </div>
           </div>
         </section>
-      </ScrollEffect>
+      </ScrollEffect> */}
 
       {/* 人物 */}
       <ScrollEffect>
@@ -199,7 +203,7 @@ export default function About() {
 
           <div className={`${cn.accessColumn} sec-c grid2 fle-f`}>
             <div className={`${cn.accessDetail}`}>
-              <h3>育種圃場 今井ナーセリー</h3>
+              <h3>育種圃場</h3>
               <h5>
                 〒737-2609
                 <br />
@@ -209,15 +213,6 @@ export default function About() {
                 TEL：0823-72-7634
                 <br />
                 FAX：0823-71-6122
-              </h5>
-
-              <h3>野呂山農場</h3>
-              <h5>
-                〒729-2609 広島県呉市安浦町大字中畑字立小路510-262
-                <br />
-                TEL：0823-70-5636
-                <br />
-                FAX：0823-70-5637
               </h5>
             </div>
 

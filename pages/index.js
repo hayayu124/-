@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import cn from "../components/toppage.module.scss";
 import Button from "../components/button.js";
 import Link from "next/link";
+import { formatDistance, format } from "date-fns";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
@@ -73,7 +74,7 @@ export default function Top({ newss, formas }) {
   }, []);
 
   // スワイパー
-  const kvImg = [1, 2, 3, 4, 5];
+  const kvImg = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const kvSwiperParams = {
     slidesPerView: 1,
     loop: true,
@@ -99,7 +100,7 @@ export default function Top({ newss, formas }) {
               <div className={`${cn.kvImgColumn} pos-r`}>
                 <div className={`${cn.kvImgback} pos-r`}></div>
                 <div className={`${cn.kvImg} pos-a`}>
-                  <img src={`/img/kv0${key}.jpg`} alt="" />
+                  <img src={`/img/kv${key}.jpg`} alt="" />
                 </div>
               </div>
 
@@ -111,7 +112,7 @@ export default function Top({ newss, formas }) {
                 </div>
                 <div className={`${cn.kvTitle}`}>
                   <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                    <h1 className={`fon1 fonSp1`}>ROSETIQUE JAPAN</h1>
+                    <h1 className={`fon1 fonSp2`}>ROSETIQUE JAPAN</h1>
                   </ScrollEffect>
                 </div>
               </div>
@@ -128,28 +129,33 @@ export default function Top({ newss, formas }) {
           </div>
 
           <div className={`${cn.decoration2} ${cn.aboutDecoration2}`}>
-            <img src="/img/flower_1.jpg" alt="" />
+            <img src="/img/IMG_6067.jpg" alt="" />
           </div>
 
           <div className={cn.aboutColumn}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
               <div className={cn.aboutTittle}>
-                <h2>Rosetique Japan</h2>
+                <h5>DREAM ROSE JAPAN</h5>
+                <h2>日本のバラを世界へ</h2>
               </div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               <div className={`${cn.aboutText} mar-t2`}>
                 <h5>
-                  日本を代表する育種家今井清氏のバラを日本全国へ世界へと普及する
+                  日本全国のバラ栽培生産者や花市場、生花店、
                   <br className="br" />
-                  東京のアンテナショップとしての役割を担います。
+                  一般消費者などと連携しながら、世界へと純国産バラを広めたい！
                   <br className="br" />
-                  今井清氏の種苗普及を通して、海外品種バラが大半を占める
+                  との想いで立ち上げた種苗会社です。
                   <br className="br" />
-                  日本の花市場を活性化させ、国産バラ普及に向けて
+                  ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、
                   <br className="br" />
-                  様々な取り組みを展開しています。
+                  明日への活力になっていただけるようなバラ作りを心掛けております。
+                  <br className="br" />
+                  バラを愛するすべてのみなさまと一緒にROSETIQUEを育てて、
+                  <br className="br" />
+                  進化させましょう！
                 </h5>
               </div>
             </ScrollEffect>
@@ -157,7 +163,10 @@ export default function Top({ newss, formas }) {
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
             <div className={`${cn.decoration3} ${cn.aboutDecoration3}`}>
-              <img src="/img/flower_2.jpg" alt="" />
+              <img
+                src="/img/328340252_1811314825908288_6142992496288819254_n.jpg"
+                alt=""
+              />
             </div>
 
             <div className={`${cn.decoration4} ${cn.aboutDecoration4} mar-t2`}>
@@ -192,7 +201,11 @@ export default function Top({ newss, formas }) {
                   className={`${cn.intMostDelay}`}
                   after={cn.intActive}
                 >
-                  <h5>今井ナーセリーに関する情報を随時発信しています。</h5>
+                  <h5>
+                    ROSETIQUE JAPANに関する
+                    <br className="brSp" />
+                    情報を随時発信しています。
+                  </h5>
                 </ScrollEffect>
               ) : (
                 <h5>現在お知らせはございません。</h5>
@@ -219,14 +232,14 @@ export default function Top({ newss, formas }) {
                     </Link>
 
                     <div className={`newsDetailText`}>
+                      <p className={`fon6 fonSp6 newsDate`}>
+                        {format(new Date(el.date), "yyyy/MM/dd")}
+                      </p>
                       <h4>{el.title}</h4>
                       {el.content !== null && (
                         <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
                       )}
 
-                      {el.date !== null && (
-                        <h6 className={`newsDate`}>{el.date}</h6>
-                      )}
                       <Link href={`./news/${el.newsId}`}>
                         <div className={`moreViewText`}>
                           <img src="/img/moreViewText.png" alt="" />
@@ -266,11 +279,9 @@ export default function Top({ newss, formas }) {
                 after={cn.intActive}
               >
                 <h5>
-                  コレクションの説明コレクションの説明コレクションの説明コレクション
+                  トレンドをリードする花姿の良いものの中から、
                   <br className="br" />
-                  の説明コレクションの説明コレクションの説明コレクションの説明コレク
-                  <br className="br" />
-                  ションの説明コレクションの説明
+                  耐病性や生産性に優れた品種だけを厳選してお届けします。
                 </h5>
               </ScrollEffect>
             </div>
@@ -327,7 +338,7 @@ export default function Top({ newss, formas }) {
 
       {/* MIWAKO Tique Serious */}
       <ScrollEffect>
-        <section className={`${cn.collection} sectionSpaceM`}>
+        <section className={`${cn.collection} ${cn.tique}`}>
           <div className={`${cn.collectionTittle} titleColumn sec-c`}>
             <div className={`${cn.collectionText} mar-t2 mar-b2`}>
               <ScrollEffect
@@ -343,11 +354,9 @@ export default function Top({ newss, formas }) {
                 after={cn.intActive}
               >
                 <h5>
-                  コレクションの説明コレクションの説明コレクションの説明コレクション
+                  美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
                   <br className="br" />
-                  の説明コレクションの説明コレクションの説明コレクションの説明コレク
-                  <br className="br" />
-                  ションの説明コレクションの説明
+                  トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
                 </h5>
               </ScrollEffect>
             </div>
@@ -423,12 +432,9 @@ export default function Top({ newss, formas }) {
                 after={cn.intActive}
               >
                 <h5>
-                  品種の説明品種の説明品種の説明品種の説明品種の説明品種の説明
+                  一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
                   <br className="br" />
-                  品種の説明品種の説明品種の説明品種の説明品種の説明品種の説明
-                  <br className="br" />
-                  品種の説明品種の説明品種の説明品種の説明
-                  <br className="br" />
+                  人の心を癒し、心身共に豊かになるバラです。
                 </h5>
               </ScrollEffect>
             </div>

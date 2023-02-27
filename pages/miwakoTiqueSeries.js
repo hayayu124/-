@@ -80,11 +80,11 @@ export default function MiwakoTiqueSerious(props) {
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               <h5 className={`collectionName mar-t3`}>
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                美しく品格のある花姿、芳醇な香り、
                 <br className="br" />
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                丈夫な茎と花保ちの良さ、トゲの少ない扱いやすさにこだわった、
                 <br className="br" />
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                フラッグシップシリーズです。
               </h5>
             </ScrollEffect>
           </div>

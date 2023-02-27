@@ -106,7 +106,7 @@ export default function Contact() {
                 <h5 className={`collectionName mar-t3 lin-9`}>
                   〒158-0082
                   <br />
-                  東京都世田谷区等々力8-12-31F
+                  東京都世田谷区等々力8-12-3 1F
                   <br />
                   E-MAIL : rosetiquebymiwako@gmail.com
                 </h5>

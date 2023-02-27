@@ -81,11 +81,9 @@ export default function BrandNew(props) {
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               <h5 className={`collectionName mar-t3`}>
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                トレンドをリードする花姿の良いものの中から、
                 <br className="br" />
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
-                <br className="br" />
-                おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明おすすめ品種の説明
+                耐病性や生産性に優れた品種だけを厳選してお届けします。
               </h5>
             </ScrollEffect>
           </div>

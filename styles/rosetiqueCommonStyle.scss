@@ -78,7 +78,10 @@ h6 {
       }
     }
     .newsDetailText {
-      padding-top: 1.2em;
+      padding-top: 0.8em;
+      .newsDate {
+        margin-bottom: 0.3em;
+      }
       h6 {
         padding-top: 1.7em;
         overflow: hidden;
