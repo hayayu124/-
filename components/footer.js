@@ -14,11 +14,7 @@ export default function Footer() {
               JAPAN
             </h1>
 
-            <h5>
-              The Rose Maker IMAI KIYOSHI
-              <br />
-              Cut Rose Collection
-            </h5>
+            <h5>Cut Rose Collection</h5>
           </div>
 
           <div className={`${cn.footerContents}`}>
@@ -55,9 +51,9 @@ export default function Footer() {
 
               {/* <h5 className={`${cn.footerMenu}`}>お気に入り</h5> */}
 
-              <Link href="/company">
+              {/* <Link href="/company">
                 <h5 className={`${cn.footerMenu}`}>Company</h5>
-              </Link>
+              </Link> */}
             </div>
           </div>
 

@@ -168,7 +168,7 @@ export async function getStaticProps(context) {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss(first: 1000) {
+        newss(first: 1000, where: {categoryName: "catalog"}) {
           nodes {
             content
             date
@@ -203,7 +203,7 @@ export async function getStaticPaths() {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss {
+        newss(where: {categoryName: "catalog"}) {
           nodes {
             newsId
           }

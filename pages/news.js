@@ -145,7 +145,7 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss(first: 1000) {
+        newss(first: 1000, where: {categoryName: "catalog"}) {
           nodes {
             content
             date
@@ -153,12 +153,12 @@ export const getStaticProps = async () => {
             featuredImage {
               node {
                 mediaItemUrl
-                }
               }
-            newsId
             }
+            newsId
           }
         }
+      }
       `,
     }),
   });

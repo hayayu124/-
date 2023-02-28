@@ -145,7 +145,7 @@ export default function Top({ newss, formas }) {
                 <h5>
                   日本全国のバラ栽培生産者や花市場、生花店、
                   <br className="br" />
-                  一般消費者などと連携しながら、世界へと純国産バラを広めたい！
+                  一般消費者などと連携しながら、世界へと純国産バラを広めたい
                   <br className="br" />
                   との想いで立ち上げた種苗会社です。
                   <br className="br" />
@@ -153,9 +153,9 @@ export default function Top({ newss, formas }) {
                   <br className="br" />
                   明日への活力になっていただけるようなバラ作りを心掛けております。
                   <br className="br" />
-                  バラを愛するすべてのみなさまと一緒にROSETIQUEを育てて、
+                  バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、
                   <br className="br" />
-                  進化させましょう！
+                  進化させていきます。
                 </h5>
               </div>
             </ScrollEffect>
@@ -632,7 +632,7 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss(first: 1000) {
+        newss(first: 1000, where: {categoryName: "catalog"}) {
           nodes {
             content
             date
@@ -640,12 +640,12 @@ export const getStaticProps = async () => {
             featuredImage {
               node {
                 mediaItemUrl
-                }
               }
-            newsId
             }
+            newsId
           }
         }
+      }
       `,
     }),
   });
