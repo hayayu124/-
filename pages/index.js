@@ -132,32 +132,31 @@ export default function Top({ newss, formas }) {
             <img src="/img/IMG_6067.jpg" alt="" />
           </div>
 
-          <div className={cn.aboutColumn}>
+          <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <div className={cn.aboutTittle}>
-                <h5>DREAM ROSE JAPAN</h5>
-                <h2>日本のバラを世界へ</h2>
-              </div>
+              <h5 className={`fon5 mar-b1`}>DREAM ROSE JAPAN</h5>
+
+              <h2 className={`fon2 bold mar-b05`}>日本のバラを世界へ</h2>
+
+              <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <div className={`${cn.aboutText} mar-t2`}>
-                <h5>
-                  日本全国のバラ栽培生産者や花市場、生花店、
-                  <br className="br" />
-                  一般消費者などと連携しながら、世界へと純国産バラを広めたい
-                  <br className="br" />
-                  との想いで立ち上げた種苗会社です。
-                  <br className="br" />
-                  ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、
-                  <br className="br" />
-                  明日への活力になっていただけるようなバラ作りを心掛けております。
-                  <br className="br" />
-                  バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、
-                  <br className="br" />
-                  進化させていきます。
-                </h5>
-              </div>
+              <h5 className={`fon5 titleText mar-t2`}>
+                日本全国のバラ栽培生産者や花市場、生花店、
+                <br className="br" />
+                一般消費者などと連携しながら、世界へと純国産バラを広めたい
+                <br className="br" />
+                との想いで立ち上げた種苗会社です。
+                <br className="br" />
+                ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、
+                <br className="br" />
+                明日への活力になっていただけるようなバラ作りを心掛けております。
+                <br className="br" />
+                バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、
+                <br className="br" />
+                進化させていきます。
+              </h5>
             </ScrollEffect>
           </div>
 
@@ -186,36 +185,37 @@ export default function Top({ newss, formas }) {
               </div>
             )}
           </ScrollEffect>
-          <div className={`${cn.newsTittle} titleColumn sec-c`}>
-            <div className={`${cn.newsText} mar-t2`}>
-              <ScrollEffect
-                className={`${cn.intMoreDelay}`}
-                after={cn.intActive}
-              >
-                <h5>お知らせ</h5>
-                <h2>News</h2>
-              </ScrollEffect>
 
+          <div className={`titleColumn tex-c`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>お知らせ</h5>
+
+              <h2 className={`fon2 bold mar-b05`}>News</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               {newsColumn.length !== 0 ? (
-                <ScrollEffect
-                  className={`${cn.intMostDelay}`}
-                  after={cn.intActive}
-                >
-                  <h5>
-                    ROSETIQUE JAPANに関する
-                    <br className="brSp" />
-                    情報を随時発信しています。
-                  </h5>
-                </ScrollEffect>
+                <h5 className={`fon5 titleText mar-t2`}>
+                  ROSETIQUE JAPANに関する
+                  <br className="brSp" />
+                  情報を随時発信しています。
+                </h5>
               ) : (
-                <h5>現在お知らせはございません。</h5>
+                <h5 className={`titletext`}>現在お知らせはございません。</h5>
               )}
-            </div>
+            </ScrollEffect>
           </div>
 
           {/* ニュースの記事一覧 */}
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
-            <div className={`${cn.newsColumn} newsColumn grid4 sectionSpaceS`}>
+            <div
+              className={`${cn.newsColumn} newsColumn
+              ${newsColumn.length == 1 ? "oneLength" : ""} ${
+                newsColumn.length == 2 ? "twoLength" : ""
+              } grid4 sectionSpaceS`}
+            >
               {/* 記事 */}
               {newsColumn.map((el, index) => {
                 return (
@@ -235,9 +235,11 @@ export default function Top({ newss, formas }) {
                       <p className={`fon6 fonSp6 newsDate`}>
                         {format(new Date(el.date), "yyyy/MM/dd")}
                       </p>
-                      <h4>{el.title}</h4>
+                      <p className={`fon4 Bold`}>{el.title}</p>
                       {el.content !== null && (
-                        <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                        <p className={`fon5 newsDe`}>
+                          {el.content.replace(/(<([^>]+)>)/gi, "")}
+                        </p>
                       )}
 
                       <Link href={`./news/${el.newsId}`}>
@@ -264,27 +266,22 @@ export default function Top({ newss, formas }) {
           <div className={`${cn.decoration} ${cn.collectionDecoration1}`}>
             <img src="/img/collection.png" alt="" />
           </div>
-          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
-            <div className={`${cn.collectionText} mar-t2`}>
-              <ScrollEffect
-                className={`${cn.intMoreDelay}`}
-                after={cn.intActive}
-              >
-                <h5>今年の新品種</h5>
-                <h2>Brand-new</h2>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>今年の新品種</h5>
 
-              <ScrollEffect
-                className={`${cn.intMostDelay}`}
-                after={cn.intActive}
-              >
-                <h5>
-                  トレンドをリードする花姿の良いものの中から、
-                  <br className="br" />
-                  耐病性や生産性に優れた品種だけを厳選してお届けします。
-                </h5>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Brand-new</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`fon5 titleText mar-t2`}>
+                トレンドをリードする花姿の良いものの中から、
+                <br />
+                耐病性や生産性に優れた品種だけを厳選してお届けします。
+              </h5>
+            </ScrollEffect>
           </div>
           {/* フラワーカラム */}
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
@@ -297,7 +294,7 @@ export default function Top({ newss, formas }) {
                   >
                     {el.node.featuredImage !== null && (
                       <Link href={`./rose/${el.node.roseFormaId}`}>
-                        <div className={`${cn.flowerColumnPic} mar-t2`}>
+                        <div className={`${cn.flowerColumnPic}`}>
                           <img
                             src={el.node.featuredImage.node.mediaItemUrl}
                             alt=""
@@ -307,9 +304,7 @@ export default function Top({ newss, formas }) {
                     )}
 
                     {el.node.featuredImage !== null && (
-                      <div className={`${cn.flowerName}`}>
-                        <h6>{el.node.title}</h6>
-                      </div>
+                      <p className={`fon5 tex-c mar-t1`}>{el.node.title}</p>
                     )}
                   </div>
                 );
@@ -339,27 +334,22 @@ export default function Top({ newss, formas }) {
       {/* MIWAKO Tique Serious */}
       <ScrollEffect>
         <section className={`${cn.collection} ${cn.tique}`}>
-          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
-            <div className={`${cn.collectionText} mar-t2 mar-b2`}>
-              <ScrollEffect
-                className={`${cn.intMoreDelay}`}
-                after={cn.intActive}
-              >
-                <h5>ミワコ ティーク シリーズ</h5>
-                <h2>Miwako TIQUE Series</h2>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>ミワコ ティーク シリーズ</h5>
 
-              <ScrollEffect
-                className={`${cn.intMostDelay}`}
-                after={cn.intActive}
-              >
-                <h5>
-                  美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
-                  <br className="br" />
-                  トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
-                </h5>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Miwako TIQUE Series</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`fon5 titleText mar-t2`}>
+                美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
+                <br />
+                トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
+              </h5>
+            </ScrollEffect>
           </div>
           {/* フラワーカラム */}
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
@@ -382,9 +372,7 @@ export default function Top({ newss, formas }) {
                     )}
 
                     {el.node.featuredImage !== null && (
-                      <div className={`${cn.flowerName}`}>
-                        <h6>{el.node.title}</h6>
-                      </div>
+                      <p className={`fon5 tex-c mar-t1`}>{el.node.title}</p>
                     )}
                   </div>
                 );
@@ -417,27 +405,22 @@ export default function Top({ newss, formas }) {
           <div className={`${cn.decoration} ${cn.varityDecoration1}`}>
             <img src="/img/varity.png" alt="" />
           </div>
-          <div className={`${cn.collectionTittle} titleColumn sec-c`}>
-            <div className={`${cn.collectionText} mar-t2`}>
-              <ScrollEffect
-                className={`${cn.intMoreDelay}`}
-                after={cn.intActive}
-              >
-                <h5>品種</h5>
-                <h2>Variety</h2>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>品種</h5>
 
-              <ScrollEffect
-                className={`${cn.intMostDelay}`}
-                after={cn.intActive}
-              >
-                <h5>
-                  一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
-                  <br className="br" />
-                  人の心を癒し、心身共に豊かになるバラです。
-                </h5>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Variety</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`fon5 titleText mar-t2`}>
+                一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
+                <br />
+                人の心を癒し、心身共に豊かになるバラです。
+              </h5>
+            </ScrollEffect>
           </div>
 
           <ScrollEffect className={`${cn.intMostDelay}`} after={cn.intActive}>
@@ -453,7 +436,9 @@ export default function Top({ newss, formas }) {
             {/* フラワーカラム */}
             <div className={`${cn.otherSec} mar-t4`}>
               <div className={`${cn.otherFlowerCol} fle-f`}>
-                <div className={`${cn.flowerColumn} ${cn.aniLef}`}>
+                <div
+                  className={`${cn.flowerColumn} ${cn.varietyColumn} ${cn.aniLef}`}
+                >
                   {other.map((el, index) => {
                     return (
                       <div
@@ -479,7 +464,9 @@ export default function Top({ newss, formas }) {
                   })}
                 </div>
 
-                <div className={`${cn.flowerColumn} ${cn.aniLef}`}>
+                <div
+                  className={`${cn.flowerColumn} ${cn.varietyColumn} ${cn.aniLef}`}
+                >
                   {other.map((el, index) => {
                     return (
                       <div

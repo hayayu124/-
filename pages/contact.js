@@ -70,16 +70,14 @@ export default function Contact() {
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.contact} sectionSpaceM mar-b4 sec-c`}>
-          <div className={`titleColumn sec-c`}>
-            <div className={`mar-t2`}>
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h5>お問い合わせ</h5>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>お問い合わせ</h5>
 
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h2>Contact</h2>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Contact</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
           </div>
 
           <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
@@ -87,8 +85,10 @@ export default function Contact() {
               className={`${cn.contactInfo} collectionColumn sectionSpaceS tex-l grid4 sec-c`}
             >
               <div className={`collectionName`}>
-                <h3>品種に関するお問い合わせ先</h3>
-                <h5 className={`collectionName mar-t3 lin-9`}>
+                <h3 className={`fon3 fonSp3 bold`}>
+                  品種に関するお問い合わせ先
+                </h3>
+                <h5 className={`mar-t3 fon5 lin-22`}>
                   〒737-2609
                   <br />
                   広島県呉市安浦町大字中畑字立小路510-262（瀬戸内海国立公園　野呂山山頂）
@@ -102,8 +102,10 @@ export default function Contact() {
               </div>
 
               <div className={`collectionName sectionSpaceS`}>
-                <h3>広報・取材・プレスリリースに関するお問い合わせ先</h3>
-                <h5 className={`collectionName mar-t3 lin-9`}>
+                <h3 className={`fon3 fonSp3 bold`}>
+                  広報・取材・プレスリリースに関するお問い合わせ先
+                </h3>
+                <h5 className={`mar-t3 fon5 lin-22`}>
                   〒158-0082
                   <br />
                   東京都世田谷区等々力8-12-3 1F
@@ -117,20 +119,29 @@ export default function Contact() {
           <ScrollEffect>
             <ScrollEffect className={`intDelay`} after={`intActive`}>
               {/* コンタクト */}
-              <div className={`titleColumn sectionSpaceM sec-c`}>
-                <div className={`mar-t2`}>
-                  <h5>フォーム</h5>
+              <div className={`titleColumn tex-c mar-b4 sectionSpaceM`}>
+                <ScrollEffect
+                  className={`${cn.intMoreDelay}`}
+                  after={cn.intActive}
+                >
+                  <h5 className={`fon5 mar-b1`}>フォーム</h5>
 
-                  <h2>Contact Form</h2>
-                </div>
+                  <h2 className={`fon2 bold mar-b05`}>Contact Form</h2>
+
+                  <div className={`titleBorder sec-c`}></div>
+                </ScrollEffect>
               </div>
 
               <form ref={form} className={`${cn.formColumn} t_main`}>
                 {/* 名前 */}
                 <div className={`${cn.contactContents} sectionSpaceS grid5`}>
                   <div className={`collectionName`}>
-                    <h3>お名前</h3>
-                    <h5>（企業の方は会社名も記入してください）</h5>
+                    <h3 className={`fon4 fonSp4 bold`}>
+                      お名前{" "}
+                      <span className={`fon5 fonSp5 bold`}>
+                        （企業の方は会社名も記入してください）
+                      </span>
+                    </h3>
 
                     <Box
                       sx={{
@@ -157,7 +168,7 @@ export default function Contact() {
                     </Box>
 
                     {/* ふりがな */}
-                    <h3 className={`mar-t2`}>ふりがな</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3`}>ふりがな</h3>
 
                     <Box
                       sx={{
@@ -183,7 +194,9 @@ export default function Contact() {
                     </Box>
 
                     {/* email */}
-                    <h3 className={`mar-t2`}>メールアドレス</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3`}>
+                      メールアドレス
+                    </h3>
 
                     <Box
                       sx={{
@@ -208,7 +221,7 @@ export default function Contact() {
                       </div>
                     </Box>
 
-                    <h3 className={`mar-t2`}>電話番号</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3`}>電話番号</h3>
 
                     <Box
                       sx={{
@@ -233,10 +246,11 @@ export default function Contact() {
                       </div>
                     </Box>
 
-                    <h3 className={`mar-t2`}>お問い合わせ内容</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3 mar-b1`}>
+                      お問い合わせ内容
+                    </h3>
 
                     <TextField
-                      className={`mar-t1`}
                       name="message"
                       onChange={(e) => setMessage(e.target.value)}
                       id="outlined-multiline-static"
@@ -258,7 +272,7 @@ export default function Contact() {
                       }}
                     />
 
-                    <h6>
+                    <h6 className={`fon6 fonSp6 cursor`}>
                       <Link href="/privacyPolicy">
                         「プライバシーポリシー」
                       </Link>
@@ -277,7 +291,7 @@ export default function Contact() {
                     } sectionSpaceS`}
                     onClick={sendEmail}
                   >
-                    <h5 className={`foncolW`}>送信</h5>
+                    <h5 className={`fon4 fonSp4 cursor foncolW`}>送信</h5>
                   </div>
 
                   <div

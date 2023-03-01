@@ -31,14 +31,14 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Alkalami&family=Arbutus+Slab&family=Noto+Serif+JP:wght@500&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap"
           rel="stylesheet"
         />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Alkalami&family=Arbutus+Slab&family=Noto+Serif+JP:wght@500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Alkalami&family=Arbutus+Slab&family=Noto+Serif+JP:wght@300;600&family=Zen+Kaku+Gothic+New:wght@700&display=swap"
           rel="stylesheet"
         />
 

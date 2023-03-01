@@ -63,30 +63,29 @@ export default function MiwakoTiqueSerious(props) {
       {/* コレクションページ */}
 
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
-        <div className={`collectionTitle titleColumn sec-c`}>
-          <div className={`collectionText mar-t2`}>
-            <h5>おすすめ品種の説明</h5>
-
-            <h2>Collection</h2>
-          </div>
-        </div>
-
         {/* 花の品種 */}
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
           <div className={`collectionName`}>
-            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h3>Miwako Tique Serious</h3>
-            </ScrollEffect>
+            <div className={`titleColumn tex-c mar-b4`}>
+              <ScrollEffect
+                className={`${cn.intMoreDelay}`}
+                after={cn.intActive}
+              >
+                <h5 className={`fon5 mar-b1`}>ミワコ ティーク シリーズ</h5>
 
-            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`collectionName mar-t3`}>
-                美しく品格のある花姿、芳醇な香り、
-                <br className="br" />
-                丈夫な茎と花保ちの良さ、トゲの少ない扱いやすさにこだわった、
-                <br className="br" />
-                フラッグシップシリーズです。
-              </h5>
-            </ScrollEffect>
+                <h2 className={`fon2 bold mar-b05`}>Miwako TIQUE Series</h2>
+
+                <div className={`titleBorder sec-c`}></div>
+              </ScrollEffect>
+
+              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+                <h5 className={`fon5 titleText mar-t2`}>
+                  美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
+                  <br />
+                  トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
+                </h5>
+              </ScrollEffect>
+            </div>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>

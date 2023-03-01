@@ -63,26 +63,21 @@ export default function BrandNew(props) {
       {/* コレクションページ */}
 
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
-        <div className={`collectionTitle titleColumn sec-c`}>
-          <div className={`collectionText mar-t2`}>
-            <h5>おすすめ品種の説明</h5>
-            <ScrollEffect className={`intDelay`} after={`intActive`}>
-              <h2>Collection</h2>
-            </ScrollEffect>
-          </div>
-        </div>
-
         {/* 花の品種 */}
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
-          <div className={`collectionName`}>
-            <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-              <h3>Brand New</h3>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>今年の新品種</h5>
+
+              <h2 className={`fon2 bold mar-b05`}>Brand-new</h2>
+
+              <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`collectionName mar-t3`}>
+              <h5 className={`fon5 titleText mar-t2`}>
                 トレンドをリードする花姿の良いものの中から、
-                <br className="br" />
+                <br />
                 耐病性や生産性に優れた品種だけを厳選してお届けします。
               </h5>
             </ScrollEffect>

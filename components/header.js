@@ -21,41 +21,41 @@ export default function Header() {
           <div className={`${cn.headerMenuColumn}`}>
             <div className={`${cn.headerMenu} `}>
               <Link href="/">
-                <h5>Top</h5>
+                <h5 className={`fon5 fon4Sp`}>Top</h5>
               </Link>
             </div>
 
-            {/* <div className={`${cn.headerMenu} `}>
+            <div className={`${cn.headerMenu} `}>
               <Link href="/about">
-                <h5>About</h5>
+                <h5 className={`fon5 fon4Sp`}>About</h5>
               </Link>
-            </div> */}
+            </div>
 
             <div className={`${cn.headerMenu} `}>
               <Link href="/news">
-                <h5>News</h5>
+                <h5 className={`fon5 fon4Sp`}>News</h5>
               </Link>
             </div>
             <div className={`${cn.headerMenu} ${cn.headerCollectionMenu}`}>
-              <h5>Collection</h5>
+              <h5 className={`fon5 fon4Sp`}>Collection</h5>
               <div className={`${cn.headerCollectionSubMenu}`}>
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
                   <Link href="/brandNew">
-                    <h5>Brand-New</h5>
+                    <h5 className={`fon5 fon4Sp`}>Brand-New</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>
                 </div>
 
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
                   <Link href="/miwakoTiqueSeries">
-                    <h5>MIWAKO TIQUE Serious</h5>
+                    <h5 className={`fon5 fon4Sp`}>MIWAKO TIQUE Serious</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>
                 </div>
 
                 <div className={`${cn.headerCollectionSubMenuDetail}`}>
                   <Link href="/varietyList">
-                    <h5>Variety</h5>
+                    <h5 className={`fon5 fon4Sp`}>Variety</h5>
                   </Link>
                   <div className={`${cn.border}`}></div>
                 </div>
@@ -65,16 +65,16 @@ export default function Header() {
             {/* お気に入り */}
             {/* <div className={`${cn.headerMenu}`}>
               <Link href="/favorite">
-                <h5>お気に入り</h5>
+                <h5 className={`fon5 fon4Sp`}>お気に入り</h5>
               </Link>
             </div> */}
             <div className={`${cn.headerMenu}`}>
               <Link href="/contact">
-                <h5>Contact</h5>
+                <h5 className={`fon5 fon4Sp`}>Contact</h5>
               </Link>
             </div>
             {/* <div className={`${cn.headerMenu}`}>
-              <h5>EN/JP</h5>
+              <h5 className={`fon5 fon4Sp`}>EN/JP</h5>
             </div> */}
           </div>
 

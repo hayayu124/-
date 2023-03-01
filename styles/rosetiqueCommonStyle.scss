@@ -34,20 +34,20 @@ h6 {
 
 //見出しタイトル、サブタイトル
 .titleColumn {
-  h2,
-  h5 {
-    text-align: center;
-  }
-
-  h2 {
-    margin: 0.5em auto 1em auto;
-  }
-
-  h5 {
-    line-height: 2em;
-  }
   @media screen and (max-width: 767px) {
     width: 67%;
+  }
+
+  .titleBorder {
+    border: solid 0.001em var(--main);
+    width: 2em;
+
+    &.white {
+      border: solid 0.001em var(--gl);
+    }
+  }
+  .titleText {
+    line-height: 2.4;
   }
 }
 
@@ -56,10 +56,8 @@ h6 {
   margin-right: auto;
   margin-left: auto;
   display: flex;
-  justify-content: space-around;
-  h4 {
-    font-weight: 700;
-  }
+  justify-content: space-between;
+
   .newsDetail {
     width: 30%;
     cursor: pointer;
@@ -82,8 +80,9 @@ h6 {
       .newsDate {
         margin-bottom: 0.3em;
       }
-      h6 {
-        padding-top: 1.7em;
+      .newsDe {
+        line-height: 2;
+        margin-top: 1.5em;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -96,9 +95,7 @@ h6 {
         cursor: pointer;
         width: 5em;
         text-align: center;
-        margin-top: 0.7em;
-        margin-left: auto;
-        margin-right: 0;
+        margin: 1.3em 0 0 auto;
       }
     }
   }
@@ -116,6 +113,21 @@ h6 {
           width: 8em;
           margin-top: 1em;
         }
+      }
+    }
+  }
+
+  //ニュースが1,2個のときの処理
+  &.oneLength {
+    @media screen and (min-width: 768px) {
+      justify-content: center;
+    }
+  }
+  &.twoLength {
+    @media screen and (min-width: 768px) {
+      width: 45%;
+      .newsDetail {
+        width: 44%;
       }
     }
   }
@@ -145,10 +157,6 @@ h6 {
 
     .titleBorder {
       border-bottom: 1px solid var(--main);
-    }
-
-    .collectionName {
-      line-height: 2;
     }
   }
 }
@@ -214,9 +222,9 @@ h6 {
 
       .varietyListSpec {
         margin-top: 0.5em;
-        padding-right: 1em;
+
         display: flex;
-        justify-content: space-between;
+        justify-content: left;
         align-items: center;
         @media screen and (min-width: 768px) {
           padding-right: 0.3em;
@@ -230,7 +238,7 @@ h6 {
           }
         }
         .varietyListSpecDetail1 {
-          margin-right: 5%;
+          margin-right: 10%;
         }
       }
     }

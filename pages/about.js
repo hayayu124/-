@@ -18,41 +18,64 @@ export default function About() {
   return (
     <>
       {/* kv */}
-
-      <section className={`${cn.kv}`}>
-        <div className={`${cn.kvTitleColumn} pos-a`}>
-          <div className={`${cn.kvText} tex-c`}>
-            <h5>DREAM ROSE JAPAN</h5>
-            <h2>日本のバラを世界へ</h2>
-            <h5>今井ナーセリーの特徴</h5>
-          </div>
+      <section className={`${cn.kv} pos-r`}>
+        <div className={`${cn.kvImgback} pos-r`}></div>
+        <div className={`${cn.kvText} tex-c pos-a`}>
+          <h5 className={`fon4 fonSp5 mar-b05`}>DREAM ROSE JAPAN</h5>
+          <h2 className={`fon1 fonSp2 bold`}>日本のバラを世界へ</h2>
         </div>
       </section>
 
       {/* 特徴 */}
       <ScrollEffect>
         <section className={`${cn.feature} sectionSpaceM sec-c`}>
-          <div className={`${cn.featureTitle} titleColumn`}>
-            <div className={`${cn.newsText} mar-t2`}>
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h5>今井ナーセリーの特徴</h5>
-                <h2>Feature</h2>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>ロゼティーク</h5>
 
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h5>
-                  今井ナーセリーの特徴説明テキスト。今井ナーセリーの特徴説明テキス
-                  <br className="br" />
-                  ト。今井ナーセリーの特徴説明テキスト。今井ナーセリーの特徴説明
-                  <br className="br" />
-                  テキスト。今井ナーセリーの特徴説明テキスト。今井ナーセリーの特徴
-                  <br className="br" />
-                  説明テキスト。今井ナーセリーの特徴説明テキスト。今井ナーセリーの
-                  <br className="br" />
-                  特徴説明テキスト。今井ナーセリーの特徴説明テキスト。
-                </h5>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>ROSETIQUE</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              <h5 className={`fon5 titleText mar-t2`}>
+                日本全国のバラ栽培生産者や花市場、生花店、一般消費者などと連携し
+                <br className="br" />
+                ご意見やトレンドを取り入れながら、日本屈指の育種家の方々と
+                <br className="br" />
+                バラ研究に特化した岐阜大学ご協力の元、国内育種品種の普及をしていきたい！
+                <br className="br" />
+                <br />
+                そして日本発世界へと純国産バラを広めたい！
+                <br className="br" />
+                との想いで立ち上げた種苗会社です。 バラは全世界共通、
+                <br className="br" />
+                最も名の知られた花であり、世界中にROSETIQUEを広め親しんで愛していただきたい！
+                <br className="br" />
+                一般的な花形だけではなく、ROSETIQUEならではの香りに特化した、
+                <br className="br" />
+                人の心を癒し、心身共に豊かになるバラ作りを目指しています。
+                <br className="br" />
+                また生産者の方々に安心安定信頼して栽培していただき、
+                <br className="br" />
+                心の豊かさと富を生み、潤いをもたらし生産者の皆様に寄り添う、
+                <br className="br" />
+                生産者ファーストな種苗会社でありたい。
+                <br className="br" />
+                ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、
+                <br className="br" />
+                明日への活力になっていただけるようなバラ作りを心掛けております。
+                <br className="br" />
+                バラを愛するすべてのみなさまと一緒にROSETIQUEを育てて、進化させましょう！
+                <br className="br" />
+                <br />
+                <br />
+                株式会社 ROSETIQUE JAPAN CEO/Flower Designer
+                <br className="br" />
+                Miwako
+              </h5>
+            </ScrollEffect>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
@@ -75,51 +98,17 @@ export default function About() {
         </section>
       </ScrollEffect>
 
-      {/* 見学/販売 */}
-      {/* <ScrollEffect>
-        <section className={`${cn.tour} sectionSpaceM`}>
-          <div className={`${cn.tourTitle} titleColumn sec-c`}>
-            <div className={`${cn.tourText} mar-t2`}>
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h5>見学,販売</h5>
-              </ScrollEffect>
-
-              <ScrollEffect className={`{intMoreDelay}`} after={`intActive`}>
-                <h2>Tour/Sales</h2>
-              </ScrollEffect>
-
-              <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5>
-                  見学についての説明テキスト。見学についての説明テキス
-                  <br className="br" />
-                  ト。見学についての説 明テキス ト。見学についての説明テキス
-                  <br className="br" />
-                  ト。見学についての説明テキスト。見学についての説明テ
-                  キスト。見学についての説
-                  <br className="br" />
-                  明テキスト。見学についての説明テキスト。
-                  <br className="br" />
-                  見学についての説 明テキスト。見学についての説明テキスト。
-                </h5>
-              </ScrollEffect>
-            </div>
-          </div>
-        </section>
-      </ScrollEffect> */}
-
       {/* 人物 */}
       <ScrollEffect>
         <section className={`${cn.persons} sectionSpaceM sec-c`}>
-          <div className={`${cn.personsTitle} titleColumn`}>
-            <div className={`${cn.personsText} mar-t2`}>
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h5>人物</h5>
-              </ScrollEffect>
+          <div className={`titleColumn tex-c`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 fonSp5 mar-b1`}>人物</h5>
 
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h2>Persons</h2>
-              </ScrollEffect>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Persons</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
@@ -131,58 +120,28 @@ export default function About() {
             <div className={`${cn.personsProfile} mar-t4 grid4`}>
               {/* Miwako */}
               <div className={`${cn.personsProfileDetail}`}>
-                <h5>
+                <h5 className={`fon5 fonSp5`}>
                   株式会社ROSETIQUE JAPAN
                   <br />
                   CEO / フラワーデザイナー
                 </h5>
 
-                <h2>MIWAKO</h2>
+                <h2 className={`fon3 fonSp3 mar-b1`}>MIWAKO</h2>
 
-                <h6 className={`${cn.miwakoProfileDetail}`}>
+                <h6 className={`fon5 fonSp5 ${cn.miwakoProfileDetail}`}>
                   欧米各国、主にフランスでフラワーアレンジメントを学ぶ。
                   <br className="br" />
-                  航空業界勤務を経て、2000 年よりフラワーデザイナーと
+                  航空業界勤務を経て、2000
+                  年よりフラワーデザイナーとしてデビュー。
                   <br className="br" />
-                  してデビュー。大手百貨店、JOMALONE LONDONや
+                  大手百貨店、JOMALONE LONDONや BMW MI
+                  NI、ESTEBANなど企業とのコラボレーション、
                   <br className="br" />
-                  BMW MI NI、ESTEBAN など企業とのコラボレーション、
+                  商品プロデュースなど多数。FLOWERS BY
+                  NAKED、京阪ホテルズ&リゾーツ「THOUSAND FLOWER＆
                   <br className="br" />
-                  商品プロデュースなど多数。FLOWERS BY NAKED、
-                  <br className="br" />
-                  京阪ホテルズ&リゾーツ「THOUSAND FLOWER＆
-                  <br className="br" />
-                  GARDEN」などイベント監修と装花装飾制作。 2021 年<br />
-                  1月、資本業務提携により今井清氏とパートナーとなる。
-                </h6>
-              </div>
-
-              {/* Imai */}
-              <div className={`${cn.personsProfileDetail}`}>
-                <h5>
-                  <br />
-                  育種家 Rose Maker
-                </h5>
-
-                <h2>今井清</h2>
-
-                <h6 className={`${cn.imaiProfileDetail}`}>
-                  昭和25年1月16日生まれ 広島県呉市出身
-                  <br />
-                  1968年 花卉園芸にたずさわる
-                  <br />
-                  1978年 バラの栽培を手がける <br />
-                  1985年 倉橋農場を開設 <br />
-                  1993年 バラの育種を始める <br />
-                  1995年 農林水産大臣賞受賞 <br />
-                  1999年 日本農業賞（個人の部）大賞受賞
-                  <br />
-                  2000年 日本バラ切花協会副会長 <br />
-                  2002年 フロリアード（オランダ）
-                  <br />
-                  バラのオリジナル品種部門銅賞受賞
-                  <br />
-                  「コーラル・ベル」他多数受賞
+                  GARDEN」などイベント監修と装花装飾制作。
+                  2021年1月、資本業務提携により今井清氏とパートナーとなる。
                 </h6>
               </div>
             </div>
@@ -190,30 +149,65 @@ export default function About() {
         </section>
       </ScrollEffect>
 
+      {/* Story */}
+      <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+        <div className={`${cn.story} grid4 sec-c fle-f`}>
+          <div className={`${cn.storyText}`}>
+            <h2 className={`fon3 fonSp3 mar-b1`}>Miwakoの原点,Paris</h2>
+
+            <p className={`fon5 fonSp5`}>
+              フラワーデザイナーMiwakoはフランスでフラワーアレンジを学びました。そのためMiwakoにとって、Parisは第二の故郷。他人は他人！という個人主義で自分に合ったスタイルにこだわるお洒落を追求し、女性であることを常に意識し美意識が高く、自分の個性を主張し続ける。Miwakoの花に対する考え方の原点がここに。
+            </p>
+          </div>
+
+          <div className={`${cn.storyPic1}`}>
+            <img src="/img/content_story1.jpg" alt="" />
+          </div>
+        </div>
+      </ScrollEffect>
+
+      <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+        <div className={`${cn.story} grid4 sec-c fle-f`}>
+          <div className={`${cn.storyPic2}`}>
+            <img src="/img/content_story2.jpg" alt="" />
+          </div>
+          <div className={`${cn.storyText}`}>
+            <h2 className={`fon3 fonSp3 mar-b1`}>Miwakoの原点,Paris</h2>
+
+            <p className={`fon5 fonSp5`}>
+              フラワーデザイナーMiwakoはフランスでフラワーアレンジを学びました。そのためMiwakoにとって、Parisは第二の故郷。他人は他人！という個人主義で自分に合ったスタイルにこだわるお洒落を追求し、女性であることを常に意識し美意識が高く、自分の個性を主張し続ける。Miwakoの花に対する考え方の原点がここに。
+            </p>
+          </div>
+        </div>
+      </ScrollEffect>
+
       {/* アクセス */}
       <ScrollEffect>
         <section className={`${cn.access} foncolW sectionSpaceM sec-c`}>
-          <div className={`${cn.accessTitle} titleColumn`}>
-            <div className={`${cn.accessText} mar-t2`}>
-              <h5>アクセス</h5>
+          <div className={`titleColumn tex-c`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>アクセス</h5>
 
-              <h2>Access</h2>
-            </div>
+              <h2 className={`fon2 bold mar-b05`}>Access</h2>
+
+              <div className={`titleBorder sec-c white`}></div>
+            </ScrollEffect>
           </div>
 
-          <div className={`${cn.accessColumn} sec-c grid2 fle-f`}>
+          <div className={`${cn.accessColumn} sec-c grid3 fle-f`}>
             <div className={`${cn.accessDetail}`}>
-              <h3>育種圃場</h3>
-              <h5>
+              <h3 className={`fon3 bold mar-b1`}>育種圃場</h3>
+              <p className={`fon4`}>
                 〒737-2609
                 <br />
                 広島県呉市安浦町大字中畑字立小路 510-262 <br />
                 (瀬戸内海国立公園 野呂山山頂)
                 <br />
+                <br />
                 TEL：0823-72-7634
                 <br />
                 FAX：0823-71-6122
-              </h5>
+              </p>
             </div>
 
             <div className={`${cn.accessMap} pos-r`}>

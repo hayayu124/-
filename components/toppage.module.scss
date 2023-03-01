@@ -64,13 +64,14 @@
 
 //装飾
 .decoration {
+  opacity: 0.5;
   position: absolute;
   top: 0%;
   left: 5%;
   &.aboutDecoration1 {
     width: 10%;
     max-width: 200px;
-    transform: translateY(-20%);
+
     @media screen and (max-width: 767px) {
       width: 20%;
       left: 0%;
@@ -89,15 +90,14 @@
   }
   &.collectionDecoration1 {
     width: 50%;
-    transform: translateY(-150%);
+    transform: translateY(-120%);
     @media screen and (max-width: 767px) {
       width: 88%;
       left: 0%;
     }
   }
   &.varityDecoration1 {
-    width: 50%;
-    left: 0%;
+    width: 40%;
     transform: translateY(-100%);
     @media screen and (max-width: 767px) {
       width: 88%;
@@ -114,7 +114,7 @@
     width: 10em;
     height: 16em;
     max-width: 400px;
-    transform: translateY(-10%);
+    transform: translate(-40%, 20%);
     @media screen and (max-width: 767px) {
       display: none;
     }
@@ -131,10 +131,10 @@
   bottom: 0%;
   left: 5%;
   &.aboutDecoration3 {
-    width: 30%;
-    height: 24%;
+    width: 24%;
+    height: 20%;
     max-width: 500px;
-    transform: translateY(200%);
+    transform: translate(40%, 180%);
     @media screen and (max-width: 767px) {
       width: 72%;
       height: 7%;
@@ -166,22 +166,6 @@
   @media screen and (max-width: 767px) {
     margin-top: 5em;
   }
-
-  .aboutColumn {
-    position: relative;
-    text-align: center;
-  }
-  h5 {
-    line-height: 2em;
-  }
-
-  .aboutText {
-    @media screen and (max-width: 767px) {
-      width: 67%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
 }
 
 //news
@@ -198,7 +182,7 @@
 }
 
 .collection {
-  margin-bottom: 8em;
+  margin-bottom: 3em;
   @media screen and (max-width: 767px) {
     margin-top: 10em;
     margin-bottom: 5em;
@@ -220,6 +204,7 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
+  margin-bottom: 5em;
 
   @media screen and (max-width: 767px) {
     width: 89%;
@@ -255,9 +240,9 @@
       transition-duration: 0.3s;
     }
   }
-  .flowerName {
-    margin-top: 0.4em;
-    text-align: center;
+
+  &.varietyColumn {
+    margin-bottom: 0em;
   }
 }
 

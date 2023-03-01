@@ -15,7 +15,6 @@ export default function NewsArticle(props) {
   const router = useRouter();
 
   const otherNews = news.filter((n) => n.newsId !== post.newsId).slice(0, 3);
-  const content = post.content.replace(/(<([^>]+)>)/gi, "");
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -50,12 +49,21 @@ export default function NewsArticle(props) {
 
             {post.content !== null && (
               <div
-                className={`${cn.newsDe} fon5 fonSp4 mar-t4 ${cn.content} + " " + ""`}
+                className={`${
+                  cn.newsDe
+                } fon5 fonSp4 mar-t4 ${post.content.replace(
+                  /(<([^>]+)>)/gi,
+                  ""
+                )} + " " + ""`}
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             )}
 
-            <div className={`${cn.shareIconColumn} mar-t1`}>
+            <div
+              className={`${cn.shareIconColumn} ${
+                otherNews.length == 0 ? cn.active : ""
+              } mar-t1`}
+            >
               <div className={`${cn.snsIcon}`}>
                 <a
                   href={`//twitter.com/intent/tweet?url=${process.env.NEXT_PUBLIC_DOMAIN}${router.asPath}`}
@@ -83,13 +91,21 @@ export default function NewsArticle(props) {
         </ScrollEffect>
 
         {/* その他のニュース */}
-        <div className={`${cn.otherNews} sectionSpaceM`}>
+        <div
+          className={`${cn.otherNews} ${
+            otherNews.length == 0 ? cn.active : ""
+          } sectionSpaceM`}
+        >
           <div className={`${cn.newsText} titleColumn sec-c`}>
             <h3 className={`tex-c`}>その他のニュース</h3>
           </div>
 
           {/* ニュースの記事一覧 */}
-          <div className={`${cn.newsColumn} newsColumn grid3 sectionSpaceS`}>
+          <div
+            className={`${cn.newsColumn} newsColumn ${
+              otherNews.length == 1 ? "oneLength" : ""
+            } ${otherNews.length == 2 ? "twoLength" : ""} grid3 sectionSpaceS`}
+          >
             {/* 記事 */}
 
             {otherNews.map((el, index) => {

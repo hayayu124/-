@@ -8,64 +8,59 @@ export default function Footer() {
       <footer className={`${cn.footer}`}>
         <div className={`${cn.footerColumn} grid3`}>
           <div className={`${cn.rosetiqueInfo}`}>
-            <h1 className={`fon3 fonSp2 ${cn.footerTitle}`}>
-              ROSETIQUE
-              <br />
-              JAPAN
-            </h1>
-
-            <h5>Cut Rose Collection</h5>
+            <h5 className={`fon4 fon4Sp`}>Cut Rose Collection</h5>
+            <h1 className={`fon3 fonSp2 ${cn.footerTitle}`}>ROSETIQUE JAPAN</h1>
           </div>
 
           <div className={`${cn.footerContents}`}>
-            <h3>Contents</h3>
+            <h3 className={`fon3 fonSp3 bold`}>Contents</h3>
 
             <div className={`${cn.footerContentsDetail}`}>
               <Link href="/">
-                <h5 className={`${cn.footerMenu}`}>TOP</h5>
+                <h5 className={`fon4 fon5Sp cursor`}>TOP</h5>
               </Link>
 
-              {/* <Link href="/about">
-                <h5 className={`${cn.footerMenu}`}>About</h5>
-              </Link> */}
+              <Link href="/about">
+                <h5 className={`fon4 fon5Sp cursor`}>About</h5>
+              </Link>
 
               <Link href="/news">
-                <h5 className={`${cn.footerMenu}`}>NEWS</h5>
+                <h5 className={`fon4 fon5Sp cursor`}>NEWS</h5>
               </Link>
 
-              <h5>Collection</h5>
+              <h5 className={`fon4 fon4Sp`}>Collection</h5>
 
               <Link href="/brandNew">
-                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Brand-New</h6>
+                <h5 className={`fon5 fon5Sp cursor`}>&nbsp;&nbsp;Brand-New</h5>
               </Link>
 
               <Link href="/miwakoTiqueSeries">
-                <h6 className={`${cn.footerMenu}`}>
+                <h5 className={`fon5 fon5Sp cursor`}>
                   &nbsp;&nbsp;MIWAKO TIQUE Serious
-                </h6>
+                </h5>
               </Link>
 
               <Link href="/varietyList">
-                <h6 className={`${cn.footerMenu}`}>&nbsp;&nbsp;Variety</h6>
+                <h5 className={`fon5 fon5Sp cursor`}>&nbsp;&nbsp;Variety</h5>
               </Link>
 
               {/* <h5 className={`${cn.footerMenu}`}>お気に入り</h5> */}
 
-              {/* <Link href="/company">
-                <h5 className={`${cn.footerMenu}`}>Company</h5>
-              </Link> */}
+              <Link href="/company">
+                <h5 className={`fon4 fon4Sp cursor`}>Company</h5>
+              </Link>
             </div>
           </div>
 
           <div className={`${cn.footerContact}`}>
-            <h3>Contact</h3>
+            <h3 className={`fon3 fonSp3 bold`}>Contact</h3>
 
             <div className={`${cn.footerContactDetail}`}>
-              <h5>
+              <p className={`fon5 fon5Sp cursor`}>
                 品種に関するお問い合わせ、
                 <br />
                 取材などはこちらからお願いいたします。
-              </h5>
+              </p>
 
               {/* お問い合わせボタン */}
               <Link href="/contact">
@@ -101,7 +96,7 @@ export default function Footer() {
         </div>
 
         <div className={`${cn.footerCopilight}`}>
-          <h6>© 2023 ROSETIQUE JAPAN Inc.</h6>
+          <h5 className={`fon5 fon4Sp cursor`}>© 2023 ROSETIQUE JAPAN Inc.</h5>
         </div>
       </footer>
     </>

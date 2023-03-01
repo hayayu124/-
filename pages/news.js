@@ -60,36 +60,48 @@ export default function News(newss) {
     <>
       <ScrollEffect>
         <section className={`${cn.news} sectionSpaceM sec-c`}>
-          <div className={`${cn.newsTittle} titleColumn sec-c`}>
-            <div className={`${cn.newsText} mar-t2`}>
-              <h5>お知らせ</h5>
+          <div className={`titleColumn tex-c`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>お知らせ</h5>
 
-              <ScrollEffect className={`intDelay`} after={`intActive`}>
-                <h2>News</h2>
-              </ScrollEffect>
+              <h2 className={`fon2 bold mar-b05`}>News</h2>
 
-              <ScrollEffect className={`intMoreDelay`} after={`intActive`}>
-                <h5>今井ナーセリーの最新情報を随時更新しております。</h5>
-              </ScrollEffect>
-            </div>
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
+
+            <ScrollEffect className={`intMostDelay`} after={`intActive`}>
+              {newsColumn.length !== 0 ? (
+                <h5 className={`fon5 titleText mar-t2`}>
+                  ROSETIQUE JAPANに関する
+                  <br className="brSp" />
+                  情報を随時発信しています。
+                </h5>
+              ) : (
+                <h5 className={`titletext`}>現在お知らせはございません。</h5>
+              )}
+            </ScrollEffect>
           </div>
 
           {/* ニュースの記事一覧 */}
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
             <div
-              className={`${cn.newsColumn} newsColumn newsPageDetail grid4 sectionSpaceS`}
+              className={`${cn.newsColumn} newsColumn
+              ${newsColumn.length == 1 ? "oneLength" : ""} ${
+                newsColumn.length == 2 ? "twoLength" : ""
+              } grid4 sectionSpaceS`}
             >
               {/* 記事 */}
-
-              {news.map((el, index) => {
+              {newsColumn.map((el, index) => {
                 return (
-                  <div
-                    key={`news${index}`}
-                    className={`${cn.newsPageDetail} newsDetail`}
-                  >
+                  <div key={`joinColumn${index}`} className={`newsDetail`}>
                     <Link href={`./news/${el.newsId}`}>
                       <div className={`newsDetailPic`}>
-                        <img src={el.featuredImage.node.mediaItemUrl} alt="" />
+                        {el.featuredImage !== null && (
+                          <img
+                            src={el.featuredImage.node.mediaItemUrl}
+                            alt=""
+                          />
+                        )}
                       </div>
                     </Link>
 
@@ -97,13 +109,18 @@ export default function News(newss) {
                       <p className={`fon6 fonSp6 newsDate`}>
                         {format(new Date(el.date), "yyyy/MM/dd")}
                       </p>
-                      <h4>{el.title}</h4>
-                      <h6>{el.content.replace(/(<([^>]+)>)/gi, "")}</h6>
+                      <p className={`fon4 Bold`}>{el.title}</p>
+                      {el.content !== null && (
+                        <p className={`fon5 newsDe`}>
+                          {el.content.replace(/(<([^>]+)>)/gi, "")}
+                        </p>
+                      )}
 
-                      <h6 className={`newsDate`}>{el.newsDate}</h6>
-                      <div className={`moreViewText`}>
-                        <img src="/img/moreViewText.png" alt="" />
-                      </div>
+                      <Link href={`./news/${el.newsId}`}>
+                        <div className={`moreViewText`}>
+                          <img src="/img/moreViewText.png" alt="" />
+                        </div>
+                      </Link>
                     </div>
                   </div>
                 );

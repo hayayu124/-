@@ -24,6 +24,7 @@
 html {
   font-size: 62.5%;
   font-family: var(--noto-font);
+  font-weight: 300;
   // font-size: calc(62.5% + 25 * (100vw - 320px) / 1600);
   font-size: calc(1rem + ((1vw - 3.2px) * 0.5));
   min-height: 0vw;
@@ -171,58 +172,6 @@ html {
 }
 
 //フォントサイズPc
-h1 {
-  font-size: 2.5em;
-}
-
-h2 {
-  font-size: 1.8em;
-}
-
-h3 {
-  font-size: 1.2em;
-}
-
-h4 {
-  font-size: 0.8em;
-}
-
-h5 {
-  font-size: 0.7em;
-}
-
-h6 {
-  font-size: 0.5em;
-}
-
-//フォントサイズSp
-@media screen and (max-width: 767px) {
-  h1 {
-    font-size: 1.7em;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
-
-  h3 {
-    font-size: 1.3em;
-  }
-
-  h4 {
-    font-size: 0.9em;
-  }
-
-  h5 {
-    font-size: 0.8em;
-  }
-
-  h6 {
-    font-size: 0.7em;
-  }
-}
-
-//フォントサイズPc
 .fon1 {
   @media screen and (min-width: 768px) {
     font-size: 2.5em;
@@ -231,7 +180,7 @@ h6 {
 
 .fon2 {
   @media screen and (min-width: 768px) {
-    font-size: 2.3em;
+    font-size: 2em;
   }
 }
 

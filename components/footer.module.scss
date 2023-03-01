@@ -4,7 +4,7 @@
   color: var(--gl) !important;
 
   .footerTitle {
-    margin-bottom: 0.7em;
+    margin-top: 0.5em;
   }
   h3 {
     font-weight: 700;
@@ -13,7 +13,7 @@
   .footerColumn {
     width: 89%;
     max-width: 1920px;
-    padding: 7em 0 4em 0;
+    padding: 7em 7% 4em 0;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -36,9 +36,6 @@
     }
     h6 {
       padding-left: 1em;
-    }
-    .footerMenu {
-      cursor: pointer;
     }
 
     .contactButton {

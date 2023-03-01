@@ -28,11 +28,14 @@ export default function RoseDetail(props) {
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
-          <div className={`varietyListTitle titleColumn sec-c`}>
-            <div className={`varietyListText mar-t2`}>
-              <h5>品種一覧</h5>
-              <h2>Variety list</h2>
-            </div>
+          <div className={`titleColumn tex-c mar-b4`}>
+            <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon5 mar-b1`}>品種</h5>
+
+              <h2 className={`fon2 bold mar-b05`}>Variety</h2>
+
+              <div className={`titleBorder sec-c`}></div>
+            </ScrollEffect>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
@@ -89,14 +92,16 @@ export default function RoseDetail(props) {
                               </div>
                             )}
                             {rose.colors.nodes.length !== 0 && (
-                              <h5 className={`${cn.flowerColorText}`}>
+                              <p className={`fon4 fonSp4 ${cn.colorName}`}>
                                 {rose.colors.nodes[0].name}
-                              </h5>
+                              </p>
                             )}
                           </div>
                           <div className={`${cn.flowerName}`}>
                             {rose.roseTitle !== null && (
-                              <h3>{rose.rose_spec.roseName}</h3>
+                              <h3 className={`fon3 fonSp3 bold`}>
+                                {rose.rose_spec.roseName}
+                              </h3>
                             )}
                             {rose.rose_spec.roseSubname !== "" && (
                               <h6>{rose.rose_spec.roseSubname}</h6>
@@ -116,56 +121,76 @@ export default function RoseDetail(props) {
                         <div className={`${cn.flowerSpec}`}>
                           {rose.rose_spec.roseColor !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              </h5>
-                              <h5>{rose.rose_spec.roseColor}</h5>
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseColor}
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.roseSize !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                              </h5>
-                              <h5>{rose.rose_spec.roseSize}</h5>
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseSize}
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.roseShape !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                              <h5>{rose.rose_spec.roseShape}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseShape}
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.rosePetal !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Petal&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {rose.rose_spec.rosePetal}
-                              </h5>
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.roseScent !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                              <h5>{rose.rose_spec.roseScent}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Scent&emsp;&emsp;&emsp;&emsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseScent}
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.roseLength !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                              <h5>{rose.rose_spec.roseLength}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Length&emsp;&emsp;&emsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseLength}
+                              </p>
                             </div>
                           )}
 
                           {rose.rose_spec.roseHarvest !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                              <h5>{rose.rose_spec.roseHarvest}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseHarvest}
+                              </p>
                             </div>
                           )}
 
@@ -173,7 +198,9 @@ export default function RoseDetail(props) {
                             <div
                               className={`${cn.flowerSpecDetail} ${cn.roseExplanation}`}
                             >
-                              <h5>{rose.rose_spec.roseExplanation}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseExplanation}
+                              </p>
                             </div>
                           )}
 

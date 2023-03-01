@@ -23,11 +23,8 @@ export default function CollectionColumn({ roseCo }) {
         {/* 品種１ */}
         {roseCo.map((el, index) => {
           return (
-            <div
-              key={`collection${index}`}
-              className={`${cn.flowerBreed} sectionSpaceM`}
-            >
-              {/* PCの表示 */}
+            <div key={`collection${index}`} className={`${cn.flowerBreed}`}>
+              {/* PC / SPの表示 */}
               <div className={`${cn.flowerBreedPc}`}>
                 <div className={`${cn.flowerTitleColSp} tex-l mar-b2 fle-f`}>
                   <div className={`${cn.flowerTitle}`}>
@@ -70,16 +67,20 @@ export default function CollectionColumn({ roseCo }) {
                               </div>
                             )}
                             {el.node.colors.nodes.length !== 0 && (
-                              <h5 className={`${cn.flowerColorText}`}>
+                              <p className={`fon4 ${cn.colorName}`}>
                                 {el.node.colors.nodes[0].name}
-                              </h5>
+                              </p>
                             )}
                           </div>
-                          <div className={`${cn.flowerName}`}>
-                            <h3>{el.node.title}</h3>
+                          <div className={`${cn.flowerName} mar-t01`}>
+                            <h3 className={`fon3 fonSp3 bold`}>
+                              {el.node.title}
+                            </h3>
 
                             {el.node.rose_spec.roseSubname !== "" && (
-                              <h6>{el.node.rose_spec.roseSubname}</h6>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseSubname}
+                              </p>
                             )}
                           </div>
                         </div>
@@ -98,56 +99,76 @@ export default function CollectionColumn({ roseCo }) {
                         <div className={`${cn.flowerSpecDetailColumn}`}>
                           {el.node.rose_spec.roseColor !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              </h5>
-                              <h5>{el.node.rose_spec.roseColor}</h5>
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseColor}
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.roseSize !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
-                              </h5>
-                              <h5>{el.node.rose_spec.roseSize}</h5>
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseSize}
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.roseShape !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                              <h5>{el.node.rose_spec.roseShape}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseShape}
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.roseScent !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Scent&emsp;&emsp;&emsp;&emsp;</h5>
-                              <h5>{el.node.rose_spec.roseScent}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Scent&emsp;&emsp;&emsp;&emsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseScent}
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.rosePetal !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>
+                              <p className={`fon5 fonSp5`}>
                                 Petal&emsp;&emsp;&emsp;&emsp;&nbsp;
                                 {el.node.rose_spec.rosePetal}
-                              </h5>
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.roseLength !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Length&emsp;&emsp;&emsp;&nbsp;</h5>
-                              <h5>{el.node.rose_spec.roseLength}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Length&emsp;&emsp;&emsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseLength}
+                              </p>
                             </div>
                           )}
 
                           {el.node.rose_spec.roseHarvest !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
-                              <h5>Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;</h5>
-                              <h5>{el.node.rose_spec.roseHarvest}</h5>
+                              <p className={`fon5 fonSp5`}>
+                                Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+                              </p>
+                              <p className={`fon5 fonSp5`}>
+                                {el.node.rose_spec.roseHarvest}
+                              </p>
                             </div>
                           )}
                         </div>
@@ -161,7 +182,9 @@ export default function CollectionColumn({ roseCo }) {
 
                       {el.node.rose_spec.roseExplanation !== null && (
                         <div className={`${cn.roseExplanation}`}>
-                          <h5>{el.node.rose_spec.roseExplanation}</h5>
+                          <p className={`fon5 fonSp5`}>
+                            {el.node.rose_spec.roseExplanation}
+                          </p>
                         </div>
                       )}
                     </div>
