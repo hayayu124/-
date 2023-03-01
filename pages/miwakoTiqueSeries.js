@@ -71,17 +71,21 @@ export default function MiwakoTiqueSerious(props) {
                 className={`${cn.intMoreDelay}`}
                 after={cn.intActive}
               >
-                <h5 className={`fon5 mar-b1`}>ミワコ ティーク シリーズ</h5>
+                <h5 className={`fon5 fonSp5 mar-b1`}>
+                  ミワコ ティーク シリーズ
+                </h5>
 
-                <h2 className={`fon2 bold mar-b05`}>Miwako TIQUE Series</h2>
+                <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                  Miwako TIQUE Series
+                </h2>
 
                 <div className={`titleBorder sec-c`}></div>
               </ScrollEffect>
 
               <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5 className={`fon5 titleText mar-t2`}>
+                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                   美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
-                  <br />
+                  <br className={`br`} />
                   トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
                 </h5>
               </ScrollEffect>

@@ -19,12 +19,14 @@ export default function Company() {
     <>
       {/* 品種一覧 */}
       <section className={`${cn.company} sectionSpaceM mar-b4 sec-c`}>
-        <div className={`titleColumn sec-c`}>
-          <div className={`mar-t2`}>
-            <h5>会社概要</h5>
+        <div className={`titleColumn tex-c mar-b4`}>
+          <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+            <h5 className={`fon5 fonSp5 mar-b1`}>会社概要</h5>
 
-            <h2>Company</h2>
-          </div>
+            <h2 className={`fon2 fonSp2 bold mar-b05`}>Company</h2>
+
+            <div className={`titleBorder sec-c`}></div>
+          </ScrollEffect>
         </div>
 
         <ScrollEffect className={`intMostDelay`} after={`intActive`}>
@@ -32,30 +34,17 @@ export default function Company() {
             className={`${cn.companyColumn} collectionColumn sectionSpaceM tex-L grid4 sec-c`}
           >
             <div className={`collectionName`}>
-              <h3 className={`titleBorder`}>株式会社ROSETIQUE JAPAN</h3>
-              <h5 className={`collectionName mar-t3 lin-9`}>
+              <h3 className={`fon3 fonSp3 bold`}>株式会社ROSETIQUE JAPAN</h3>
+              <h5 className={`fon5 fonSp5 mar-t2 lin-22`}>
                 日本を代表する育種家今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップとしての役割を担います。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。
               </h5>
             </div>
 
             <div className={`collectionName sectionSpaceS`}>
-              <h3 className={`titleBorder`}>沿革</h3>
-              <h5 className={`collectionName mar-t3 lin-9`}>
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-                仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮仮
-              </h5>
-            </div>
-
-            <div className={`collectionName sectionSpaceS`}>
-              <h3 className={`titleBorder`}>
+              <h3 className={`fon3 fonSp3 mar-t2 lin-22 bold`}>
                 品種にかかる法律(種苗法)/生産にかかる特許について
               </h3>
-              <h5 className={`collectionName mar-t3 lin-9`}>
+              <h5 className={`fon5 fonSp5 mar-t2 lin-22`}>
                 当ホームページはお客様への情報、通信販売サービスとして運営されております。
                 お客様が当ホームページをご利用される場合、お客様の個人情報をお伺いする場合があります。
                 （通信販売等のお客様の任意かつ自主的にご利用いただく場合）

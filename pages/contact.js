@@ -72,9 +72,9 @@ export default function Contact() {
         <section className={`${cn.contact} sectionSpaceM mar-b4 sec-c`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>お問い合わせ</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>お問い合わせ</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Contact</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Contact</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
@@ -88,7 +88,7 @@ export default function Contact() {
                 <h3 className={`fon3 fonSp3 bold`}>
                   品種に関するお問い合わせ先
                 </h3>
-                <h5 className={`mar-t3 fon5 lin-22`}>
+                <h5 className={`mar-t3 fon5 fonSp5 lin-22`}>
                   〒737-2609
                   <br />
                   広島県呉市安浦町大字中畑字立小路510-262（瀬戸内海国立公園　野呂山山頂）
@@ -105,7 +105,7 @@ export default function Contact() {
                 <h3 className={`fon3 fonSp3 bold`}>
                   広報・取材・プレスリリースに関するお問い合わせ先
                 </h3>
-                <h5 className={`mar-t3 fon5 lin-22`}>
+                <h5 className={`mar-t3 fon5 fonSp5 lin-22`}>
                   〒158-0082
                   <br />
                   東京都世田谷区等々力8-12-3 1F
@@ -124,9 +124,9 @@ export default function Contact() {
                   className={`${cn.intMoreDelay}`}
                   after={cn.intActive}
                 >
-                  <h5 className={`fon5 mar-b1`}>フォーム</h5>
+                  <h5 className={`fon5 fonSp5 mar-b1`}>フォーム</h5>
 
-                  <h2 className={`fon2 bold mar-b05`}>Contact Form</h2>
+                  <h2 className={`fon2 fonSp2 bold mar-b05`}>Contact Form</h2>
 
                   <div className={`titleBorder sec-c`}></div>
                 </ScrollEffect>

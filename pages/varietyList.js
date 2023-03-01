@@ -77,17 +77,17 @@ export default function VarietyList({ formas }) {
                 className={`${cn.intMoreDelay}`}
                 after={cn.intActive}
               >
-                <h5 className={`fon5 mar-b1`}>品種</h5>
+                <h5 className={`fon5 fonSp5 mar-b1`}>品種</h5>
 
-                <h2 className={`fon2 bold mar-b05`}>Variety</h2>
+                <h2 className={`fon2 fonSp2 bold mar-b05`}>Variety</h2>
 
                 <div className={`titleBorder sec-c`}></div>
               </ScrollEffect>
 
               <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5 className={`fon5 titleText mar-t2`}>
+                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                   一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
-                  <br />
+                  <br className={`br`} />
                   人の心を癒し、心身共に豊かになるバラです。
                 </h5>
               </ScrollEffect>
@@ -181,21 +181,21 @@ export default function VarietyList({ formas }) {
                             <div className={`varietyListSpecBorder`}></div>
                             <div className={`varietyListSpecDetail`}>
                               {el.node.rose_spec.roseColor !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Color&nbsp;&nbsp;
                                   {el.node.rose_spec.roseColor}
                                 </p>
                               )}
 
                               {el.node.rose_spec.roseShape !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Shape&nbsp;&nbsp;
                                   {el.node.rose_spec.roseShape}
                                 </p>
                               )}
 
                               {el.node.rose_spec.roseLength !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Length&nbsp;&nbsp;
                                   {el.node.rose_spec.roseLength}
                                 </p>
@@ -207,25 +207,25 @@ export default function VarietyList({ formas }) {
                             <div className={`varietyListSpecBorder`}></div>
                             <div className={`varietyListSpecDetail`}>
                               {el.node.rose_spec.roseSize !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Size&nbsp;&nbsp;
                                   {el.node.rose_spec.roseSize}
                                 </p>
                               )}
                               {el.node.rose_spec.roseScent !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Scent&nbsp;&nbsp;
                                   {el.node.rose_spec.roseScent}
                                 </p>
                               )}
                               {el.node.rose_spec.rosePetal !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Petal&nbsp;&nbsp;
                                   {el.node.rose_spec.rosePetal}
                                 </p>
                               )}
                               {el.node.rose_spec.roseHarvest !== null && (
-                                <p className={`fon6 fonSp5`}>
+                                <p className={`fon6 fonSp6`}>
                                   Harvest&nbsp;&nbsp;
                                   {el.node.rose_spec.roseHarvest}
                                 </p>

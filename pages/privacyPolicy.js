@@ -11,13 +11,13 @@ export default function PrivacyPolicy() {
       <section className={`${cn.privacyPolicy} sectionSpaceM mar-b4 sec-c`}>
         <div className={`tex-c`}>
           <div className={`mar-t2`}>
-            <h5 className={`fon5`}>プライバシーポリシー</h5>
+            <h5 className={`fon5 fonSp5`}>プライバシーポリシー</h5>
             <h1 className={`fon2 fonSp2 bold`}>Privacy Policy</h1>
           </div>
         </div>
 
         <div className={`${cn.privText} grid4`}>
-          <p className={`fon4 fonSp4 lin-9`}>
+          <p className={`fon4 fonSp5 lin-22`}>
             ROSETIQUE
             JAPAN（以下,「当社」といいます。）は,本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における,ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下,「本ポリシー」といいます。）を定めます。本ポリシーは,当社がどのような個人情報を取得し,どのように利用・共有するか,ユーザーがどのようにご自身の個人情報を管理できるかをご説明するものです。
             <br />

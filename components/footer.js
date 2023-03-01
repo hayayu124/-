@@ -8,7 +8,7 @@ export default function Footer() {
       <footer className={`${cn.footer}`}>
         <div className={`${cn.footerColumn} grid3`}>
           <div className={`${cn.rosetiqueInfo}`}>
-            <h5 className={`fon4 fon4Sp`}>Cut Rose Collection</h5>
+            <h5 className={`fon4 fonSp5`}>Cut Rose Collection</h5>
             <h1 className={`fon3 fonSp2 ${cn.footerTitle}`}>ROSETIQUE JAPAN</h1>
           </div>
 
@@ -17,37 +17,37 @@ export default function Footer() {
 
             <div className={`${cn.footerContentsDetail}`}>
               <Link href="/">
-                <h5 className={`fon4 fon5Sp cursor`}>TOP</h5>
+                <h5 className={`fon4 fonSp4 cursor`}>TOP</h5>
               </Link>
 
               <Link href="/about">
-                <h5 className={`fon4 fon5Sp cursor`}>About</h5>
+                <h5 className={`fon4 fonSp4 cursor`}>About</h5>
               </Link>
 
               <Link href="/news">
-                <h5 className={`fon4 fon5Sp cursor`}>NEWS</h5>
+                <h5 className={`fon4 fonSp4 cursor`}>NEWS</h5>
               </Link>
 
-              <h5 className={`fon4 fon4Sp`}>Collection</h5>
+              <h5 className={`fon4 fonSp4`}>Collection</h5>
 
               <Link href="/brandNew">
-                <h5 className={`fon5 fon5Sp cursor`}>&nbsp;&nbsp;Brand-New</h5>
+                <h5 className={`fon5 fonSp5 cursor`}>&nbsp;&nbsp;Brand-New</h5>
               </Link>
 
               <Link href="/miwakoTiqueSeries">
-                <h5 className={`fon5 fon5Sp cursor`}>
+                <h5 className={`fon5 fonSp5 cursor`}>
                   &nbsp;&nbsp;MIWAKO TIQUE Serious
                 </h5>
               </Link>
 
               <Link href="/varietyList">
-                <h5 className={`fon5 fon5Sp cursor`}>&nbsp;&nbsp;Variety</h5>
+                <h5 className={`fon5 fonSp5 cursor`}>&nbsp;&nbsp;Variety</h5>
               </Link>
 
               {/* <h5 className={`${cn.footerMenu}`}>お気に入り</h5> */}
 
               <Link href="/company">
-                <h5 className={`fon4 fon4Sp cursor`}>Company</h5>
+                <h5 className={`fon4 fonSp4 cursor`}>Company</h5>
               </Link>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function Footer() {
             <h3 className={`fon3 fonSp3 bold`}>Contact</h3>
 
             <div className={`${cn.footerContactDetail}`}>
-              <p className={`fon5 fon5Sp cursor`}>
+              <p className={`fon5 fonSp5 cursor`}>
                 品種に関するお問い合わせ、
                 <br />
                 取材などはこちらからお願いいたします。
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         <div className={`${cn.footerCopilight}`}>
-          <h5 className={`fon5 fon4Sp cursor`}>© 2023 ROSETIQUE JAPAN Inc.</h5>
+          <h5 className={`fon5 fonSp5 cursor`}>© 2023 ROSETIQUE JAPAN Inc.</h5>
         </div>
       </footer>
     </>

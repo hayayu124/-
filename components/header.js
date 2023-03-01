@@ -97,27 +97,27 @@ export default function Header() {
           className={`${cn.humburgerContents} ${button ? cn.active : ""} pos-r`}
         >
           <div className={`${cn.humburgerMenuColumn} pos-a`}>
-            {/* <Link href="/about">
-              <h3
-                onClick={() => {
-                  setButton((prevState) => !prevState);
-                }}
-                className={`fon3Sp`}
-              >
-                About
-              </h3>
-            </Link>
-
-            <div className={`${cn.humburgerBorder}`}></div> */}
-
             <Link href="/">
               <h3
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
-                className={`fon3Sp`}
+                className={`fonSp3`}
               >
                 Top
+              </h3>
+            </Link>
+
+            <div className={`${cn.humburgerBorder}`}></div>
+
+            <Link href="/about">
+              <h3
+                onClick={() => {
+                  setButton((prevState) => !prevState);
+                }}
+                className={`fonSp3`}
+              >
+                About
               </h3>
             </Link>
 
@@ -128,7 +128,7 @@ export default function Header() {
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
-                className={`fon3Sp`}
+                className={`fonSp3`}
               >
                 News
               </h3>
@@ -136,11 +136,12 @@ export default function Header() {
 
             <div className={`${cn.humburgerBorder}`}></div>
 
-            <h3 className={`fon3Sp bold`}>Collection</h3>
+            <h3 className={`fonSp3`}>Collection</h3>
             <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/brandNew">
               <h5
+                className={`fonSp4`}
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
@@ -151,6 +152,7 @@ export default function Header() {
 
             <Link href="/miwakoTiqueSeries">
               <h5
+                className={`fonSp4`}
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
@@ -161,6 +163,7 @@ export default function Header() {
 
             <Link href="/varietyList">
               <h5
+                className={`fonSp4`}
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
@@ -181,10 +184,10 @@ export default function Header() {
 
             <Link href="/contact">
               <h3
+                className={`fonSp3`}
                 onClick={() => {
                   setButton((prevState) => !prevState);
                 }}
-                className={`fon3Sp`}
               >
                 Contact
               </h3>

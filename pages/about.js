@@ -31,15 +31,15 @@ export default function About() {
         <section className={`${cn.feature} sectionSpaceM sec-c`}>
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>ロゼティーク</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>ロゼティーク</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>ROSETIQUE</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>ROSETIQUE</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 titleText mar-t2`}>
+              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                 日本全国のバラ栽培生産者や花市場、生花店、一般消費者などと連携し
                 <br className="br" />
                 ご意見やトレンドを取り入れながら、日本屈指の育種家の方々と
@@ -105,7 +105,7 @@ export default function About() {
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
               <h5 className={`fon5 fonSp5 mar-b1`}>人物</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Persons</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Persons</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
@@ -186,9 +186,9 @@ export default function About() {
         <section className={`${cn.access} foncolW sectionSpaceM sec-c`}>
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>アクセス</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>アクセス</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Access</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Access</h2>
 
               <div className={`titleBorder sec-c white`}></div>
             </ScrollEffect>
@@ -196,8 +196,8 @@ export default function About() {
 
           <div className={`${cn.accessColumn} sec-c grid3 fle-f`}>
             <div className={`${cn.accessDetail}`}>
-              <h3 className={`fon3 bold mar-b1`}>育種圃場</h3>
-              <p className={`fon4`}>
+              <h3 className={`fon3 fonSp3 bold mar-b1`}>育種圃場</h3>
+              <p className={`fon4 fonSp5`}>
                 〒737-2609
                 <br />
                 広島県呉市安浦町大字中畑字立小路 510-262 <br />

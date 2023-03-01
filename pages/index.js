@@ -134,15 +134,21 @@ export default function Top({ newss, formas }) {
 
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>DREAM ROSE JAPAN</h5>
+              <h5 className={`fon5 fonSp5 fonSp5 titleText mar-t2`}>
+                DREAM ROSE JAPAN
+              </h5>
 
-              <h2 className={`fon2 bold mar-b05`}>日本のバラを世界へ</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                日本のバラを
+                <br className={`brSp`} />
+                世界へ
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 titleText mar-t2`}>
+              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                 日本全国のバラ栽培生産者や花市場、生花店、
                 <br className="br" />
                 一般消費者などと連携しながら、世界へと純国産バラを広めたい
@@ -188,16 +194,18 @@ export default function Top({ newss, formas }) {
 
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>お知らせ</h5>
+              <h5 className={`fon5 fonSp5 fonSp5 titleText mar-t2`}>
+                お知らせ
+              </h5>
 
-              <h2 className={`fon2 bold mar-b05`}>News</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>News</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               {newsColumn.length !== 0 ? (
-                <h5 className={`fon5 titleText mar-t2`}>
+                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                   ROSETIQUE JAPANに関する
                   <br className="brSp" />
                   情報を随時発信しています。
@@ -235,9 +243,9 @@ export default function Top({ newss, formas }) {
                       <p className={`fon6 fonSp6 newsDate`}>
                         {format(new Date(el.date), "yyyy/MM/dd")}
                       </p>
-                      <p className={`fon4 Bold`}>{el.title}</p>
+                      <p className={`fon4 fonSp3 bold`}>{el.title}</p>
                       {el.content !== null && (
-                        <p className={`fon5 newsDe`}>
+                        <p className={`fon5 fonSp5 newsDe`}>
                           {el.content.replace(/(<([^>]+)>)/gi, "")}
                         </p>
                       )}
@@ -268,17 +276,17 @@ export default function Top({ newss, formas }) {
           </div>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>今年の新品種</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>今年の新品種</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Brand-new</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Brand-new</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 titleText mar-t2`}>
+              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                 トレンドをリードする花姿の良いものの中から、
-                <br />
+                <br className={`br`} />
                 耐病性や生産性に優れた品種だけを厳選してお届けします。
               </h5>
             </ScrollEffect>
@@ -304,7 +312,9 @@ export default function Top({ newss, formas }) {
                     )}
 
                     {el.node.featuredImage !== null && (
-                      <p className={`fon5 tex-c mar-t1`}>{el.node.title}</p>
+                      <p className={`fon5 fonSp5 tex-c mar-t1`}>
+                        {el.node.title}
+                      </p>
                     )}
                   </div>
                 );
@@ -336,15 +346,17 @@ export default function Top({ newss, formas }) {
         <section className={`${cn.collection} ${cn.tique}`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>ミワコ ティーク シリーズ</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>ミワコ ティーク シリーズ</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Miwako TIQUE Series</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                Miwako TIQUE Series
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 titleText mar-t2`}>
+              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                 美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
                 <br />
                 トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
@@ -372,7 +384,9 @@ export default function Top({ newss, formas }) {
                     )}
 
                     {el.node.featuredImage !== null && (
-                      <p className={`fon5 tex-c mar-t1`}>{el.node.title}</p>
+                      <p className={`fon5 fonSp5 tex-c mar-t1`}>
+                        {el.node.title}
+                      </p>
                     )}
                   </div>
                 );
@@ -407,17 +421,17 @@ export default function Top({ newss, formas }) {
           </div>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>品種</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>品種</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Variety</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Variety</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 titleText mar-t2`}>
+              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                 一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
-                <br />
+                <br className={`br`} />
                 人の心を癒し、心身共に豊かになるバラです。
               </h5>
             </ScrollEffect>

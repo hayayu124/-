@@ -62,16 +62,16 @@ export default function News(newss) {
         <section className={`${cn.news} sectionSpaceM sec-c`}>
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>お知らせ</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>お知らせ</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>News</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>News</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               {newsColumn.length !== 0 ? (
-                <h5 className={`fon5 titleText mar-t2`}>
+                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
                   ROSETIQUE JAPANに関する
                   <br className="brSp" />
                   情報を随時発信しています。
@@ -109,9 +109,9 @@ export default function News(newss) {
                       <p className={`fon6 fonSp6 newsDate`}>
                         {format(new Date(el.date), "yyyy/MM/dd")}
                       </p>
-                      <p className={`fon4 Bold`}>{el.title}</p>
+                      <p className={`fon4 fonSp3 bold`}>{el.title}</p>
                       {el.content !== null && (
-                        <p className={`fon5 newsDe`}>
+                        <p className={`fon5 fonSp5 newsDe`}>
                           {el.content.replace(/(<([^>]+)>)/gi, "")}
                         </p>
                       )}

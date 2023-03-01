@@ -36,15 +36,17 @@ export default function CollectionColumn({ roseCo }) {
                       )}
 
                       {el.node.colors.nodes.length !== 0 && (
-                        <h5 className={`${cn.flowerColorText}`}>
+                        <h5 className={`${cn.flowerColorText} fonSp5`}>
                           {el.node.colors.nodes[0].name}
                         </h5>
                       )}
                     </div>
                     <div className={`${cn.flowerName}`}>
-                      <h3>{el.node.title}</h3>
+                      <h3 className={`fonSp2`}>{el.node.title}</h3>
                       {el.node.rose_spec.roseSubname !== "" && (
-                        <h6>{el.node.rose_spec.roseSubname}</h6>
+                        <h6 className={`fonSp5`}>
+                          {el.node.rose_spec.roseSubname}
+                        </h6>
                       )}
                     </div>
                   </div>
