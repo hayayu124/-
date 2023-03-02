@@ -18,13 +18,18 @@ export default function About() {
   return (
     <>
       {/* kv */}
-      <section className={`${cn.kv} pos-r`}>
-        <div className={`${cn.kvImgback} pos-r`}></div>
-        <div className={`${cn.kvText} tex-c pos-a`}>
-          <h5 className={`fon4 fonSp5 mar-b05`}>DREAM ROSE JAPAN</h5>
-          <h2 className={`fon1 fonSp2 bold`}>日本のバラを世界へ</h2>
-        </div>
-      </section>
+      <ScrollEffect>
+        <section className={`${cn.kv} pos-r`}>
+          <div className={`${cn.kvImgback} pos-r`}></div>
+
+          <div className={`${cn.kvText} tex-c pos-a`}>
+            <ScrollEffect className={`${cn.inMoreDelay}`} after={cn.intActive}>
+              <h5 className={`fon4 fonSp5 mar-b05`}>DREAM ROSE JAPAN</h5>
+              <h2 className={`fon1 fonSp2 bold`}>日本のバラを世界へ</h2>
+            </ScrollEffect>
+          </div>
+        </section>
+      </ScrollEffect>
 
       {/* 特徴 */}
       <ScrollEffect>
@@ -71,9 +76,11 @@ export default function About() {
                 <br className="br" />
                 <br />
                 <br />
-                株式会社 ROSETIQUE JAPAN CEO/Flower Designer
-                <br className="br" />
-                Miwako
+                <span className="bold">
+                  株式会社 ROSETIQUE JAPAN CEO/Flower Designer
+                  <br className="br" />
+                  Miwako
+                </span>
               </h5>
             </ScrollEffect>
           </div>

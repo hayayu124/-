@@ -136,7 +136,7 @@ export default function Contact() {
                 {/* 名前 */}
                 <div className={`${cn.contactContents} sectionSpaceS grid5`}>
                   <div className={`collectionName`}>
-                    <h3 className={`fon4 fonSp4 bold`}>
+                    <h3 className={`fon4 fonSp4 bold notoGo`}>
                       お名前{" "}
                       <span className={`fon5 fonSp5 bold`}>
                         （企業の方は会社名も記入してください）
@@ -149,7 +149,7 @@ export default function Contact() {
                       }}
                       noValidate
                       autoComplete="off"
-                      className={`mar-t1`}
+                      className={`mar-t1 ${cn.textbox}`}
                       type="text"
                       id="name"
                       required
@@ -168,7 +168,9 @@ export default function Contact() {
                     </Box>
 
                     {/* ふりがな */}
-                    <h3 className={`fon4 fonSp4 bold mar-t3`}>ふりがな</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
+                      ふりがな
+                    </h3>
 
                     <Box
                       sx={{
@@ -176,7 +178,7 @@ export default function Contact() {
                       }}
                       noValidate
                       autoComplete="off"
-                      className={`mar-t1`}
+                      className={`mar-t1 ${cn.textbox}`}
                       type="text"
                       id="name_ruby"
                       required
@@ -194,7 +196,7 @@ export default function Contact() {
                     </Box>
 
                     {/* email */}
-                    <h3 className={`fon4 fonSp4 bold mar-t3`}>
+                    <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
                       メールアドレス
                     </h3>
 
@@ -204,7 +206,7 @@ export default function Contact() {
                       }}
                       noValidate
                       autoComplete="off"
-                      className={`mar-t1`}
+                      className={`mar-t1 ${cn.textbox}`}
                       type="text"
                       id="outlined-required"
                       required
@@ -221,7 +223,9 @@ export default function Contact() {
                       </div>
                     </Box>
 
-                    <h3 className={`fon4 fonSp4 bold mar-t3`}>電話番号</h3>
+                    <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
+                      電話番号
+                    </h3>
 
                     <Box
                       sx={{
@@ -229,7 +233,7 @@ export default function Contact() {
                       }}
                       noValidate
                       autoComplete="off"
-                      className={`mar-t1`}
+                      className={`mar-t1 ${cn.textbox}`}
                       type="text"
                       id="tel"
                       required
@@ -246,12 +250,13 @@ export default function Contact() {
                       </div>
                     </Box>
 
-                    <h3 className={`fon4 fonSp4 bold mar-t3 mar-b1`}>
+                    <h3 className={`fon4 fonSp4 bold mar-t3 mar-b1 notoGo`}>
                       お問い合わせ内容
                     </h3>
 
                     <TextField
                       name="message"
+                      className={`${cn.textbox}`}
                       onChange={(e) => setMessage(e.target.value)}
                       id="outlined-multiline-static"
                       multiline
@@ -272,7 +277,7 @@ export default function Contact() {
                       }}
                     />
 
-                    <h6 className={`fon6 fonSp6 cursor`}>
+                    <h6 className={`fon6 fonSp6 cursor notoGo`}>
                       <Link href="/privacyPolicy">
                         「プライバシーポリシー」
                       </Link>
@@ -291,7 +296,9 @@ export default function Contact() {
                     } sectionSpaceS`}
                     onClick={sendEmail}
                   >
-                    <h5 className={`fon4 fonSp4 cursor foncolW`}>送信</h5>
+                    <h5 className={`fon4 fonSp4 cursor foncolW notoGo`}>
+                      送信
+                    </h5>
                   </div>
 
                   <div

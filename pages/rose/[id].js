@@ -30,9 +30,9 @@ export default function RoseDetail(props) {
         <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 mar-b1`}>品種</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>品種</h5>
 
-              <h2 className={`fon2 bold mar-b05`}>Variety</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>Variety</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
@@ -61,13 +61,13 @@ export default function RoseDetail(props) {
                           </div>
                         )}
                         {rose.colors.nodes.length !== 0 && (
-                          <h5 className={`${cn.flowerColorText}`}>
+                          <h5 className={`fon5 fonSp5 ${cn.flowerColorText}`}>
                             {rose.colors.nodes[0].name}
                           </h5>
                         )}
                       </div>
                       <div className={`${cn.flowerName}`}>
-                        <h3>{rose.title}</h3>
+                        <h3 className={`fon3 fonSp3 bold`}>{rose.title}</h3>
                         {rose.rose_spec.roseSubname !== "" && (
                           <h6>{rose.rose_spec.roseSubname}</h6>
                         )}
@@ -104,7 +104,9 @@ export default function RoseDetail(props) {
                               </h3>
                             )}
                             {rose.rose_spec.roseSubname !== "" && (
-                              <h6>{rose.rose_spec.roseSubname}</h6>
+                              <h6 className={`fon5 fonSp5`}>
+                                {rose.rose_spec.roseSubname}
+                              </h6>
                             )}
                           </div>
                         </div>

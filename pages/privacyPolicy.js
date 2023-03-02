@@ -9,11 +9,14 @@ export default function PrivacyPolicy() {
     <>
       {/* 品種一覧 */}
       <section className={`${cn.privacyPolicy} sectionSpaceM mar-b4 sec-c`}>
-        <div className={`tex-c`}>
-          <div className={`mar-t2`}>
-            <h5 className={`fon5 fonSp5`}>プライバシーポリシー</h5>
-            <h1 className={`fon2 fonSp2 bold`}>Privacy Policy</h1>
-          </div>
+        <div className={`titleColumn tex-c mar-b4`}>
+          <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+            <h5 className={`fon5 fonSp5 mar-b1`}>プライバシーポリシー</h5>
+
+            <h2 className={`fon2 fonSp2 bold mar-b05`}>Privacy Policy</h2>
+
+            <div className={`titleBorder sec-c`}></div>
+          </ScrollEffect>
         </div>
 
         <div className={`${cn.privText} grid4`}>
