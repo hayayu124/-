@@ -219,11 +219,23 @@ export default function About() {
 
             <div className={`${cn.accessMap} pos-r`}>
               <div className={`${cn.mapImage} pos-r`}>
-                <img src="/img/map.jpg" alt="" />
+                <a
+                  href="https://goo.gl/maps/tpAfs6ugpiSPbqyDA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="/img/map.jpg" alt="" />
+                </a>
               </div>
 
               <div className={`${cn.mapButton} pos-a`}>
-                <p>Map</p>
+                <a
+                  href="https://goo.gl/maps/tpAfs6ugpiSPbqyDA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p>Map</p>
+                </a>
               </div>
             </div>
           </div>

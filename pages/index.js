@@ -41,8 +41,6 @@ export default function Top({ newss, formas }) {
     .filter((n) => n.node.rose_spec.genre == "Brand-new")
     .slice(0, 5);
 
-  console.log(brandNew);
-
   const tique = roseFormas
     .filter((n) => n.node.rose_spec.genre == "Miwako Tique Series")
     .slice(0, 6);

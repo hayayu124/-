@@ -18,7 +18,7 @@ export default function VarietyList({ formas }) {
   const isFirstRender = useRef(false);
 
   //GraphQLより品種情報を読み込み
-  const brandNewColumn = formas;
+  const rose = formas;
   const isDesktop = useMediaQuery({ query: "(min-width: 768px)" });
   const [isDisplay, setIsDisplay] = useState(false);
 
@@ -36,13 +36,179 @@ export default function VarietyList({ formas }) {
       setLoad(true);
     }, 500);
 
-    // //Favボタン
+    //Favボタン
     // const favFlower = localStorage.getItem("id");
     // setFavList(JSON.parse(favFlower));
 
     // このeffectは初回レンダー時のみ呼ばれるeffect
     isFirstRender.current = true;
   }, []);
+
+  //フィルター
+  const [filterValue, setFilterValue] = useState([]);
+  const [sizeFilterValue, setSizeFilterValue] = useState([]);
+  const [shapeFilterValue, setShapeFilterValue] = useState([]);
+  const [petalFilterValue, setPetalFilterValue] = useState("");
+  const [scentFilterValue, setScentFilterValue] = useState([]);
+  const [lengthFilterValue, setLengthFilterValue] = useState([]);
+  const [harvestFilterValue, setHarvestFilterValue] = useState([]);
+  const [sprayFilterValue, setSprayFilterValue] = useState("");
+
+  const [brandNewColumn, setBrandNewColumn] = useState(rose);
+
+  useEffect(() => {
+    //品種をフィルター
+    if (
+      filterValue.length > 0 ||
+      sizeFilterValue.length > 0 ||
+      shapeFilterValue.length > 0 ||
+      scentFilterValue.length > 0 ||
+      petalFilterValue.length > 0 ||
+      harvestFilterValue.length > 0 ||
+      lengthFilterValue.length > 0 ||
+      sprayFilterValue.length > 0
+    ) {
+      //色がないとき全部選択させる
+      if (filterValue.length == 0) {
+        const allItems = rose
+          .map((item) => item.node.colors.nodes[0].name)
+          .filter((value, index, self) => {
+            return self.indexOf(value) === index;
+          });
+        setFilterValue(allItems);
+      }
+
+      //サイズがないとき全部選択させる
+      if (sizeFilterValue.length == 0) {
+        const allItems = rose
+          .map((item) => item.node.rose_spec.roseSize)
+          .filter((value, index, self) => {
+            return self.indexOf(value) === index;
+          });
+        setSizeFilterValue(allItems);
+      }
+
+      //形がないとき全部選択させる
+      if (shapeFilterValue.length == 0) {
+        const allItems = rose
+          .map((item) => item.node.rose_spec.roseShape)
+          .filter((value, index, self) => {
+            return self.indexOf(value) === index;
+          });
+        setShapeFilterValue(allItems);
+      }
+
+      //花弁数がないとき全部選択させる
+      if (petalFilterValue.length == 0) {
+        setPetalFilterValue("クリア");
+      }
+
+      //臭いがないとき全部選択させる
+      if (scentFilterValue.length == 0) {
+        const allItems = rose
+          .map((item) => item.node.rose_spec.roseScent)
+          .filter((value, index, self) => {
+            return self.indexOf(value) === index;
+          });
+        setScentFilterValue(allItems);
+      }
+
+      console.log(sprayFilterValue);
+
+      const brandNewColumnFilter = rose
+        .filter(
+          (obj) =>
+            filterValue.includes(obj.node.colors.nodes[0].name) &&
+            sizeFilterValue.includes(obj.node.rose_spec.roseSize) &&
+            shapeFilterValue.includes(obj.node.rose_spec.roseShape) &&
+            scentFilterValue.includes(obj.node.rose_spec.roseScent)
+        )
+        //花弁数のフィルター
+        .filter((con) => {
+          if (petalFilterValue == "100枚以上") {
+            return con.node.rose_spec.rosePetal >= 100;
+          } else if (petalFilterValue == "50枚以上~100枚以下") {
+            return (
+              con.node.rose_spec.rosePetal < 100 &&
+              con.node.rose_spec.rosePetal >= 50
+            );
+          } else if (petalFilterValue == "50枚以下") {
+            return con.node.rose_spec.rosePetal < 50;
+          } else if (petalFilterValue == "クリア") {
+            return con.node.rose_spec.rosePetal < 100000;
+          }
+        })
+        //長さのフィルター
+        .filter((con) => {
+          if (lengthFilterValue == "60~90cm") {
+            return con.node.rose_spec.roseLength == "60~90cm";
+          } else if (lengthFilterValue == "60~80cm") {
+            return con.node.rose_spec.roseLength == "60~80cm";
+          } else if (lengthFilterValue == "50~70cm") {
+            return con.node.rose_spec.roseLength == "50~70cm";
+          } else if (lengthFilterValue == "50~80cm") {
+            return con.node.rose_spec.roseLength == "50~80cm";
+          } else if (lengthFilterValue == "70~90cm") {
+            return con.node.rose_spec.roseLength == "70~90cm";
+          } else if (lengthFilterValue == "40~60cm") {
+            return con.node.rose_spec.roseLength == "40~60cm";
+          } else if (lengthFilterValue == "60~70cm") {
+            return con.node.rose_spec.roseLength == "60~70cm";
+          } else if (
+            lengthFilterValue == "クリア" ||
+            lengthFilterValue !== "cjsdhvb"
+          ) {
+            return con.node.rose_spec.roseLength !== "cjsdhvb";
+          }
+        })
+        //採花本数のフィルター
+        .filter((con) => {
+          if (harvestFilterValue == "約250以上~350本以下") {
+            return (
+              con.node.rose_spec.roseHarvest < 350 &&
+              con.node.rose_spec.roseHarvest >= 250
+            );
+          } else if (harvestFilterValue == "約350以上~450本以下") {
+            return (
+              con.node.rose_spec.roseHarvest < 450 &&
+              con.node.rose_spec.roseHarvest >= 350
+            );
+          } else if (harvestFilterValue == "約450本以上") {
+            return con.node.rose_spec.roseHarvest >= 450;
+          } else if (harvestFilterValue == "クリア") {
+            return con.node.rose_spec.roseHarvest < 100000;
+          } else {
+            return con.node.rose_spec.roseHarvest < 100000;
+          }
+        })
+        //スプレーのフィルター
+        .filter((con) => {
+          if (sprayFilterValue == "スプレー咲き") {
+            return con.node.rose_spec.roseType == "spray";
+          } else if (sprayFilterValue == "ノーマル") {
+            return con.node.rose_spec.roseType == "normal";
+          } else if (sprayFilterValue == "クリア") {
+            return con.node.rose_spec.roseType !== "bjhcjvbjs";
+          } else {
+            return con.node.rose_spec.roseType !== "bjhcjvbjs";
+          }
+        });
+
+      console.log(brandNewColumnFilter);
+      setBrandNewColumn(brandNewColumnFilter);
+    } else {
+      setBrandNewColumn(rose);
+    }
+  }, [
+    filterValue,
+    sizeFilterValue,
+    shapeFilterValue,
+    petalFilterValue,
+    scentFilterValue,
+    lengthFilterValue,
+    harvestFilterValue,
+    sprayFilterValue,
+  ]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -64,14 +230,13 @@ export default function VarietyList({ formas }) {
   }, [reset]);
 
   const brandNewDisplayColumn = brandNewColumn.slice(0, i);
-  console.log(brandNewDisplayColumn);
 
   if (isDisplay) {
     return (
       <>
         <ScrollEffect>
           {/* 品種一覧 */}
-          <section className={`${cn.varietyList} sectionSpaceM sec-c`}>
+          <section className={`${cn.varietyList}`}>
             <div className={`titleColumn tex-c mar-b4`}>
               <ScrollEffect
                 className={`${cn.intMoreDelay}`}
@@ -96,10 +261,50 @@ export default function VarietyList({ formas }) {
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
               {/* フィルター */}
 
-              {/* {isDesktop ? <Filter /> : <FilterSP />} */}
+              {isDesktop ? (
+                <Filter
+                  rose={rose}
+                  filterValue={filterValue}
+                  setFilterValue={setFilterValue}
+                  sizeFilterValue={sizeFilterValue}
+                  setSizeFilterValue={setSizeFilterValue}
+                  shapeFilterValue={shapeFilterValue}
+                  setShapeFilterValue={setShapeFilterValue}
+                  petalFilterValue={petalFilterValue}
+                  setPetalFilterValue={setPetalFilterValue}
+                  scentFilterValue={scentFilterValue}
+                  setScentFilterValue={setScentFilterValue}
+                  lengthFilterValue={lengthFilterValue}
+                  setLengthFilterValue={setLengthFilterValue}
+                  harvestFilterValue={harvestFilterValue}
+                  setHarvestFilterValue={setHarvestFilterValue}
+                  sprayFilterValue={sprayFilterValue}
+                  setSprayFilterValue={setSprayFilterValue}
+                />
+              ) : (
+                <FilterSP
+                  rose={rose}
+                  filterValue={filterValue}
+                  setFilterValue={setFilterValue}
+                  sizeFilterValue={sizeFilterValue}
+                  setSizeFilterValue={setSizeFilterValue}
+                  shapeFilterValue={shapeFilterValue}
+                  setShapeFilterValue={setShapeFilterValue}
+                  petalFilterValue={petalFilterValue}
+                  setPetalFilterValue={setPetalFilterValue}
+                  scentFilterValue={scentFilterValue}
+                  setScentFilterValue={setScentFilterValue}
+                  lengthFilterValue={lengthFilterValue}
+                  setLengthFilterValue={setLengthFilterValue}
+                  harvestFilterValue={harvestFilterValue}
+                  setHarvestFilterValue={setHarvestFilterValue}
+                  sprayFilterValue={sprayFilterValue}
+                  setSprayFilterValue={setSprayFilterValue}
+                />
+              )}
 
               {/* ボーダー */}
-              {/* <div className={`border mar-t1`}></div> */}
+              <div className={`border mar-t1`}></div>
 
               <div className={`varietyListColumn sectionSpaceS grid2`}>
                 {/* <div className={`result mar-t1`}>
@@ -221,13 +426,13 @@ export default function VarietyList({ formas }) {
                               {el.node.rose_spec.rosePetal !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Petal&nbsp;&nbsp;
-                                  {el.node.rose_spec.rosePetal}
+                                  {el.node.rose_spec.rosePetal}本
                                 </p>
                               )}
                               {el.node.rose_spec.roseHarvest !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Harvest&nbsp;&nbsp;
-                                  {el.node.rose_spec.roseHarvest}
+                                  {el.node.rose_spec.roseHarvest}本
                                 </p>
                               )}
                             </div>
@@ -238,12 +443,22 @@ export default function VarietyList({ formas }) {
                   })}
                 </div>
 
+                <div
+                  className={`${cn.errorMessage} ${
+                    brandNewColumn.length == 0 ? cn.active : ""
+                  }`}
+                >
+                  <h5 className={`tex-c`}>品種がありません。</h5>
+                </div>
+
                 {/* moreView */}
                 <div
                   onClick={() => {
                     setMoreView((prevState) => !prevState);
                   }}
-                  className={`moreView ${folding ? "" : "active"}`}
+                  className={`moreView ${folding ? "" : "active"} ${
+                    brandNewColumn.length < 12 ? "active" : ""
+                  }`}
                 >
                   <Button />
                 </div>
@@ -257,14 +472,6 @@ export default function VarietyList({ formas }) {
                 >
                   <FButton />
                 </div> */}
-
-                <div
-                  className={`newsMessage ${
-                    brandNewDisplayColumn.length == 0 ? "active" : ""
-                  } tex-c`}
-                >
-                  <h5>品種がありません。</h5>
-                </div>
               </div>
             </ScrollEffect>
           </section>
@@ -283,9 +490,10 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        roseFormas(first: 100) {
+        roseFormas(first: 1000) {
           edges {
             node {
+              roseFormaId
               uri
               title
               featuredImage {
@@ -310,6 +518,7 @@ export const getStaticProps = async () => {
                 roseHarvest
                 roseExplanation
                 roseSubname
+                roseType
               }
               colors {
                 nodes {

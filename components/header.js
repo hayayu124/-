@@ -65,7 +65,7 @@ export default function Header() {
             {/* お気に入り */}
             {/* <div className={`${cn.headerMenu}`}>
               <Link href="/favorite">
-                <h5 className={`fon5 fon4Sp`}>お気に入り</h5>
+                <h5 className={`fon5 fon4Sp`}>Favorite</h5>
               </Link>
             </div> */}
             <div className={`${cn.headerMenu}`}>
@@ -172,7 +172,7 @@ export default function Header() {
               </h5>
             </Link>
 
-            {/* <h3
+            <h3
               onClick={() => {
                 setButton((prevState) => !prevState);
               }}
@@ -180,7 +180,7 @@ export default function Header() {
             >
               お気に入り
             </h3>
-            <div className={`${cn.humburgerBorder}`}></div> */}
+            <div className={`${cn.humburgerBorder}`}></div>
 
             <Link href="/contact">
               <h3

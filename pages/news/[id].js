@@ -29,12 +29,14 @@ export default function NewsArticle(props) {
   return (
     <>
       <section className={`${cn.newsArticle} sectionSpaceM`}>
-        <div className={`${cn.newsTittle} titleColumn sec-c`}>
-          <div className={`${cn.newsText} mar-t2`}>
-            <h5>ニュース</h5>
+        <div className={`titleColumn tex-c mar-b4`}>
+          <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
+            <h5 className={`fon5 fonSp5 mar-b1`}>ニュース</h5>
 
-            <h2>News</h2>
-          </div>
+            <h2 className={`fon2 fonSp2 bold mar-b05`}>News</h2>
+
+            <div className={`titleBorder sec-c`}></div>
+          </ScrollEffect>
         </div>
 
         <ScrollEffect className={`intMostDelay`} after={`intActive`}>

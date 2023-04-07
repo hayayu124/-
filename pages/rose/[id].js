@@ -21,7 +21,7 @@ export default function RoseDetail(props) {
   }, []);
 
   //お気に入りのハートボタン
-  // const [fav, setFav] = useState(false);
+  const [fav, setFav] = useState(false);
 
   return (
     <>
@@ -131,7 +131,6 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseSize !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
@@ -142,7 +141,6 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseShape !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
@@ -153,16 +151,14 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.rosePetal !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
                                 Petal&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {rose.rose_spec.rosePetal}
+                                {rose.rose_spec.rosePetal}本
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseScent !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
@@ -173,7 +169,6 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseLength !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
@@ -184,18 +179,16 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseHarvest !== null && (
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
                                 Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseHarvest}
+                                {rose.rose_spec.roseHarvest}本
                               </p>
                             </div>
                           )}
-
                           {rose.rose_spec.roseExplanation !== null && (
                             <div
                               className={`${cn.flowerSpecDetail} ${cn.roseExplanation}`}
@@ -205,7 +198,7 @@ export default function RoseDetail(props) {
                               </p>
                             </div>
                           )}
-
+                          {/* お気に入りボタン */}
                           {/* <div className={`${cn.flowerSpecDetail}`}>
                             <div
                               onClick={() => {

@@ -124,6 +124,7 @@ export const getStaticProps = async () => {
         roseFormas(first: 100) {
           edges {
             node {
+              roseFormaId
               uri
               title
               featuredImage {

@@ -9,7 +9,7 @@ import LoadingEffect from "./utility/loadingEffect";
 
 export default function CollectionColumn({ roseCo }) {
   //お気に入りのハートボタン
-  // const [fav, setFav] = useState(false);
+  const [fav, setFav] = useState(false);
 
   console.log(roseCo);
 
@@ -147,7 +147,7 @@ export default function CollectionColumn({ roseCo }) {
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
                                 Petal&emsp;&emsp;&emsp;&emsp;&nbsp;
-                                {el.node.rose_spec.rosePetal}
+                                {el.node.rose_spec.rosePetal}本
                               </p>
                             </div>
                           )}
@@ -169,7 +169,7 @@ export default function CollectionColumn({ roseCo }) {
                                 Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {el.node.rose_spec.roseHarvest}
+                                {el.node.rose_spec.roseHarvest}本
                               </p>
                             </div>
                           )}
@@ -177,9 +177,9 @@ export default function CollectionColumn({ roseCo }) {
 
                         {/* お気に入りボタン */}
                         {/* <div className={`${cn.flowerSpecDetail}`}>
-                        <FavButton favId={el.node.roseFormaId} />
-                        <h6>お気に入りに追加</h6>
-                      </div> */}
+                          <FavButton favId={el.node.roseFormaId} />
+                          <h6>お気に入りに追加</h6>
+                        </div> */}
                       </div>
 
                       {el.node.rose_spec.roseExplanation !== null && (

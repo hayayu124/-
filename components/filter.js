@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import fl from "../components/filter.module.scss";
 
-export default function Filter() {
-  //SPのフィルターボタン
-
+export default function Filter(props) {
   //クリック時にプルダウンを開く
   const [filterName, setFilterName] = useState("");
   const dropdownListColor = useRef(null);
@@ -15,218 +13,70 @@ export default function Filter() {
   const dropdownListHarvest = useRef(null);
   const dropdownListSpray = useRef(null);
 
-  const colorName = [
-    {
-      name: "Beige",
-      slug: "beige",
-    },
-    {
-      name: "Light Pink",
-      slug: "light_pink",
-    },
-    {
-      name: "Multi Color",
-      slug: "multi_color",
-    },
-    {
-      name: "Orange",
-      slug: "orange",
-    },
-    {
-      name: "Pink",
-      slug: "pink",
-    },
-    {
-      name: "Purple",
-      slug: "purple",
-    },
-    {
-      name: "White",
-      slug: "white",
-    },
-    {
-      name: "Yellow",
-      slug: "yellow",
-    },
-  ];
-  const sizeName = [
-    {
-      name: "中大輪",
-      slug: "middle_large_flower",
-    },
-    {
-      name: "中小輪",
-      slug: "middle_small_flower",
-    },
-    {
-      name: "中輪",
-      slug: "middle_flower",
-    },
-    {
-      name: "大輪",
-      slug: "large_flower",
-    },
-    {
-      name: "小輪",
-      slug: "small_flower",
-    },
-  ];
+  //色のフィルター項目
+  const colorName = props.rose
+    .map((item) => item.node.colors.nodes[0].name)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
 
-  const shapeName = [
-    {
-      name: "ウェーブかかったカップ咲き",
-      slug: "wavy_spray_bloom",
-    },
-    {
-      name: "ウェーブ咲き",
-      slug: "wave_bloom",
-    },
-    {
-      name: "カップ咲き",
-      slug: "cup-bloom",
-    },
-    {
-      name: "シャローカップ咲き",
-      slug: "sharow_cup_bloom",
-    },
-    {
-      name: "ロゼット咲き",
-      slug: "rosette_form",
-    },
-    {
-      name: "剣弁高芯咲き",
-      slug: "kenben_takashin_form",
-    },
-    {
-      name: "半カップ咲き",
-      slug: "half_cupped_form",
-    },
-    {
-      name: "半剣弁ロゼット咲",
-      slug: "half_kenben_rosette_form",
-    },
-    {
-      name: "平咲き",
-      slug: "flat_form",
-    },
-    {
-      name: "高芯半剣弁咲き",
-      slug: "kenben_half_takashin_form",
-    },
-  ];
+  //サイズのフィルター項目
+  const sizeName = props.rose
+    .map((item) => item.node.rose_spec.roseSize)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
 
-  const petalName = [
-    {
-      name: "100枚以上",
-      slug: "over100",
-    },
-    {
-      name: "50枚以上~100枚以下",
-      slug: "under100",
-    },
-    {
-      name: "50枚以下",
-      slug: "underfifty",
-    },
-  ];
+  //形のフィルター項目
+  const shapeName = props.rose
+    .map((item) => item.node.rose_spec.roseShape)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
 
-  const scentName = [
-    {
-      name: "ダマスク中香",
-      slug: "damask_middle_scent",
-    },
-    {
-      name: "ダマスク微香",
-      slug: "damask_lightly_scent",
-    },
-    {
-      name: "ティー中香",
-      slug: "tea_middle_scent",
-    },
-    {
-      name: "ティー強香",
-      slug: "tea_storing_scent",
-    },
-    {
-      name: "ティー微香",
-      slug: "tea_lightly_scent",
-    },
-    {
-      name: "フルーティー中香",
-      slug: "fruity_middle_scent",
-    },
-    {
-      name: "フルーティー強香",
-      slug: "fruity_strong_scent",
-    },
-    {
-      name: "ブルー中香",
-      slug: "blue_middle_scent",
-    },
-    {
-      name: "ブルー強香",
-      slug: "blue_strong_scent",
-    },
-    {
-      name: "ミルラ強香",
-      slug: "mirura_strong_scent",
-    },
-  ];
+  //花弁数のフィルター項目
+  const petalName = ["100枚以上", "50枚以上~100枚以下", "50枚以下"];
 
-  const lengthName = [
-    {
-      name: "40~60cm",
-      slug: "4060cm",
-    },
-    {
-      name: "50~70cm",
-      slug: "5070cm",
-    },
-    {
-      name: "60~70cm",
-      slug: "6070cm",
-    },
-    {
-      name: "60~80cm",
-      slug: "6080cm",
-    },
-    {
-      name: "60~90cm",
-      slug: "6090cm",
-    },
-    {
-      name: "70~90cm",
-      slug: "7090cm",
-    },
-  ];
+  //臭いのフィルター項目
+  const scentName = props.rose
+    .map((item) => item.node.rose_spec.roseScent)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+  //長さのフィルター項目
+  const lengthName = props.rose
+    .map((item) => item.node.rose_spec.roseLength)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+  //採花本数のフィルター項目
   const harvestName = [
-    {
-      name: "約450本",
-      slug: "about450",
-    },
-    {
-      name: "約500~600本",
-      slug: "about500600",
-    },
-    {
-      name: "約500本",
-      slug: "about500",
-    },
-    {
-      name: "約600本",
-      slug: "over600",
-    },
+    "約250以上~350本以下",
+    "約350以上~450本以下",
+    "約450本以上",
   ];
-  const sprayName = [
-    {
-      name: "スプレー咲き",
-      slug: "spray_form",
-    },
-    {
-      name: "ノーマル",
-      slug: "normal",
-    },
-  ];
+
+  //スプレーのフィルター項目
+  const sprayName = ["スプレー咲き", "ノーマル"];
+
+  //フィルター
+
+  const formRef = useRef(null);
+
+  const handleReset = () => {
+    formRef.current.reset();
+    props.setFilterValue([]);
+    props.setSizeFilterValue([]);
+    props.setShapeFilterValue([]);
+    props.setPetalFilterValue("");
+    props.setScentFilterValue([]);
+    props.setLengthFilterValue("");
+    props.setHarvestFilterValue("");
+    props.setSprayFilterValue("");
+  };
+
   useEffect(() => {
     const handleClickToCloseDropdown = (event) => {
       let dropdownList = dropdownListColor;
@@ -277,295 +127,510 @@ export default function Filter() {
     dropdownListSpray,
   ]);
 
+  //チェックボックスの選択項目を管理
+
+  //色
+  const handleCheckboxColor = (e) => {
+    const { value, checked } = e.target;
+
+    if (props.filterValue.length >= 8) {
+      props.setFilterValue([]);
+    }
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setFilterValue((prevState) => [...prevState, value]);
+    } else {
+      // チェックボックスがチェックを外された場合、配列から削除する
+      const newItems = props.filterValue.filter((n) => n !== value);
+      props.setFilterValue(newItems);
+    }
+  };
+
+  //サイズ
+  const handleCheckboxSize = (e) => {
+    const { value, checked } = e.target;
+
+    if (props.sizeFilterValue.length >= 8) {
+      props.setSizeFilterValue([]);
+    }
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setSizeFilterValue((prevState) => [...prevState, value]);
+    } else {
+      // チェックボックスがチェックを外された場合、配列から削除する
+      const newItems = props.sizeFilterValue.filter((n) => n !== value);
+      props.setSizeFilterValue(newItems);
+    }
+  };
+
+  //形
+  const handleCheckboxShape = (e) => {
+    const { value, checked } = e.target;
+
+    if (props.shapeFilterValue.length >= 10) {
+      props.setShapeFilterValue([]);
+    }
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setShapeFilterValue((prevState) => [...prevState, value]);
+    } else {
+      // チェックボックスがチェックを外された場合、配列から削除する
+      const newItems = props.shapeFilterValue.filter((n) => n !== value);
+      props.setShapeFilterValue(newItems);
+    }
+  };
+
+  //花弁数
+  const handleCheckboxPetal = (e) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setPetalFilterValue(value);
+    }
+
+    console.log(props.petalFilterValue);
+  };
+
+  //臭い
+  const handleCheckboxScent = (e) => {
+    const { value, checked } = e.target;
+
+    if (props.scentFilterValue.length >= 19) {
+      props.setScentFilterValue([]);
+    }
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setScentFilterValue((prevState) => [...prevState, value]);
+    } else {
+      // チェックボックスがチェックを外された場合、配列から削除する
+      const newItems = props.scentFilterValue.filter((n) => n !== value);
+      props.setScentFilterValue(newItems);
+    }
+  };
+
+  //長さ
+  const handleCheckboxLength = (e) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setLengthFilterValue(value);
+    }
+  };
+
+  //採花本数
+  const handleCheckboxHarvest = (e) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setHarvestFilterValue(value);
+    }
+  };
+
+  //バラのタイプ
+  const handleCheckboxSpray = (e) => {
+    const { value, checked } = e.target;
+
+    if (checked) {
+      // チェックボックスがチェックされた場合、配列に追加する
+      props.setSprayFilterValue(value);
+    }
+  };
+
   return (
     <>
-      <div
-        className={`${fl.filter} ${fl.varietyFilterColumn} sectionSpaceM grid2`}
-      >
+      <div className={`${fl.filter} ${fl.varietyFilterColumn} grid2 fle-f`}>
         <div className={`${fl.varietyListFilter}`}>
           <div className={`${fl.flowerSpecFilter}`}>
-            <div ref={dropdownListColor} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("color");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>色</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
+            <form ref={formRef} className={`${fl.flowerSpecDetail}`}>
+              <div ref={dropdownListColor} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("color");
+                  }}
+                  className={`${fl.flowerSpecFilter}`}
+                >
+                  <h5 className={`fon5 fonSp5 cursor`}>Color</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
+
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "color" ? fl.active : ""
+                  }`}
+                >
+                  {colorName.map((el, index) => {
+                    return (
+                      <div
+                        key={`color-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="checkbox"
+                          name="color"
+                          className={`cursor`}
+                          value={el}
+                          onChange={handleCheckboxColor}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "color" ? fl.active : ""
-                }`}
-              >
-                {colorName.map((el, index) => {
-                  return (
-                    <div
-                      key={`color-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+              {/* サイズ */}
+              <div ref={dropdownListSize} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("size");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>Size</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
 
-            <div ref={dropdownListSize} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("size");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>サイズ</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
-              </div>
-
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "size" ? fl.active : ""
-                }`}
-              >
-                {sizeName.map((el, index) => {
-                  return (
-                    <div
-                      key={`size-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* shapeのフィルター */}
-            <div ref={dropdownListShape} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("shape");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>Shape</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "size" ? fl.active : ""
+                  }`}
+                >
+                  {sizeName.map((el, index) => {
+                    return (
+                      <div
+                        key={`size-${el}`}
+                        className={`${fl.FilterSubMenuContents} cursor`}
+                      >
+                        <input
+                          type="checkbox"
+                          name="size"
+                          value={el}
+                          onChange={handleCheckboxSize}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* プルダウンメニュー */}
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "shape" ? fl.active : ""
-                }`}
-              >
-                {shapeName.map((el, index) => {
-                  return (
-                    <div
-                      key={`shape-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+              {/* shapeのフィルター */}
+              <div ref={dropdownListShape} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("shape");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>Shape</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
 
-            {/* Petalのフィルター */}
-            <div ref={dropdownListPetal} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("petal");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>Petal</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
-              </div>
-
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "petal" ? fl.active : ""
-                }`}
-              >
-                {petalName.map((el, index) => {
-                  return (
-                    <div
-                      key={`petal-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Scentのフィルター */}
-            <div ref={dropdownListScent} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("scent");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>Scent</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
+                {/* プルダウンメニュー */}
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "shape" ? fl.active : ""
+                  }`}
+                >
+                  {shapeName.map((el, index) => {
+                    return (
+                      <div
+                        key={`shape-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="checkbox"
+                          name="Shape"
+                          value={el}
+                          onChange={handleCheckboxShape}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* プルダウンメニュー */}
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "scent" ? fl.active : ""
-                }`}
-              >
-                {scentName.map((el, index) => {
-                  return (
-                    <div
-                      key={`scent-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+              {/* Petalのフィルター */}
+              <div ref={dropdownListPetal} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("petal");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>Petal</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
 
-            {/* Lengthのフィルター */}
-            <div ref={dropdownListLength} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("length");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>Length</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
-              </div>
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "petal" ? fl.active : ""
+                  }`}
+                >
+                  {petalName.map((el) => {
+                    return (
+                      <div
+                        key={`petal-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="radio"
+                          name="Petal"
+                          value={el}
+                          onChange={handleCheckboxPetal}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
 
-              {/* プルダウンメニュー */}
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "length" ? fl.active : ""
-                }`}
-              >
-                {lengthName.map((el, index) => {
-                  return (
-                    <div
-                      key={`length-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Harvestのフィルター */}
-            <div ref={dropdownListHarvest} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("harvest");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>Harvest</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
+                  <div className={`${fl.FilterSubMenuContents}`}>
+                    <input
+                      type="radio"
+                      name="Petal"
+                      value="クリア"
+                      onChange={handleCheckboxPetal}
+                      className={`cursor`}
+                    />
+                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                  </div>
+                </div>
               </div>
 
-              {/* プルダウンメニュー */}
-              <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "harvest" ? fl.active : ""
-                }`}
-              >
-                {harvestName.map((el, index) => {
-                  return (
-                    <div
-                      key={`harvest-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+              {/* Scentのフィルター */}
+              <div ref={dropdownListScent} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("scent");
+                  }}
+                  className={`${fl.flowerSpecFilter}`}
+                >
+                  <h5 className={`fon5 fonSp5 cursor`}>Scent</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
 
-            {/* Sprayのフィルター */}
-            <div ref={dropdownListSpray} className={`${fl.flowerSpecDetail}`}>
-              <div
-                onClick={() => {
-                  setFilterName("spray");
-                }}
-                className={`${fl.flowerSpecFilter}`}
-              >
-                <h5>バラのタイプ</h5>
-                <img
-                  className={`${fl.pulldown}`}
-                  src="/img/pulldown.png"
-                  alt=""
-                />
+                {/* プルダウンメニュー */}
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "scent" ? fl.active : ""
+                  }`}
+                >
+                  {scentName.map((el) => {
+                    return (
+                      <div
+                        key={`scent-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="checkbox"
+                          name="Scent"
+                          value={el}
+                          onChange={handleCheckboxScent}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* プルダウンメニュー */}
+              {/* Lengthのフィルター */}
               <div
-                className={`${fl.colorPullDownMenu} ${
-                  filterName == "spray" ? fl.active : ""
-                }`}
+                ref={dropdownListLength}
+                className={`${fl.flowerSpecDetail}`}
               >
-                {sprayName.map((el, index) => {
-                  return (
-                    <div
-                      key={`spray-${el.name}`}
-                      className={`${fl.FilterSubMenuContents}`}
-                    >
-                      <input type="checkbox" name={el.name} value="sort" />
-                      <h5>{el.name}</h5>
-                    </div>
-                  );
-                })}
+                <div
+                  onClick={() => {
+                    setFilterName("length");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>Length</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
+
+                {/* プルダウンメニュー */}
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "length" ? fl.active : ""
+                  }`}
+                >
+                  {lengthName.map((el) => {
+                    return (
+                      <div
+                        key={`length-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="radio"
+                          name="Length"
+                          value={el}
+                          onChange={handleCheckboxLength}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+
+                  <div className={`${fl.FilterSubMenuContents}`}>
+                    <input
+                      type="radio"
+                      name="Length"
+                      value="クリア"
+                      onChange={handleCheckboxLength}
+                      className={`cursor`}
+                    />
+                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              {/* Harvestのフィルター */}
+              <div
+                ref={dropdownListHarvest}
+                className={`${fl.flowerSpecDetail}`}
+              >
+                <div
+                  onClick={() => {
+                    setFilterName("harvest");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>Harvest</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
+
+                {/* プルダウンメニュー */}
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "harvest" ? fl.active : ""
+                  }`}
+                >
+                  {harvestName.map((el) => {
+                    return (
+                      <div
+                        key={`harvest-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="radio"
+                          name="Harvest"
+                          value={el}
+                          onChange={handleCheckboxHarvest}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+
+                  <div className={`${fl.FilterSubMenuContents}`}>
+                    <input
+                      type="radio"
+                      name="Harvest"
+                      value="クリア"
+                      onChange={handleCheckboxHarvest}
+                      className={`cursor`}
+                    />
+                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sprayのフィルター */}
+              <div ref={dropdownListSpray} className={`${fl.flowerSpecDetail}`}>
+                <div
+                  onClick={() => {
+                    setFilterName("spray");
+                  }}
+                  className={`${fl.flowerSpecFilter} cursor`}
+                >
+                  <h5 className={`fon5 fonSp5`}>バラのタイプ</h5>
+                  <img
+                    className={`${fl.pulldown}`}
+                    src="/img/pulldown.png"
+                    alt=""
+                  />
+                </div>
+
+                {/* プルダウンメニュー */}
+                <div
+                  className={`${fl.colorPullDownMenu} ${
+                    filterName == "spray" ? fl.active : ""
+                  }`}
+                >
+                  {sprayName.map((el, index) => {
+                    return (
+                      <div
+                        key={`spray-${el}`}
+                        className={`${fl.FilterSubMenuContents}`}
+                      >
+                        <input
+                          type="radio"
+                          name="Type"
+                          value={el}
+                          onChange={handleCheckboxSpray}
+                          className={`cursor`}
+                        />
+                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                      </div>
+                    );
+                  })}
+
+                  <div className={`${fl.FilterSubMenuContents}`}>
+                    <input
+                      type="radio"
+                      name="Type"
+                      value="クリア"
+                      onChange={handleCheckboxSpray}
+                      className={`cursor`}
+                    />
+                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
 
           {/* <div className={`${fl.varietyNameFilter}`}>
@@ -576,27 +641,33 @@ export default function Filter() {
             </div> */}
         </div>
 
+        <button
+          type="reset"
+          onClick={handleReset}
+          className={`${fl.filterReset} cursor`}
+        >
+          <h5 className={`fon5 fonSp5`}>フィルターをクリア</h5>
+        </button>
+
         {/* <div className={`${fl.tagOrReset} mar-t1`}>
-            <div className={`${fl.tag}`}>
-              <div className={`${fl.specTag}`}>
-                <h5>名前:SP</h5>
-                <div className={`${fl.ban}`}>
-                  <img src="/img/ban.png" alt="" />
-                </div>
-              </div>
-
-              <div className={`${fl.specTag}`}>
-                <h5>Yellow</h5>
-                <div className={`${fl.ban}`}>
-                  <img src="/img/ban.png" alt="" />
-                </div>
+          <div className={`${fl.tag}`}>
+            <div className={`${fl.specTag}`}>
+              <h5>名前:SP</h5>
+              <div className={`${fl.ban}`}>
+                <img src="/img/ban.png" alt="" />
               </div>
             </div>
 
-            <div className={`${fl.filterReset}`}>
-              <h5>フィルターをクリア</h5>
+            <div className={`${fl.specTag}`}>
+              <h5>Yellow</h5>
+              <div className={`${fl.ban}`}>
+                <img src="/img/ban.png" alt="" />
+              </div>
             </div>
-          </div> */}
+          </div>
+
+          
+        </div> */}
       </div>
     </>
   );

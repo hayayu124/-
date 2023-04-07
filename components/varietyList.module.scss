@@ -1,5 +1,6 @@
 .varietyList {
   max-width: 1920px;
+  margin: 10em auto;
   .flowerAwardIcon {
     width: 3em;
     margin-left: 2em;
@@ -13,5 +14,13 @@
 
   .varietyFlowerName {
     font-size: 1.2em;
+  }
+}
+
+.errorMessage {
+  display: none;
+  &.active {
+    display: block;
+    margin: 5em auto 10em auto;
   }
 }
