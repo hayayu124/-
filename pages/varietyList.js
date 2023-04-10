@@ -57,6 +57,8 @@ export default function VarietyList({ formas }) {
   const [brandNewColumn, setBrandNewColumn] = useState(rose);
 
   useEffect(() => {
+    setI(12);
+    setFolding(true);
     //品種をフィルター
     if (
       filterValue.length > 0 ||
@@ -199,6 +201,8 @@ export default function VarietyList({ formas }) {
     } else {
       setBrandNewColumn(rose);
     }
+    console.log(brandNewColumn);
+    console.log(i);
   }, [
     filterValue,
     sizeFilterValue,
@@ -223,11 +227,11 @@ export default function VarietyList({ formas }) {
     }
   }, [moreView]);
 
-  useEffect(() => {
-    setI(12);
-    setFolding(true);
-    setView(false);
-  }, [reset]);
+  // useEffect(() => {
+  //   setI(12);
+  //   setFolding(true);
+  //   setView(false);
+  // }, [reset]);
 
   const brandNewDisplayColumn = brandNewColumn.slice(0, i);
 
