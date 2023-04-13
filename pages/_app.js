@@ -14,7 +14,8 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   // サイトタイトル
-  const siteTitle = "Rosetique カタログサイト";
+  const siteTitle =
+    "ROSETIQUE JAPAN Inc. | 日本発、お花に特化したライフスタイルブランド";
 
   return (
     <>
@@ -24,7 +25,8 @@ export default function MyApp({ Component, pageProps }) {
         </title>
         <meta
           name="description"
-          content="日本を代表する育種家、今井清氏のバラを日本全国へ世界へと普及する東京のアンテナショップです。今井清氏の種苗普及を通して、海外品種バラが大半を占める日本の花市場を活性化させ、国産バラ普及に向けて様々な取り組みを展開しています。"
+          content="日本全国のバラ栽培生産者や花市場、生花店、一般消費者などと連携しながら、世界へと純国産バラを広めたいとの想いで立ち上げた種苗会社です。
+          ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、明日への活力になっていただけるようなバラ作りを心掛けております。バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、進化させていきます。"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 

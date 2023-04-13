@@ -63,11 +63,11 @@ export default function Header() {
             </div>
 
             {/* お気に入り */}
-            {/* <div className={`${cn.headerMenu}`}>
+            <div className={`${cn.headerMenu}`}>
               <Link href="/favorite">
                 <h5 className={`fon5 fon4Sp`}>Favorite</h5>
               </Link>
-            </div> */}
+            </div>
             <div className={`${cn.headerMenu}`}>
               <Link href="/contact">
                 <h5 className={`fon5 fon4Sp`}>Contact</h5>

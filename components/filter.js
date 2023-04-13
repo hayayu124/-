@@ -2,6 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import fl from "../components/filter.module.scss";
 
 export default function Filter(props) {
+  //検索
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    formRef.current.reset();
+  }
+  function handleChange(event) {
+    props.setSearch(event.target.value);
+    formRef.current.reset();
+  }
+
   //クリック時にプルダウンを開く
   const [filterName, setFilterName] = useState("");
   const dropdownListColor = useRef(null);
@@ -133,7 +144,7 @@ export default function Filter(props) {
   const handleCheckboxColor = (e) => {
     const { value, checked } = e.target;
 
-    if (props.filterValue.length >= 8) {
+    if (props.filterValue.length >= colorName.length) {
       props.setFilterValue([]);
     }
 
@@ -151,7 +162,7 @@ export default function Filter(props) {
   const handleCheckboxSize = (e) => {
     const { value, checked } = e.target;
 
-    if (props.sizeFilterValue.length >= 8) {
+    if (props.sizeFilterValue.length >= sizeName.length) {
       props.setSizeFilterValue([]);
     }
 
@@ -169,7 +180,7 @@ export default function Filter(props) {
   const handleCheckboxShape = (e) => {
     const { value, checked } = e.target;
 
-    if (props.shapeFilterValue.length >= 10) {
+    if (props.shapeFilterValue.length >= shapeName.length) {
       props.setShapeFilterValue([]);
     }
 
@@ -199,7 +210,7 @@ export default function Filter(props) {
   const handleCheckboxScent = (e) => {
     const { value, checked } = e.target;
 
-    if (props.scentFilterValue.length >= 19) {
+    if (props.scentFilterValue.length >= scentName.length) {
       props.setScentFilterValue([]);
     }
 
@@ -245,7 +256,26 @@ export default function Filter(props) {
 
   return (
     <>
-      <div className={`${fl.filter} ${fl.varietyFilterColumn} grid2 fle-f`}>
+      <div className={`${fl.search} grid2 sec-c`}>
+        <div className={`${fl.inputWithIcon}`}>
+          <form>
+            <input
+              className={`fon4 notoGo`}
+              type="text"
+              id="search"
+              value={props.search}
+              placeholder="バラの名前で検索する"
+              onChange={handleChange}
+            />
+            <button type="submit" onClick={handleSubmit}>
+              <img src="/img/magnifying-glass.png" alt="" />
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        className={`${fl.filter} ${fl.varietyFilterColumn} grid2 fle-f mar-t2`}
+      >
         <div className={`${fl.varietyListFilter}`}>
           <div className={`${fl.flowerSpecFilter}`}>
             <form ref={formRef} className={`${fl.flowerSpecDetail}`}>
@@ -485,7 +515,6 @@ export default function Filter(props) {
                   />
                 </div>
 
-                {/* プルダウンメニュー */}
                 <div
                   className={`${fl.colorPullDownMenu} ${
                     filterName == "length" ? fl.active : ""
@@ -541,7 +570,6 @@ export default function Filter(props) {
                   />
                 </div>
 
-                {/* プルダウンメニュー */}
                 <div
                   className={`${fl.colorPullDownMenu} ${
                     filterName == "harvest" ? fl.active : ""
@@ -594,7 +622,6 @@ export default function Filter(props) {
                   />
                 </div>
 
-                {/* プルダウンメニュー */}
                 <div
                   className={`${fl.colorPullDownMenu} ${
                     filterName == "spray" ? fl.active : ""
@@ -632,13 +659,6 @@ export default function Filter(props) {
               </div>
             </form>
           </div>
-
-          {/* <div className={`${fl.varietyNameFilter}`}>
-              <div className={`${fl.inputWithIcon}`}>
-                <input type="text" placeholder="花の名前" />
-                <img src="/img/magnifying-glass.png" alt="" />
-              </div>
-            </div> */}
         </div>
 
         <button
@@ -665,8 +685,6 @@ export default function Filter(props) {
               </div>
             </div>
           </div>
-
-          
         </div> */}
       </div>
     </>

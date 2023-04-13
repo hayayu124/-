@@ -44,6 +44,16 @@ export default function VarietyList({ formas }) {
     isFirstRender.current = true;
   }, []);
 
+  //検索
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    const brandNewColumnFilter = rose.filter((obj) =>
+      obj.node.title.toLowerCase().includes(search.toLowerCase())
+    );
+    console.log(brandNewColumnFilter);
+    setBrandNewColumn(brandNewColumnFilter);
+  }, [search]);
+
   //フィルター
   const [filterValue, setFilterValue] = useState([]);
   const [sizeFilterValue, setSizeFilterValue] = useState([]);
@@ -114,8 +124,6 @@ export default function VarietyList({ formas }) {
           });
         setScentFilterValue(allItems);
       }
-
-      console.log(sprayFilterValue);
 
       const brandNewColumnFilter = rose
         .filter(
@@ -197,12 +205,11 @@ export default function VarietyList({ formas }) {
         });
 
       console.log(brandNewColumnFilter);
+
       setBrandNewColumn(brandNewColumnFilter);
     } else {
       setBrandNewColumn(rose);
     }
-    console.log(brandNewColumn);
-    console.log(i);
   }, [
     filterValue,
     sizeFilterValue,
@@ -284,6 +291,8 @@ export default function VarietyList({ formas }) {
                   setHarvestFilterValue={setHarvestFilterValue}
                   sprayFilterValue={sprayFilterValue}
                   setSprayFilterValue={setSprayFilterValue}
+                  search={search}
+                  setSearch={setSearch}
                 />
               ) : (
                 <FilterSP
@@ -304,6 +313,8 @@ export default function VarietyList({ formas }) {
                   setHarvestFilterValue={setHarvestFilterValue}
                   sprayFilterValue={sprayFilterValue}
                   setSprayFilterValue={setSprayFilterValue}
+                  search={search}
+                  setSearch={setSearch}
                 />
               )}
 

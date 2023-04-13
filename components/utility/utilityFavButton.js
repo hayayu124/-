@@ -8,9 +8,11 @@ const FavButton = ({ favId, favList, setFavList }) => {
     if (fav == false) {
       setFav(id);
       setFavList((prevState) => [...prevState, id]);
+      console.log(favList);
     } else {
       setFavList(favList.filter((favList, index) => favList !== id));
       setFav(false);
+      console.log(favList);
     }
   };
 

@@ -8,7 +8,7 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function BrandNew(props) {
-  const brandNew = props.formas;
+  const favorite = props.formas;
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -21,17 +21,23 @@ export default function BrandNew(props) {
   }, []);
 
   //お気に入りに追加した品種の抽出
-  const [sliceNumber, setSliceNumber] = useState(10);
-  const [moreView, setMoreView] = useState(false);
-  const isFirstRender = useRef(false);
+  const [favId, setFavId] = useState([]);
+  const [favoriteItems, setFavoriteItems] = useState([]);
 
   useEffect(() => {
-    if (window.localStorage) {
-      let json = localStorage.getItem("id");
-      let favRose = JSON.parse(json);
-      console.log(favRose);
+    const storedItems = localStorage.getItem("id");
+    if (storedItems) {
+      setFavId(JSON.parse(storedItems));
+      const fav = favorite.filter((n) => n.node.roseFormaId == favId[0]);
+      setFavoriteItems(fav);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("id", JSON.stringify(favId));
+  }, [favoriteItems]);
+
+  console.log(favId);
 
   //ボタンの変換
   const [folding, setFolding] = useState(false);
@@ -78,7 +84,7 @@ export default function BrandNew(props) {
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-            {/* <CollectionColumn roseCo={brandNewCol} /> */}
+            <CollectionColumn roseCo={favoriteItems} />
           </ScrollEffect>
         </div>
 
@@ -94,7 +100,7 @@ export default function BrandNew(props) {
 
         <div
           className={`newsMessage ${
-            brandNew.length == 0 ? "active" : ""
+            favorite.length == 0 ? "active" : ""
           } tex-c`}
         >
           <h5>品種がありません。</h5>

@@ -6,6 +6,17 @@ import ScrollEffect from "./utility/utilityscrollEffect";
 import LoadingEffect from "./utility/loadingEffect";
 
 export default function FilterSP(props) {
+  //検索
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    formRef.current.reset();
+  }
+  function handleChange(event) {
+    props.setSearch(event.target.value);
+    formRef.current.reset();
+  }
+
   //SPのフィルターボタン
   const [spFilter, setSpFilter] = useState(false);
 
@@ -90,7 +101,7 @@ export default function FilterSP(props) {
   const handleCheckboxColor = (e) => {
     const { value, checked } = e.target;
 
-    if (props.filterValue.length >= 8) {
+    if (props.filterValue.length >= colorName.length) {
       props.setFilterValue([]);
     }
 
@@ -108,7 +119,7 @@ export default function FilterSP(props) {
   const handleCheckboxSize = (e) => {
     const { value, checked } = e.target;
 
-    if (props.sizeFilterValue.length >= 8) {
+    if (props.sizeFilterValue.length >= sizeName.length) {
       props.setSizeFilterValue([]);
     }
 
@@ -126,7 +137,7 @@ export default function FilterSP(props) {
   const handleCheckboxShape = (e) => {
     const { value, checked } = e.target;
 
-    if (props.shapeFilterValue.length >= 10) {
+    if (props.shapeFilterValue.length >= shapeName.length) {
       props.setShapeFilterValue([]);
     }
 
@@ -156,7 +167,7 @@ export default function FilterSP(props) {
   const handleCheckboxScent = (e) => {
     const { value, checked } = e.target;
 
-    if (props.scentFilterValue.length >= 19) {
+    if (props.scentFilterValue.length >= scentName.length) {
       props.setScentFilterValue([]);
     }
 
@@ -202,9 +213,24 @@ export default function FilterSP(props) {
 
   return (
     <>
-      <div
-        className={`${fl.filter} ${fl.varietyFilterColumn} sectionSpaceM grid2`}
-      >
+      <div className={`${fl.filter} ${fl.varietyFilterColumn} grid2`}>
+        <div className={`${fl.search} grid2`}>
+          <div className={`${fl.inputWithIcon}`}>
+            <form>
+              <input
+                className={`fonSp5 notoGo`}
+                type="text"
+                id="search"
+                value={props.search}
+                placeholder="バラの名前で検索する"
+                onChange={handleChange}
+              />
+              <button type="submit" onClick={handleSubmit}>
+                <img src="/img/magnifying-glass.png" alt="" />
+              </button>
+            </form>
+          </div>
+        </div>
         {/* フィルターSP */}
         <div className={`${fl.varietyListFilterSp} fle-f`}>
           <div className={`${fl.FilterButtonSp}`}>
@@ -244,12 +270,6 @@ export default function FilterSP(props) {
                 </div>
               </div>
 
-              {/* 検索欄 */}
-              {/* <div className={`${fl.serchForm}`}>
-                <input type="text" placeholder="花の名前" />
-                <img src="/img/magnifying-glass.png" alt="" />
-              </div> */}
-
               {/* SPカラーフィルター */}
               <form
                 ref={formRef}
@@ -257,6 +277,7 @@ export default function FilterSP(props) {
                 className={`${fl.spFilterMenu} grid3`}
               >
                 {/* <form ref={formRef}> */}
+
                 <div className={`${fl.spColorMenu}`}>
                   <div
                     onClick={() => {
@@ -406,7 +427,6 @@ export default function FilterSP(props) {
 
                   <div className={`${fl.spFilterMenuBorder}`}></div>
 
-                  {/* プルダウンメニュー */}
                   <div
                     className={`${fl.colorPullDownMenu} ${
                       spFilterPetal ? fl.active : ""
@@ -505,7 +525,6 @@ export default function FilterSP(props) {
 
                   <div className={`${fl.spFilterMenuBorder}`}></div>
 
-                  {/* プルダウンメニュー */}
                   <div
                     className={`${fl.colorPullDownMenu} ${
                       spFilterLength ? fl.active : ""
@@ -560,7 +579,6 @@ export default function FilterSP(props) {
 
                   <div className={`${fl.spFilterMenuBorder}`}></div>
 
-                  {/* プルダウンメニュー */}
                   <div
                     className={`${fl.colorPullDownMenu} ${
                       spFilterHarvest ? fl.active : ""
@@ -615,7 +633,6 @@ export default function FilterSP(props) {
 
                   <div className={`${fl.spFilterMenuBorder}`}></div>
 
-                  {/* プルダウンメニュー */}
                   <div
                     className={`${fl.colorPullDownMenu} ${
                       spFilterSpray ? fl.active : ""
@@ -650,17 +667,16 @@ export default function FilterSP(props) {
                       <p className={`fon5 fonSp5`}>クリア</p>
                     </div>
                   </div>
-
-                  {/* 絞り込むボタン */}
-                  <button
-                    onClick={() => {
-                      setSpFilter((prevState) => !prevState);
-                    }}
-                    className={`${fl.flButton} cursor mar-t3`}
-                  >
-                    <p className={`fonSp4`}>絞り込む</p>
-                  </button>
                 </div>
+
+                <button
+                  onClick={() => {
+                    setSpFilter((prevState) => !prevState);
+                  }}
+                  className={`${fl.flButton} cursor mar-t2 mar-b3`}
+                >
+                  <p className={`fonSp4`}>絞り込む</p>
+                </button>
                 {/* </form> */}
               </form>
             </div>

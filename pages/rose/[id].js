@@ -3,7 +3,7 @@ import cn from "../../components/flowerDetail.module.scss";
 import ColorBox from "../../components/colorBox.js";
 import Filter from "../../components/filter.js";
 import Button from "../../components/button.js";
-
+import FavButton from "../../components/utility/utilityFavButton";
 import ScrollEffect from "../../components/utility/utilityscrollEffect";
 
 export default function RoseDetail(props) {
@@ -21,7 +21,15 @@ export default function RoseDetail(props) {
   }, []);
 
   //お気に入りのハートボタン
-  const [fav, setFav] = useState(false);
+  const [favId, setFavId] = useState(false);
+  const [favList, setFavList] = useState([]);
+
+  // function addToFavorites(itemId) {
+  //   const id = itemId;
+  //   setFavId((prevState) => [...prevState, id]);
+  //   localStorage.setItem("favoriteItems", JSON.stringify(favId));
+  //   console.log(favId);
+  // }
 
   return (
     <>
@@ -199,15 +207,16 @@ export default function RoseDetail(props) {
                             </div>
                           )}
                           {/* お気に入りボタン */}
-                          {/* <div className={`${cn.flowerSpecDetail}`}>
-                            <div
-                              onClick={() => {
-                                setFav((prevState) => !prevState);
-                              }}
-                              className={`flowerheart ${fav ? "active" : ""}`}
-                            ></div>
-                            <p className={`fon5 fonSp4`}>お気に入りに追加</p>
-                          </div> */}
+                          <div className={`${cn.flowerSpecDetail} mar-t2`}>
+                            <div className={`${cn.flowerSpecDetail}`}>
+                              <FavButton
+                                favId={rose.roseFormaId}
+                                favList={favList}
+                                setFavList={setFavList}
+                              />
+                              <p className={`fon5 fonSp4`}>お気に入りに追加</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -244,56 +253,6 @@ export default function RoseDetail(props) {
           <div
             className={`${cn.varietyListColumn} ${cn.varietyListColumn} mar-t1 grid1`}
           >
-            {/* <div className={`flowerListColumn mar-t1 `}>
-            
-            {rose.map((el, index) => {
-              return (
-                <div
-                  key={`varietyList${index}`}
-                  className={`flowerBreed1 mar-t3`}
-                >
-                  <div className={`flowerBreedPic`}>
-                    <img src={el.pic2} alt="" />
-
-                    <div className={`flowerFavorite`}>
-                      <img src="/img/heart2.png" alt="" />
-                    </div>
-                  </div>
-
-                  <div className={`flowerColor`}>
-                    <div className={`flowerColorBox`}></div>
-                    <h6 className={`flowerColorText`}>{el.color}</h6>
-                  </div>
-
-                  <div className={`flowerName`}>
-                    <h3>{el.name}</h3>
-                  </div>
-
-                 
-                  <div className={`varietyListSpec`}>
-                    <div className={`varietyListSpecBorder`}></div>
-                    <div className={`varietyListSpecDetail1`}>
-                      <h6>Color&nbsp;&nbsp;&nbsp;&nbsp;{el.color}</h6>
-                      <h6>Shape&nbsp;&nbsp;&nbsp;&nbsp;{el.shape}</h6>
-                      <h6>Length&nbsp;&nbsp;{el.length}</h6>
-                    </div>
-                    <div className={`varietyListSpecBorder`}></div>
-                    <div className={`varietyListSpecDetail2`}>
-                      <h6>
-                        Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {el.size}
-                      </h6>
-                      <h6>
-                        Scent&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{el.scent}
-                      </h6>
-                      <h6>Harvest&nbsp;&nbsp;{el.harvest}</h6>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div> */}
-
             {/* もっと見るボタン */}
             <div className={`moreViewButton sectionSpaceS`}>
               <h5 className={`foncolW moreViewButton`}>一覧へ戻る</h5>
