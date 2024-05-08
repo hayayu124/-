@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "pageName": "https://rosetique.tokyo/en/news",
+    "title": "News | ROSETIQUE JAPAN Inc.",
+    "description": "ROSETIQUE JAPANに関する情報を随時発信しています。",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "en_US"
+  },
+  "news": {
+    "subTitle": "",
+    "title": "News",
+    "text": "ROSETIQUE JAPANに関する<br class=\"brSp\" />情報を随時発信しています。",
+    "noNews": "現在お知らせはございません。",
+    "moreView": "View More",
+    "otherNews": "Other News"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "pageName": "/varietyList",
+    "title": "バラの品種 | ROSETIQUE JAPAN Inc.",
+    "description": "一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、人の心を癒し、心身共に豊かになるバラです。",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "ja_JP"
+  },
+  "catchCopy": {
+    "subTitle": "品種",
+    "title": "Variety",
+    "text": " 一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、<br className={`br`} />人の心を癒し、心身共に豊かになるバラです。",
+    "noData": "品種がありません。",
+    "moreView": "もっと見る",
+    "filter": "フィルターをクリア"
+  }
+}

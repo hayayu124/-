@@ -264,7 +264,13 @@ export default function Filter(props) {
               type="text"
               id="search"
               value={props.search}
-              placeholder="バラの名前で検索する"
+              placeholder={
+                props.locale === "ja"
+                  ? "バラの名前で検索する"
+                  : props.locale === "en"
+                  ? "Search by rose name"
+                  : ""
+              }
               onChange={handleChange}
             />
             <button type="submit" onClick={handleSubmit}>
@@ -353,7 +359,34 @@ export default function Filter(props) {
                           onChange={handleCheckboxSize}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : (
+                          props.locale === "en" &&
+                          (el === "大輪" ? (
+                            <h5 className={`fon5 fonSp5`}>Large Flower</h5>
+                          ) : el === "大輪スプレー" ? (
+                            <h5 className={`fon5 fonSp5`}>Large Spray</h5>
+                          ) : el === "中大輪" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Medium Large Flower
+                            </h5>
+                          ) : el === "中輪" ? (
+                            <h5 className={`fon5 fonSp5`}>Medium Flower</h5>
+                          ) : el === "中小輪" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Medium Small Flower
+                            </h5>
+                          ) : el === "中輪スプレー" ? (
+                            <h5 className={`fon5 fonSp5`}>Medium Spray</h5>
+                          ) : el === "中小輪スプレー" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Medium Small Spray
+                            </h5>
+                          ) : el === "小輪スプレー" ? (
+                            <h5 className={`fon5 fonSp5`}>Small Spray</h5>
+                          ) : null)
+                        )}
                       </div>
                     );
                   })}
@@ -395,7 +428,56 @@ export default function Filter(props) {
                           onChange={handleCheckboxShape}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : (
+                          props.locale === "en" &&
+                          (el === "カップ咲き" ? (
+                            <h5 className={`fon5 fonSp5`}>Cup Bloom</h5>
+                          ) : el === "シャローカップ咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Shallow Cup Bloom</h5>
+                          ) : el === "ロゼット咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Rosette Bloom</h5>
+                          ) : el === "高芯剣弁咲" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              High Center Sword Petal Bloom
+                            </h5>
+                          ) : el === "高芯半剣弁" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              High Center Half Sword Petal
+                            </h5>
+                          ) : el === "半剣弁ロゼット咲" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Half Sword Petal Rosette Bloom
+                            </h5>
+                          ) : el === "半剣弁高芯咲" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Half Sword Petal High Center Bloom
+                            </h5>
+                          ) : el === "グリーンアイ" ? (
+                            <h5 className={`fon5 fonSp5`}>Green Eye</h5>
+                          ) : el === "高芯半剣弁咲" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Half Sword Petal High Center Bloom
+                            </h5>
+                          ) : el === "ウエーブ咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Wave Bloom</h5>
+                          ) : el === "カップ咲花弁" ? (
+                            <h5 className={`fon5 fonSp5`}>Cup Bloom Petal</h5>
+                          ) : el === "半カップ咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Half Cup Bloom</h5>
+                          ) : el === "ウェーブかかったカップ咲き" ? (
+                            <h5 className={`fon5 fonSp5`}>Wavy Cup Bloom</h5>
+                          ) : el === "平咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Flat Bloom</h5>
+                          ) : el === "ウェーブ咲" ? (
+                            <h5 className={`fon5 fonSp5`}>Wave Bloom</h5>
+                          ) : el === "ロゼット咲き" ? (
+                            <h5 className={`fon5 fonSp5`}>Rosette Bloom</h5>
+                          ) : el === "ウェーブ咲き" ? (
+                            <h5 className={`fon5 fonSp5`}>Wave Bloom</h5>
+                          ) : null)
+                        )}
                       </div>
                     );
                   })}
@@ -436,7 +518,24 @@ export default function Filter(props) {
                           onChange={handleCheckboxPetal}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : props.locale === "en" ? (
+                          el === "100枚以上" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              More than 100 petals
+                            </h5>
+                          ) : el === "50枚以上~100枚以下" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Between 50 and 100 petals
+                            </h5>
+                          ) : el === "50枚以下" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Less than 50 petals
+                            </h5>
+                          ) : null
+                        ) : null}
                       </div>
                     );
                   })}
@@ -449,7 +548,11 @@ export default function Filter(props) {
                       onChange={handleCheckboxPetal}
                       className={`cursor`}
                     />
-                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    {props.locale === "ja" ? (
+                      <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    ) : props.locale === "en" ? (
+                      <h5 className={`fon5 fonSp5`}>Clear</h5>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -489,7 +592,53 @@ export default function Filter(props) {
                           onChange={handleCheckboxScent}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : props.locale === "en" ? (
+                          el === "ダマスク 中香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Damask Medium Fragrance
+                            </h5>
+                          ) : el === "ティー 強香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Tea Strong Fragrance
+                            </h5>
+                          ) : el === "ティー 微香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Tea Light Fragrance
+                            </h5>
+                          ) : el === "フルーティ 強香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Fruity Strong Fragrance
+                            </h5>
+                          ) : el === "ティー 中香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Tea Medium Fragrance
+                            </h5>
+                          ) : el === "ブルー 中香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Blue Medium Fragrance
+                            </h5>
+                          ) : el === "ブルー 強香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Blue Strong Fragrance
+                            </h5>
+                          ) : el === "フルーティ 中香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Fruity Medium Fragrance
+                            </h5>
+                          ) : el === "ティー 香" ? (
+                            <h5 className={`fon5 fonSp5`}>Tea Fragrance</h5>
+                          ) : el === "ミルラ 強香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Myrrh Strong Fragrance
+                            </h5>
+                          ) : el === "ダマスク 微香" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Damask Light Fragrance
+                            </h5>
+                          ) : null
+                        ) : null}
                       </div>
                     );
                   })}
@@ -546,7 +695,11 @@ export default function Filter(props) {
                       onChange={handleCheckboxLength}
                       className={`cursor`}
                     />
-                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    {props.locale === "ja" ? (
+                      <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    ) : props.locale === "en" ? (
+                      <h5 className={`fon5 fonSp5`}>Clear</h5>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -588,7 +741,24 @@ export default function Filter(props) {
                           onChange={handleCheckboxHarvest}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : props.locale === "en" ? (
+                          el === "約250以上~350本以下" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Approximately 250 or more and 350 or less
+                            </h5>
+                          ) : el === "約350以上~450本以下" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Approximately 350 or more and 450 or less
+                            </h5>
+                          ) : el === "約450本以上" ? (
+                            <h5 className={`fon5 fonSp5`}>
+                              Approximately 450 or more
+                            </h5>
+                          ) : null
+                        ) : null}
                       </div>
                     );
                   })}
@@ -601,7 +771,11 @@ export default function Filter(props) {
                       onChange={handleCheckboxHarvest}
                       className={`cursor`}
                     />
-                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    {props.locale === "ja" ? (
+                      <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    ) : props.locale === "en" ? (
+                      <h5 className={`fon5 fonSp5`}>Clear</h5>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -614,7 +788,12 @@ export default function Filter(props) {
                   }}
                   className={`${fl.flowerSpecFilter} cursor`}
                 >
-                  <h5 className={`fon5 fonSp5`}>バラのタイプ</h5>
+                  {props.locale === "ja" ? (
+                    <h5 className={`fon5 fonSp5`}>バラのタイプ</h5>
+                  ) : props.locale === "en" ? (
+                    <h5 className={`fon5 fonSp5`}>Types of roses</h5>
+                  ) : null}
+
                   <img
                     className={`${fl.pulldown}`}
                     src="/img/pulldown.png"
@@ -640,7 +819,16 @@ export default function Filter(props) {
                           onChange={handleCheckboxSpray}
                           className={`cursor`}
                         />
-                        <h5 className={`fon5 fonSp5`}>{el}</h5>
+
+                        {props.locale === "ja" ? (
+                          <h5 className={`fon5 fonSp5`}>{el}</h5>
+                        ) : props.locale === "en" ? (
+                          el === "スプレー咲き" ? (
+                            <h5 className={`fon5 fonSp5`}>Spray Bloom</h5>
+                          ) : el === "ノーマル" ? (
+                            <h5 className={`fon5 fonSp5`}>Normal</h5>
+                          ) : null
+                        ) : null}
                       </div>
                     );
                   })}
@@ -653,7 +841,12 @@ export default function Filter(props) {
                       onChange={handleCheckboxSpray}
                       className={`cursor`}
                     />
-                    <h5 className={`fon5 fonSp5`}>クリア</h5>
+
+                    {props.locale === "ja" ? (
+                      <h5 className={`fon5 fonSp5`}>クリア</h5>
+                    ) : props.locale === "en" ? (
+                      <h5 className={`fon5 fonSp5`}>Clear</h5>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -666,7 +859,7 @@ export default function Filter(props) {
           onClick={handleReset}
           className={`${fl.filterReset} cursor`}
         >
-          <h5 className={`fon5 fonSp5`}>フィルターをクリア</h5>
+          <h5 className={`fon5 fonSp5`}>{props.text.catchCopy.filter}</h5>
         </button>
 
         {/* <div className={`${fl.tagOrReset} mar-t1`}>

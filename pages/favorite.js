@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/brandNew.module.scss";
 import CollectionColumn from "../components/collectionColumn.js";
 import Button from "../components/button.js";
@@ -8,6 +9,15 @@ import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
 export default function BrandNew(props) {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_favorite.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_favorite.json");
+  }
+
   const favorite = props.formas;
 
   // ロード制御
@@ -36,8 +46,6 @@ export default function BrandNew(props) {
   useEffect(() => {
     localStorage.setItem("id", JSON.stringify(favId));
   }, [favoriteItems]);
-
-  console.log(favId);
 
   //ボタンの変換
   const [folding, setFolding] = useState(false);
@@ -75,9 +83,13 @@ export default function BrandNew(props) {
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 fonSp5 mar-b1`}>お気に入り</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>
+                {text.catchCopy.subTitle}
+              </h5>
 
-              <h2 className={`fon2 fonSp2 bold mar-b05`}>Fovorite</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                {text.catchCopy.title}
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>

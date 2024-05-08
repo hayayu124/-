@@ -39,6 +39,7 @@
     }
 
     .contactButton {
+      cursor: pointer;
       width: 8em;
       @media screen and (max-width: 767px) {
         width: 10em;

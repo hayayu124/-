@@ -18,6 +18,7 @@
     padding: 1em 0;
     display: flex;
     justify-content: space-between;
+    z-index: 9998;
     @media screen and (max-width: 767px) {
       width: 89%;
       padding: 0.8em 0;
@@ -38,8 +39,19 @@
       align-items: center;
       .headerMenu {
         color: #fff;
-        margin-left: 2em;
+        margin-left: 2.4em;
         cursor: pointer;
+
+        .headerMenuText {
+          font-size: 0.7em;
+        }
+
+        &.translation {
+          font-size: 0.7em;
+          h5:first-child {
+            margin-right: 1em;
+          }
+        }
       }
       //コレクションのサブメニュー
       .headerCollectionMenu {
@@ -53,7 +65,7 @@
           position: absolute;
           top: -1000%;
           left: 0%;
-          transform: translateY(15%);
+          transform: translateY(20%);
 
           .headerCollectionSubMenuDetail {
             display: inline-block;
@@ -86,6 +98,7 @@
 
     //ハンバーガーメニュー
     .humburgerMenu {
+      z-index: 9997;
       @media screen and (min-width: 768px) {
         display: none;
       }
@@ -116,20 +129,34 @@
     }
   }
   .humburgerContents {
+    background-color: var(--main);
     color: var(--gl);
     overflow: hidden;
+    z-index: 9995;
+    width: 100vw;
+    height: 100vh;
+    top: 50%;
+    left: 100%;
+    transition-duration: 0.64s;
+
+    &.active {
+      top: 50%;
+      left: 0%;
+      transition-duration: 0.64s;
+    }
 
     @media screen and (min-width: 768px) {
       display: none;
     }
-    &.active {
-      background-color: var(--main);
-      width: 100vw;
-      height: 100vh;
-      z-index: 9999;
+
+    .hunbergerInner {
+      height: 100%;
+      margin: auto;
+
       .humburgerMenuColumn {
         width: 67%;
-        top: 40%;
+        height: fit-content;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
 
@@ -144,7 +171,15 @@
         }
 
         h5:nth-child(12) {
-          margin-top: 4em;
+          margin-top: 2em;
+        }
+
+        .humburgerMenuText {
+          font-size: 0.91em;
+        }
+
+        .humburgerMenuSubText {
+          font-size: 0.8em;
         }
 
         //ボーダー
@@ -153,6 +188,13 @@
           width: 100%;
           height: 0.01em;
         }
+      }
+    }
+
+    .humburgerTranslation {
+      margin-top: 3em;
+      h5:first-child {
+        margin-right: 1em;
       }
     }
   }

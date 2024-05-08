@@ -58,10 +58,18 @@ h6 {
   margin-right: auto;
   margin-left: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
+  flex-wrap: wrap;
+
+  .newsDetail:not(:nth-child(3n)) {
+    @media screen and (min-width: 768px) {
+      margin-right: calc((100% - 27.3% * 3) / 2);
+    }
+  }
 
   .newsDetail {
-    width: 30%;
+    width: 27.3%;
+    margin-bottom: 2em;
     cursor: pointer;
 
     .newsDetailPic {
@@ -80,11 +88,20 @@ h6 {
     .newsDetailText {
       padding-top: 0.8em;
       .newsDate {
-        margin-bottom: 0.3em;
+        margin-bottom: 1em;
       }
+
+      .title {
+        margin-bottom: 0.9em;
+        font-size: 0.87em;
+
+        @media screen and (max-width: 767px) {
+          font-size: 1.14em;
+        }
+      }
+
       .newsDe {
         line-height: 2;
-        margin-top: 1.5em;
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -95,12 +112,13 @@ h6 {
 
       .moreViewText {
         cursor: pointer;
-        width: 5em;
+        width: 6em;
         text-align: center;
         margin: 1.3em 0 0 auto;
       }
     }
   }
+
   &.newsPageDetail {
     flex-wrap: wrap;
   }
@@ -247,6 +265,10 @@ h6 {
   }
 }
 
+.black {
+  color: var(--main);
+}
+
 //flowerColorBox
 .flowerColorBox {
   width: 1em;
@@ -272,6 +294,9 @@ h6 {
   }
   &.white {
     background-color: var(--wh);
+  }
+  &.red {
+    background-color: var(--re);
   }
   &.multi {
     background: linear-gradient(-20deg, var(--pr), var(--ye));
@@ -346,7 +371,7 @@ h6 {
 //More View/Foldingの制御
 .moreView {
   display: block;
-  margin: 7em 0 0 0;
+  margin: 5em 0 0 0;
   &.active {
     display: none;
   }

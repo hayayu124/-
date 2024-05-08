@@ -1,16 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/varietyList.module.scss";
 import Filter from "../components/filter.js";
 import FilterSP from "../components/filterSP.js";
 import ColorBox from "../components/colorBox.js";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
-import FavButton from "../components/utility/utilityFavButton.js";
+// import FavButton from "../components/utility/utilityFavButton.js";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 
+import HeadComponent from "/components/headComponent";
+
 export default function VarietyList({ formas }) {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_variety.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_variety.json");
+  }
+
   // ロード制御
   const [load, setLoad] = useState(false);
   const [i, setI] = useState(12);
@@ -26,7 +38,7 @@ export default function VarietyList({ formas }) {
   const [folding, setFolding] = useState(true);
   const [view, setView] = useState(false);
   const [reset, setReset] = useState(false);
-  const [favList, setFavList] = useState([]);
+  // const [favList, setFavList] = useState([]);
 
   useEffect(() => {
     setIsDisplay(true);
@@ -245,6 +257,8 @@ export default function VarietyList({ formas }) {
   if (isDisplay) {
     return (
       <>
+        <HeadComponent meta={text.meta} />
+
         <ScrollEffect>
           {/* 品種一覧 */}
           <section className={`${cn.varietyList}`}>
@@ -253,19 +267,22 @@ export default function VarietyList({ formas }) {
                 className={`${cn.intMoreDelay}`}
                 after={cn.intActive}
               >
-                <h5 className={`fon5 fonSp5 mar-b1`}>品種</h5>
+                <h5 className={`fon5 fonSp5 mar-b1`}>
+                  {text.catchCopy.subTitle}
+                </h5>
 
-                <h2 className={`fon2 fonSp2 bold mar-b05`}>Variety</h2>
+                <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                  {text.catchCopy.title}
+                </h2>
 
                 <div className={`titleBorder sec-c`}></div>
               </ScrollEffect>
 
               <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
-                  一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、
-                  <br className={`br`} />
-                  人の心を癒し、心身共に豊かになるバラです。
-                </h5>
+                <h5
+                  className={`fon5 fonSp5 titleText mar-t2`}
+                  dangerouslySetInnerHTML={{ __html: text.catchCopy.text }}
+                />
               </ScrollEffect>
             </div>
 
@@ -274,6 +291,8 @@ export default function VarietyList({ formas }) {
 
               {isDesktop ? (
                 <Filter
+                  locale={locale}
+                  text={text}
                   rose={rose}
                   filterValue={filterValue}
                   setFilterValue={setFilterValue}
@@ -296,6 +315,8 @@ export default function VarietyList({ formas }) {
                 />
               ) : (
                 <FilterSP
+                  locale={locale}
+                  text={text}
                   rose={rose}
                   filterValue={filterValue}
                   setFilterValue={setFilterValue}
@@ -390,7 +411,9 @@ export default function VarietyList({ formas }) {
                             <h2
                               className={`fon4 fonSp3 ${cn.varietyFlowerName}`}
                             >
-                              {el.node.rose_spec.roseName}
+                              {locale == "ja"
+                                ? el.node.rose_spec.roseName
+                                : el.node.rose_spec.roseNameen}
                             </h2>
                           )}
                         </div>
@@ -403,14 +426,18 @@ export default function VarietyList({ formas }) {
                               {el.node.rose_spec.roseColor !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Color&nbsp;&nbsp;
-                                  {el.node.rose_spec.roseColor}
+                                  {locale == "ja"
+                                    ? el.node.rose_spec.roseColor
+                                    : el.node.rose_spec.roseColoren}
                                 </p>
                               )}
 
                               {el.node.rose_spec.roseShape !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Shape&nbsp;&nbsp;
-                                  {el.node.rose_spec.roseShape}
+                                  {locale == "ja"
+                                    ? el.node.rose_spec.roseShape
+                                    : el.node.rose_spec.roseShapeen}
                                 </p>
                               )}
 
@@ -429,7 +456,9 @@ export default function VarietyList({ formas }) {
                               {el.node.rose_spec.roseSize !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Size&nbsp;&nbsp;
-                                  {el.node.rose_spec.roseSize}
+                                  {locale == "ja"
+                                    ? el.node.rose_spec.roseSize
+                                    : el.node.rose_spec.roseSizeen}
                                 </p>
                               )}
                               {el.node.rose_spec.roseScent !== null && (
@@ -441,13 +470,23 @@ export default function VarietyList({ formas }) {
                               {el.node.rose_spec.rosePetal !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Petal&nbsp;&nbsp;
-                                  {el.node.rose_spec.rosePetal}本
+                                  {el.node.rose_spec.rosePetal}
+                                  {locale === "ja"
+                                    ? "本"
+                                    : locale === "en"
+                                    ? " petals"
+                                    : null}
                                 </p>
                               )}
                               {el.node.rose_spec.roseHarvest !== null && (
                                 <p className={`fon6 fonSp6`}>
                                   Harvest&nbsp;&nbsp;
-                                  {el.node.rose_spec.roseHarvest}本
+                                  {el.node.rose_spec.roseHarvest}
+                                  {locale === "ja"
+                                    ? "本"
+                                    : locale === "en"
+                                    ? " petals"
+                                    : null}
                                 </p>
                               )}
                             </div>
@@ -463,7 +502,7 @@ export default function VarietyList({ formas }) {
                     brandNewColumn.length == 0 ? cn.active : ""
                   }`}
                 >
-                  <h5 className={`tex-c`}>品種がありません。</h5>
+                  <h5 className={`tex-c`}>{text.catchCopy.noData}</h5>
                 </div>
 
                 {/* moreView */}
@@ -475,7 +514,7 @@ export default function VarietyList({ formas }) {
                     brandNewColumn.length < 12 ? "active" : ""
                   }`}
                 >
-                  <Button />
+                  <Button text={text.catchCopy.moreView} />
                 </div>
 
                 {/* Folding */}
@@ -499,7 +538,7 @@ export default function VarietyList({ formas }) {
 //wordpress
 export const getStaticProps = async () => {
   //ニュースの情報をインポート
-  const roseFormas = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+  const roseFormas = await fetch(`https://ferntastique.tokyo/wp/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -508,7 +547,6 @@ export const getStaticProps = async () => {
         roseFormas(first: 1000) {
           edges {
             node {
-              roseFormaId
               uri
               title
               featuredImage {
@@ -520,8 +558,11 @@ export const getStaticProps = async () => {
                 award
                 fieldGroupName
                 roseColor
+                roseColoren
                 roseShape
+                roseShapeen
                 roseSize
+                roseSizeen
                 imageSub {
                   mediaItemUrl
                 }
@@ -529,10 +570,12 @@ export const getStaticProps = async () => {
                 rosePetal
                 roseScent
                 roseName
+                roseNameen
+                roseSubname
                 roseLength
                 roseHarvest
                 roseExplanation
-                roseSubname
+                roseExplanationen
                 roseType
               }
               colors {

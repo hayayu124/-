@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "pageName": "https://rosetique.tokyo/en",
+    "title": "ROSETIQUE JAPAN Inc. | 日本発、お花に特化したライフスタイルブランド",
+    "description": "日本全国のバラ栽培生産者や花市場、生花店、一般消費者などと連携しながら、世界へと純国産バラを広めたいとの想いで立ち上げた種苗会社です。 ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、明日への活力になっていただけるようなバラ作りを心掛けております。バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、進化させていきます。",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "en_US"
+  },
+
+  "cathCopy": {
+    "subTitle": "DREAM ROSE JAPAN",
+    "title": "日本のバラを<br class=\"brSp\" />世界へ",
+    "text": "日本全国のバラ栽培生産者や花市場、生花店、<br class=\"br\" />一般消費者などと連携しながら、世界へと純国産バラを広めたい<br class=\"br\" />との想いで立ち上げた種苗会社です。<br class=\"br\" />ROSETIQUEのバラに関わるみなさまが明るくハッピーな気持ちになり、<br class=\"br\" />明日への活力になっていただけるようなバラ作りを心掛けております。<br class=\"br\" />バラを愛するすべてのみなさまと一緒にROSETIQUEを育て、<br class=\"br\" />進化させていきます。"
+  },
+  "news": {
+    "subTitle": "お知らせ",
+    "title": "News",
+    "text": "ROSETIQUE JAPANに関する<br class=\"brSp\" />情報を随時発信しています。",
+    "noNews": "現在お知らせはございません。",
+    "moreView": "View More"
+  },
+  "brandnew": {
+    "subTitle": "今年の新品種",
+    "title": "Brand-new",
+    "text": "トレンドをリードする花姿の良いものの中から、<br class={`br`} />耐病性や生産性に優れた品種だけを厳選してお届けします。",
+    "moreView": "View More",
+    "noData": "品種がありません。"
+  },
+  "miwako_tique_serious": {
+    "subTitle": "ミワコ ティーク シリーズ",
+    "title": "Miwako TIQUE Series",
+    "text": "美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、<br />トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。",
+    "moreView": "View More",
+    "noData": "品種がありません。"
+  },
+  "variety": {
+    "subTitle": "品種",
+    "title": "Variety",
+    "text": "一般的な花形だけではなく、 ROSETIQUEならではの香りに特化した、<br class={`br`} />人の心を癒し、心身共に豊かになるバラです。",
+    "moreView": "View More",
+    "noData": "品種がありません。"
+  }
+}

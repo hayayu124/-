@@ -1,0 +1,164 @@
+.instagram {
+  background-color: var(--main);
+  overflow: hidden;
+  .inner {
+    margin-bottom: 2em;
+    padding: 5em 0;
+    @media screen and (max-width: 767px) {
+      margin-bottom: 0em;
+      padding: 5em 0 2em 0;
+    }
+  }
+  .instagramWrap {
+    padding: 2em 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 22%;
+    overflow-x: auto;
+    @media screen and (max-width: 767px) {
+      grid-auto-columns: 48%;
+    }
+  }
+  .titleWrap {
+    h1 {
+      color: var(--gl);
+      font-size: 3em;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5em;
+      @media screen and (max-width: 767px) {
+        font-size: 1.6em;
+        margin-bottom: 0.8em;
+      }
+    }
+
+    .border {
+      border: 1px solid #fffdfe;
+      width: 3.5em;
+      margin-bottom: 1.3em;
+      @media screen and (max-width: 767px) {
+        width: 2.6em;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+  .backgroundImage {
+    opacity: 0.3;
+    height: inherit;
+    object-fit: contain;
+  }
+  .content {
+    margin: 0 1em;
+    @media screen and (max-width: 767px) {
+      margin: 0 0.3em 0 1.1em;
+    }
+  }
+  .image {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  // もっと見るボタン
+  .button {
+    width: 10em;
+    cursor: pointer;
+    @media screen and (max-width: 767px) {
+      margin-top: 3em;
+    }
+  }
+
+  .button:hover {
+    .borderWhite {
+      display: none;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    height: auto;
+    background: var(--gl);
+    /*アニメーションの起点とするためrelativeを指定*/
+    position: relative;
+    overflow: hidden;
+    /*ボタンの形状*/
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid var(--gl); /* ボーダーの色と太さ */
+    padding: 0.5em 2.4em;
+    text-align: center;
+    outline: none;
+    /*アニメーションの指定*/
+    transition: ease 0.2s;
+  }
+
+  //ボーダー
+  .borderBlack {
+    width: 2em;
+    height: 0.1em;
+    background-color: var(--gl);
+    left: -2em;
+    top: 50%;
+    transform: translateY(-0.1em);
+    @media screen and (max-width: 767px) {
+      width: 1.3em;
+      left: -1.3em;
+    }
+  }
+
+  .borderWhite {
+    width: 2em;
+    height: 0.1em;
+    background-color: var(--main);
+    left: 0;
+    top: 50%;
+    transform: translateY(-0.1em);
+
+    @media screen and (max-width: 767px) {
+      width: 1.3em;
+    }
+  }
+
+  /*ボタン内spanの形状*/
+  .btn span {
+    position: relative;
+    z-index: 3; /*z-indexの数値をあげて文字を背景よりも手前に表示*/
+    color: var(--main);
+  }
+
+  .btn:hover span {
+    color: var(--gl);
+  }
+
+  /*== 背景が流れる（斜め） */
+  .bgskew::before {
+    content: "";
+    /*絶対配置で位置を指定*/
+    position: absolute;
+    top: 0;
+    left: -130%;
+    /*色や形状*/
+    background: var(--main);
+    width: 120%;
+    height: 100%;
+    transform: skewX(-25deg);
+  }
+
+  /*hoverした時のアニメーション*/
+  .bgskew:hover::before {
+    animation: skewanime 0.5s forwards; /*アニメーションの名前と速度を定義*/
+  }
+
+  @keyframes skewanime {
+    100% {
+      left: -10%; /*画面の見えていない左から右へ移動する終了地点*/
+    }
+  }
+}

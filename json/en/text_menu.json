@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "top": "Top",
+    "about": "About",
+    "news": "news",
+    "collection": "Collection",
+    "company": "Company",
+    "favorite": "Favorite"
+  }
+}

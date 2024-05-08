@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/brandNew.module.scss";
 import CollectionColumn from "../components/collectionColumn.js";
 import Button from "../components/button.js";
@@ -7,7 +8,18 @@ import FButton from "../components/foldingButton.js";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
+import HeadComponent from "/components/headComponent";
+
 export default function BrandNew(props) {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_brand-new.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_brand-new.json");
+  }
+
   const brandNew = props.formas;
 
   // ロード制御
@@ -60,6 +72,8 @@ export default function BrandNew(props) {
 
   return (
     <>
+      <HeadComponent meta={text.meta} />
+
       {/* コレクションページ */}
 
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
@@ -67,24 +81,27 @@ export default function BrandNew(props) {
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 fonSp5 mar-b1`}>今年の新品種</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>
+                {text.catchCopy.subTitle}
+              </h5>
 
-              <h2 className={`fon2 fonSp2 bold mar-b05`}>Brand-new</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                {text.catchCopy.title}
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              <h5 className={`fon5 fonSp5 titleText mar-t2`}>
-                トレンドをリードする花姿の良いものの中から、
-                <br className={`br`} />
-                耐病性や生産性に優れた品種だけを厳選してお届けします。
-              </h5>
+              <h5
+                className={`fon5 fonSp5 titleText mar-t2`}
+                dangerouslySetInnerHTML={{ __html: text.catchCopy.text }}
+              />
             </ScrollEffect>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-            <CollectionColumn roseCo={brandNewCol} />
+            <CollectionColumn roseCo={brandNewCol} locale={locale} />
           </ScrollEffect>
         </div>
 
@@ -95,7 +112,7 @@ export default function BrandNew(props) {
           }}
           className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
         >
-          <Button />
+          <Button text={text.catchCopy.moreView} />
         </div>
 
         <div
@@ -103,7 +120,7 @@ export default function BrandNew(props) {
             brandNew.length == 0 ? "active" : ""
           } tex-c`}
         >
-          <h5>品種がありません。</h5>
+          <h5>{text.catchCopy.noData}</h5>
         </div>
       </section>
     </>
@@ -121,10 +138,9 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
       query NewQuery {
-        roseFormas(first: 100) {
+        roseFormas(first: 1000) {
           edges {
             node {
-              roseFormaId
               uri
               title
               featuredImage {
@@ -136,8 +152,11 @@ export const getStaticProps = async () => {
                 award
                 fieldGroupName
                 roseColor
+                roseColoren
                 roseShape
+                roseShapeen
                 roseSize
+                roseSizeen
                 imageSub {
                   mediaItemUrl
                 }
@@ -145,16 +164,19 @@ export const getStaticProps = async () => {
                 rosePetal
                 roseScent
                 roseName
+                roseNameen
+                roseSubname
                 roseLength
                 roseHarvest
                 roseExplanation
-                roseSubname
+                roseExplanationen
               }
               colors {
                 nodes {
                   name
                 }
               }
+              roseFormaId
             }
           }
         }

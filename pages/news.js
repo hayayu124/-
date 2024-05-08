@@ -1,15 +1,61 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/news.module.scss";
 import Link from "next/link";
 import Button from "../components/button.js";
 import FButton from "../components/foldingButton.js";
 import { formatDistance, format } from "date-fns";
+import { FacebookProvider, Feed } from "react-facebook";
 
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
-export default function News(newss) {
-  const newsColumn = newss.newss.nodes;
+import HeadComponent from "../components/headComponent";
+
+export default function News({ newss, fbfeeds }) {
+  const { locale } = useRouter();
+
+  let newsData = [];
+  for (let index = 0; index < newss.length; index++) {
+    newsData.push({
+      id: newss[index].node.newsId,
+      date: newss[index].node.news_data.newsdate,
+      title: newss[index].node.title,
+      content: newss[index].node.content,
+      image: newss[index].node.featuredImage.node.mediaItemUrl,
+    });
+  }
+
+  for (let index = 0; index < fbfeeds.length; index++) {
+    let formattedDate = format(
+      new Date(fbfeeds[index].created_time),
+      "yyyy/MM/dd"
+    );
+
+    newsData.push({
+      id: fbfeeds[index].id,
+      date: formattedDate,
+      title: (fbfeeds[index].message.match(/【(.*)】/) || [])[1] || "",
+      content: fbfeeds[index].message,
+      image: fbfeeds[index].full_picture,
+    });
+  }
+
+  //ニュース読み込み
+  const formatNewsData = newsData.slice().sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+
+  //テキスト
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_news.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_news.json");
+  }
+
   const isFirstRender = useRef(false);
 
   // ロード制御
@@ -25,8 +71,8 @@ export default function News(newss) {
   //Newsの品種を抽出
   const [sliceNumber, setSliceNumber] = useState(6);
   const [moreView, setMoreView] = useState(false);
-  const number = newsColumn.length;
-  var news = newsColumn.slice(0, sliceNumber);
+  const number = formatNewsData.length;
+  var sliceNewsData = formatNewsData.slice(0, sliceNumber);
 
   //ボタンの変換
   const [folding, setFolding] = useState(false);
@@ -54,28 +100,27 @@ export default function News(newss) {
     }
   }, [moreView]);
 
-  console.log(number);
-
   return (
     <>
+      <HeadComponent meta={text.meta} />
+
       <ScrollEffect>
         <section className={`${cn.news} sectionSpaceM sec-c`}>
           <div className={`titleColumn tex-c`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 fonSp5 mar-b1`}>お知らせ</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>{text.news.subTitle}</h5>
 
-              <h2 className={`fon2 fonSp2 bold mar-b05`}>News</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>{text.news.title}</h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
 
             <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-              {newsColumn.length !== 0 ? (
-                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
-                  ROSETIQUE JAPANに関する
-                  <br className="brSp" />
-                  情報を随時発信しています。
-                </h5>
+              {formatNewsData.length !== 0 ? (
+                <h5
+                  className={`fon5 fonSp5 titleText mar-t2`}
+                  dangerouslySetInnerHTML={{ __html: text.news.content }}
+                />
               ) : (
                 <h5 className={`titletext`}>現在お知らせはございません。</h5>
               )}
@@ -86,37 +131,43 @@ export default function News(newss) {
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
             <div
               className={`${cn.newsColumn} newsColumn
-              ${newsColumn.length == 1 ? "oneLength" : ""} ${
-                newsColumn.length == 2 ? "twoLength" : ""
+              ${formatNewsData.length == 1 ? "oneLength" : ""} ${
+                formatNewsData.length == 2 ? "twoLength" : ""
               } grid4 sectionSpaceS`}
             >
               {/* 記事 */}
-              {newsColumn.map((el, index) => {
+              {sliceNewsData.map((el, index) => {
                 return (
                   <div key={`joinColumn${index}`} className={`newsDetail`}>
-                    <Link href={`./news/${el.newsId}`}>
+                    <Link href={`./news/${el.id}`}>
                       <div className={`newsDetailPic`}>
                         {el.featuredImage !== null && (
-                          <img
-                            src={el.featuredImage.node.mediaItemUrl}
-                            alt=""
-                          />
+                          <img src={el.image} alt="" />
                         )}
                       </div>
                     </Link>
 
                     <div className={`newsDetailText`}>
-                      <p className={`fon6 fonSp6 newsDate`}>
-                        {format(new Date(el.date), "yyyy/MM/dd")}
-                      </p>
-                      <p className={`fon4 fonSp3 bold`}>{el.title}</p>
+                      <p className={`fon6 fonSp6 newsDate`}>{el.date}</p>
+                      {locale == "ja" ? (
+                        <p className={`fon4 fonSp3 bold`}>{el.title}</p>
+                      ) : (
+                        <p className={`fon4 fonSp3 bold`}>
+                          {el.node.news_data.titleen}
+                        </p>
+                      )}
                       {el.content !== null && (
                         <p className={`fon5 fonSp5 newsDe`}>
-                          {el.content.replace(/(<([^>]+)>)/gi, "")}
+                          {locale === "ja"
+                            ? el.content.replace(/(<([^>]+)>)/gi, "")
+                            : el.node.news_data.contentsen.replace(
+                                /(<([^>]+)>)/gi,
+                                ""
+                              )}
                         </p>
                       )}
 
-                      <Link href={`./news/${el.newsId}`}>
+                      <Link href={`./news/${el.id}`}>
                         <div className={`moreViewText`}>
                           <img src="/img/moreViewText.png" alt="" />
                         </div>
@@ -127,23 +178,23 @@ export default function News(newss) {
               })}
             </div>
 
-            {/* morreView */}
+            {/* moreView */}
             <div
               onClick={() => {
                 setMoreView((prevState) => !prevState);
               }}
               className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
             >
-              <Button />
+              <Button text={text.news.moreView} />
             </div>
 
-            <div
-              className={`newsMessage ${
-                newsColumn.length == 0 ? "active" : ""
-              } tex-c`}
-            >
-              <h5>ニュースはありません。</h5>
-            </div>
+            {/* <div
+        className={`newsMessage ${
+          newsColumn.length == 0 ? "active" : ""
+        } tex-c`}
+      >
+        <h5>ニュースはありません。</h5>
+      </div> */}
           </ScrollEffect>
         </section>
       </ScrollEffect>
@@ -153,26 +204,36 @@ export default function News(newss) {
 
 //wordpress
 export const getStaticProps = async () => {
-  //wordpressシダのデータ
-
   //ニュースの情報をインポート
-  const resNews = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+  const resNews = await fetch(`https://ferntastique.tokyo/wp/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
       query NewQuery {
-        newss(first: 1000, where: {categoryName: "catalog"}) {
-          nodes {
-            content
-            date
-            title
-            featuredImage {
-              node {
-                mediaItemUrl
+        newss(first: 1000, where: {categoryName: "Catalog"}) {
+          edges {
+            node {
+              news_data {
+                meta {
+                  metadescription
+                  metadescriptionen
+                  metatitle
+                  metatitleen
+                }
+                titleen
+                newsdate
+                contentsen
               }
+              title
+              newsId
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              content
             }
-            newsId
           }
         }
       }
@@ -180,10 +241,17 @@ export const getStaticProps = async () => {
     }),
   });
 
+  const fbfeed = await fetch(
+    `https://graph.facebook.com/107633107617404/feed?fields=permalink_url,id,created_time,message,from,full_picture,media,attachments{unshimmed_url}&access_token=EAAGO74DnwMEBO3hfvliN6u3956kOkezsiHGrPixqnZBQZBBp8O4NcNQhVQ1XxDwgB40aZCDb8WZCne74UEA9FaYZA5v1KGiidjJoph6wZCF8ZCV8TQyQZBLlLCBVZCixVvZADn5yIPiz4NFjxjZBfPXntTwwzPYAoSFZC86iySNYmyViiYhgfamXZBBMbYngqZBl6peGr4cPoAGHGPy43aSocZD`
+  );
+
   const jsonNews = await resNews.json();
+  const jsonfb = await fbfeed.json();
+
   return {
     props: {
-      newss: jsonNews.data.newss,
+      newss: jsonNews.data.newss.edges,
+      fbfeeds: jsonfb.data,
     },
   };
 };

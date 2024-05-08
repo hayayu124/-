@@ -222,7 +222,13 @@ export default function FilterSP(props) {
                 type="text"
                 id="search"
                 value={props.search}
-                placeholder="バラの名前で検索する"
+                placeholder={
+                  props.locale === "ja"
+                    ? "バラの名前で検索する"
+                    : props.locale === "en"
+                    ? "Search by rose name"
+                    : ""
+                }
                 onChange={handleChange}
               />
               <button type="submit" onClick={handleSubmit}>
@@ -239,7 +245,11 @@ export default function FilterSP(props) {
                 setSpFilter((prevState) => !prevState);
               }}
             >
-              <p className={`fon4 fonSp4`}>品種を絞り込む</p>
+              {props.locale === "ja" ? (
+                <p className={`fon4 fonSp4`}>品種を絞り込む</p>
+              ) : props.locale === "en" ? (
+                <p className={`fon4 fonSp4`}>Narrow down the varieties</p>
+              ) : null}
             </div>
             <div
               onClick={() => {
@@ -358,7 +368,34 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxSize}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+                          {props.locale === "ja" ? (
+                            <p className={`fon5 fonSp5`}>{el}</p>
+                          ) : (
+                            props.locale === "en" &&
+                            (el === "大輪" ? (
+                              <p className={`fon5 fonSp5`}>Large Flower</p>
+                            ) : el === "大輪スプレー" ? (
+                              <p className={`fon5 fonSp5`}>Large Spray</p>
+                            ) : el === "中大輪" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Medium Large Flower
+                              </p>
+                            ) : el === "中輪" ? (
+                              <p className={`fon5 fonSp5`}>Medium Flower</p>
+                            ) : el === "中小輪" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Medium Small Flower
+                              </p>
+                            ) : el === "中輪スプレー" ? (
+                              <p className={`fon5 fonSp5`}>Medium Spray</p>
+                            ) : el === "中小輪スプレー" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Medium Small Spray
+                              </p>
+                            ) : el === "小輪スプレー" ? (
+                              <p className={`fon5 fonSp5`}>Small Spray</p>
+                            ) : null)
+                          )}
                         </div>
                       );
                     })}
@@ -402,7 +439,57 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxShape}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+
+                          {props.locale === "ja" ? (
+                            <p className={`fon5 fonSp5`}>{el}</p>
+                          ) : (
+                            props.locale === "en" &&
+                            (el === "カップ咲き" ? (
+                              <p className={`fon5 fonSp5`}>Cup Bloom</p>
+                            ) : el === "シャローカップ咲" ? (
+                              <p className={`fon5 fonSp5`}>Shallow Cup Bloom</p>
+                            ) : el === "ロゼット咲" ? (
+                              <p className={`fon5 fonSp5`}>Rosette Bloom</p>
+                            ) : el === "高芯剣弁咲" ? (
+                              <p className={`fon5 fonSp5`}>
+                                High Center Sword Petal Bloom
+                              </p>
+                            ) : el === "高芯半剣弁" ? (
+                              <p className={`fon5 fonSp5`}>
+                                High Center Half Sword Petal
+                              </p>
+                            ) : el === "半剣弁ロゼット咲" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Half Sword Petal Rosette Bloom
+                              </p>
+                            ) : el === "半剣弁高芯咲" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Half Sword Petal High Center Bloom
+                              </p>
+                            ) : el === "グリーンアイ" ? (
+                              <p className={`fon5 fonSp5`}>Green Eye</p>
+                            ) : el === "高芯半剣弁咲" ? (
+                              <p className={`fon5 fonSp5`}>
+                                Half Sword Petal High Center Bloom
+                              </p>
+                            ) : el === "ウエーブ咲" ? (
+                              <p className={`fon5 fonSp5`}>Wave Bloom</p>
+                            ) : el === "カップ咲花弁" ? (
+                              <p className={`fon5 fonSp5`}>Cup Bloom Petal</p>
+                            ) : el === "半カップ咲" ? (
+                              <p className={`fon5 fonSp5`}>Half Cup Bloom</p>
+                            ) : el === "ウェーブかかったカップ咲き" ? (
+                              <p className={`fon5 fonSp5`}>Wavy Cup Bloom</p>
+                            ) : el === "平咲" ? (
+                              <p className={`fon5 fonSp5`}>Flat Bloom</p>
+                            ) : el === "ウェーブ咲" ? (
+                              <p className={`fon5 fonSp5`}>Wave Bloom</p>
+                            ) : el === "ロゼット咲き" ? (
+                              <p className={`fon5 fonSp5`}>Rosette Bloom</p>
+                            ) : el === "ウェーブ咲き" ? (
+                              <p className={`fon5 fonSp5`}>Wave Bloom</p>
+                            ) : null)
+                          )}
                         </div>
                       );
                     })}
@@ -445,7 +532,23 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxPetal}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+                          {props.locale === "ja" ? (
+                            <h5 className={`fon5 fonSp5`}>{el}</h5>
+                          ) : props.locale === "en" ? (
+                            el === "100枚以上" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                More than 100 petals
+                              </h5>
+                            ) : el === "50枚以上~100枚以下" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Between 50 and 100 petals
+                              </h5>
+                            ) : el === "50枚以下" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Less than 50 petals
+                              </h5>
+                            ) : null
+                          ) : null}
                         </div>
                       );
                     })}
@@ -458,7 +561,11 @@ export default function FilterSP(props) {
                         onChange={handleCheckboxPetal}
                         className={`cursor`}
                       />
-                      <p className={`fon5 fonSp5`}>クリア</p>
+                      {props.locale === "ja" ? (
+                        <h5 className={`fon5 fonSp5`}>クリア</h5>
+                      ) : props.locale === "en" ? (
+                        <h5 className={`fon5 fonSp5`}>Clear</h5>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -500,7 +607,53 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxScent}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+                          {props.locale === "ja" ? (
+                            <h5 className={`fon5 fonSp5`}>{el}</h5>
+                          ) : props.locale === "en" ? (
+                            el === "ダマスク 中香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Damask Medium Fragrance
+                              </h5>
+                            ) : el === "ティー 強香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Tea Strong Fragrance
+                              </h5>
+                            ) : el === "ティー 微香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Tea Light Fragrance
+                              </h5>
+                            ) : el === "フルーティ 強香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Fruity Strong Fragrance
+                              </h5>
+                            ) : el === "ティー 中香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Tea Medium Fragrance
+                              </h5>
+                            ) : el === "ブルー 中香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Blue Medium Fragrance
+                              </h5>
+                            ) : el === "ブルー 強香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Blue Strong Fragrance
+                              </h5>
+                            ) : el === "フルーティ 中香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Fruity Medium Fragrance
+                              </h5>
+                            ) : el === "ティー 香" ? (
+                              <h5 className={`fon5 fonSp5`}>Tea Fragrance</h5>
+                            ) : el === "ミルラ 強香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Myrrh Strong Fragrance
+                              </h5>
+                            ) : el === "ダマスク 微香" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Damask Light Fragrance
+                              </h5>
+                            ) : null
+                          ) : null}
                         </div>
                       );
                     })}
@@ -597,7 +750,23 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxHarvest}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+                          {props.locale === "ja" ? (
+                            <h5 className={`fon5 fonSp5`}>{el}</h5>
+                          ) : props.locale === "en" ? (
+                            el === "約250以上~350本以下" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Approximately 250 or more and 350 or less
+                              </h5>
+                            ) : el === "約350以上~450本以下" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Approximately 350 or more and 450 or less
+                              </h5>
+                            ) : el === "約450本以上" ? (
+                              <h5 className={`fon5 fonSp5`}>
+                                Approximately 450 or more
+                              </h5>
+                            ) : null
+                          ) : null}
                         </div>
                       );
                     })}
@@ -610,7 +779,11 @@ export default function FilterSP(props) {
                         onChange={handleCheckboxHarvest}
                         className={`cursor`}
                       />
-                      <p className={`fon5 fonSp5`}>クリア</p>
+                      {props.locale === "ja" ? (
+                        <p className={`fon5 fonSp5`}>クリア</p>
+                      ) : props.locale === "en" ? (
+                        <p className={`fon5 fonSp5`}>Clear</p>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -623,7 +796,11 @@ export default function FilterSP(props) {
                     }}
                     className={`${fl.spFilterMenuDetail}`}
                   >
-                    <p className={`fonSp4`}>バラのタイプ</p>
+                    {props.locale === "ja" ? (
+                      <p className={`fonSp5`}>バラのタイプ</p>
+                    ) : props.locale === "en" ? (
+                      <p className={`fonSp5`}>Types of roses</p>
+                    ) : null}
                     <img
                       className={`${fl.pulldown} tex-l`}
                       src="/img/pulldown.png"
@@ -651,7 +828,15 @@ export default function FilterSP(props) {
                             onChange={handleCheckboxSpray}
                             className={`cursor`}
                           />
-                          <p className={`fon5 fonSp5`}>{el}</p>
+                          {props.locale === "ja" ? (
+                            <p className={`fon5 fonSp5`}>{el}</p>
+                          ) : props.locale === "en" ? (
+                            el === "スプレー咲き" ? (
+                              <p className={`fon5 fonSp5`}>Spray Bloom</p>
+                            ) : el === "ノーマル" ? (
+                              <p className={`fon5 fonSp5`}>Normal</p>
+                            ) : null
+                          ) : null}
                         </div>
                       );
                     })}
@@ -664,7 +849,11 @@ export default function FilterSP(props) {
                         onChange={handleCheckboxSpray}
                         className={`cursor`}
                       />
-                      <p className={`fon5 fonSp5`}>クリア</p>
+                      {props.locale === "ja" ? (
+                        <p className={`fon5 fonSp5`}>クリア</p>
+                      ) : props.locale === "en" ? (
+                        <p className={`fon5 fonSp5`}>Clear</p>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -675,7 +864,11 @@ export default function FilterSP(props) {
                   }}
                   className={`${fl.flButton} cursor mar-t2 mar-b3`}
                 >
-                  <p className={`fonSp4`}>絞り込む</p>
+                  {props.locale === "ja" ? (
+                    <p className={`fonSp4`}>絞り込む</p>
+                  ) : props.locale === "en" ? (
+                    <p className={`fon5 fonSp5`}>Narrow down</p>
+                  ) : null}
                 </button>
                 {/* </form> */}
               </form>
@@ -687,7 +880,11 @@ export default function FilterSP(props) {
             onClick={handleReset}
             className={`${fl.filterReset} cursor`}
           >
-            <h5 className={`fon5 fonSp5`}>フィルターをクリア</h5>
+            {props.locale === "ja" ? (
+              <h5 className={`fon5 fonSp5`}>フィルターをクリア</h5>
+            ) : props.locale === "en" ? (
+              <h5 className={`fon5 fonSp5`}>Filter Clear</h5>
+            ) : null}
           </button>
         </div>
         <div className={`${fl.tagOrReset} mar-t1`}>

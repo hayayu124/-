@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "pageName": "/brandNew",
+    "title": "今年の新品種 | ROSETIQUE JAPAN Inc.",
+    "description": "トレンドをリードする花姿の良いものの中から、耐病性や生産性に優れた品種だけを厳選してお届けします。",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "en_US"
+  },
+  "catchCopy": {
+    "subTitle": "今年の新品種",
+    "title": "Brand-new",
+    "text": "トレンドをリードする花姿の良いものの中から、<br class=\"br\" />耐病性や生産性に優れた品種だけを厳選してお届けします。",
+    "noData": "品種がありません。",
+    "moreView": "View More"
+  }
+}

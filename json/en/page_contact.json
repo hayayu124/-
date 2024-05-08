@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "pageName": "/contact",
+    "title": "お問い合わせ | ROSETIQUE JAPAN Inc.",
+    "description": "お問い合わせ",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "ja_JP"
+  },
+
+  "catchCopy": {
+    "subTitle": "お問い合わせ",
+    "title": "Contact"
+  },
+  "contactInfo": {
+    "infoTitle1": "品種に関するお問い合わせ先",
+    "infoText1": "〒737-2609<br />広島県呉市安浦町大字中畑字立小路510-262（瀬戸内海国立公園　野呂山山頂）<br />TEL : 0823-70-5636<br />FAX : 0823-70- 5637<br />E-MAIL : QYP03062@nIfty.ne.jp",
+    "infoTitle2": "広報・取材・プレスリリースに関するお問い合わせ先",
+    "infoText2": "〒158-0082<br />東京都世田谷区等々力8-12-3 1F<br />E-MAIL : rosetiquebymiwako@gmail.com"
+  },
+  "form": {
+    "subTitle": "フォーム",
+    "title": "Contact Form",
+    "name": "Name",
+    "nameOption": "（企業の方は会社名も記入してください）",
+    "hurigana": "ふりがな",
+    "mail": "Address",
+    "tel": "Tel",
+    "message": "Message",
+    "privacyPolicy": "「プライバシーポリシー」",
+    "privacyPolicyText": "をお読みいただき、 同意の上「確認画面へ」をクリックしてください。<br />お客様の個人情報は「プライバシーポリシー」に則り管理させていただきます。",
+    "send": "送信",
+    "sendMessage": "お問い合わせありがとうございます。<br />返信は３営業日以内にご連絡いたします。",
+    "sendError": "エラー : メッセージを送信できませんんでした。<br />もう一度お試しください"
+  }
+}

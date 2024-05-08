@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://lordsmobile-g1.com/
-
-# Sitemaps
-Sitemap: https://lordsmobile-g1.com/sitemap.xml

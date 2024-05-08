@@ -21,6 +21,8 @@ export default function ColorBox({ roseCo }) {
           return <div className="flowerColorBox yellow"></div>;
         } else if (roseCol[0].name == "White") {
           return <div className="flowerColorBox white"></div>;
+        } else if (roseCol[0].name == "Red") {
+          return <div className="flowerColorBox red"></div>;
         } else if (roseCol.length >= 2 || roseCol[0].name == "Multi Color") {
           return <div className="flowerColorBox multi"></div>;
         }

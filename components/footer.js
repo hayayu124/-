@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/footer.module.scss";
 import Link from "next/link";
 
 export default function Footer() {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_footer.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_footer.json");
+  }
+
   return (
     <>
       <footer className={`${cn.footer}`}>
@@ -56,14 +66,15 @@ export default function Footer() {
             <h3 className={`fon3 fonSp3 bold`}>Contact</h3>
 
             <div className={`${cn.footerContactDetail}`}>
-              <p className={`fon5 fonSp5 cursor`}>
-                品種に関するお問い合わせ、
-                <br />
-                取材などはこちらからお願いいたします。
-              </p>
+              <p
+                className={`fon5 fonSp5 cursor`}
+                dangerouslySetInnerHTML={{
+                  __html: text.contact.text,
+                }}
+              />
 
               {/* お問い合わせボタン */}
-              <Link href="/contact">
+              <Link href="/contact" text={text.contact.buttonText}>
                 <div className={`${cn.contactButton} ${cn.footerMenu} mar-t1`}>
                   <img src="/img/contactButton.png" alt="" />
                 </div>
@@ -96,7 +107,7 @@ export default function Footer() {
         </div>
 
         <div className={`${cn.footerCopilight}`}>
-          <h5 className={`fon5 fonSp5 cursor`}>© 2023 ROSETIQUE JAPAN Inc.</h5>
+          <h5 className={`fon5 fonSp5 cursor`}>© 2024 ROSETIQUE JAPAN Inc.</h5>
         </div>
       </footer>
     </>

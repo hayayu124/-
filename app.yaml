@@ -1,0 +1,19 @@
+runtime: nodejs20
+service: default
+instance_class: F1
+
+handlers:
+  - url: /_next/static
+    static_dir: .next/static
+
+  - url: /(.*\.(js|css|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg|eot|webmanifest|xml)$)
+    static_files: public/\1
+    upload: public/.*\.(js|css|png|jpg|jpeg|gif|ico|woff|woff2|ttf|svg|eot|webmanifest|xml)$
+
+  - url: /.*
+    script: auto
+    secure: always
+
+  - url: /googled17e00cf7e5c700a\.html
+    static_files: googled17e00cf7e5c700a.html
+    upload: googled17e00cf7e5c700a\.html

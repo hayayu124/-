@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/brandNew.module.scss";
 import CollectionColumn from "../components/collectionColumn.js";
 import Button from "../components/button.js";
@@ -7,7 +8,18 @@ import FButton from "../components/foldingButton.js";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 import LoadingEffect from "../components/utility/loadingEffect";
 
+import HeadComponent from "/components/headComponent";
+
 export default function MiwakoTiqueSerious(props) {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_tique-Series.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_tique-Series.json");
+  }
+
   const tique = props.formas;
 
   // ロード制御
@@ -58,10 +70,13 @@ export default function MiwakoTiqueSerious(props) {
     }
   }, [moreView]);
 
+  console.log(brandNewCol);
+
   return (
     <>
-      {/* コレクションページ */}
+      <HeadComponent meta={text.meta} />
 
+      {/* コレクションページ */}
       <section className={`${cn.brandNew} collection sectionSpaceM`}>
         {/* 花の品種 */}
         <div className={`collectionColumn sectionSpaceM tex-c grid3 sec-c`}>
@@ -72,28 +87,27 @@ export default function MiwakoTiqueSerious(props) {
                 after={cn.intActive}
               >
                 <h5 className={`fon5 fonSp5 mar-b1`}>
-                  ミワコ ティーク シリーズ
+                  {text.catchCopy.subTitle}
                 </h5>
 
                 <h2 className={`fon2 fonSp2 bold mar-b05`}>
-                  Miwako TIQUE Series
+                  {text.catchCopy.title}
                 </h2>
 
                 <div className={`titleBorder sec-c`}></div>
               </ScrollEffect>
 
               <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-                <h5 className={`fon5 fonSp5 titleText mar-t2`}>
-                  美しく品格のある花姿、芳醇な香り、丈夫な茎と花保ちの良さ、
-                  <br className={`br`} />
-                  トゲの少ない扱いやすさにこだわった、フラッグシップシリーズです。
-                </h5>
+                <h5
+                  className={`fon5 fonSp5 titleText mar-t2`}
+                  dangerouslySetInnerHTML={{ __html: text.catchCopy.text }}
+                />
               </ScrollEffect>
             </div>
           </div>
 
           <ScrollEffect className={`intMostDelay`} after={`intActive`}>
-            <CollectionColumn roseCo={brandNewCol} />
+            <CollectionColumn roseCo={brandNewCol} locale={locale} />
           </ScrollEffect>
         </div>
 
@@ -104,13 +118,13 @@ export default function MiwakoTiqueSerious(props) {
           }}
           className={`moreView ${folding ? "" : "active"} sectionSpaceM`}
         >
-          <Button />
+          <Button text={text.catchCopy.moreView} />
         </div>
 
         <div
           className={`newsMessage ${tique.length == 0 ? "active" : ""} tex-c`}
         >
-          <h5>品種がありません。</h5>
+          <h5>{text.moreView}</h5>
         </div>
       </section>
     </>
@@ -122,16 +136,15 @@ export const getStaticProps = async () => {
   //wordpressシダのデータ
 
   //バラの情報をインポート
-  const roseFormas = await fetch(`http://ferntastique.tokyo/wp/graphql`, {
+  const roseFormas = await fetch(`https://ferntastique.tokyo/wp/graphql`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
       query NewQuery {
-        roseFormas(first: 100) {
+        roseFormas(first: 1000) {
           edges {
             node {
-              roseFormaId
               uri
               title
               featuredImage {
@@ -143,8 +156,11 @@ export const getStaticProps = async () => {
                 award
                 fieldGroupName
                 roseColor
+                roseColoren
                 roseShape
+                roseShapeen
                 roseSize
+                roseSizeen
                 imageSub {
                   mediaItemUrl
                 }
@@ -152,16 +168,19 @@ export const getStaticProps = async () => {
                 rosePetal
                 roseScent
                 roseName
+                roseNameen
+                roseSubname
                 roseLength
                 roseHarvest
                 roseExplanation
-                roseSubname
+                roseExplanationen
               }
               colors {
                 nodes {
                   name
                 }
               }
+              roseFormaId
             }
           }
         }

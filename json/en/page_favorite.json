@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "pageName": "/favorite",
+    "title": "お気に入りの品種 | ROSETIQUE JAPAN Inc.",
+    "description": "お気に入りの品種",
+    "image": "/img/ogp.jpg",
+    "appId": "1809010892654485",
+    "author": "© 2023 ROSETIQUE JAPAN Inc.",
+    "locale": "ja_JP"
+  },
+  "catchCopy": {
+    "subTitle": "お気に入り",
+    "title": "Fovorite",
+    "noData": "品種がありません。",
+    "moreView": "もっと見る"
+  }
+}

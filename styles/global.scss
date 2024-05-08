@@ -11,6 +11,7 @@
   --or: #f2a413;
   --ye: #f2c438;
   --wh: #d9d9d9;
+  --re: #c01919;
   --multi: linear-gradient(-20deg, #db57cd 0%, #01e466 100%);
 
   --noto-font: "Noto Serif JP", serif;
@@ -335,10 +336,10 @@ svg {
 }
 
 .brSp {
-  @media screen and (min-width: 768px) {
-    display: none;
+  @media screen and (max-width: 767px) {
+    display: block;
   }
-  display: block;
+  display: none;
 }
 
 // scrollアニメーション

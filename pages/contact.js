@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import cn from "../components/contact.module.scss";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
@@ -6,7 +7,20 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ScrollEffect from "../components/utility/utilityscrollEffect";
 
+import HeadComponent from "../components/headComponent";
+
+import axios from "axios";
+
 export default function Contact() {
+  //テキスト
+  const { locale } = useRouter();
+  let text;
+  if (locale == "ja") {
+    text = require("../json/ja/page_contact.json");
+  } else if (locale == "en") {
+    text = require("../json/en/page_contact.json");
+  }
+
   // ロード制御
   const [load, setLoad] = useState(false);
   useEffect(() => {
@@ -29,52 +43,74 @@ export default function Contact() {
 
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("aa");
 
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        form.current,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          setName("");
-          setNameRuby("");
-          setEmail("");
-          setTelnumber("");
-          setMessage("");
-          setCheakBox("");
-          setSendMessage(true);
-          setErrorMessage(false);
-        },
-        (error) => {
-          console.log(送れませんでした);
-          setErrorMessage(true);
-        }
-      );
+    // const {
+    //   name,
+    //   nameRuby,
+    //   email,
+    //   telnumber,
+    //   message,
+    // } = formData;
+
+    const data = new FormData();
+    data.append("name", name);
+    if (locale == "ja") {
+      data.append("hurigana", nameRuby);
+    }
+    data.append("email", email);
+    data.append("telnumber", telnumber);
+    data.append("message", message);
+
+    console.log(data.name);
+
+    const url =
+      locale == "ja"
+        ? `https://ferntastique.tokyo/mail/send_catalog.php`
+        : `https://ferntastique.tokyo/mail/send_catalog_en.php`;
+
+    return axios
+      .post(url, data)
+      .then(function (res) {
+        console.log(res);
+
+        window.scrollTo({
+          top: 0,
+        });
+        setSendMessage(true);
+        return res.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+        setErrorMessage(true);
+      });
   };
 
   const disableSend =
-    name !== "" &&
-    nameRuby !== "" &&
-    email !== "" &&
-    message !== "" &&
-    cheakBox == true;
+    locale === "ja"
+      ? name !== "" &&
+        nameRuby !== "" &&
+        email !== "" &&
+        message !== "" &&
+        cheakBox === true
+      : name !== "" && email !== "" && message !== "" && cheakBox === true;
 
   return (
     <>
+      <HeadComponent meta={text.meta} />
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.contact} sectionSpaceM mar-b4 sec-c`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 fonSp5 mar-b1`}>お問い合わせ</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>
+                {text.catchCopy.subTitle}
+              </h5>
 
-              <h2 className={`fon2 fonSp2 bold mar-b05`}>Contact</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                {text.catchCopy.title}
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
@@ -86,32 +122,26 @@ export default function Contact() {
             >
               <div className={`collectionName`}>
                 <h3 className={`fon3 fonSp3 bold`}>
-                  品種に関するお問い合わせ先
+                  {text.contactInfo.infoTitle1}
                 </h3>
-                <h5 className={`mar-t3 fon5 fonSp5 lin-22`}>
-                  〒737-2609
-                  <br />
-                  広島県呉市安浦町大字中畑字立小路510-262（瀬戸内海国立公園　野呂山山頂）
-                  <br />
-                  TEL : 0823-70-5636
-                  <br />
-                  FAX : 0823-70- 5637
-                  <br />
-                  E-MAIL : QYP03062@nIfty.ne.jp
-                </h5>
+                <h5
+                  className={`mar-t3 fon5 fonSp5 lin-22`}
+                  dangerouslySetInnerHTML={{
+                    __html: text.contactInfo.infoText1,
+                  }}
+                />
               </div>
 
               <div className={`collectionName sectionSpaceS`}>
                 <h3 className={`fon3 fonSp3 bold`}>
-                  広報・取材・プレスリリースに関するお問い合わせ先
+                  {text.contactInfo.infoTitle2}
                 </h3>
-                <h5 className={`mar-t3 fon5 fonSp5 lin-22`}>
-                  〒158-0082
-                  <br />
-                  東京都世田谷区等々力8-12-3 1F
-                  <br />
-                  E-MAIL : rosetiquebymiwako@gmail.com
-                </h5>
+                <h5
+                  className={`mar-t3 fon5 fonSp5 lin-22`}
+                  dangerouslySetInnerHTML={{
+                    __html: text.contactInfo.infoText2,
+                  }}
+                />
               </div>
             </div>
           </ScrollEffect>
@@ -124,22 +154,25 @@ export default function Contact() {
                   className={`${cn.intMoreDelay}`}
                   after={cn.intActive}
                 >
-                  <h5 className={`fon5 fonSp5 mar-b1`}>フォーム</h5>
+                  <h5 className={`fon5 fonSp5 mar-b1`}>{text.form.subTitle}</h5>
 
-                  <h2 className={`fon2 fonSp2 bold mar-b05`}>Contact Form</h2>
+                  <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                    {text.form.title}
+                  </h2>
 
                   <div className={`titleBorder sec-c`}></div>
                 </ScrollEffect>
               </div>
 
+              {/* フォーム */}
               <form ref={form} className={`${cn.formColumn} t_main`}>
                 {/* 名前 */}
                 <div className={`${cn.contactContents} sectionSpaceS grid5`}>
                   <div className={`collectionName`}>
                     <h3 className={`fon4 fonSp4 bold notoGo`}>
-                      お名前{" "}
+                      {text.form.name}
                       <span className={`fon5 fonSp5 bold`}>
-                        （企業の方は会社名も記入してください）
+                        {text.form.nameOption}
                       </span>
                     </h3>
 
@@ -168,36 +201,41 @@ export default function Contact() {
                     </Box>
 
                     {/* ふりがな */}
-                    <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
-                      ふりがな
-                    </h3>
 
-                    <Box
-                      sx={{
-                        "& .MuiTextField-root": { m: 0, width: "100%" },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                      className={`mar-t1 ${cn.textbox}`}
-                      type="text"
-                      id="name_ruby"
-                      required
-                      size="10"
-                      onChange={(e) => setNameRuby(e.target.value)}
-                    >
-                      <div>
-                        <TextField
-                          name="user_ruby"
+                    {locale == "ja" && (
+                      <>
+                        <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
+                          {text.form.hurigana}
+                        </h3>
+
+                        <Box
+                          sx={{
+                            "& .MuiTextField-root": { m: 0, width: "100%" },
+                          }}
+                          noValidate
+                          autoComplete="off"
+                          className={`mar-t1 ${cn.textbox}`}
+                          type="text"
+                          id="name_ruby"
                           required
-                          id="outlined-required"
-                          value={nameRuby}
-                        ></TextField>
-                      </div>
-                    </Box>
+                          size="10"
+                          onChange={(e) => setNameRuby(e.target.value)}
+                        >
+                          <div>
+                            <TextField
+                              name="user_ruby"
+                              required
+                              id="outlined-required"
+                              value={nameRuby}
+                            ></TextField>
+                          </div>
+                        </Box>
+                      </>
+                    )}
 
                     {/* email */}
                     <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
-                      メールアドレス
+                      {text.form.mail}
                     </h3>
 
                     <Box
@@ -224,7 +262,7 @@ export default function Contact() {
                     </Box>
 
                     <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
-                      電話番号
+                      {text.form.tel}
                     </h3>
 
                     <Box
@@ -251,7 +289,7 @@ export default function Contact() {
                     </Box>
 
                     <h3 className={`fon4 fonSp4 bold mar-t3 mar-b1 notoGo`}>
-                      お問い合わせ内容
+                      {text.form.message}
                     </h3>
 
                     <TextField
@@ -277,15 +315,20 @@ export default function Contact() {
                       }}
                     />
 
-                    <h6 className={`fon6 fonSp6 cursor notoGo`}>
-                      <Link href="/privacyPolicy">
-                        「プライバシーポリシー」
-                      </Link>
-                      をお読みいただき、 同意の上「確認画面
-                      へ」をクリックしてください。
-                      お客様の個人情報は「プライバシーポリシー」に則り
-                      管理させてい ただきます。
-                    </h6>
+                    <div>
+                      <h6 className={`fon6 fonSp6 cursor notoGo`}>
+                        <Link href="/privacyPolicy">
+                          {text.form.privacyPolicy}
+                        </Link>
+                      </h6>
+
+                      <h6
+                        className={`fon6 fonSp6 cursor notoGo`}
+                        dangerouslySetInnerHTML={{
+                          __html: text.form.privacyPolicyText,
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* 送信 */}
@@ -294,10 +337,10 @@ export default function Contact() {
                     className={`${cn.button} ${
                       disableSend ? cn.active : ""
                     } sectionSpaceS`}
-                    onClick={sendEmail}
+                    onClick={handleSubmit}
                   >
                     <h5 className={`fon4 fonSp4 cursor foncolW notoGo`}>
-                      送信
+                      {text.form.send}
                     </h5>
                   </div>
 
@@ -306,11 +349,12 @@ export default function Contact() {
                       sendMessage ? cn.active : ""
                     }`}
                   >
-                    <h5 className="mar-t3 mar-b1 tex-c bold">
-                      お問い合わせありがとうございます。
-                      <br />
-                      返信は３営業日以内にご連絡いたします。
-                    </h5>
+                    <h5
+                      className="mar-t3 mar-b1 tex-c bold"
+                      dangerouslySetInnerHTML={{
+                        __html: text.form.sendMessage,
+                      }}
+                    />
                   </div>
 
                   <div
@@ -318,11 +362,12 @@ export default function Contact() {
                       errorMessage ? cn.active : ""
                     }`}
                   >
-                    <p className="mar-t2 tex-c fon5 fonSp3">
-                      エラー : メッセージを送信できませんんでした。
-                      <br />
-                      もう一度お試しください
-                    </p>
+                    <p
+                      className="mar-t2 tex-c fon5 fonSp3"
+                      dangerouslySetInnerHTML={{
+                        __html: text.form.sendError,
+                      }}
+                    />
                   </div>
                 </div>
               </form>

@@ -1,14 +1,46 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import cn from "../../components/flowerDetail.module.scss";
 import ColorBox from "../../components/colorBox.js";
 import Filter from "../../components/filter.js";
 import Button from "../../components/button.js";
-import FavButton from "../../components/utility/utilityFavButton";
+// import FavButton from "../../components/utility/utilityFavButton";
 import ScrollEffect from "../../components/utility/utilityscrollEffect";
+
+import HeadComponent from "/components/headComponent";
 
 export default function RoseDetail(props) {
   const rose = props.post;
   console.log(rose);
+  //テキスト
+  const { locale } = useRouter();
+
+  //テキスト
+  let text;
+  if (locale == "ja") {
+    text = require("/json/ja/page_variety.json");
+  } else if (locale == "en") {
+    text = require("/json/en/page_variety.json");
+  }
+  const meta = [];
+
+  if (locale == "ja") {
+    meta.pageName = `https://rosetique.tokyo/rose/${rose.roseFormaId}`;
+    meta.title = rose.title;
+    meta.description = rose.rose_spec.roseExplanation;
+    meta.image = "/img/ogp.jpg";
+    meta.appId = "1809010892654485";
+    meta.author = "© 2023 ROSETIQUE JAPAN Inc.";
+    meta.locale = "ja_JP";
+  } else if (locale == "en") {
+    meta.pageName = `https://rosetique.tokyo/en/rose/${rose.roseFormaId}`;
+    meta.title = rose.rose_spec.roseNameen;
+    meta.description = rose.rose_spec.roseExplanationen;
+    meta.image = "/img/ogp.jpg";
+    meta.appId = "1809010892654485";
+    meta.author = "© 2023 ROSETIQUE JAPAN Inc.";
+    meta.locale = "en_US";
+  }
 
   // ロード制御
   const [load, setLoad] = useState(false);
@@ -21,8 +53,8 @@ export default function RoseDetail(props) {
   }, []);
 
   //お気に入りのハートボタン
-  const [favId, setFavId] = useState(false);
-  const [favList, setFavList] = useState([]);
+  // const [favId, setFavId] = useState(false);
+  // const [favList, setFavList] = useState([]);
 
   // function addToFavorites(itemId) {
   //   const id = itemId;
@@ -31,16 +63,24 @@ export default function RoseDetail(props) {
   //   console.log(favId);
   // }
 
+  console.log(rose);
+
   return (
     <>
+      <HeadComponent meta={meta} />
+
       {/* 品種一覧 */}
       <ScrollEffect>
         <section className={`${cn.varietyList} sectionSpaceM mar-b4`}>
           <div className={`titleColumn tex-c mar-b4`}>
             <ScrollEffect className={`${cn.intMoreDelay}`} after={cn.intActive}>
-              <h5 className={`fon5 fonSp5 mar-b1`}>品種</h5>
+              <h5 className={`fon5 fonSp5 mar-b1`}>
+                {text.catchCopy.subTitle}
+              </h5>
 
-              <h2 className={`fon2 fonSp2 bold mar-b05`}>Variety</h2>
+              <h2 className={`fon2 fonSp2 bold mar-b05`}>
+                {text.catchCopy.title}
+              </h2>
 
               <div className={`titleBorder sec-c`}></div>
             </ScrollEffect>
@@ -55,7 +95,6 @@ export default function RoseDetail(props) {
               className={`${cn.collectionColumn} sectionSpaceS tex-c grid3 sec-c`}
             >
               {/* 品種１ */}
-
               <div className={`${cn.flowerBreed} sectionSpaceS`}>
                 {/* PCの表示 */}
                 <div className={`${cn.flowerBreedPc}`}>
@@ -75,7 +114,11 @@ export default function RoseDetail(props) {
                         )}
                       </div>
                       <div className={`${cn.flowerName}`}>
-                        <h3 className={`fon3 fonSp3 bold`}>{rose.title}</h3>
+                        <h3 className={`fon3 fonSp3 bold`}>
+                          {locale == "ja"
+                            ? rose.title
+                            : rose.rose_spec.roseNameen}
+                        </h3>
                         {rose.rose_spec.roseSubname !== "" && (
                           <h6>{rose.rose_spec.roseSubname}</h6>
                         )}
@@ -108,7 +151,9 @@ export default function RoseDetail(props) {
                           <div className={`${cn.flowerName}`}>
                             {rose.roseTitle !== null && (
                               <h3 className={`fon3 fonSp3 bold`}>
-                                {rose.rose_spec.roseName}
+                                {locale == "ja"
+                                  ? rose.title
+                                  : rose.rose_spec.roseNameen}
                               </h3>
                             )}
                             {rose.rose_spec.roseSubname !== "" && (
@@ -135,7 +180,9 @@ export default function RoseDetail(props) {
                                 Color&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseColor}
+                                {locale == "ja"
+                                  ? rose.rose_spec.roseColor
+                                  : rose.rose_spec.roseColoren}
                               </p>
                             </div>
                           )}
@@ -145,7 +192,9 @@ export default function RoseDetail(props) {
                                 Size&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseSize}
+                                {locale == "ja"
+                                  ? rose.rose_spec.roseSize
+                                  : rose.rose_spec.roseSizeen}
                               </p>
                             </div>
                           )}
@@ -155,7 +204,9 @@ export default function RoseDetail(props) {
                                 Shape&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseShape}
+                                {locale == "ja"
+                                  ? rose.rose_spec.roseShape
+                                  : rose.rose_spec.roseShapeen}
                               </p>
                             </div>
                           )}
@@ -163,7 +214,12 @@ export default function RoseDetail(props) {
                             <div className={`${cn.flowerSpecDetail}`}>
                               <p className={`fon5 fonSp5`}>
                                 Petal&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {rose.rose_spec.rosePetal}本
+                                {rose.rose_spec.rosePetal}
+                                {locale === "ja"
+                                  ? "本"
+                                  : locale === "en"
+                                  ? " petals"
+                                  : null}
                               </p>
                             </div>
                           )}
@@ -193,7 +249,12 @@ export default function RoseDetail(props) {
                                 Harvest&emsp;&emsp;&nbsp;&nbsp;&nbsp;
                               </p>
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseHarvest}本
+                                {rose.rose_spec.roseHarvest}
+                                {locale === "ja"
+                                  ? "本"
+                                  : locale === "en"
+                                  ? " petals"
+                                  : null}
                               </p>
                             </div>
                           )}
@@ -202,12 +263,16 @@ export default function RoseDetail(props) {
                               className={`${cn.flowerSpecDetail} ${cn.roseExplanation}`}
                             >
                               <p className={`fon5 fonSp5`}>
-                                {rose.rose_spec.roseExplanation}
+                                {locale === "ja"
+                                  ? rose.rose_spec.roseExplanation
+                                  : locale === "en"
+                                  ? rose.rose_spec.roseExplanationen
+                                  : null}
                               </p>
                             </div>
                           )}
                           {/* お気に入りボタン */}
-                          <div className={`${cn.flowerSpecDetail} mar-t2`}>
+                          {/* <div className={`${cn.flowerSpecDetail} mar-t2`}>
                             <div className={`${cn.flowerSpecDetail}`}>
                               <FavButton
                                 favId={rose.roseFormaId}
@@ -216,7 +281,7 @@ export default function RoseDetail(props) {
                               />
                               <p className={`fon5 fonSp4`}>お気に入りに追加</p>
                             </div>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -269,45 +334,50 @@ export default function RoseDetail(props) {
 
 //Wordpress
 export async function getStaticProps(context) {
-  const resRose = await fetch("http://ferntastique.tokyo/wp/graphql", {
+  const resRose = await fetch("https://ferntastique.tokyo/wp/graphql", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
       query SinglePost {
         roseForma(idType: DATABASE_ID, id:"${context.params.id}") {
-          date
-          content
-          featuredImage {
-            node {
-              mediaItemUrl
+              uri
+              title
+              featuredImage {
+                node {
+                  mediaItemUrl
+                }
+              }
+              rose_spec {
+                award
+                fieldGroupName
+                roseColor
+                roseColoren
+                roseShape
+                roseShapeen
+                roseSize
+                roseSizeen
+                imageSub {
+                  mediaItemUrl
+                }
+                genre
+                rosePetal
+                roseScent
+                roseName
+                roseNameen
+                roseSubname
+                roseLength
+                roseHarvest
+                roseExplanation
+                roseExplanationen
+              }
+              colors {
+                nodes {
+                  name
+                }
+              }
+              roseFormaId
             }
-          }
-          rose_spec {
-            award
-            genre
-            roseColor
-            roseExplanation
-            roseHarvest
-            roseLength
-            roseName
-            roseSubname
-            rosePetal
-            roseScent
-            roseShape
-            roseSize
-            imageSub {
-              mediaItemUrl
-            }
-          }
-          title
-          roseFormaId
-          colors {
-            nodes {
-              name
-            }
-          }
-        }
       }
 			`,
     }),
@@ -323,7 +393,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("http://ferntastique.tokyo/wp/graphql", {
+  const res = await fetch("https://ferntastique.tokyo/wp/graphql", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -345,6 +415,9 @@ export async function getStaticPaths() {
   const paths = posts.map((post) => ({
     params: { id: String(post.roseFormaId) },
   }));
+
+  // 多言語に対してもpathを作成
+  // paths.push(...paths.map((item) => ({ ...item, locale: "en" })));
 
   return { paths, fallback: false };
 }
