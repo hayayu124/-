@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //ユーザーへメール送信
     $sendUser = $mailer;
     $sendUser->addAddress($_POST["email"]);
-    $sendUser->addBCC("yuto_hayata@ultraxperience.co.jp");
+    $sendUser->addBCC("rosetiquejapan@gmail.com");
     $sendUser->Subject = mb_encode_mimeheader('Thank you for your inquiry.');
     $sendUser->Body = "Dear Customer,\r\n\r\n"
       . "Thank you for your inquiry.\r\nWe have received your inquiry with the following information.\r\nPlease wait a moment and our representative will contact you.

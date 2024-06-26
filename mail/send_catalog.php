@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //ユーザーへメール送信
     $sendUser = $mailer;
     $sendUser->addAddress($_POST["email"]);
-    $sendUser->addBCC("rosetique.catalog@gmail.com");
+    $sendUser->addBCC("rosetiquejapan@gmail.com");
     $sendUser->Subject = mb_encode_mimeheader('お問い合わせありがとうございました');
     $sendUser->Body = "お客様　各位\r\n\r\n"
       . "お問い合わせありがとうございました。\r\n以下の内容でお問い合わせを受け付けました。\r\n担当者よりご連絡いたしますので今しばらくお待ち下さい。\r\n\r\n"

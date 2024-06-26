@@ -31,21 +31,25 @@ export default function Contact() {
     }, 500);
   }, []);
 
+  const form = useRef();
+  const nameRef = useRef(null);
+  const rubyRef = useRef(null);
+  const telRef = useRef(null);
+  const emailRef = useRef(null);
+  const messageRef = useRef(null);
+  const sendRef = useRef(null);
+
   // フォームの入力内容
   const [name, setName] = useState("");
   const [nameRuby, setNameRuby] = useState("");
   const [email, setEmail] = useState("");
-  const [telnumber, setTelnumber] = useState(""); // 「件名」の部分
-  const [message, setMessage] = useState(""); // 「お問い合わせ内容」の部分
+  const [telnumber, setTelnumber] = useState("");
+  const [message, setMessage] = useState("");
   const [cheakBox, setCheakBox] = useState("");
   const [sendMessage, setSendMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const form = useRef();
-
   const handleSubmit = (e) => {
-    e.preventDefault();
-
     // const {
     //   name,
     //   nameRuby,
@@ -74,16 +78,14 @@ export default function Contact() {
       .post(url, data)
       .then(function (res) {
         console.log(res);
-
-        window.scrollTo({
-          top: 0,
-        });
+        messageRef.current.scrollIntoView({ behavior: "smooth" });
         setSendMessage(true);
         return res.data;
       })
       .catch(function (error) {
         console.log(error);
         setErrorMessage(true);
+        messageRef.current.scrollIntoView({ behavior: "smooth" });
       });
   };
 
@@ -95,6 +97,126 @@ export default function Contact() {
         message !== "" &&
         cheakBox === true
       : name !== "" && email !== "" && message !== "" && cheakBox === true;
+
+  const [errors, setErrors] = useState({
+    name: null,
+    nameRuby: null,
+    job: null,
+    telnumber: null,
+    email: null,
+    message: null,
+  });
+
+  const validateForm = (e) => {
+    e.preventDefault();
+
+    let newErrors = {
+      name: null,
+      nameRuby: null,
+      telnumber: null,
+      email: null,
+      message: null,
+      cheakBox: null,
+    };
+
+    if (name == "") {
+      if (locale == "ja") {
+        newErrors.name = "お名前を入力してください";
+      } else {
+        newErrors.name = "Please enter your email address.";
+      }
+    }
+    if (email == "") {
+      if (locale == "ja") {
+        newErrors.email = "メールアドレスが入力されていません";
+      } else {
+        newErrors.email = "Please enter your email address.";
+      }
+    } else if (
+      !/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/.test(
+        email
+      )
+    ) {
+      if (locale == "ja") {
+        newErrors.email = "メールアドレスの形式が不正です";
+      } else {
+        newErrors.email = "Please enter a valid email address.";
+      }
+    }
+
+    if (telnumber == "") {
+      if (locale == "ja") {
+        newErrors.tel = "電話番号が入力されていません";
+      } else {
+        newErrors.tel = "Please enter your phone number.";
+      }
+    } else if (!/^[0-9]+$/.test(telnumber)) {
+      if (locale == "ja") {
+        newErrors.tel = "数字以外の文字が含まれています";
+      } else {
+        newErrors.tel = "Please enter numbers only.";
+      }
+    }
+    if (message == "") {
+      if (locale == "ja") {
+        newErrors.message = "お問い合わせ内容が入力されていません";
+      } else {
+        newErrors.message = "Please fill out the Message Content field.";
+      }
+    }
+
+    if (locale == "ja") {
+      if (nameRuby == "") {
+        newErrors.nameRuby = "フリガナが入力されていません";
+      } else if (!/^[ァ-ンヴー]*$/.test(nameRuby)) {
+        newErrors.nameRuby = "全角カタカナ以外の文字が入力されいます";
+      }
+    }
+
+    if (locale == "ja") {
+      if (cheakBox == "") {
+        newErrors.cheakBox =
+          "プライバシーポリシーをお読みの上で、この内容に同意してください";
+      } else if (!/^[ァ-ンヴー]*$/.test(nameRuby)) {
+        newErrors.cheakBox =
+          "Please read the privacy policy and agree to its contents.";
+      }
+    }
+
+    const firstDefinedKey = Object.entries(newErrors).find(
+      ([key, value]) => value != null
+    )?.[0];
+
+    const scroll = (key) => {
+      switch (key) {
+        case "name":
+          form.current.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "nameRuby":
+          nameRef.current.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "email":
+          telRef.current.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "tel":
+          rubyRef.current.scrollIntoView({ behavior: "smooth" });
+          break;
+        case "message":
+          emailRef.current.scrollIntoView({ behavior: "smooth" });
+          break;
+        default:
+          break;
+      }
+    };
+
+    setErrors(newErrors);
+    scroll(firstDefinedKey);
+
+    const allNull = Object.values(newErrors).every((value) => value === null);
+    if (allNull) {
+      handleSubmit();
+    }
+  };
 
   return (
     <>
@@ -180,6 +302,7 @@ export default function Contact() {
                       sx={{
                         "& .MuiTextField-root": { m: 0, width: "100%" },
                       }}
+                      ref={nameRef}
                       noValidate
                       autoComplete="off"
                       className={`mar-t1 ${cn.textbox}`}
@@ -200,8 +323,13 @@ export default function Contact() {
                       </div>
                     </Box>
 
-                    {/* ふりがな */}
+                    {errors["name"] && (
+                      <p className={`${cn.formError} notoGo`}>
+                        {errors["name"]}
+                      </p>
+                    )}
 
+                    {/* ふりがな */}
                     {locale == "ja" && (
                       <>
                         <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
@@ -212,6 +340,7 @@ export default function Contact() {
                           sx={{
                             "& .MuiTextField-root": { m: 0, width: "100%" },
                           }}
+                          ref={rubyRef}
                           noValidate
                           autoComplete="off"
                           className={`mar-t1 ${cn.textbox}`}
@@ -230,6 +359,12 @@ export default function Contact() {
                             ></TextField>
                           </div>
                         </Box>
+
+                        {errors["nameRuby"] && (
+                          <p className={`${cn.formError} notoGo`}>
+                            {errors["nameRuby"]}
+                          </p>
+                        )}
                       </>
                     )}
 
@@ -242,6 +377,7 @@ export default function Contact() {
                       sx={{
                         "& .MuiTextField-root": { m: 0, width: "100%" },
                       }}
+                      ref={emailRef}
                       noValidate
                       autoComplete="off"
                       className={`mar-t1 ${cn.textbox}`}
@@ -261,6 +397,13 @@ export default function Contact() {
                       </div>
                     </Box>
 
+                    {errors["email"] && (
+                      <p className={`${cn.formError} notoGo`}>
+                        {errors["email"]}
+                      </p>
+                    )}
+
+                    {/* 電話番号 */}
                     <h3 className={`fon4 fonSp4 bold mar-t3 notoGo`}>
                       {text.form.tel}
                     </h3>
@@ -269,6 +412,7 @@ export default function Contact() {
                       sx={{
                         "& .MuiTextField-root": { m: 0, width: "100%" },
                       }}
+                      ref={telRef}
                       noValidate
                       autoComplete="off"
                       className={`mar-t1 ${cn.textbox}`}
@@ -288,6 +432,13 @@ export default function Contact() {
                       </div>
                     </Box>
 
+                    {errors["tel"] && (
+                      <p className={`${cn.formError} notoGo`}>
+                        {errors["tel"]}
+                      </p>
+                    )}
+
+                    {/* お問い合わせ内容 */}
                     <h3 className={`fon4 fonSp4 bold mar-t3 mar-b1 notoGo`}>
                       {text.form.message}
                     </h3>
@@ -295,6 +446,7 @@ export default function Contact() {
                     <TextField
                       name="message"
                       className={`${cn.textbox}`}
+                      ref={messageRef}
                       onChange={(e) => setMessage(e.target.value)}
                       id="outlined-multiline-static"
                       multiline
@@ -302,10 +454,17 @@ export default function Contact() {
                       rows={4}
                       value={message}
                     />
+
+                    {errors["message"] && (
+                      <p className={`${cn.formError} notoGo`}>
+                        {errors["message"]}
+                      </p>
+                    )}
                   </div>
 
                   <div className={`${cn.privacyPolicy} sectionSpaceS`}>
                     <input
+                      className={`cursor`}
                       type="checkbox"
                       id="privacyPolicy"
                       name="privacyPolicy"
@@ -331,13 +490,23 @@ export default function Contact() {
                     </div>
                   </div>
 
+                  {errors["cheakBox"] && (
+                    <p
+                      className={`${cn.formError} ${cn.cheakError} notoGo sec-c`}
+                    >
+                      {errors["cheakBox"]}
+                    </p>
+                  )}
+
                   {/* 送信 */}
                   <div
                     disabled={!disableSend}
                     className={`${cn.button} ${
                       disableSend ? cn.active : ""
                     } sectionSpaceS`}
-                    onClick={handleSubmit}
+                    ref={sendRef}
+                    // onClick={handleSubmit}
+                    onClick={validateForm}
                   >
                     <h5 className={`fon4 fonSp4 cursor foncolW notoGo`}>
                       {text.form.send}
